@@ -607,8 +607,11 @@ services:
 <h2 id="running-the-application-with-docker-compose">Running the Application with Docker Compose</h2>
 <p>To run the application run this command where the <strong>docker-compose.yml</strong> file is located.</p>
 <p>Command :</p>
-<p><code>docker compose up -d</code> for ubuntu 22.04 version </p>
-<p><code>docker-compose up -d</code> for ubuntu 20.04 version </p>
+<p><code>docker-compose up -d</code> </p>
+<p>Break down Codes:</p>
+<p><strong>docker-compose</strong>: The Docker Compose command-line tool.</p>
+<p><strong>up</strong>: This command is used to create and start containers based on the configurations specified in the docker-compose.yml file.</p>
+<p><strong>-d</strong>: Stands for "detached mode." When you run Docker containers in detached mode, the containers run in the background, and you get your terminal prompt back. This allows you to continue using the same terminal session for other tasks.</p>
 <p>Now Run <code>docker ps</code> command to see the running container id that you have just created.</p>
 <h2 id="access-the-application">Access the application</h2>
 <p>Now you will see the app is running from your local machine on port 8080.
