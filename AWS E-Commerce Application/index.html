@@ -13,7 +13,7 @@
     
     
       
-        <title>Kubernetes-Minikube Cluster Beginner - CloudSpace workshop</title>
+        <title>AWS E-Commerce Application - CloudSpace workshop</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creating-a-kubernetes-cluster-with-minikube" class="md-skip">
+        <a href="#aws-e-commerce-application" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Kubernetes-Minikube Cluster Beginner
+              AWS E-Commerce Application
             
           </span>
         </div>
@@ -234,14 +234,12 @@
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_1" type="checkbox" id="__nav_3_1" >
       
       
       
@@ -290,101 +288,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Kubernetes-Minikube Cluster Beginner
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Kubernetes-Minikube%20Cluster%20Beginner/" class="md-nav__link">
         Kubernetes-Minikube Cluster Beginner
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#install-minikube" class="md-nav__link">
-    Install Minikube
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start-minikube" class="md-nav__link">
-    Start Minikube
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verify-cluster-status" class="md-nav__link">
-    Verify Cluster Status
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#check-nodes" class="md-nav__link">
-    Check Nodes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kubernetes-dashboard-optional" class="md-nav__link">
-    Kubernetes Dashboard (Optional)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interact-with-kubernetes" class="md-nav__link">
-    Interact with Kubernetes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-deployment" class="md-nav__link">
-    Example Deployment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -401,12 +309,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" checked>
       
       
       
@@ -427,12 +337,14 @@
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2_1" type="checkbox" id="__nav_3_2_1" checked>
       
       
       
@@ -495,11 +407,21 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../AWS%20E-Commerce%20Application/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         AWS E-Commerce Application
       </a>
+      
     </li>
   
 
@@ -559,70 +481,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#install-minikube" class="md-nav__link">
-    Install Minikube
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#start-minikube" class="md-nav__link">
-    Start Minikube
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#verify-cluster-status" class="md-nav__link">
-    Verify Cluster Status
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#check-nodes" class="md-nav__link">
-    Check Nodes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#kubernetes-dashboard-optional" class="md-nav__link">
-    Kubernetes Dashboard (Optional)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#interact-with-kubernetes" class="md-nav__link">
-    Interact with Kubernetes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#example-deployment" class="md-nav__link">
-    Example Deployment
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#conclusion" class="md-nav__link">
-    Conclusion
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -635,62 +493,18 @@
                 
 
 
-<h1 id="creating-a-kubernetes-cluster-with-minikube">Creating a Kubernetes Cluster with Minikube</h1>
-<p><strong>Introduction</strong></p>
-<p>Minikube is a tool that allows you to run Kubernetes clusters on your local machine. It's great for development, testing, and learning Kubernetes concepts. This guide will walk you through the process of setting up a Kubernetes cluster using Minikube.</p>
-<p><strong>Prerequisites</strong></p>
-<p>Hypervisor: Minikube requires a hypervisor to run the virtual machines. Common choices include VirtualBox, Hyper-V, KVM, or Docker. Ensure your preferred hypervisor is installed and properly configured.We use Docker for that </p>
-<p>Docker | installation guide <a href="https://docs.docker.com/engine/install/ubuntu/">Click Here</a></p>
-<p>kubectl: The kubectl command-line tool is used to interact with your Kubernetes cluster. Make sure it's installed on your machine.</p>
-<p>Kubectl | installation guide <a href="https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/">Click Here</a></p>
-<h3 id="install-minikube"><strong>Install Minikube</strong></h3>
-<p>Visit the Minikube Installation Guide and follow the instructions for your operating system to install Minikube.</p>
-<p>Minikube | installation guide <a href="https://minikube.sigs.k8s.io/docs/start/">Click Here</a></p>
-<h3 id="start-minikube"><strong>Start Minikube</strong></h3>
-<p>Open a terminal and run the following command to start Minikube:</p>
-<p><code>minikube start</code></p>
-<p>This command will download the Minikube ISO, start a virtual machine, and set up the Kubernetes cluster.</p>
-<h3 id="verify-cluster-status"><strong>Verify Cluster Status</strong></h3>
-<p>After Minikube has started, you can check the cluster status using:</p>
-<p><code>kubectl cluster-info</code></p>
-<p>This command will display information about the cluster, including the Kubernetes master and services.</p>
-<h3 id="check-nodes"><strong>Check Nodes</strong></h3>
-<p>Verify that Minikube has created a node for your cluster:</p>
-<p><code>kubectl get nodes</code></p>
-<p>This command should show the Minikube node with a status of Ready.</p>
-<h3 id="kubernetes-dashboard-optional"><strong>Kubernetes Dashboard (Optional)</strong></h3>
-<p>If you want to use the Kubernetes Dashboard, you can start it with:</p>
-<p><code>minikube dashboard</code></p>
-<p>This will open a web browser with the Kubernetes Dashboard, providing a visual interface to manage your cluster.</p>
-<h3 id="interact-with-kubernetes"><strong>Interact with Kubernetes</strong></h3>
-<p>Now that your Minikube cluster is running, you can start deploying applications and managing your Kubernetes cluster using kubectl.</p>
-<h3 id="example-deployment">Example Deployment</h3>
-<p>As a simple test, let's deploy a sample Nginx application. Save the following YAML as <strong>nginx-deployment.yaml:</strong></p>
-<pre><code>apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: nginx-deployment
-spec:
-  replicas: 2
-  selector:
-    matchLabels:
-      app: nginx
-  template:
-    metadata:
-      labels:
-        app: nginx
-    spec:
-      containers:
-      - name: nginx
-        image: nginx:latest
-        ports:
-        - containerPort: 80
-</code></pre>
-<p><strong>Apply the configuration:</strong></p>
-<p><code>kubectl apply -f nginx-deployment.yaml</code></p>
-<p>This will deploy two replicas of the Nginx web server.</p>
-<h3 id="conclusion">Conclusion</h3>
-<p>Congratulations! You've successfully created a Kubernetes cluster using Minikube and deployed a sample application. This is just the beginning—explore more Kubernetes features and concepts as you continue your journey with container orchestration.</p>
+<h1 id="aws-e-commerce-application">AWS E-Commerce Application:</h1>
+<p><strong>Description</strong></p>
+<p>Develop and deploy a full-fledged e-commerce
+application in an AWS environment. This includes a database, S3
+bucket for storage, ECS for deployment, and infrastructure as code
+with CloudFormation.</p>
+<p><strong>Tools</strong></p>
+<p>● Infrastructure as Code: AWS CloudFormation to define the infrastructure.</p>
+<p>● Database: AWS RDS or DynamoDB for database management.</p>
+<p>● Storage: AWS S3 for file storage.</p>
+<p>● Deployment: AWS ECS for container-based deployment.</p>
+<p>● CI/CD: Automate deployment using GitHub Actions.</p>
 
               
             </article>
@@ -704,7 +518,7 @@ spec:
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../dockercomposebeginning/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker Compose Beginner" rel="prev">
+        <a href="../Banking%20Web%20Application/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Banking Web Application" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -713,20 +527,20 @@ spec:
               <span class="md-footer__direction">
                 Previous
               </span>
-              Docker Compose Beginner
+              Banking Web Application
             </div>
           </div>
         </a>
       
       
         
-        <a href="../AWS%20Photo%20Gallery%20Application/" class="md-footer__link md-footer__link--next" aria-label="Next: AWS Photo Gallery Application" rel="next">
+        <a href="../Real-Time%20Chat%20Application/" class="md-footer__link md-footer__link--next" aria-label="Next: Real-Time Chat Application" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Next
               </span>
-              AWS Photo Gallery Application
+              Real-Time Chat Application
             </div>
           </div>
           <div class="md-footer__button md-icon">
