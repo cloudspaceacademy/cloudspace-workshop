@@ -326,43 +326,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
-    Step 1:
+  <a href="#install-minikube" class="md-nav__link">
+    Install Minikube
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
-    Step 2:
+  <a href="#start-minikube" class="md-nav__link">
+    Start Minikube
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
-    Step 3:
+  <a href="#verify-cluster-status" class="md-nav__link">
+    Verify Cluster Status
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4" class="md-nav__link">
-    Step 4:
+  <a href="#check-nodes" class="md-nav__link">
+    Check Nodes
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5" class="md-nav__link">
-    Step 5:
+  <a href="#kubernetes-dashboard-optional" class="md-nav__link">
+    Kubernetes Dashboard (Optional)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6" class="md-nav__link">
-    Step 6:
+  <a href="#interact-with-kubernetes" class="md-nav__link">
+    Interact with Kubernetes
   </a>
   
 </li>
@@ -477,43 +477,43 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#step-1" class="md-nav__link">
-    Step 1:
+  <a href="#install-minikube" class="md-nav__link">
+    Install Minikube
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2" class="md-nav__link">
-    Step 2:
+  <a href="#start-minikube" class="md-nav__link">
+    Start Minikube
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3" class="md-nav__link">
-    Step 3:
+  <a href="#verify-cluster-status" class="md-nav__link">
+    Verify Cluster Status
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4" class="md-nav__link">
-    Step 4:
+  <a href="#check-nodes" class="md-nav__link">
+    Check Nodes
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5" class="md-nav__link">
-    Step 5:
+  <a href="#kubernetes-dashboard-optional" class="md-nav__link">
+    Kubernetes Dashboard (Optional)
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6" class="md-nav__link">
-    Step 6:
+  <a href="#interact-with-kubernetes" class="md-nav__link">
+    Interact with Kubernetes
   </a>
   
 </li>
@@ -552,31 +552,25 @@
 <p><strong>Prerequisites</strong></p>
 <p>Hypervisor: Minikube requires a hypervisor to run the virtual machines. Common choices include VirtualBox, Hyper-V, KVM, or Docker. Ensure your preferred hypervisor is installed and properly configured.</p>
 <p>kubectl: The kubectl command-line tool is used to interact with your Kubernetes cluster. Make sure it's installed on your machine.</p>
-<h3 id="step-1">Step 1:</h3>
-<p><strong>Install Minikube</strong></p>
+<h3 id="install-minikube"><strong>Install Minikube</strong></h3>
 <p>Visit the Minikube Installation Guide and follow the instructions for your operating system to install Minikube.</p>
-<h3 id="step-2">Step 2:</h3>
-<p><strong>Start Minikube</strong></p>
+<h3 id="start-minikube"><strong>Start Minikube</strong></h3>
 <p>Open a terminal and run the following command to start Minikube:</p>
 <p><code>minikube start</code></p>
 <p>This command will download the Minikube ISO, start a virtual machine, and set up the Kubernetes cluster.</p>
-<h3 id="step-3">Step 3:</h3>
-<p><strong>Verify Cluster Status</strong></p>
+<h3 id="verify-cluster-status"><strong>Verify Cluster Status</strong></h3>
 <p>After Minikube has started, you can check the cluster status using:</p>
 <p><code>kubectl cluster-info</code></p>
 <p>This command will display information about the cluster, including the Kubernetes master and services.</p>
-<h3 id="step-4">Step 4:</h3>
-<p><strong>Check Nodes</strong></p>
+<h3 id="check-nodes"><strong>Check Nodes</strong></h3>
 <p>Verify that Minikube has created a node for your cluster:</p>
 <p><code>kubectl get nodes</code></p>
 <p>This command should show the Minikube node with a status of Ready.</p>
-<h3 id="step-5">Step 5:</h3>
-<p><strong>Kubernetes Dashboard (Optional)</strong></p>
+<h3 id="kubernetes-dashboard-optional"><strong>Kubernetes Dashboard (Optional)</strong></h3>
 <p>If you want to use the Kubernetes Dashboard, you can start it with:</p>
 <p><code>minikube dashboard</code></p>
 <p>This will open a web browser with the Kubernetes Dashboard, providing a visual interface to manage your cluster.</p>
-<h3 id="step-6">Step 6:</h3>
-<p><strong>Interact with Kubernetes</strong></p>
+<h3 id="interact-with-kubernetes"><strong>Interact with Kubernetes</strong></h3>
 <p>Now that your Minikube cluster is running, you can start deploying applications and managing your Kubernetes cluster using kubectl.</p>
 <h3 id="example-deployment">Example Deployment</h3>
 <p>As a simple test, let's deploy a sample Nginx application. Save the following YAML as <strong>nginx-deployment.yaml:</strong></p>
