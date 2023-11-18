@@ -13,7 +13,7 @@
     
     
       
-        <title>Docker Beginner - CloudSpace workshop</title>
+        <title>Kubernetes-Minikube Cluster Beginner - CloudSpace workshop</title>
       
     
     
@@ -59,7 +59,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#flask-calculator-web-application" class="md-skip">
+        <a href="#creating-a-kubernetes-cluster-with-minikube" class="md-skip">
           Skip to content
         </a>
       
@@ -92,7 +92,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker Beginner
+              Kubernetes-Minikube Cluster Beginner
             
           </span>
         </div>
@@ -262,126 +262,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Docker Beginner
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../dockerbeginning/" class="md-nav__link">
         Docker Beginner
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
-    Getting Started
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting Started">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#why-do-we-use-docker" class="md-nav__link">
-    Why do we use docker?
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dockerfile" class="md-nav__link">
-    Dockerfile
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-the-application-with-docker" class="md-nav__link">
-    Running the Application with Docker
-  </a>
-  
-    <nav class="md-nav" aria-label="Running the Application with Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#building-a-docker-image" class="md-nav__link">
-    Building a Docker Image
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-image-used-for" class="md-nav__link">
-    Docker image used for :
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-a-docker-container" class="md-nav__link">
-    Running a Docker Container
-  </a>
-  
-    <nav class="md-nav" aria-label="Running a Docker Container">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-container-used-for" class="md-nav__link">
-    Docker Container used for :
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#access-the-application" class="md-nav__link">
-    Access the application
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -405,11 +290,110 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Kubernetes-Minikube%20Cluster%20Beginner/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Kubernetes-Minikube Cluster Beginner
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Kubernetes-Minikube Cluster Beginner
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#creating-a-kubernetes-cluster-with-minikube" class="md-nav__link">
+    Creating a Kubernetes Cluster with Minikube
+  </a>
+  
+    <nav class="md-nav" aria-label="Creating a Kubernetes Cluster with Minikube">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1" class="md-nav__link">
+    Step 1:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    Step 2:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    Step 3:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    Step 4:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    Step 5:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6" class="md-nav__link">
+    Step 6:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-deployment" class="md-nav__link">
+    Example Deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -492,8 +476,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -502,83 +484,71 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
-    Getting Started
+  <a href="#creating-a-kubernetes-cluster-with-minikube" class="md-nav__link">
+    Creating a Kubernetes Cluster with Minikube
   </a>
   
-    <nav class="md-nav" aria-label="Getting Started">
+    <nav class="md-nav" aria-label="Creating a Kubernetes Cluster with Minikube">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#why-do-we-use-docker" class="md-nav__link">
-    Why do we use docker?
+  <a href="#step-1" class="md-nav__link">
+    Step 1:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2" class="md-nav__link">
+    Step 2:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3" class="md-nav__link">
+    Step 3:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4" class="md-nav__link">
+    Step 4:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5" class="md-nav__link">
+    Step 5:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6" class="md-nav__link">
+    Step 6:
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#example-deployment" class="md-nav__link">
+    Example Deployment
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#dockerfile" class="md-nav__link">
-    Dockerfile
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-the-application-with-docker" class="md-nav__link">
-    Running the Application with Docker
-  </a>
-  
-    <nav class="md-nav" aria-label="Running the Application with Docker">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#building-a-docker-image" class="md-nav__link">
-    Building a Docker Image
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#docker-image-used-for" class="md-nav__link">
-    Docker image used for :
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#running-a-docker-container" class="md-nav__link">
-    Running a Docker Container
-  </a>
-  
-    <nav class="md-nav" aria-label="Running a Docker Container">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#docker-container-used-for" class="md-nav__link">
-    Docker Container used for :
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#access-the-application" class="md-nav__link">
-    Access the application
-  </a>
   
 </li>
       
@@ -596,80 +566,67 @@
                 
 
 
-<h1 id="flask-calculator-web-application">Flask Calculator Web Application</h1>
+  <h1>Kubernetes-Minikube Cluster Beginner</h1>
+
+<h2 id="creating-a-kubernetes-cluster-with-minikube">Creating a Kubernetes Cluster with Minikube</h2>
 <p><strong>Introduction</strong></p>
-<p>This documentation provides an overview of the Flask calculator web application and guides you on how to set up and run the project. This simple web application allows users to perform basic arithmetic calculations such as addition, subtraction, multiplication, and division.</p>
-<p><strong>Tools Requirements</strong></p>
-<p>Python | installation guide <a href="https://kinsta.com/knowledgebase/install-python/">Click Here</a> </p>
-<p>Docker | installation guide <a href="https://docs.docker.com/engine/install/ubuntu/">Click Here</a></p>
-<h2 id="getting-started">Getting Started</h2>
-<p>Open terminal and run this command to clone the repository of Flask Calculator Web Application.</p>
-<p>Command:</p>
-<pre><code>git clone https://github.com/cloudspaceacademy/Flask-Calculator-app.git
+<p>Minikube is a tool that allows you to run Kubernetes clusters on your local machine. It's great for development, testing, and learning Kubernetes concepts. This guide will walk you through the process of setting up a Kubernetes cluster using Minikube.</p>
+<p><strong>Prerequisites</strong></p>
+<p>Hypervisor: Minikube requires a hypervisor to run the virtual machines. Common choices include VirtualBox, Hyper-V, KVM, or Docker. Ensure your preferred hypervisor is installed and properly configured.</p>
+<p>kubectl: The kubectl command-line tool is used to interact with your Kubernetes cluster. Make sure it's installed on your machine.</p>
+<h3 id="step-1">Step 1:</h3>
+<p><strong>Install Minikube</strong></p>
+<p>Visit the Minikube Installation Guide and follow the instructions for your operating system to install Minikube.</p>
+<h3 id="step-2">Step 2:</h3>
+<p><strong>Start Minikube</strong></p>
+<p>Open a terminal and run the following command to start Minikube:</p>
+<p><code>minikube start</code></p>
+<p>This command will download the Minikube ISO, start a virtual machine, and set up the Kubernetes cluster.</p>
+<h3 id="step-3">Step 3:</h3>
+<p><strong>Verify Cluster Status</strong></p>
+<p>After Minikube has started, you can check the cluster status using:</p>
+<p><code>kubectl cluster-info</code></p>
+<p>This command will display information about the cluster, including the Kubernetes master and services.</p>
+<h3 id="step-4">Step 4:</h3>
+<p><strong>Check Nodes</strong></p>
+<p>Verify that Minikube has created a node for your cluster:</p>
+<p><code>kubectl get nodes</code></p>
+<p>This command should show the Minikube node with a status of Ready.</p>
+<h3 id="step-5">Step 5:</h3>
+<p><strong>Kubernetes Dashboard (Optional)</strong></p>
+<p>If you want to use the Kubernetes Dashboard, you can start it with:</p>
+<p><code>minikube dashboard</code></p>
+<p>This will open a web browser with the Kubernetes Dashboard, providing a visual interface to manage your cluster.</p>
+<h3 id="step-6">Step 6:</h3>
+<p><strong>Interact with Kubernetes</strong></p>
+<p>Now that your Minikube cluster is running, you can start deploying applications and managing your Kubernetes cluster using kubectl.</p>
+<h3 id="example-deployment">Example Deployment</h3>
+<p>As a simple test, let's deploy a sample Nginx application. Save the following YAML as <strong>nginx-deployment.yaml:</strong></p>
+<pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
 </code></pre>
-<p>Now navigate to the directory Flask-Calculator-app. You will see a cloudspace directory now open that directory using the terminal. </p>
-<p>You can simply use this command:</p>
-<p><code>cd Flask-Calculator-app &amp;&amp; cd cloudspace</code></p>
-<p>Now run  <code>ls</code>  command and Now what are the scenarios there you will see app.py,Dockerfile,requirements.txt file and a directory named templates.</p>
-<p>Let's elaborate why we use that <strong>Dockerfile</strong> for this application and how we write that Dockerfile.</p>
-<h3 id="why-do-we-use-docker">Why do we use docker?</h3>
-<p>Docker provides a way to package, distribute, and run applications consistently across various environments. It simplifies the process of creating, deploying, and maintaining applications while improving portability, scalability, and resource efficiency. The Dockerfile is at the heart of this process, defining how the container image is built and what software is included, making it a valuable tool for modern software development and deployment.</p>
-<p>Now let's elaborate how we write that Dockerfile to package our application.</p>
-<h2 id="dockerfile">Dockerfile</h2>
-<pre><code>FROM python:3.9-slim
-
-WORKDIR /app
-
-COPY requirements.txt .
-
-RUN pip install -r requirements.txt
-
-COPY . .
-
-EXPOSE 5000
-
-CMD [&quot;python&quot;, &quot;app.py&quot;] 
-</code></pre>
-<p>Now just break down all the code and elaborate why they use for </p>
-<p><strong>FROM python:3.9-slim</strong></p>
-<p>This line specifies the base image for our Docker container. In this case, it's using the official Python 3.9 slim image. The "slim" variant provides a smaller image size by excluding some non-essential components, making it suitable for many Python applications.</p>
-<p><strong>WORKDIR /app</strong></p>
-<p>This line sets the working directory inside the container to /app. This is where the application code and files will be placed, and it's the directory where commands will be executed by default. It's a good practice to organize your application within a dedicated directory.</p>
-<p><strong>COPY requirements.txt .</strong></p>
-<p>This line copies the requirements.txt file from the host system into the container. The . at the end specifies the destination path, which is the current directory within the container (i.e., /app).</p>
-<p><strong>RUN pip install -r requirements.txt</strong></p>
-<p>This line uses the RUN instruction to execute a command within the container. In this case, it runs pip install -r requirements.txt to install all the Python packages listed in the requirements.txt file. This step ensures that the necessary dependencies are installed in the container.</p>
-<p><strong>COPY . .</strong></p>
-<p>This line copies all the files and directories from the current directory (the directory where the Dockerfile is located) on our host system to the /app directory in the container. This includes our application code (app.py) and any other files or directories in the project folder.</p>
-<p><strong>EXPOSE 5000</strong></p>
-<p>This line informs Docker that the container will listen on port 5000. While this line is not necessary for port mapping, it serves as a form of documentation to indicate which ports the container expects to use. It's good practice for clarity.</p>
-<p><strong>CMD ["python", "app.py"]</strong></p>
-<p>This line defines the default command to execute when the container is started. It runs the Flask application by executing python app.py. The Flask development server will start, and our application will be served on port 5000 as specified earlier.</p>
-<p>Now lets learn how to run the application by using just two docker commands from your local machine. </p>
-<h2 id="running-the-application-with-docker">Running the Application with Docker</h2>
-<h3 id="building-a-docker-image">Building a Docker Image</h3>
-<p>To build a Docker image, you use the docker build command. </p>
-<p><code>docker build -t flask-calculator .</code></p>
-<p>docker build -t flask-calculator .  Run this command where the Dockerfile is located. Our Dockerfile is located in the root directory cloudspace so that we use ( . )  </p>
-<p>Now break down the code </p>
-<p><strong>docker build:</strong> This is the Docker command for building an image.</p>
-<p><strong>-t flask-calculator:</strong> This part specifies the image name and tag. In this example, the image is named "flask-calculator," and it has no specific tag. The tag is used to version your images; if you don't specify one, it defaults to "latest."</p>
-<p><strong>.:</strong> The dot (.) at the end of the command tells Docker to use the current directory as the build context. It means that Docker will look in the current directory for a Dockerfile to use as the basis for building the image.</p>
-<h3 id="docker-image-used-for">Docker image used for :</h3>
-<p>A Docker image is a lightweight, standalone, executable package that includes everything needed to run a piece of software, including the code, runtime, system tools, system libraries, and settings. Images are used as the basis for creating Docker containers.</p>
-<h2 id="running-a-docker-container">Running a Docker Container</h2>
-<p>Once we have built our Docker image, we can create and run containers from it using the docker run command. </p>
-<p><code>docker run -p 5000:80 -d flask-calculator</code></p>
-<p>Now break down the code </p>
-<p><strong>docker run:</strong> This is the Docker command for creating and running a container.</p>
-<p><strong>-p 5000:80:</strong> This part maps port 5000 from our host machine to port 80 inside the container. It allows us to access our Flask application running in the container on port 5000.</p>
-<p><strong>-d:</strong> this defines the container will run in detached mode, which means it runs in the background.</p>
-<p><strong>flask-calculator:</strong> This is the name of the Docker image you want to use to create the container. The image name corresponds to the one you specified when building the image.</p>
-<h3 id="docker-container-used-for">Docker Container used for :</h3>
-<p>A Docker container is a runnable instance of a Docker image. It is an isolated environment where our application runs. Containers share the same OS kernel as the host system but are isolated from each other. They are ephemeral and can be started, stopped, and removed as needed.</p>
-<h2 id="access-the-application">Access the application</h2>
-<p>Now you will see the app is running from your local machine on port 5000.
-Open your web browser and go to <strong>localhost:5000</strong> to access the Flask calculator web application within the Docker container.</p>
+<p><strong>Apply the configuration:</strong></p>
+<p><code>kubectl apply -f nginx-deployment.yaml</code></p>
+<p>This will deploy two replicas of the Nginx web server.</p>
+<h3 id="conclusion">Conclusion</h3>
+<p>Congratulations! You've successfully created a Kubernetes cluster using Minikube and deployed a sample application. This is just the beginning—explore more Kubernetes features and concepts as you continue your journey with container orchestration.</p>
 
               
             </article>
@@ -683,7 +640,7 @@ Open your web browser and go to <strong>localhost:5000</strong> to access the Fl
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
         
-        <a href="../about/" class="md-footer__link md-footer__link--prev" aria-label="Previous: About" rel="prev">
+        <a href="../dockercomposebeginning/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Docker Compose Beginner" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -692,26 +649,11 @@ Open your web browser and go to <strong>localhost:5000</strong> to access the Fl
               <span class="md-footer__direction">
                 Previous
               </span>
-              About
-            </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../dockercomposebeginning/" class="md-footer__link md-footer__link--next" aria-label="Next: Docker Compose Beginner" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
               Docker Compose Beginner
             </div>
           </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
         </a>
+      
       
     </nav>
   
