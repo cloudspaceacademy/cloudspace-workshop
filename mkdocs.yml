@@ -1,0 +1,18 @@
+site_name: CloudSpace workshop
+theme:
+  name: material
+nav:
+  - Home: 'index.md'
+  - About: 'about.md'
+  - 'DevOps':
+    - 'DevOps Beginner':
+      - 'Docker Beginner': 'dockerbeginning.md'
+      - 'Docker Compose Beginner': 'dockercomposebeginning.md'
+      - 'Kubernetes-Minikube Cluster Beginner': 'Kubernetes-Minikube Cluster Beginner.md'
+    - 'DevOps Expert':
+      - 'DevOps Large Projects': 
+        - 'AWS DevOps Expert': 'AWS Photo Gallery Application.md'
+        - 'Open Source DevOps Expert': 'Open Source Photo Gallery Application.md'
+        - 'Load Balancing Expert': 'Banking Web Application.md'
+        - 'Full Stack DevOps Expert': 'AWS E-Commerce Application.md'
+        - 'Real-Time Application DevOps Expert': 'Real-Time Chat Application.md'
