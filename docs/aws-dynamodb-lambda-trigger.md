@@ -1,1 +1,3 @@
-# aws-dynamodb-lambda-trigger
+# AWS Dynamodb Lambda Trigger
+
+### Coming Soon !

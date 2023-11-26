@@ -15,6 +15,12 @@ nav:
       - 'Terraform Starter': 'Terraform-Starter.md'
       - 'Ansible Playbook Library': 'Ansible-Playbook-Library.md'
       - 'Logging with ELK Stack': 'Logging-with-ELK-Stack.md'
+          # - 'Additonal DevOps':
+      - 'AWS Lambda S3 Events': 'aws-lambda-s3-events.md'
+      - 'AWS Lambda Xray': 'aws-lambda-xray.md'
+      - 'AWS Pet Rekognition Ecr': 'aws-pet-rekognition-ecr.md'
+      - 'AWS Lex Lambda Rds': 'aws-lex-lambda-rds.md'
+      - 'AWS Dynamodb Lambda Trigger': 'aws-dynamodb-lambda-trigger.md'
     - 'DevOps Expert':
       - 'DevOps Large Projects': 
         - 'AWS DevOps Expert': 'AWS Photo Gallery Application.md'
@@ -22,12 +28,7 @@ nav:
         - 'Load Balancing Expert': 'Banking Web Application.md'
         - 'Full Stack DevOps Expert': 'AWS E-Commerce Application.md'
         - 'Real-Time Application DevOps Expert': 'Real-Time Chat Application.md'
-    - 'Additonal DevOps':
-        - 'AWS Lambda S3 Events': 'aws-lambda-s3-events.md'
-        - 'AWS Lambda Xray': 'aws-lambda-xray.md'
-        - 'AWS Pet Rekognition Ecr': 'aws-pet-rekognition-ecr.md'
-        - 'AWS Lex Lambda Rds': 'aws-lex-lambda-rds.md'
-        - 'AWS Dynamodb Lambda Trigger': 'aws-dynamodb-lambda-trigger.md'
+
   - 'Solution Architect':
     - 'Solution Architect Projects': 
         - 'AWS Api Gateway': 'aws-api-gateway.md'
