@@ -368,8 +368,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-prometheus-with-docker" class="md-nav__link">
-    Running Prometheus with Docker
+  <a href="#running-prometheus-with-docker-compose" class="md-nav__link">
+    Running Prometheus with Docker-Compose
   </a>
   
 </li>
@@ -969,8 +969,8 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#running-prometheus-with-docker" class="md-nav__link">
-    Running Prometheus with Docker
+  <a href="#running-prometheus-with-docker-compose" class="md-nav__link">
+    Running Prometheus with Docker-Compose
   </a>
   
 </li>
@@ -1016,7 +1016,7 @@
 <p>This project is designed to elucidate the fundamental concepts of Prometheus and Grafana by guiding participants through the process of setting up a monitoring infrastructure for their applications. By integrating Prometheus to collect and store time-series data and Grafana to create intuitive dashboards, developers can gain actionable insights into the health and performance of their systems.</p>
 <p>Throughout this project, we will delve into the intricacies of Prometheus, exploring its capabilities for metric collection, querying, and alerting. Grafana will then complement this monitoring setup by providing a visually appealing and customizable interface to represent and analyze the collected metrics.</p>
 <p>By the culmination of this project, participants will have a solid understanding of how to implement Prometheus for monitoring and Grafana for visualization, empowering them to make informed decisions based on real-time data. Let's embark on this exploration of monitoring and visualization to unlock the potential of Prometheus and Grafana in enhancing the observability of your applications.</p>
-<h3 id="running-prometheus-with-docker"><strong>Running Prometheus with Docker</strong></h3>
+<h3 id="running-prometheus-with-docker-compose"><strong>Running Prometheus with Docker-Compose</strong></h3>
 <p><strong>Introduction</strong></p>
 <p>This guide will walk you through the process of running Prometheus, a powerful monitoring and alerting tool, using Docker. By containerizing Prometheus, you can easily deploy and 
 manage it across different environments.</p>
@@ -1027,7 +1027,7 @@ manage it across different environments.</p>
 <pre><code>mkdir my-prometheus-project
 cd my-prometheus-project
 </code></pre>
-<p>Now create a <strong>Dockerfile</strong> by using this command </p>
+<p>Now create a <strong>Dockerfile</strong> by using this command:</p>
 <p><code>nano Dockerfile</code></p>
 <p>In that <strong>Dockerfile</strong> implement this following codes:</p>
 <pre><code># Use a base image with a minimal installation of Alpine Linux
@@ -1059,9 +1059,26 @@ CMD [&quot;/prometheus/prometheus&quot;, &quot;--config.file=/prometheus/prometh
 <p><strong>Build the Docker Image:</strong>
 Open a terminal in the same directory as your Dockerfile and run the following commands:</p>
 <p><code>docker build -t my-prometheus .</code></p>
+<p>Now we are gonna create a <strong>docker-compose.yml</strong> file to run prometheus.</p>
+<p>Now create a <strong>docker-compose.yml</strong> by using this command:</p>
+<p><code>nano docker-compose.yml</code></p>
+<p>now implement the following codes in that file:</p>
+<pre><code>version: '3'
+
+services:
+  prometheus:
+    image: my-prometheus:latest
+    container_name: prometheus
+    ports:
+      - &quot;9090:9090&quot;
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+</code></pre>
+<p>Now press ctrl+x and then press 'y' to save the file</p>
 <p><strong>Running Prometheus Container</strong></p>
 <p>Once the Docker image is built, you can run a Prometheus container using the following command:</p>
-<p><code>docker run -p 9090:9090 -d my-prometheus</code></p>
+<p><code>docker-compose up -d</code></p>
 <p>This maps port 9090 in the Prometheus container to port 9090 on your host machine.</p>
 <p><strong>Accessing Prometheus Web Interface</strong></p>
 <p>Open your web browser and navigate to <strong>localhost:9090</strong> to access the Prometheus web interface.</p>
