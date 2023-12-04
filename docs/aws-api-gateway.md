@@ -1,6 +1,4 @@
-# Aws Api Gateway
-
-# API Gateway with Lambda, Mock, and AWS Service integrations
+# API Gateway integration with Lambda, Mock, and AWS Service integrations
 
 # Overview
 
