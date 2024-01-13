@@ -450,8 +450,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#coming-soon" class="md-nav__link">
-    Coming Soon !
+  <a href="#creating-aws-infrastructure-with-terraform" class="md-nav__link">
+    Creating AWS Infrastructure with Terraform
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraform-configuration" class="md-nav__link">
+    Terraform Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-aws-console" class="md-nav__link">
+    Access AWS Console:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -1242,8 +1270,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#coming-soon" class="md-nav__link">
-    Coming Soon !
+  <a href="#creating-aws-infrastructure-with-terraform" class="md-nav__link">
+    Creating AWS Infrastructure with Terraform
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraform-configuration" class="md-nav__link">
+    Terraform Configuration
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-aws-console" class="md-nav__link">
+    Access AWS Console:
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    Conclusion
   </a>
   
 </li>
@@ -1264,7 +1320,45 @@
 
 
 <h1 id="terraform-starter">Terraform Starter</h1>
-<h3 id="coming-soon">Coming Soon !</h3>
+<h3 id="creating-aws-infrastructure-with-terraform"><strong>Creating AWS Infrastructure with Terraform</strong></h3>
+<p><strong>Introduction</strong></p>
+<p>This documentation provides step-by-step instructions on using Terraform to create an AWS EC2 instance in the eu-north-1 region. The example code specifies an AMI ID for ubuntu-focal-20.04-amd64 (ami-07ec4220c92589b40) and uses a t3.micro instance type.</p>
+<h3 id="prerequisites"><strong>Prerequisites</strong></h3>
+<p><strong>AWS Account:</strong> Ensure that you have an AWS account. If you don't have one, you can sign up at <a href="https://aws.amazon.com/">AWS Console</a></p>
+<p><strong>AWS CLI Installation:</strong> Install the AWS CLI on your local machine. You can download it from the <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html">AWS CLI official website</a></p>
+<p><strong>Terraform Installation:</strong> Install Terraform on your local machine. You can download Terraform from the <a href="https://developer.hashicorp.com/terraform/install">official Terraform website</a></p>
+<p><strong>AWS Credentials:</strong> Configure your AWS credentials on your machine using the AWS CLI. Run <strong>aws configure</strong> and provide your AWS Access Key, Secret Key, region (eu-north-1), and output format.</p>
+<h3 id="terraform-configuration"><strong>Terraform Configuration</strong></h3>
+<p><strong>Create a Terraform Configuration File:</strong>
+Create a file named <strong>main.tf</strong> and paste the following Terraform configuration:</p>
+<pre><code># Specify the AWS provider and region
+provider &quot;aws&quot; {
+  region = &quot;eu-north-1&quot;  # Change this to your desired AWS region
+}
+
+# Define an AWS EC2 instance
+resource &quot;aws_instance&quot; &quot;example_instance&quot; {
+  ami           = &quot;ami-07ec4220c92589b40&quot;  # Change this to a valid AMI ID for your region
+  instance_type = &quot;t3.micro&quot;                # Change this to your desired instance type
+
+  tags = {
+    Name = &quot;example-instance&quot;
+  }
+}
+</code></pre>
+<p><strong>Initialize Terraform:</strong></p>
+<p>Open a terminal, navigate to the directory containing main.tf, and run:</p>
+<p><code>terraform init</code></p>
+<p><strong>Apply Terraform Configuration:</strong></p>
+<p>Run the following command to apply the Terraform configuration:</p>
+<p><code>terraform apply</code></p>
+<p>Terraform will prompt you to confirm the plan. Type yes and press Enter.</p>
+<h3 id="access-aws-console"><strong>Access AWS Console:</strong></h3>
+<p>Visit the AWS Console and log in with your AWS credentials.</p>
+<p><strong>Verify EC2 Instance:</strong></p>
+<p>Navigate to the EC2 service in the AWS Console. You should see a new EC2 instance with the specified configuration.</p>
+<h3 id="conclusion"><strong>Conclusion</strong></h3>
+<p>You have successfully created an AWS EC2 instance using Terraform. This example can be expanded and customized based on your specific requirements.</p>
 
 
 

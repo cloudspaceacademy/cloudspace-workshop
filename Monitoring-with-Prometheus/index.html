@@ -393,6 +393,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Monitoring with Prometheus
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -402,6 +413,53 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-prometheus-with-docker-compose" class="md-nav__link">
+    Running Prometheus with Docker-Compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-docker-image" class="md-nav__link">
+    Building the Docker Image
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1198,6 +1256,42 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-prometheus-with-docker-compose" class="md-nav__link">
+    Running Prometheus with Docker-Compose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    Getting Started
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#building-the-docker-image" class="md-nav__link">
+    Building the Docker Image
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1217,6 +1311,74 @@
 <p>This project is designed to elucidate the fundamental concepts of Prometheus and Grafana by guiding participants through the process of setting up a monitoring infrastructure for their applications. By integrating Prometheus to collect and store time-series data and Grafana to create intuitive dashboards, developers can gain actionable insights into the health and performance of their systems.</p>
 <p>Throughout this project, we will delve into the intricacies of Prometheus, exploring its capabilities for metric collection, querying, and alerting. Grafana will then complement this monitoring setup by providing a visually appealing and customizable interface to represent and analyze the collected metrics.</p>
 <p>By the culmination of this project, participants will have a solid understanding of how to implement Prometheus for monitoring and Grafana for visualization, empowering them to make informed decisions based on real-time data. Let's embark on this exploration of monitoring and visualization to unlock the potential of Prometheus and Grafana in enhancing the observability of your applications.</p>
+<h3 id="running-prometheus-with-docker-compose"><strong>Running Prometheus with Docker-Compose</strong></h3>
+<p><strong>Introduction</strong></p>
+<p>This guide will walk you through the process of running Prometheus, a powerful monitoring and alerting tool, using Docker. By containerizing Prometheus, you can easily deploy and 
+manage it across different environments.</p>
+<h3 id="prerequisites"><strong>Prerequisites</strong></h3>
+<p>Docker installed on your machine.Docker | installation guide <a href="https://docs.docker.com/engine/install/ubuntu/">Click Here</a></p>
+<h3 id="getting-started"><strong>Getting Started</strong></h3>
+<p>first open terminal and create a directory and navigate to that directory by using this command </p>
+<pre><code>mkdir my-prometheus-project
+cd my-prometheus-project
+</code></pre>
+<p>Now create a <strong>Dockerfile</strong> by using this command:</p>
+<p><code>nano Dockerfile</code></p>
+<p>In that <strong>Dockerfile</strong> implement this following codes:</p>
+<pre><code># Use a base image with a minimal installation of Alpine Linux
+FROM alpine:latest
+
+# Create a directory for Prometheus data
+RUN mkdir /prometheus
+
+# Download and install Prometheus
+ADD https://github.com/prometheus/prometheus/releases/download/v2.30.2/prometheus-2.30.2.linux-amd64.tar.gz /prometheus/prometheus.tar.gz
+RUN tar xvf /prometheus/prometheus.tar.gz -C /prometheus/ --strip-components=1 &amp;&amp; rm /prometheus/prometheus.tar.gz
+
+# Copy the Prometheus configuration file into the image
+COPY prometheus.yml /prometheus/prometheus.yml
+
+# Expose the Prometheus web UI and API
+EXPOSE 9090
+
+# Set the working directory to /prometheus
+WORKDIR /prometheus
+
+# Command to run when the container starts
+CMD [&quot;/prometheus/prometheus&quot;, &quot;--config.file=/prometheus/prometheus.yml&quot;]
+</code></pre>
+<p>Now press ctrl+x and then press 'y' to save the file </p>
+<p>Now create a another file named <strong>prometheus.yml</strong> by running this command </p>
+<p><code>touch prometheus.yml</code></p>
+<h3 id="building-the-docker-image"><strong>Building the Docker Image</strong></h3>
+<p><strong>Build the Docker Image:</strong>
+Open a terminal in the same directory as your Dockerfile and run the following commands:</p>
+<p><code>docker build -t my-prometheus .</code></p>
+<p>Now we are gonna create a <strong>docker-compose.yml</strong> file to run prometheus.</p>
+<p>Now create a <strong>docker-compose.yml</strong> by using this command:</p>
+<p><code>nano docker-compose.yml</code></p>
+<p>now implement the following codes in that file:</p>
+<pre><code>version: '3'
+
+services:
+  prometheus:
+    image: my-prometheus:latest
+    container_name: prometheus
+    ports:
+      - &quot;9090:9090&quot;
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+
+</code></pre>
+<p>Now press ctrl+x and then press 'y' to save the file</p>
+<p><strong>Running Prometheus Container</strong></p>
+<p>Once the Docker image is built, you can run a Prometheus container using the following command:</p>
+<p><code>docker-compose up -d</code></p>
+<p>This maps port 9090 in the Prometheus container to port 9090 on your host machine.</p>
+<p><strong>Accessing Prometheus Web Interface</strong></p>
+<p>Open your web browser and navigate to <strong>localhost:9090</strong> to access the Prometheus web interface.</p>
+<p><strong>Conclusion</strong></p>
+<p>You have successfully set up Prometheus using Docker. This containerized deployment allows for easy distribution and management of your monitoring infrastructure.</p>
 
 
 
