@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aws-cognito-web-identity-federation" class="md-skip">
+        <a href="#advanced-demo-web-identity-federation" class="md-skip">
           Skip to content
         </a>
       
@@ -996,9 +996,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#coming-soon" class="md-nav__link">
+  <a href="#instructions" class="md-nav__link">
     <span class="md-ellipsis">
-      Coming Soon !
+      Instructions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-click-installs" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Click Installs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Guides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Diagrams
     </span>
   </a>
   
@@ -1286,9 +1313,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#coming-soon" class="md-nav__link">
+  <a href="#instructions" class="md-nav__link">
     <span class="md-ellipsis">
-      Coming Soon !
+      Instructions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-click-installs" class="md-nav__link">
+    <span class="md-ellipsis">
+      1-Click Installs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#video-guides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video Guides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      Architecture Diagrams
     </span>
   </a>
   
@@ -1309,8 +1363,62 @@
                   
 
 
-<h1 id="aws-cognito-web-identity-federation">AWS Cognito Web Identity Federation</h1>
-<h3 id="coming-soon">Coming Soon !</h3>
+<h1 id="advanced-demo-web-identity-federation">Advanced Demo - Web Identity Federation</h1>
+<p>In this advanced demo series you will be implementing a simple serverless application which uses Web Identity Federation.<br />
+The application runs using the following technologies</p>
+<ul>
+<li>S3 for front-end application hosting</li>
+<li>Google API Project as an ID Provider</li>
+<li>Cognito and IAM Roles to swap Google Token for AWS credentials</li>
+</ul>
+<p>The application runs from a browser, gets the user to login using a Google ID and then loads all images from a private S3 bucket into a browser using presignedURLs.</p>
+<p>This advanced demo consists of 6 stages :-</p>
+<ul>
+<li>STAGE 1 : Provision the environment and review tasks </li>
+<li>STAGE 2 : Create Google API Project &amp; Client ID</li>
+<li>STAGE 3 : Create Cognito Identity Pool</li>
+<li>STAGE 4 : Update App Bucket &amp; Test Application</li>
+<li>STAGE 5 : Cleanup the account</li>
+</ul>
+<p><img alt="Architecture" src="https://github.com/cloudspaceacademy/cloudspace-workshop/tree/main/docs/assets/aws-cognito-web-identity-federation/ArchitectureEvolution.png" /></p>
+<h2 id="instructions">Instructions</h2>
+<ul>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE1%20-%20Provision%20and%20Discuss%20Architecture.md">Stage1</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE2%20-%20Create%20Google%20APIProject%20and%20Client%20ID.md">Stage2</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE3%20-%20Create%20Cognito%20Identity%20Pool.md">Stage3</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE4%20-%20Update%20App%20Bucket%20and%20Test%20Application.md">Stage4</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/STAGE5%20-%20Cleanup.md">Stage5</a></li>
+</ul>
+<h2 id="1-click-installs">1-Click Installs</h2>
+<p>Make sure you are logged into AWS and in <code>us-east-1</code>  </p>
+<ul>
+<li><a href="https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/quickcreate?templateURL=https://learn-cantrill-labs.s3.amazonaws.com/aws-cognito-web-identity-federation/WEBIDF.yaml&amp;stackName=WEBIDF">WEBIDF</a></li>
+</ul>
+<h2 id="video-guides">Video Guides</h2>
+<ul>
+<li><a href="https://youtu.be/DyiJZz07g_E">STAGE1</a> - SETUP</li>
+<li><a href="https://youtu.be/wWQ8lgqa4fo">STAGE2</a> - Google API project</li>
+<li><a href="https://youtu.be/MXkqOgXkwRQ">STAGE3</a> - Cognito Identity Pool</li>
+<li><a href="https://youtu.be/YkDImYUcY3U">STAGE4</a> - Configure and Test Application</li>
+<li><a href="https://youtu.be/aJALTW-F24g">STAGE5</a> - Cleanup</li>
+</ul>
+<h2 id="architecture-diagrams">Architecture Diagrams</h2>
+<ul>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-ENDSTATE.png">Overall - PNG</a></li>
+<li>
+<p><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-ENDSTATE.pdf">Overall - PDF</a></p>
+</li>
+<li>
+<p><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-STAGE1.png">Stage1 - PNG</a></p>
+</li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-STAGE1.pdf">Stage1 - PDF</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-STAGE2.png">Stage2 - PNG</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-STAGE2.pdf">Stage2 - PDF</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-STAGE3.png">Stage3 - PNG</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-STAGE3.pdf">Stage3 - PDF</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-STAGE4.png">Stage4 - PNG</a></li>
+<li><a href="https://github.com/acantril/learn-cantrill-io-labs/blob/master/aws-cognito-web-identity-federation/02_LABINSTRUCTIONS/ARCHITECTURE-STAGE4.pdf">Stage4 - PDF</a></li>
+</ul>
 
 
 
