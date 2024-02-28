@@ -1,0 +1,1737 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../containerization-deployment/">
+      
+      
+        <link rel="next" href="../ansible-deployment/">
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+    
+    
+      
+        <title>Serverless on AWS - CloudSpace DevOps Accelerator Program (DAP)</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lambda-and-s3events-demo" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="CloudSpace DevOps Accelerator Program (DAP)" class="md-header__button md-logo" aria-label="CloudSpace DevOps Accelerator Program (DAP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            CloudSpace DevOps Accelerator Program (DAP)
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Serverless on AWS
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="CloudSpace DevOps Accelerator Program (DAP)" class="md-nav__button md-logo" aria-label="CloudSpace DevOps Accelerator Program (DAP)" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54Z"/></svg>
+
+    </a>
+    CloudSpace DevOps Accelerator Program (DAP)
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DevOps Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-static-web-hosting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Static Web Hosting
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../containerization-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Containerization Fun
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Serverless on AWS
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ansible-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../terraform-on-aws/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terraform on AWS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bash-scripting/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Bash Scripting Party
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../netflix-ish-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Netflix-ish Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-continuous-delivery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Continuous Delivery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../microservices-bookStore/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Microservices BookStore
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../java-web-app-deployment/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Java Webapp Deployment
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    More Fun Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            More Fun Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DevOps
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_1" id="__nav_4_1_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DevOps Beginner
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_1">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps Beginner
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dockerbeginning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker Beginner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dockercomposebeginning/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker Compose Beginner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes-Minikube%20Cluster%20Beginner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes-Minikube Cluster Beginner
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CI-CD-Beginner/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    CI/CD Pipeline
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Monitoring-with-Prometheus/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Monitoring with Prometheus
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Terraform-Starter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Terraform Starter
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Ansible-Playbook-Library/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Ansible Playbook Library
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Logging-with-ELK-Stack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Logging with ELK Stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Scan-Docker-Container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Scan Docker container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-lambda-s3-events/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Lambda S3 Events
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-lambda-xray/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Lambda Xray
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-pet-rekognition-ecr/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Pet Rekognition Ecr
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-lex-lambda-rds/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Lex Lambda Rds
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-dynamodb-lambda-trigger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Dynamodb Lambda Trigger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2" id="__nav_4_1_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DevOps Expert
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_1_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps Expert
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_1_2_1" id="__nav_4_1_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DevOps Large Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_1_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_1_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            DevOps Large Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AWS%20Photo%20Gallery%20Application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS DevOps Expert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Open%20Source%20Photo%20Gallery%20Application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Open Source DevOps Expert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Banking%20Web%20Application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Load Balancing Expert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AWS%20E-Commerce%20Application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Full Stack DevOps Expert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Real-Time%20Chat%20Application/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Real-Time Application DevOps Expert
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Solution Architect
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Solution Architect
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_2_1" id="__nav_4_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Solution Architect Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Solution Architect Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-api-gateway/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Api Gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cloudtrail-log-file-integrity/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Cloudtrail Log File Integrity
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-control-tower/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Control Tower
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-cognito-web-identity-federation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Cognito Web Identity Federation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-dms-database-migration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Dms Database Migration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-patch-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Patch Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-efs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Efs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-elastic-disaster-recovery/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Elastic Disaster Recovery
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-global-accelerator/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Global Accelerator
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-iam-scp-permissions-boundary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Iam Scp Permissions Boundary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-macie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Macie
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-systems-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Systems Manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-video-on-demand/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Video On Demand
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-vpc-flow-logs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Vpc Flow Logs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../aws-waf/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    AWS Waf
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+<h1 id="lambda-and-s3events-demo">Lambda and S3Events DEMO</h1>
+<p><img alt="DEMOARCHITECTURE" src="https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/02_LABINSTRUCTIONS/Architecture.png" /></p>
+<h1 id="video-guides-for-this-mini-project">Video Guides for this Mini Project</h1>
+<ul>
+<li><a href="https://youtu.be/_7AKW8cSGU0">PART1</a></li>
+<li><a href="https://youtu.be/KQOS0ggsrfE">PART2</a></li>
+<li><a href="https://youtube.com/playlist?list=PLTk5ZYSbd9MjgSy227IkAB0GS4WAU5qcU">PLAYLIST</a></li>
+</ul>
+<p><strong>This content is free, but I have a full range of training courses <a href="https://learn.cantrill.io">HERE</a></strong></p>
+<p>In this demo lesson you're going to create a simple event-driven image processing pipeline. The pipeline uses two S3 buckets, a source bucket and a processed bucket. When images are added to the source bucket a lambda function is triggered based on the PUT.  When invoked the lambda function receives the <code>event</code> and extracts the bucket and object information. Once those details are known, the lambda function, using the <code>PIL</code> module pixelates the image with <code>5</code> different variations (8x8, 16x16, 32x32, 48x48 and 64x64) and uploads them to the processed bucket.</p>
+<h1 id="stage-1-create-the-s3-buckets">Stage 1 - Create the S3 Buckets</h1>
+<p>Move to the S3 Console https://s3.console.aws.amazon.com/s3/home?region=us-east-1#<br />
+We will be creating <code>2</code> buckets, both with the same name, but each suffixed with a functional title (see below) , all settings apart from region and bucket name can be left as default.<br />
+Click <code>Create Bucket</code> and create a bucket in the format of unique-name-<code>source</code> in the <code>us-east-1</code> region<br />
+Click <code>Create Bucket</code> and create a another bucket in the format of unique-name-<code>processed</code> also in the <code>us-east-1</code> region<br />
+These names will need to be unique, but as an example  </p>
+<p>Bucket 1 : <code>dontusethisname-source</code><br />
+Bucket 2 : <code>dontusethisname-processed</code>  </p>
+<h1 id="stage-2-create-the-lambda-role">Stage 2 - Create the Lambda Role</h1>
+<p>Move to the IAM Console https://console.aws.amazon.com/iamv2/home?#/home<br />
+Click Roles, then Create Role<br />
+For <code>Trusted entity type</code>, pick <code>AWS service</code><br />
+For the service to trust pick <code>Lambda</code>  then click <code>Next</code> , <code>Next</code> again<br />
+For <code>Role name</code> put <code>PixelatorRole</code>  then Create the role  </p>
+<p>Click <code>PixelatorRole</code><br />
+Under <code>Permissions Policy</code> we need to add permissions and it will be an <code>inline policy</code><br />
+Click <code>JSON</code>  and delete the contents of the code box entirely.<br />
+Load this link in a new tab (https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/policy/s3pixelator.json)<br />
+Copy the entire contents into your clipboard and paste into the previous permissions policy code editor box<br />
+Locate the words <code>REPLACEME</code> there should be <code>4</code> occurrences, 2 each for the source and processed buckets .. and for each of those one for the bucket and another for the objects in that bucket.<br />
+Replace the term <code>REPLACEME</code> with the name you picked for your buckets above, in my example it is <code>dontusethisname</code><br />
+You should end with 4 lines looking like this, only with <code>YOUR</code> bucket names  </p>
+<pre><code>&quot;Resource&quot;:[
+    &quot;arn:aws:s3:::dontusethisname-processed&quot;,
+    &quot;arn:aws:s3:::dontusethisname-processed/*&quot;,
+    &quot;arn:aws:s3:::dontusethisname-source/*&quot;,
+    &quot;arn:aws:s3:::dontusethisname-source&quot;
+]
+</code></pre>
+<p>Locate the two occurrences of <code>YOURACCOUNTID</code>, you need to replace both of these words with your AWS account ID<br />
+To get that, click the account dropdown at the top right <br />
+click the small icon to copy down the <code>Account ID</code> and replace the <code>YOURACCOUNTID</code> in the policy code editor. <em>important</em> if you use the 'icon' to copy this number, it will remove the <code>-</code> in the account number for you :) you need to paste <code>123456789000</code> rather than <code>1234-5678-9000</code>  </p>
+<p>You should have something which looks like this, only with your account ID:  </p>
+<pre><code>{
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: &quot;logs:CreateLogGroup&quot;,
+      &quot;Resource&quot;: &quot;arn:aws:logs:us-east-1:123456789000:*&quot;
+  },
+  {
+      &quot;Effect&quot;: &quot;Allow&quot;,
+      &quot;Action&quot;: [
+          &quot;logs:CreateLogStream&quot;,
+          &quot;logs:PutLogEvents&quot;
+      ],
+      &quot;Resource&quot;: [
+          &quot;arn:aws:logs:us-east-1:123456789000:log-group:/aws/lambda/pixelator:*&quot;
+      ]
+  }
+</code></pre>
+<p>Click <code>Review Policy</code><br />
+For name put <code>pixelator_access_inline</code>  and create the policy.  </p>
+<h1 id="stage-3-pre-only-do-this-part-if-you-want-to-get-experience-of-creating-a-lambda-zip">Stage 3 (pre) - ONLY DO THIS PART IF YOU WANT TO GET EXPERIENCE OF CREATING A LAMBDA ZIP</h1>
+<h2 id="this-guide-is-only-tested-on-macos-it-should-work-on-linux-windows-may-require-different-tools">this guide is only tested on macOS, it should work on linux, windows may require different tools.</h2>
+<h2 id="if-in-doubt-skip-to-step-3-below">if in doubt, skip to step 3 below</h2>
+<p>From the CLI/Terminal
+Create a folder my_lambda_deployment<br />
+Move into that folder
+create a folder called lambda<br />
+Move into that folder
+Create a file called <code>lambda_function.py</code> and paste in the code for the lambda <code>pixelator</code> function (https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/lambda/lambda_function.py) then save<br />
+Download this file (https://files.pythonhosted.org/packages/f3/3b/d7bb231b3bc1414252e77463dc63554c1aeccffe0798524467aca7bad089/Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl) into that folder
+run <code>unzip Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl</code> and then <code>rm Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl</code><br />
+These are the Pillow module files ... required for image manipulation in Python 3.9 (which is what the lambda function will be using)<br />
+From the same folder, run <code>zip -r ../my-deployment-package.zip .</code> which will create a lambda function zip, containing all these files in the parent directory.  </p>
+<p>This zip will be the same zip which i link below, so if you do have any issues with the lambda function, you can use the one i've pre-created.</p>
+<h1 id="stage-3-create-the-lambda-function">Stage 3 - Create the Lambda Function</h1>
+<p>Move to the lambda console (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)<br />
+Click <code>Create Function</code><br />
+We're going to be <code>Authoring from Scratch</code><br />
+For <code>Function name</code> enter <code>pixelator</code><br />
+for <code>Runtime</code> select <code>Python 3.9</code><br />
+For <code>Architecture</code> select <code>x86_64</code><br />
+For <code>Permissions</code> expand <code>Change default execution role</code> pick <code>Use an existing role</code> and in the <code>Existing role</code> dropdown, pick <code>PixelatorRole</code><br />
+Then <code>Create Function</code><br />
+Close down any <code>notifcation</code> dialogues/popups<br />
+Click <code>Upload from</code> and select <code>.zip file</code>
+Either 1, download this zip to your local machine (https://github.com/acantril/learn-cantrill-io-labs/blob/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/my-deployment-package.zip, click Download)<br />
+or 2, locate the .zip you created yourself in the <code>Stage 3(pre)</code> above - they will be identical<br />
+On the lambda screen, click <code>Upload</code> locate and select that .zip, and then click the <code>Save</code> button<br />
+This upload will take a few minutes, but once complete you might see something saying <code>The deployment package of your Lambda function "pixelator" is too large to enable inline code editing. However, you can still invoke your function.</code> which is OK :)  </p>
+<h1 id="stage-4-configure-the-lambda-function-trigger">Stage 4 - Configure the Lambda Function &amp; Trigger</h1>
+<p>Click <code>Configuration</code> tab and then <code>Environment variables</code><br />
+We need to add an environment variable telling the pixelator function which processed bucket to use, it will know the source bucket because it's told about that in the event data.<br />
+Click <code>Edit</code> then <code>Add environment variable</code>, under Key put <code>processed_bucket</code> and for <code>Value</code> put the bucket name of <em>your</em> processed bucket. 
+As an example <code>dontusethisname-processed</code>  (but use <em>your</em> bucket name)<br />
+Be <code>really really really</code> sure you put your <code>processed</code> bucket here and <em>NOT</em> your source bucket.<br />
+<em>if you use the source bucket here, the output images will be stored in the source bucket, this will cause the lambda function to run over and over again ... bad</em>
+<em>be super-sure to put your processed bucket</em>
+Click <code>Save</code>  </p>
+<p>Click <code>General configuration</code> then click <code>Edit</code> and change the timeout to <code>1</code> minutes and <code>0</code> seconds, then click <code>Save</code>  </p>
+<p>Click <code>Add trigger</code><br />
+In the dropdown pick <code>S3</code><br />
+Under <code>Bucket</code> pick your <em>source</em> bucket ... <em>AGAIN</em> be really really sure this is your source bucket and <em>NOT</em> your destination bucket and <em>NOT</em> any other bucket. Only pick your <em>SOURCE</em> bucket here.<br />
+You will need to check the <code>Recursive invocation</code> acknowledgment box, this is because this lambda function is invoked every time anything is added to the <em>source</em> bucket, if you configure this wrongly, or configure the environment variable above wrongly ... it will run the lambda function over and over again <em>for ever</em>. 
+Once checked, click <code>Add</code>  </p>
+<h1 id="stage-5-test-and-monitor">Stage 5 - Test and Monitor</h1>
+<p>open a tab to the <code>cloudwatch logs</code> console (https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups)<br />
+make sure you have two tabs open to the <code>s3 console</code> (https://s3.console.aws.amazon.com/s3/home?region=us-east-1) 
+In one tab open your <code>-source</code> bucket &amp; in the other open the `-processed' bucket  </p>
+<p>In the <code>-source</code> bucket tab, make sure to select the <code>Objects</code> tab and click <code>Upload</code><br />
+Add some files and click <code>Upload</code>  (use your own, or these https://github.com/acantril/learn-cantrill-io-labs/tree/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/media)<br />
+Once finished, click <code>Close</code><br />
+Move to the <code>CloudWatch Logs</code> tab<br />
+Click the <code>Refresh</code> icon, locate and click <code>/aws/lambda/pixelator</code><br />
+If there is a log stream in there, click the most recent one, if not, keep clicking the <code>Refresh</code> icon and then click the most recent log stream<br />
+Expand the line which begins with <code>{'Records': [{'eventVersion':</code> and you can see all of the event information about the lambda invocation, you should see the object name listed in <code>'object': {'key'</code> ...
+Go to the S3 Console tab for the <code>-processed</code> bucket<br />
+Click the <code>Refresh</code> icon<br />
+Select each of the pixelated versions of the image ... you should have 5 (<code>8x8</code>, <code>16x16</code>, <code>32x32</code>, <code>48x48</code> and <code>64x64</code>)<br />
+Click <code>Open</code><br />
+You browser will either open or save all of the images<br />
+Open them one by one, starting with <code>8x8</code> and finally <code>64x64</code> in order ... notice how they are the same image, but less and less pixelated :)  </p>
+<h1 id="stage-6-cleanup">Stage 6 - Cleanup</h1>
+<p>Open the <code>pixelator</code> lambda function (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/pixelator?tab=code)<br />
+Delete the function<br />
+Move to the IAM Roles console (https://console.aws.amazon.com/iamv2/home#/roles) 
+Click <code>PixelatorRole</code>, then <code>Delete</code> the role, then confirm the deletion.<br />
+Go to the <code>S3 Console</code> (https://s3.console.aws.amazon.com/s3/home?region=us-east-1&amp;region=us-east-1)<br />
+For each of the <code>source</code> and <code>processed</code> buckets do:</p>
+<ul>
+<li>Select the bucket.  </li>
+<li>Click <code>Empty</code>.  </li>
+<li>Type <code>permanently delete</code>, and <code>Empty</code>.  </li>
+<li>Close the dialogue and move back to the main S3 Console.  </li>
+<li>Make sure the bucket is still selected, click <code>Delete</code>.   </li>
+<li>Type the name of the bucket then delete the bucket.  </li>
+</ul>
+<p>That's all folks! :)  </p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      
+    
+  </body>
+</html>
