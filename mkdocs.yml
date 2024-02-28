@@ -1,49 +1,59 @@
-site_name: CloudSpace workshop
+site_name: CloudSpace DevOps Accelerator Program (DAP)
 theme:
   name: material
 nav:
-  - Home: 'index.md'
-  - About: 'about.md'
-  - 'DevOps':
-    - 'DevOps Beginner':
-      - 'Docker Beginner': 'dockerbeginning.md'
-      - 'Docker Compose Beginner': 'dockercomposebeginning.md'
-      - 'Kubernetes-Minikube Cluster Beginner': 'Kubernetes-Minikube Cluster Beginner.md'
-      - 'CI/CD Pipeline': 'CI-CD-Beginner.md'
-      - 'Monitoring with Prometheus': 'Monitoring-with-Prometheus.md'
-      - 'Terraform Starter': 'Terraform-Starter.md'
-      - 'Ansible Playbook Library': 'Ansible-Playbook-Library.md'
-      - 'Logging with ELK Stack': 'Logging-with-ELK-Stack.md'
-      - 'Scan Docker container': 'Scan-Docker-Container.md'
-          # - 'Additonal DevOps':
-      - 'AWS Lambda S3 Events': 'aws-lambda-s3-events.md'
-      - 'AWS Lambda Xray': 'aws-lambda-xray.md'
-      - 'AWS Pet Rekognition Ecr': 'aws-pet-rekognition-ecr.md'
-      - 'AWS Lex Lambda Rds': 'aws-lex-lambda-rds.md'
-      - 'AWS Dynamodb Lambda Trigger': 'aws-dynamodb-lambda-trigger.md'
-    - 'DevOps Expert':
-      - 'DevOps Large Projects': 
-        - 'AWS DevOps Expert': 'AWS Photo Gallery Application.md'
-        - 'Open Source DevOps Expert': 'Open Source Photo Gallery Application.md'
-        - 'Load Balancing Expert': 'Banking Web Application.md'
-        - 'Full Stack DevOps Expert': 'AWS E-Commerce Application.md'
-        - 'Real-Time Application DevOps Expert': 'Real-Time Chat Application.md'
-
-  - 'Solution Architect':
-    - 'Solution Architect Projects': 
-        - 'AWS Api Gateway': 'aws-api-gateway.md'
-        - 'AWS Cloudtrail Log File Integrity': 'aws-cloudtrail-log-file-integrity.md'
-        - 'AWS Control Tower': 'aws-control-tower.md'  
-        - 'AWS Cognito Web Identity Federation': 'aws-cognito-web-identity-federation.md'
-        - 'AWS Dms Database Migration': 'aws-dms-database-migration.md'
-        - 'AWS Patch Manager': 'aws-patch-manager.md'
-        - 'AWS Efs': 'aws-efs.md'
-        - 'AWS Elastic Disaster Recovery': 'aws-elastic-disaster-recovery.md'
-        - 'AWS Global Accelerator': 'aws-global-accelerator.md'
-        - 'AWS Iam Scp Permissions Boundary': 'aws-iam-scp-permissions-boundary.md'
-        - 'AWS Macie': 'aws-macie.md'
-        - 'AWS Systems Manager': 'aws-systems-manager.md'
-        - 'AWS Video On Demand': 'aws-video-on-demand.md'
-        - 'AWS Vpc Flow Logs': 'aws-vpc-flow-logs.md'
-        - 'AWS Waf': 'aws-waf.md'  
-
+  - Home: index.md
+  - About: about.md
+  - DevOps Projects:
+    - AWS Static Web Hosting: aws-static-web-hosting.md
+    - Containerization Fun: containerization-deployment.md
+    - Serverless on AWS: serverless-on-aws.md
+    - Ansible Deployment: ansible-deployment.md
+    - Terraform on AWS: terraform-on-aws.md
+    - Bash Scripting Party: bash-scripting.md
+    - Netflix-ish Deployment: netflix-ish-deployment.md
+    - AWS Continuous Delivery: aws-continuous-delivery.md
+    - Microservices BookStore: microservices-bookStore.md
+    - Java Webapp Deployment: java-web-app-deployment.md
+  - More Fun Projects:
+    - 'DevOps':
+      - 'DevOps Beginner':
+        - 'Docker Beginner': 'dockerbeginning.md'
+        - 'Docker Compose Beginner': 'dockercomposebeginning.md'
+        - 'Kubernetes-Minikube Cluster Beginner': 'Kubernetes-Minikube Cluster Beginner.md'
+        - 'CI/CD Pipeline': 'CI-CD-Beginner.md'
+        - 'Monitoring with Prometheus': 'Monitoring-with-Prometheus.md'
+        - 'Terraform Starter': 'Terraform-Starter.md'
+        - 'Ansible Playbook Library': 'Ansible-Playbook-Library.md'
+        - 'Logging with ELK Stack': 'Logging-with-ELK-Stack.md'
+        - 'Scan Docker container': 'Scan-Docker-Container.md'
+            # - 'Additonal DevOps':
+        - 'AWS Lambda S3 Events': 'aws-lambda-s3-events.md'
+        - 'AWS Lambda Xray': 'aws-lambda-xray.md'
+        - 'AWS Pet Rekognition Ecr': 'aws-pet-rekognition-ecr.md'
+        - 'AWS Lex Lambda Rds': 'aws-lex-lambda-rds.md'
+        - 'AWS Dynamodb Lambda Trigger': 'aws-dynamodb-lambda-trigger.md'
+      - 'DevOps Expert':
+        - 'DevOps Large Projects': 
+          - 'AWS DevOps Expert': 'AWS Photo Gallery Application.md'
+          - 'Open Source DevOps Expert': 'Open Source Photo Gallery Application.md'
+          - 'Load Balancing Expert': 'Banking Web Application.md'
+          - 'Full Stack DevOps Expert': 'AWS E-Commerce Application.md'
+          - 'Real-Time Application DevOps Expert': 'Real-Time Chat Application.md'
+    - 'Solution Architect':
+      - 'Solution Architect Projects': 
+          - 'AWS Api Gateway': 'aws-api-gateway.md'
+          - 'AWS Cloudtrail Log File Integrity': 'aws-cloudtrail-log-file-integrity.md'
+          - 'AWS Control Tower': 'aws-control-tower.md'  
+          - 'AWS Cognito Web Identity Federation': 'aws-cognito-web-identity-federation.md'
+          - 'AWS Dms Database Migration': 'aws-dms-database-migration.md'
+          - 'AWS Patch Manager': 'aws-patch-manager.md'
+          - 'AWS Efs': 'aws-efs.md'
+          - 'AWS Elastic Disaster Recovery': 'aws-elastic-disaster-recovery.md'
+          - 'AWS Global Accelerator': 'aws-global-accelerator.md'
+          - 'AWS Iam Scp Permissions Boundary': 'aws-iam-scp-permissions-boundary.md'
+          - 'AWS Macie': 'aws-macie.md'
+          - 'AWS Systems Manager': 'aws-systems-manager.md'
+          - 'AWS Video On Demand': 'aws-video-on-demand.md'
+          - 'AWS Vpc Flow Logs': 'aws-vpc-flow-logs.md'
+          - 'AWS Waf': 'aws-waf.md'  
