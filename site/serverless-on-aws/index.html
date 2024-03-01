@@ -1559,7 +1559,6 @@
 <li><a href="https://youtu.be/KQOS0ggsrfE">PART2</a></li>
 <li><a href="https://youtube.com/playlist?list=PLTk5ZYSbd9MjgSy227IkAB0GS4WAU5qcU">PLAYLIST</a></li>
 </ul>
-<p><strong>This content is free, but I have a full range of training courses <a href="https://learn.cantrill.io">HERE</a></strong></p>
 <p>In this demo lesson you're going to create a simple event-driven image processing pipeline. The pipeline uses two S3 buckets, a source bucket and a processed bucket. When images are added to the source bucket a lambda function is triggered based on the PUT.  When invoked the lambda function receives the <code>event</code> and extracts the bucket and object information. Once those details are known, the lambda function, using the <code>PIL</code> module pixelates the image with <code>5</code> different variations (8x8, 16x16, 32x32, 48x48 and 64x64) and uploads them to the processed bucket.</p>
 <h1 id="stage-1-create-the-s3-buckets">Stage 1 - Create the S3 Buckets</h1>
 <p>Move to the S3 Console https://s3.console.aws.amazon.com/s3/home?region=us-east-1#<br />

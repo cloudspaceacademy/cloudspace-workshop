@@ -1,22 +1,28 @@
-### Uh oh :(
+# Hosting a Static Website Using Amazon S3
+Automate the Process of Hosting a Static Website Using Amazon S3 and AWS Developer Tools.
 
-# https://github.com/cloudspaceacademy/aws-static-web-hosting.git
-
-# Overview:
+## 🚀 Project Overview
 For this project we will have a static website hosted on S3 and will be utilizing CodePipeline to monitor and automatically deploy changes made from our CodeCommit repository where our index.html is hosted. Then we’ll setup CloudFront as a CDN that will redirect HTTP requests to HTTPS.
 
-# Problem Statement
+## 🔧 Problem Statement
+Inefficient manual deployment processes and lack of content delivery network (CDN) optimization hinder the seamless deployment and accessibility of a static website hosted on Amazon S3. Additionally, the absence of automated monitoring and deployment mechanisms further complicates the update process, leading to delays and potential inconsistencies in website content. To address these challenges, our project aims to automate the deployment process using AWS services such as CodePipeline and CodeCommit, while also enhancing website performance and security by implementing CloudFront as a CDN to redirect HTTP requests to HTTPS.
 
+## 💽 Techonology Stack
+● **CDN:** AWS Cloudfront
 
-# Techonology Stack
+● **Storage:** AWS S3 for file storage.
 
+● **CI/CD:** Automate deployment using AWS Code Pipeline, AWS CodeBuild
 
-# Architecture Diagram
+## 📌 Architecture Diagram
 
+![alt diagram](assets/images/aws-static-web-hosting/architecture-diagram.png)
 
-# Project Requirements:
+## 🌟 Project Requirements
 
 Your team has asked you to create a way to automate the deployment of a website. Currently your developers have to go through the process manually to test each new update to their code. You’ll need to provide the static site URL to the developers and also make a modification to the code in the GitHub repo to verify the pipeline is working.
+
+https://github.com/cloudspaceacademy/aws-static-web-hosting.git
 
 1. Create a new repository in GitHub or CodeCommit and load the attached HTML.
 2. Create and configure a S3 bucket to host your static website.
@@ -30,7 +36,7 @@ Note: you can skip the Build stage for this project.
 
 Your app is very popular all around the world but some users are complaining about slow load times in some Regions. You have been asked to add CloudFront as a CDN for your static website. CloudFront should allow caching of your static webpage and only allow HTTPS traffic to your site.
 
-# Instructions
+## 🚀 Instructions
 
 Create New Repository and Clone it.
 
