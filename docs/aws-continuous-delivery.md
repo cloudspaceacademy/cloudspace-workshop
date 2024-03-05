@@ -68,7 +68,7 @@ Before you get started, make sure you have the following prerequisites in place:
 
 - **High Availability**: The architecture is designed for fault tolerance and redundancy.
 - **Scalability**: Easily scale the web and application tiers to handle varying workloads.
-- **Security**: Security groups and network ACLs are configured to ensure a secure environment.
+- **Security**: Security groups and network ACLs are configured to ensure a secure environment
 
 ## 🌟 Web Tier
 
