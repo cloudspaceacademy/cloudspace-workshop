@@ -144,6 +144,25 @@ Before you get started, make sure you have the following prerequisites in place:
 
 ![alt diagram](assets/images/aws-continuous-delivery/maven-artifact.webp)
 
+- Create an IAM user for CodeArtifact and configure aws CLI with its credentials. We will give Programmatic access to this user to enable use of aws cli and download credentials file.
+
+   ```bash
+    aws configure # provide iam user credentials
+   ```  
+![alt diagram](assets/images/aws-continuous-delivery/iamarti.webp)
+
+- Run command get token as in the instructions.
+
+   ```bash
+    export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain visualpath --domain-owner 392530415763 --region us-east-1 --query authorizationToken --output text`
+   ```  
+- Update pom.xml and setting.xml file with correct urls as suggested in instruction then push files to codeCommit.
+
+   ```bash
+    git add .
+    git commit -m "message"
+    git push origin ci-aws
+   ```  
 
 ### Web Tier Configuration
 
