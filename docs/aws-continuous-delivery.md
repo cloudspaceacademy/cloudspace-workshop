@@ -1,6 +1,6 @@
 # Continuous Delivery on AWS
 
-Deploy a scalable and resilient multi-tier architecture on AWS using Terraform.
+Continous Delivery on AWS.
 
 ## 🚀 Project Overview
 
@@ -10,7 +10,7 @@ The project involves a continuous integration and deployment (CI/CD) pipeline fo
 
 - **CodeBuild Trigger**: Commits trigger AWS CodeBuild, which initiates the build process.
 
-- **Code Analysis**: CodeBuild performs code analysis using SonarScanner to ensure code quality.
+- **Code Analysis**: CodeBuild performs code analysis using Sonarcloud. SonarCloud (same as SonarQube) is a cloud-based code quality and security service provided by SonarSource. It integrates with Git repositories to analyze code for bugs, vulnerabilities, code smells, and other issues.
 
 - **Dependency Management**: Dependencies required for the project are downloaded from AWS CodeArtifact, ensuring consistency and reliability.
 
@@ -34,7 +34,7 @@ In the context of software development on AWS, there exists a need to establish 
 
 ● **Management & Governance:** CloudWatch.
 
-● **Security, Identity & Compliance:** Secret Manager.
+● **Security, Identity & Compliance:** Secret Manager, SonarCloud(SonarQube)
 
 ● **CI/CD:** Automate deployment using AWS Code Pipeline, AWS CodeBuild, AWS CodeCommit, AWS CodeArtifact
 
@@ -48,13 +48,14 @@ In the context of software development on AWS, there exists a need to establish 
 
 Before you get started, make sure you have the following prerequisites in place:
 
-- [Terraform](https://www.terraform.io/) installed.
-- AWS IAM credentials configured.
+- AWS account.
+- AWS CLI.
+- SonarCloud account.
 - Git for cloning the repository.
 
 ## 📋 Table of Contents
 
-- [Features](#-features)
+- [Step-1: Setup AWS CodeCommit](#-Setup-AWS-CodeCommit)
 - [Web Tier](#-web-tier)
 - [Application Tier](#-application-tier)
 - [Database Tier](#-database-tier)
@@ -64,11 +65,10 @@ Before you get started, make sure you have the following prerequisites in place:
 - [Contributing](#-contributing)
 - [License](#-license)
 
-## ✨ Features
+## ✨ Setup-AWS-CodeCommit
 
-- **High Availability**: The architecture is designed for fault tolerance and redundancy.
-- **Scalability**: Easily scale the web and application tiers to handle varying workloads
-- **Security**: Security groups and network ACLs are configured to ensure a secure environment
+- Go to AWS Console, and pick us-east-1 region then go to CodeCommit service. Create repository.
+
 
 ## 🌟 Web Tier
 
