@@ -309,18 +309,5 @@ Before you get started, make sure you have the following prerequisites in place:
 ## 🧪 Step-17-Validate&Test
 
 
-
-
-
-
-- Access the Amazon RDS instance in the Database Tier to manage your data.
-### Load Balancing
-- Configure the load balancer in the Web and Application Tiers to distribute traffic evenly.
-### Security Considerations
-- Review and customize the security groups and network ACLs to meet your specific security requirements.
-
-## 🤝 Contributing
-Contributions are Welcome! Please read my Contributing Guidelines to get started with contributing to this project.
-
 ## 📄 License
 This project is licensed under the MIT License.
