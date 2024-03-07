@@ -73,9 +73,27 @@ Before you get started, make sure you have the following prerequisites in place:
    ```
 - Next, create an IAM user with CodeCommit access from IAM console. We will create a policy for CodeCommit and allow full access only for vprofile-code-repo.
 
- ```bash
+   ```bash
    Name: vprofile-code-admin-repo-fullaccess
    ```
+![alt diagram](assets/images/aws-continuous-delivery/iam.webp)
+
+- To be able connect our repo, follow steps given in CodeCommit.
+
+![alt diagram](assets/images/aws-continuous-delivery/CodeCommit.webp)
+
+- Create SSH key in local server and add public key to IAM role Security credentials.
+
+![alt diagram](assets/images/aws-continuous-delivery/ssh.webp)
+
+- Update configuration under .ssh/config and add our Host information. And change permissions with chmod 600 config
+
+   ```bash
+   Host git-codecommit.us-east-1.amazonaws.com
+       User <SSH_Key_ID_from IAM_user>
+       IdentityFile ~/.ssh/vpro-codecommit_rsa
+   ```
+
 ## 🌟 Web Tier
 
 The Web Tier is the entry point for incoming user requests. It typically includes:
