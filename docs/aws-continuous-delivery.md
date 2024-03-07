@@ -56,7 +56,7 @@ Before you get started, make sure you have the following prerequisites in place:
 ## 📋 Table of Contents
 
 - [Step-1: Setup AWS CodeCommit](#-Setup-AWS-CodeCommit)
-- [Web Tier](#-web-tier)
+- [Step-2: Setup AWS CodeArtifact](#-Setup-AWS-CodeArtifact)
 - [Application Tier](#-application-tier)
 - [Database Tier](#-database-tier)
 - [Terraform Configuration](#-terraform-configuration)
@@ -69,6 +69,7 @@ Before you get started, make sure you have the following prerequisites in place:
 
 
 - Go to AWS Console, and pick us-east-1 region then go to CodeCommit service. Create repository.
+
    ```bash
    Name: vprofile-code-repo
    ```
@@ -100,21 +101,49 @@ Before you get started, make sure you have the following prerequisites in place:
    ```
 
 - We can test our ssh connection to CodeCommit.
+
    ```bash
    ssh git-codecommit.us-east-1.amazonaws.com
    ```
 ![alt diagram](assets/images/aws-continuous-delivery/committest.webp)
-- hhdgd
-- hhhhshs
-- jndbbd
-- hhdhhd
-## 🌟 Web Tier
 
-The Web Tier is the entry point for incoming user requests. It typically includes:
+- Next, clone the repository to a location of your choice in your local server.
 
-- **Load Balancer**: Distributes traffic across multiple web servers.
-- **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
-- **Security Groups**: Controls incoming and outgoing traffic to the web servers.
+- Convert the Github repository for vprofile-project in your local server, to your CodeCommit repository. In Github repo directory.
+
+- Run the command below.
+
+   ```bash
+    git checkout master
+    git branch -a | grep -v HEAD | cur -d'/' -f3 | grep -v master > /tmp/branches
+    for i in `cat  /tmp/branches`; do git checkout $i; done
+    git fetch --tags
+    git remote rm origin
+    git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/vprofile-code-repo
+    cat .git/config
+    git push origin --all
+    git push --tags
+   ```
+
+- Our repo is ready on CodeCommit with all branches.
+
+![alt diagram](assets/images/aws-continuous-delivery/repobranches.webp)
+
+## 🌟 Setup-AWS-CodeArtifact
+
+- Create CodeArtifact repository for Maven:
+
+   ```bash
+    Name: vprofile-maven-repo
+    Public upstraem Repo: maven-central-store
+    This AWS account
+    Domain name: visualpath
+   ```  
+
+- Follow connection instructions given in CodeArtifact for maven-central-repo.
+
+![alt diagram](assets/images/aws-continuous-delivery/maven-artifact.webp)
+
 
 ### Web Tier Configuration
 
