@@ -55,17 +55,17 @@ Before you get started, make sure you have the following prerequisites in place:
 
 ## 📋 Table of Contents
 
-- [Step-1: Setup AWS CodeCommit](#-Setup-AWS-CodeCommit)
-- [Step-2: Setup AWS CodeArtifact](#-Setup-AWS-CodeArtifact)
+- [Step-1: Setup AWS CodeCommit](#-Step-1-Setup-AWS-CodeCommit)
+- [Step-2: Setup AWS CodeArtifact](#-Step-2-Setup-AWS-CodeArtifact)
 - [Step-3: Setup SonarCloud](#-Setup-SonarCloud)
-- [Step-4: Store SonarCloud variables in System Manager Parameter Store](#-Store-Sonar-in-SSM-Parameter-Store)
-- [Step-5: AWS CodeBuild for SonarQube Code Analysis](#-CodeBuild-for-SonarQube)
-- [Step-6: AWS CodeBuild for Build Artifact](#-CodeBuild-for-Build-Artifact)
-- [Step-7: AWS CodePipeline and Notification with SNS](#-CodePipeline-and-Notification-with-SNS)
+- [Step-4: Store SonarCloud variables in System Manager Parameter Store](#-Step-3-Store-Sonar-in-SSM-Parameter-Store)
+- [Step-5: AWS CodeBuild for SonarQube Code Analysis](#-Step-4-CodeBuild-for-SonarQube)
+- [Step-6: AWS CodeBuild for Build Artifact](#-Step-5-CodeBuild-for-Build-Artifact)
+- [Step-7: AWS CodePipeline and Notification with SNS](#-Step-6-CodePipeline-and-Notification-with-SNS)
 - [Contributing](#-contributing)
 - [License](#-license)
 
-## ✨ Setup-AWS-CodeCommit
+## ✨ Step-1-Setup-AWS-CodeCommit
 
 
 - Go to AWS Console, and pick us-east-1 region then go to CodeCommit service. Create repository.
@@ -129,7 +129,7 @@ Before you get started, make sure you have the following prerequisites in place:
 
 ![alt diagram](assets/images/aws-continuous-delivery/repobranches.webp)
 
-## 🌟 Setup-AWS-CodeArtifact
+## 🌟 Step-2-Setup-AWS-CodeArtifact
 
 - Create CodeArtifact repository for Maven:
 
@@ -163,7 +163,7 @@ Before you get started, make sure you have the following prerequisites in place:
     git commit -m "message"
     git push origin ci-aws
    ```  
-## 🚀 Setup-SonarCloud
+## 🚀 Step-3-Setup-SonarCloud
 
 - Create an Account with SonarCloud. https://sonarcloud.io/ 
 
@@ -181,7 +181,7 @@ Before you get started, make sure you have the following prerequisites in place:
 
 ![alt diagram](assets/images/aws-continuous-delivery/sonarcloud2.webp)
 
-## 💽 Store-Sonar-in-SSM-Parameter-Store
+## 💽 Step-4-Store-Sonar-in-SSM-Parameter-Store
 
 - Create parameters with the variables below.
 
@@ -193,7 +193,7 @@ Before you get started, make sure you have the following prerequisites in place:
     SONARTOKEN             SecureString
    ```  
 
-## 🔧 CodeBuild-for-SonarQube
+## 🔧 Step-5-CodeBuild-for-SonarQube
 
 - From AWS Console, go to CodeBuild -> Create Build Project. This step is similar to Jenkins Job.
 
@@ -224,7 +224,7 @@ Before you get started, make sure you have the following prerequisites in place:
 - Check from SonarCloud too.
 
 ![alt diagram](assets/images/aws-continuous-delivery/sonar2.webp)
-## 🚀 CodeBuild-for-Build-Artifact
+## 🚀 Step-6-CodeBuild-for-Build-Artifact
 
 - From AWS Console, go to CodeBuild -> Create Build Project. This step is similar to Jenkins Job.
 
@@ -245,7 +245,7 @@ Before you get started, make sure you have the following prerequisites in place:
 ![alt diagram](assets/images/aws-continuous-delivery/buildproj.webp)
 
 
-## 💼 CodePipeline-and-Notification-with-SNS
+## 💼 Step-7-CodePipeline-and-Notification-with-SNS
 
 - First we will create an SNS topic from SNS service and subscribe to topic with email.
 
