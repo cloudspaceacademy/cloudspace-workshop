@@ -100,34 +100,14 @@ Before you get started, make sure you have the following prerequisites in place:
    ```
 
 - We can test our ssh connection to CodeCommit.
-
    ```bash
 ssh git-codecommit.us-east-1.amazonaws.com
    ```
-![alt diagram](assets/images/aws-continuous-delivery/committest.webp)  
-
-- Next, clone the repository to a location of your choice in your local server.
-
-- Convert the Github repository for vprofile-project in your local server, to your CodeCommit repository. In Github repo directory.
-
-- Run the command below.
-
-   ```bash
-git checkout master
-git branch -a | grep -v HEAD | cur -d'/' -f3 | grep -v master > /tmp/branches
-for i in `cat  /tmp/branches`; do git checkout $i; done
-git fetch --tags
-git remote rm origin
-git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/vprofile-code-repo
-cat .git/config
-git push origin --all
-git push --tags
-   ```
-
-
-
-
-
+![alt diagram](assets/images/aws-continuous-delivery/committest.webp)
+- hhdgd
+- hhhhshs
+- jndbbd
+- hhdhhd
 ## 🌟 Web Tier
 
 The Web Tier is the entry point for incoming user requests. It typically includes:
