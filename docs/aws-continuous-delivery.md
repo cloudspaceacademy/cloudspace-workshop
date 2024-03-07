@@ -57,7 +57,7 @@ Before you get started, make sure you have the following prerequisites in place:
 
 - [Step-1: Setup AWS CodeCommit](#-Setup-AWS-CodeCommit)
 - [Step-2: Setup AWS CodeArtifact](#-Setup-AWS-CodeArtifact)
-- [Application Tier](#-application-tier)
+- [Step-3: Setup SonarCloud](#-Setup-SonarCloud)
 - [Database Tier](#-database-tier)
 - [Terraform Configuration](#-terraform-configuration)
 - [Deployment](#-deployment)
@@ -164,7 +164,7 @@ Before you get started, make sure you have the following prerequisites in place:
     git push origin ci-aws
    ```  
 
-### Web Tier Configuration
+### Setup-SonarCloud
 
 - [Launch Template Configuration](launch-template-web.tf)
 - [Load Balancer Configuration](alb-web.tf)
