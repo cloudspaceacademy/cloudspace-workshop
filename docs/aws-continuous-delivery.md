@@ -68,8 +68,14 @@ Before you get started, make sure you have the following prerequisites in place:
 ## ✨ Setup-AWS-CodeCommit
 
 - Go to AWS Console, and pick us-east-1 region then go to CodeCommit service. Create repository.
+   ```bash
+   Name: vprofile-code-repo
+   ```
+- Next, create an IAM user with CodeCommit access from IAM console. We will create a policy for CodeCommit and allow full access only for vprofile-code-repo.
 
-
+ ```bash
+   Name: vprofile-code-admin-repo-fullaccess
+   ```
 ## 🌟 Web Tier
 
 The Web Tier is the entry point for incoming user requests. It typically includes:
