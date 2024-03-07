@@ -58,8 +58,8 @@ Before you get started, make sure you have the following prerequisites in place:
 - [Step-1: Setup AWS CodeCommit](#-Setup-AWS-CodeCommit)
 - [Step-2: Setup AWS CodeArtifact](#-Setup-AWS-CodeArtifact)
 - [Step-3: Setup SonarCloud](#-Setup-SonarCloud)
-- [Step-4: Store Sonar variables in System Manager Parameter Store](#-Store-Sonar-System-Manager-Parameter-Store)
-- [Terraform Configuration](#-terraform-configuration)
+- [Step-4: Store SonarCloud variables in System Manager Parameter Store](#-Store-Sonar-in-SSM-Parameter-Store)
+- [Step-5: AWS CodeBuild for SonarQube Code Analysis](#-CodeBuild-for-SonarQube)
 - [Deployment](#-deployment)
 - [Usage](#-usage)
 - [Contributing](#-contributing)
@@ -181,30 +181,49 @@ Before you get started, make sure you have the following prerequisites in place:
 
 ![alt diagram](assets/images/aws-continuous-delivery/sonarcloud2.webp)
 
-## 💽 Store-Sonar-System-Manager-Parameter-Store
+## 💽 Store-Sonar-in-SSM-Parameter-Store
 
-The Database Tier stores and manages our application data. We use Amazon RDS for a managed database service. Key components include:
+- Create parameters with the variables below.
 
-- **Amazon RDS**: A managed database service for MySQL/PostgreSQL/SQL Server databases.
-- **Security Groups**: Control incoming and outgoing traffic to the database.
+   ```bash
+    CODEARTIFACT_TOKEN	   SecureString	
+    HOST                   https://sonarcloud.io
+    ORGANIZATION           kubeirving-projects
+    PROJECT                vprofile-repo8
+    SONARTOKEN             SecureString
+   ```  
 
-### Database Tier Configuration
+## 🔧 CodeBuild-for-SonarQube
 
-- [DB Subnet group Configuration](db-subnet-group.tf)
-- [Amazon RDS Configuration](rds.tf)
-- [Security Group Configuration](db-sg.tf)
+- From AWS Console, go to CodeBuild -> Create Build Project. This step is similar to Jenkins Job.
 
-## 🔧 Terraform Configuration
+   ```bash
+    ProjectName: Vprofile-Build
+    Source: CodeCommit
+    Branch: ci-aws
+    Environment: Ubuntu
+    runtime: standard:5.0
+    New service role
+    Insert build commands from foler aws-files/sonar_buildspec.yml
+    Logs-> GroupName: vprofile-buildlogs
+    StreamName: sonarbuildjob
+   ```  
+- Update sonar_buildspec.yml file parameter store sections with the exact names we have given in SSM Parameter store.
 
-The Terraform configuration for this project is organized into different and resources to create the necessary AWS infrastructure components. Key resources include:
+![alt diagram](assets/images/aws-continuous-delivery/buildspec.webp)
 
-- Virtual Private Cloud (VPC)
-- Subnets and Route Tables
-- Security Groups and Network ACLs
-- Load Balancers
-- Auto Scaling Groups
-- RDS Database Instances
+- Add a policy to the service role created for this Build project -> find name of role from Environment, go to IAM add policy as below:
 
+![alt diagram](assets/images/aws-continuous-delivery/policy.webp)
+
+- Build your project.
+
+![alt diagram](assets/images/aws-continuous-delivery/project1.webp)
+![alt diagram](assets/images/aws-continuous-delivery/project2.webp)
+
+- Check from SonarCloud too.
+
+![alt diagram](assets/images/aws-continuous-delivery/sonar2.webp)
 ## 🚀 Deployment
 
 Follow these steps to deploy the architecture:
