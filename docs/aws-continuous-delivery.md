@@ -63,7 +63,7 @@ Before you get started, make sure you have the following prerequisites in place:
 - [Step-6: AWS CodeBuild for Build Artifact](#-Step-5-CodeBuild-for-Build-Artifact)
 - [Step-7: AWS CodePipeline and Notification with SNS](#-Step-6-CodePipeline-and-Notification-with-SNS)
 - [Step-8: Validate CodePipeline](#-Step-8-Validate-CodePipeline)
-- [Step-9: Create Elastic Beanstalk environment](#-Step-9:-Create-Elastic-Beanstalk-environment)
+- [Step-9: Create Elastic Beanstalk environment](#-Step-9-Create-Elastic-Beanstalk-environment)
 - [Step-10: Create RDS MySQL Database](#-Step-10-Create-RDS-MySQL-Database)
 - [Step-11: Update RDS Security Group](#-Step-11-Update-RDS-Security-Group)
 - [Step-12: Use Beanstalk instance to connect RDS to deploy schemas](#-Step-12-Beanstalk-instance-to-connect-RDS-to-deploy-schemas)
