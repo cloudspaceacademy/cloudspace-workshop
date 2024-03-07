@@ -290,7 +290,7 @@ Before you get started, make sure you have the following prerequisites in place:
 
 ## ✅ Step-8: Validate CodePipeline
 - Make some changes in README file in your source code, once this change is pushed, CloudWatch will detect the changes and a notification event will trigger Pipeline.
-## 🌱 Step-9:-Create-Elastic-Beanstalk-environment
+## 🌱 Step-9-Create-Elastic-Beanstalk-environment
 
 ## 🗄️ Step-10-Create-RDS-MySQL-Database
 
