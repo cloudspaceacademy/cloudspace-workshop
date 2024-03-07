@@ -163,16 +163,7 @@ Before you get started, make sure you have the following prerequisites in place:
     git commit -m "message"
     git push origin ci-aws
    ```  
-
-### Setup-SonarCloud
-
-- [Launch Template Configuration](launch-template-web.tf)
-- [Load Balancer Configuration](alb-web.tf)
-- [Auto Scaling Configuration](asg-web.tf)
-- [Security Group Configuration of Load balancer](alb-web-sg.tf)
-- [Security Group Configuration of Auto Scaling Group](asg-web-sg.tf)
-
-## 🚀 Application Tier
+## 🚀 Setup-SonarCloud
 
 The Application Tier hosts the application servers responsible for running business logic and interacting with the database tier. Key components include:
 
