@@ -58,7 +58,7 @@ Before you get started, make sure you have the following prerequisites in place:
 - [Step-1: Setup AWS CodeCommit](#-Setup-AWS-CodeCommit)
 - [Step-2: Setup AWS CodeArtifact](#-Setup-AWS-CodeArtifact)
 - [Step-3: Setup SonarCloud](#-Setup-SonarCloud)
-- [Database Tier](#-database-tier)
+- [Step-4: Store Sonar variables in System Manager Parameter Store](#-Store-Sonar-System-Manager-Parameter-Store)
 - [Terraform Configuration](#-terraform-configuration)
 - [Deployment](#-deployment)
 - [Usage](#-usage)
@@ -165,22 +165,23 @@ Before you get started, make sure you have the following prerequisites in place:
    ```  
 ## 🚀 Setup-SonarCloud
 
-The Application Tier hosts the application servers responsible for running business logic and interacting with the database tier. Key components include:
+- Create an Account with SonarCloud. https://sonarcloud.io/ 
 
-- **Application Servers**: These run your application code and can be horizontally scaled.
-- **Load Balancer**: Distributes traffic to the application servers.
-- **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
-- **Security Groups**: Controls incoming and outgoing traffic to the application servers.
+- From account avatar -> My Account -> Security. Generate token name as vprofile-sonartoken. Note the token.
 
-### Application Tier Configuration
+![alt diagram](assets/images/aws-continuous-delivery/sonarcloud.webp)
 
-- [Launch Template Configuration](launch-template-app.tf)
-- [Load Balancer Configuration](alb-app.tf)
-- [Auto Scaling Configuration](asg-app.tf)
-- [Security Group Configuration of Load balancer](alb-app-sg.tf)
-- [Security Group Configuration of Auto Scaling Group](asg-app-sg.tf)
+- Next we create a project, + -> Analyze Project -> create project manually. Below details will be used in our Build.
 
-## 💽 Database Tier
+   ```bash
+    Organization: kubeirving-projects
+    Project key: vprofile-repo8
+   ```  
+- Sonar Cloud is ready!
+
+![alt diagram](assets/images/aws-continuous-delivery/sonarcloud2.webp)
+
+## 💽 Store-Sonar-System-Manager-Parameter-Store
 
 The Database Tier stores and manages our application data. We use Amazon RDS for a managed database service. Key components include:
 
