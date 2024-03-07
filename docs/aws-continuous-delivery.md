@@ -101,7 +101,7 @@ Before you get started, make sure you have the following prerequisites in place:
 
 - We can test our ssh connection to CodeCommit.
    ```bash
-ssh git-codecommit.us-east-1.amazonaws.com
+   ssh git-codecommit.us-east-1.amazonaws.com
    ```
 ![alt diagram](assets/images/aws-continuous-delivery/committest.webp)
 - hhdgd
