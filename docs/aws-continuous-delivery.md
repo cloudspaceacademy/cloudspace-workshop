@@ -177,7 +177,7 @@ Before you get started, make sure you have the following prerequisites in place:
 
 - From account avatar -> My Account -> Security. Generate token name as vprofile-sonartoken. Note the token.
 
-![alt diagram](assets/images/aws-continuous-delivery/sonarcloud.webp)
+![alt diagram](assets/images/aws-continuous-delivery/sonarcloud.png)
 
 - Next we create a project, + -> Analyze Project -> create project manually. Below details will be used in our Build.
 
