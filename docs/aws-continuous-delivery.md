@@ -242,7 +242,7 @@ Before you get started, make sure you have the following prerequisites in place:
    ```
 - It’s time to build project.
 
-![alt diagram](assets/images/aws-continuous-delivery/sns.webp)
+![alt diagram](assets/images/aws-continuous-delivery/buildproj.webp)
 
 
 ## 💼 CodePipeline-and-Notification-with-SNS
@@ -252,6 +252,8 @@ Before you get started, make sure you have the following prerequisites in place:
 ![alt diagram](assets/images/aws-continuous-delivery/sns.webp)
 
 - Confirm your subscription from your email.
+
+![alt diagram](assets/images/aws-continuous-delivery/emailvalid.webp)
 
 - Next, create an S3 bucket to store our deploy artifacts.
 ### Scaling
