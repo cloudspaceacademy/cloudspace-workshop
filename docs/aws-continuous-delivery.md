@@ -62,8 +62,16 @@ Before you get started, make sure you have the following prerequisites in place:
 - [Step-5: AWS CodeBuild for SonarQube Code Analysis](#-Step-4-CodeBuild-for-SonarQube)
 - [Step-6: AWS CodeBuild for Build Artifact](#-Step-5-CodeBuild-for-Build-Artifact)
 - [Step-7: AWS CodePipeline and Notification with SNS](#-Step-6-CodePipeline-and-Notification-with-SNS)
-- [Contributing](#-contributing)
-- [License](#-license)
+- [Step-8: Validate CodePipeline](#-Step-8-Validate-CodePipeline)
+- [Step-9: Create Elastic Beanstalk environment](#-Step-9:-Create-Elastic-Beanstalk-environment)
+- [Step-10: Create RDS MySQL Database](#-Step-10-Create-RDS-MySQL-Database)
+- [Step-11: Update RDS Security Group](#-Step-11-Update-RDS-Security-Group)
+- [Step-12: Use Beanstalk instance to connect RDS to deploy schemas](#-Step-12-Beanstalk-instance-to-connect-RDS-to-deploy-schemas)
+- [Step-13: Update Code with pom & setting.xml](#-Step-13-Update-Code-with-pom-setting.xml)
+- [Step-14: Build Job Setup](#-Step-14-Build-Job-Setup)
+- [Step-15: Create Pipeline](#-Step-15-Create-Pipeline)
+- [Step-16: SNS Notification](#-Step-16-SNS-Notification)
+- [Step-17: Validate & Test](#-Step-17-Validate&Test)
 
 ## ✨ Step-1-Setup-AWS-CodeCommit
 
@@ -242,7 +250,7 @@ Before you get started, make sure you have the following prerequisites in place:
    ```
 - It’s time to build project.
 
-![alt diagram](assets/images/aws-continuous-delivery/buildproj.webp)
+![alt diagram](assets/images/aws-continuous-delivery/buildpro.webp)
 
 
 ## 💼 Step-7-CodePipeline-and-Notification-with-SNS
@@ -256,9 +264,55 @@ Before you get started, make sure you have the following prerequisites in place:
 ![alt diagram](assets/images/aws-continuous-delivery/emailvalid.webp)
 
 - Next, create an S3 bucket to store our deploy artifacts.
-### Scaling
-- To scale the Web or Application Tier, use Auto Scaling configurations provided in the respective Terraform files. Adjust the desired capacity to match your scaling requirements.
-### Database Management
+
+![alt diagram](assets/images/aws-continuous-delivery/s3art.webp)
+
+- Create CodePipeline.
+
+   ```bash
+    Name: vprofile-CI-Pipeline
+    SourceProvider: Codecommit
+    branch: ci-aws
+    Change detection options: CloudWatch events
+    Build Provider: CodeBuild
+    ProjectName: vprofile-Build-Aetifact
+    BuildType: single build
+    Deploy provider: Amazon S3
+    Bucket name: vprofile98-build-artifact
+    object name: pipeline-artifact
+   ```
+- Add Test and Deploy stages to your pipeline.
+- Last step before running the pipeline is to setup Notifications.
+- Go to Settings in CodePipeline -> Notifications.
+- Time to run our CodePipeline.
+
+![alt diagram](assets/images/aws-continuous-delivery/codepipeline.webp)
+
+## ✅ Step-8: Validate CodePipeline
+- Make some changes in README file in your source code, once this change is pushed, CloudWatch will detect the changes and a notification event will trigger Pipeline.
+## 🌱 Step-9:-Create-Elastic-Beanstalk-environment
+
+## 🌱 Step-10-Create-RDS-MySQL-Database
+
+## 🌱 Step-11-Update-RDS-Security-Group
+
+## 🌱 Step-12-Beanstalk-instance-to-connect-RDS-to-deploy-schemas
+
+## 🌱 Step-13-Update-Code-with-pom-setting.xml
+
+## 🌱 Step-14-Build-Job-Setup
+
+## 🌱 Step-15-Create-Pipeline
+
+## 🌱 Step-16-SNS-Notification
+
+## 🌱 Step-17:-Create-Elastic-Beanstalk-environment
+
+
+
+
+
+
 - Access the Amazon RDS instance in the Database Tier to manage your data.
 ### Load Balancing
 - Configure the load balancer in the Web and Application Tiers to distribute traffic evenly.
