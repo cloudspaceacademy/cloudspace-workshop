@@ -60,8 +60,8 @@ Before you get started, make sure you have the following prerequisites in place:
 - [Step-3: Setup SonarCloud](#-Setup-SonarCloud)
 - [Step-4: Store SonarCloud variables in System Manager Parameter Store](#-Store-Sonar-in-SSM-Parameter-Store)
 - [Step-5: AWS CodeBuild for SonarQube Code Analysis](#-CodeBuild-for-SonarQube)
-- [Deployment](#-deployment)
-- [Usage](#-usage)
+- [Step-6: AWS CodeBuild for Build Artifact](#-CodeBuild-for-Build-Artifact)
+- [Step-7: AWS CodePipeline and Notification with SNS](#-CodePipeline-and-Notification-with-SNS)
 - [Contributing](#-contributing)
 - [License](#-license)
 
@@ -224,25 +224,36 @@ Before you get started, make sure you have the following prerequisites in place:
 - Check from SonarCloud too.
 
 ![alt diagram](assets/images/aws-continuous-delivery/sonar2.webp)
-## 🚀 Deployment
+## 🚀 CodeBuild-for-Build-Artifact
 
-Follow these steps to deploy the architecture:
+- From AWS Console, go to CodeBuild -> Create Build Project. This step is similar to Jenkins Job.
 
-1. Clone the repository:
 
    ```bash
-   git clone https://github.com/mathesh-me/multi-tier-architecture-using-terraform.git
+    ProjectName: Vprofile-Build-Artifact
+    Source: CodeCommit
+    Branch: ci-aws
+    Environment: Ubuntu
+    runtime: standard:5.0
+    Use existing role from previous build
+    Insert build commands from foler aws-files/build_buildspec.yml
+    Logs-> GroupName: vprofile-buildlogs
+    StreamName: artifactbuildjob
    ```
+- It’s time to build project.
 
-2. Make changes as per your needs.
-3. Initialize Terraform and apply the configuration:
-   ```
-   terraform init
-   ```
-4. Review the changes and confirm.
+![alt diagram](assets/images/aws-continuous-delivery/sns.webp)
 
-## 💼 Usage
 
+## 💼 CodePipeline-and-Notification-with-SNS
+
+- First we will create an SNS topic from SNS service and subscribe to topic with email.
+
+![alt diagram](assets/images/aws-continuous-delivery/sns.webp)
+
+- Confirm your subscription from your email.
+
+- Next, create an S3 bucket to store our deploy artifacts.
 ### Scaling
 - To scale the Web or Application Tier, use Auto Scaling configurations provided in the respective Terraform files. Adjust the desired capacity to match your scaling requirements.
 ### Database Management
