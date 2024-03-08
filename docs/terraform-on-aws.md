@@ -133,18 +133,22 @@ Follow these steps to deploy the architecture:
    ```
 
 2. Initialize the folder Terraform by typing command:
-   ```
+   ```bash
    terraform init
    ```
+
    You must see this image
+
    ![alt text](assets/images/terraform-on-aws/terraform-init.jpg)
 
 3. Apply any changes on files and Review the changes and confirm the good format with command:
+   
    '''
    terraform fmt
    '''
    
 4. Ensure that every files are good and ready to go with the command: 
+   
    '''
    terraform validate
    '''
@@ -153,11 +157,13 @@ Follow these steps to deploy the architecture:
   ![alt text](assets/images/terraform-on-aws/terraform-validate.jpg) 
 
 5. Check and confirm the numbers of resources that will be created by using command:
+   
    '''
    terraform plan
    '''
    
    The list of all resources in stage of creation will appear and you can see all properties(arguments and attributs) of each resouces
+   
    ![alt text](assets/images/terraform-on-aws/terraform-plan.jpg) 
 
 6. Launch the creation of all resources with the command:  
