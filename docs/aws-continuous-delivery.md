@@ -1,6 +1,6 @@
 # Continuous Delivery on AWS
 
-Continous Delivery on AWS.
+Continous 'Delivery' on AWS.
 
 ## 🚀 Project Overview
 
