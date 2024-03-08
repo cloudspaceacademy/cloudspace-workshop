@@ -97,32 +97,36 @@ Check ✅GitHub hook trigger for GITScm polling
 
 Put this basic Declarative pipeline code in script dialog box
 
->    pipeline {
->        agent any
->
->       stages {
->           stage('Clone Code') {
->                steps {
->                    echo 'Cloning the code'
->                }
->            }
->            stage('Build') {
->                steps {
->                    echo 'This is Build Stage'
->                }
->            }
->            stage('Push to Docker hub') {
->                steps {
->                    echo 'This is Test stage'
->                }
->            }
->            stage('Deployement') {
->                steps {
->                    echo 'Deploying container'
->                }
->            }
->        }
->    }
+```bash
+
+    pipeline {
+        agent any
+
+        stages {
+           stage('Clone Code') {
+                steps {
+                    echo 'Cloning the code'
+                }
+            }
+            stage('Build') {
+                steps {
+                    echo 'This is Build Stage'
+                }
+            }
+            stage('Push to Docker hub') {
+                steps {
+                    echo 'This is Test stage'
+                }
+            }
+            stage('Deployement') {
+                steps {
+                    echo 'Deploying container'
+                }
+            }
+        }
+    }
+
+```
 
 This code represents a Jenkins declarative pipeline, which is a popular way to define continuous integration and continuous deployment (CI/CD) workflows. Let’s go through each section and understand its purpose:
 
