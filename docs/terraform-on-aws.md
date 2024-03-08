@@ -1,107 +1,128 @@
 # Multi-Tier Architecture on AWS using Terraform
 
-Deploy a scalable and resilient multi-tier architecture on AWS using Terraform.
 
-## 🚀 Project Overview
+## 🚀 Overview:
+The Multi-Tier Architecture project on AWS using Terraform aims to create a scalable and resilient infrastructure that leverages the power of Amazon Web Services (AWS) cloud platform. This project utilizes Terraform, an Infrastructure as Code (IaC) tool, to provision and manage the infrastructure components, enabling automation, repeatability, and scalability. The primary objective of this project is to design and deploy a multi-tier architecture on AWS that consists of multiple layers, including presentation, application, and database tiers. Each tier is deployed across multiple Availability Zones (AZs) for high availability and fault tolerance.
 
-This project allows us to deploy a highly available, scalable, and secure multi-tier architecture on Amazon Web Services (AWS) using Terraform. The architecture consists of the following three tiers:
 
-- **Web Tier**: This tier handles incoming user requests and can be horizontally scaled for increased capacity. It typically includes web servers and a load balancer for distributing traffic.
+## 🔧 Problem Statement
 
-- **Application Tier**: Application servers run our business logic and interact with the database tier. They can also be horizontally scaled to meet demand.
+Terraform is an IaC software tool that provides a consistent command line interface (CLI) workflow to manage hundreds of cloud services. Terraform codifies cloud APIs into declarative configuration files. In this specific case you need to create foundation Networking(VPC, Subnets, route table, IGW, NAT Gateway...), virtual machines (EC2 instances), databases (RDS), distribution of traffic (ELB) and Auto-scaling (ASG). Terraform will automatically use the configuration files to provide the infrastructure resources and run application needed. Terraform will use his deployment to provide all AWS needed elements avoiding us to use the console and it will automate the setup, ensuring consistency and reducing human error.
 
-- **Database Tier**: The database stores and manages our application data. In this architecture, we use Amazon RDS for a managed database service.
+## 💽 Techonology Stack
+
+ The architecture consists of the following three tiers:
+
+- **VPC**: AWS VPC
+
+- **AutoScaling**: AWS ASG
+
+- **Elastic Load Balancer**: AWS ELB
+
+- **Database**: AWS RDS
+
+- **File Configuration**: Terraform
 
 ## 📌 Architecture Diagram
-![multi-tier-architecture](https://github.com/mathesh-me/multi-tier-architecture-using-terraform/assets/144098846/14aeb752-ba87-4f51-87d5-bcf3000ee455)
 
+![alt text](assets/images/terraform-on-aws/3-tier-application-architecture.jpg)
 
-## 🚦 Getting Started
-
-### Prerequisites
+## 🌟 Project Requirements
 
 Before you get started, make sure you have the following prerequisites in place:
 
-- [Terraform](https://www.terraform.io/) installed.
-- AWS IAM credentials configured.
+- [Terraform](https://www.terraform.io/) installed on your local machine.
+- AWS IAM credentials configured in your text editor. In this case we will use VSCODE.
+- Git installed on your local machine and Github account set up [Github](https://www.github.com)
 - Git for cloning the repository.
 
-## 📋 Table of Contents
-
-- [Features](#-features)
-- [Web Tier](#-web-tier)
-- [Application Tier](#-application-tier)
-- [Database Tier](#-database-tier)
-- [Terraform Configuration](#-terraform-configuration)
-- [Deployment](#-deployment)
-- [Usage](#-usage)
-- [Contributing](#-contributing)
-- [License](#-license)
-
-## ✨ Features
+You must know and understand:
 
 - **High Availability**: The architecture is designed for fault tolerance and redundancy.
 - **Scalability**: Easily scale the web and application tiers to handle varying workloads.
 - **Security**: Security groups and network ACLs are configured to ensure a secure environment.
 
-## 🌟 Web Tier
+You must also know Terraform workflow
 
-The Web Tier is the entry point for incoming user requests. It typically includes:
+![alt text](assets/images/terraform-on-aws/terraform-workflow.jpg)
 
-- **Load Balancer**: Distributes traffic across multiple web servers.
+You need to write different files generating resources
+
+1 - Provider
+
+Here we declare our cloud provider and we specify the region where we will be launching resources
+
+- [provider Configuration](providers.tf)
+
+2 - Foundation and Networking
+
+This is where you create the basement where all the resources will be launch. It includes VPC, Subnets, IGW, NATGateway, EIP and Route table
+
+- [VPC Configuration](vpc.tf)
+
+3 - Web Tier
+
+The Web Tier is the entry point for incoming user requests. Resources are launched in the public subnets. It typically includes:
+
+- **Web Servers**: These run your application code that contains the apache which will deploy the index.html located in the user data.
+- **Load Balancer**: Distributes traffic across multiple web servers running in the public subnets.
 - **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
-- **Security Groups**: Controls incoming and outgoing traffic to the web servers.
+- **Security Groups**: Controls incoming and outgoing traffic from outside to the web servers.
 
-### Web Tier Configuration
 
-- [Launch Template Configuration](launch-template-web.tf)
-- [Load Balancer Configuration](alb-web.tf)
-- [Auto Scaling Configuration](asg-web.tf)
-- [Security Group Configuration of Load balancer](alb-web-sg.tf)
-- [Security Group Configuration of Auto Scaling Group](asg-web-sg.tf)
+- [Web ASG Configuration](web_asg.tf)
+- [Web ELB Configuration](web_alb.tf)
 
-## 🚀 Application Tier
+
+4 - Application Tier
 
 The Application Tier hosts the application servers responsible for running business logic and interacting with the database tier. Key components include:
 
 - **Application Servers**: These run your application code and can be horizontally scaled.
-- **Load Balancer**: Distributes traffic to the application servers.
+- **Load Balancer**: Distributes traffic to the application servers running in the private subnets.
 - **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
-- **Security Groups**: Controls incoming and outgoing traffic to the application servers.
+- **Security Groups**: Controls incoming and outgoing traffic from the web servers to the application servers.
 
-### Application Tier Configuration
+Application Tier Configuration
 
-- [Launch Template Configuration](launch-template-app.tf)
-- [Load Balancer Configuration](alb-app.tf)
-- [Auto Scaling Configuration](asg-app.tf)
-- [Security Group Configuration of Load balancer](alb-app-sg.tf)
-- [Security Group Configuration of Auto Scaling Group](asg-app-sg.tf)
+- [App ASG Configuration](app_asg.tf)
+- [App ELB Configuration](app_alb.tf)
 
-## 💽 Database Tier
+5 - Database Tier
 
 The Database Tier stores and manages our application data. We use Amazon RDS for a managed database service. Key components include:
 
+- **Subnets groups**: List of subnets wherether Server databases will run.
 - **Amazon RDS**: A managed database service for MySQL/PostgreSQL/SQL Server databases.
 - **Security Groups**: Control incoming and outgoing traffic to the database.
 
-### Database Tier Configuration
+Database Tier Configuration
 
-- [DB Subnet group Configuration](db-subnet-group.tf)
-- [Amazon RDS Configuration](rds.tf)
-- [Security Group Configuration](db-sg.tf)
+- [DB Configuration](db.tf)
 
-## 🔧 Terraform Configuration
+6 - Variables
 
-The Terraform configuration for this project is organized into different and resources to create the necessary AWS infrastructure components. Key resources include:
+This is where we declare all variables and thier value. It includes
 
-- Virtual Private Cloud (VPC)
-- Subnets and Route Tables
-- Security Groups and Network ACLs
-- Load Balancers
-- Auto Scaling Groups
-- RDS Database Instances
+- **Variables**: List of element that can vary or change. They can be reuse values throughout our code without repeating ourselves and help make the code dynamic
+- **values**: values attributed to each variables.
+- **secrets**: username and Password for the Database
 
-## 🚀 Deployment
+Reminder: Never push terraform.tfvars and secrets.tfvars file on Github
+
+We have 
+
+- [variables Configuration](variables.tf)
+- [value Configuration](terraform.tfvars)
+- [Secrets Configuration](secrets.tfvars)
+
+7 - Output
+
+Know as Output Value : it is a convenient way to get useful information about your infranstructure printed on the CLI. It is showing the ARN, name or ID of a resource. In this case we are bringing out the DNS name of the web application Load balancer.  
+
+- [Output Configuration](outputs.tf)
+
+## 💼 Instructions
 
 Follow these steps to deploy the architecture:
 
@@ -111,26 +132,69 @@ Follow these steps to deploy the architecture:
    git clone https://github.com/mathesh-me/multi-tier-architecture-using-terraform.git
    ```
 
-2. Make changes as per your needs.
-3. Initialize Terraform and apply the configuration:
+2. Initialize the folder Terraform by typing command:
    ```
    terraform init
    ```
-4. Review the changes and confirm.
+   You must see this image
+   ![alt text](assets/images/terraform-on-aws/terraform-init.jpg)
 
-## 💼 Usage
+3. Apply any changes on files and Review the changes and confirm the good format with command:
+   '''
+   terraform fmt
+   '''
+   
+4. Ensure that every files are good and ready to go with the command: 
+   '''
+   terraform validate
+   '''
 
-### Scaling
-- To scale the Web or Application Tier, use Auto Scaling configurations provided in the respective Terraform files. Adjust the desired capacity to match your scaling requirements.
-### Database Management
-- Access the Amazon RDS instance in the Database Tier to manage your data.
-### Load Balancing
-- Configure the load balancer in the Web and Application Tiers to distribute traffic evenly.
-### Security Considerations
-- Review and customize the security groups and network ACLs to meet your specific security requirements.
+   If everything is good you will have something like this 
+  ![alt text](assets/images/terraform-on-aws/terraform-validate.jpg) 
 
-## 🤝 Contributing
-Contributions are Welcome! Please read my Contributing Guidelines to get started with contributing to this project.
+5. Check and confirm the numbers of resources that will be created by using command:
+   '''
+   terraform plan
+   '''
+   
+   The list of all resources in stage of creation will appear and you can see all properties(arguments and attributs) of each resouces
+   ![alt text](assets/images/terraform-on-aws/terraform-plan.jpg) 
 
-## 📄 License
-This project is licensed under the MIT License.
+6. Launch the creation of all resources with the command:  
+   '''
+   terraform apply -auto-approve
+   '''
+   You will be prompt to type the username and password for the database. After you enter those criticals data the process of creation will start and you will be able to see which resourse is on the way to be create and the time it taking to create.
+    ![alt text](assets/images/terraform-on-aws/terraform-proces.jpg)  
+
+   At the end you will recieve a prompt message showing all resources status: created, changed and the numbers of them. 
+   ![alt text](assets/images/terraform-on-aws/terraform-apply.jpg)  
+
+7. Go back on the console and check all resources one by one to see.
+   You will have
+
+   VPC: 
+   ![alt text](assets/images/terraform-on-aws/terraform-vpc.jpg) 
+
+   Instances running: 
+   ![alt text](assets/images/terraform-on-aws/terraform-instances.jpg) 
+
+   Application Load Balancer: 
+   ![alt text](assets/images/terraform-on-aws/terraform-ALB.jpg) 
+
+   Autoscaling groups: 
+   ![alt text](assets/images/terraform-on-aws/terraform-ASG.jpg) 
+
+   Database: 
+   ![alt text](assets/images/terraform-on-aws/terraform-db.jpg) 
+
+   Web page: 
+   ![alt text](assets/images/terraform-on-aws/terraform-web.jpg) 
+
+8. Destroy all resources after with the command:
+   '''
+   terraform destroy -auto-approve
+   '''
+   At the end you will recieve a prompt message showing all resources has been destroyed
+   ![alt text](assets/images/terraform-on-aws/terraform-destroy.jpg)  
+
