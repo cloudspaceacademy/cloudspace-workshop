@@ -1,7 +1,6 @@
 # Continuous Delivery on AWS
 
 Continous 'Delivery' on AWS.
-This is <span class="highlight">highlighted</span> text.
 
 ## 🚀 Project Overview
 
