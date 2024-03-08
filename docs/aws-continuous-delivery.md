@@ -584,8 +584,8 @@ Select your pipeline. Click Notify, then Manage Notification. We will create a n
 
    ```bash
     vprofile-aws-cicd-pipeline-notification
-    Select all
-    Notification Topic: use same topic from CI pipeline
+    ==Select all==
+    Notification Topic: use same topic ==from== CI pipeline
    ```
 ## 🧪 Step-17-Validate&Test
 
