@@ -27,6 +27,7 @@ The project involves a continuous integration and deployment (CI/CD) pipeline fo
 This CI/CD pipeline automates the software development process, from code commits to deployment, ensuring efficient and reliable delivery of software updates.
 
 ## 🔧 Problem Statement
+
 In the context of software development on AWS, there exists a need to establish a robust and efficient continuous integration and deployment (CI/CD) pipeline. The current manual processes for code commits, code analysis, artifact building, and deployment are prone to errors, inconsistencies, and inefficiencies. To address these challenges, the objective is to design and implement an automated CI/CD pipeline that seamlessly integrates with AWS services. This pipeline should enable developers to commit code changes confidently, knowing that they will undergo thorough code analysis, dependency management, artifact building, and deployment processes. Additionally, the pipeline should facilitate seamless database connection, software testing, and scalability of deployed applications. The ultimate goal is to streamline the software development lifecycle, ensuring consistent, reliable, and timely delivery of software updates while minimizing manual intervention and maximizing resource utilization.
 
 ## 💽 Techonology Stack
@@ -580,8 +581,20 @@ Save and Release change. This will start our CodePipeline.
 ## 🔔 Step-16-SNS-Notification
 
 Select your pipeline. Click Notify, then Manage Notification. We will create a new notification.
+
+   ```bash
+    vprofile-aws-cicd-pipeline-notification
+    Select all
+    Notification Topic: use same topic from CI pipeline
+   ```
 ## 🧪 Step-17-Validate&Test
 
+Time to test our pipeline.
+
+![alt diagram](assets/images/aws-continuous-delivery/test.webp)
+
+We can check the app from browser with Beanstalk endpoint to view result.
 
 ## 📄 License
+
 This project is licensed under the MIT License.
