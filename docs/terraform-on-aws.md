@@ -133,6 +133,7 @@ Follow these steps to deploy the architecture:
    ```
 
 2. Initialize the folder Terraform by typing command:
+  
    ```bash
    terraform init
    ```
@@ -143,64 +144,77 @@ Follow these steps to deploy the architecture:
 
 3. Apply any changes on files and Review the changes and confirm the good format with command:
    
-   '''
+   '''bash
    terraform fmt
    '''
    
 4. Ensure that every files are good and ready to go with the command: 
    
-   '''
+   '''bash
    terraform validate
    '''
 
    If everything is good you will have something like this 
+
   ![alt text](assets/images/terraform-on-aws/terraform-validate.jpg) 
 
 5. Check and confirm the numbers of resources that will be created by using command:
    
-   '''
+   '''bash
    terraform plan
    '''
    
    The list of all resources in stage of creation will appear and you can see all properties(arguments and attributs) of each resouces
-   
+
    ![alt text](assets/images/terraform-on-aws/terraform-plan.jpg) 
 
 6. Launch the creation of all resources with the command:  
-   '''
+   
+   '''bash
    terraform apply -auto-approve
    '''
+
    You will be prompt to type the username and password for the database. After you enter those criticals data the process of creation will start and you will be able to see which resourse is on the way to be create and the time it taking to create.
+
     ![alt text](assets/images/terraform-on-aws/terraform-proces.jpg)  
 
    At the end you will recieve a prompt message showing all resources status: created, changed and the numbers of them. 
+
    ![alt text](assets/images/terraform-on-aws/terraform-apply.jpg)  
 
-7. Go back on the console and check all resources one by one to see.
-   You will have
+7. Go back on the console and check all resources one by one to see. You will have
 
    VPC: 
+
    ![alt text](assets/images/terraform-on-aws/terraform-vpc.jpg) 
 
    Instances running: 
+
    ![alt text](assets/images/terraform-on-aws/terraform-instances.jpg) 
 
    Application Load Balancer: 
+
    ![alt text](assets/images/terraform-on-aws/terraform-ALB.jpg) 
 
    Autoscaling groups: 
+
    ![alt text](assets/images/terraform-on-aws/terraform-ASG.jpg) 
 
    Database: 
+
    ![alt text](assets/images/terraform-on-aws/terraform-db.jpg) 
 
    Web page: 
+
    ![alt text](assets/images/terraform-on-aws/terraform-web.jpg) 
 
 8. Destroy all resources after with the command:
-   '''
+   
+   '''bash
    terraform destroy -auto-approve
    '''
+   
    At the end you will recieve a prompt message showing all resources has been destroyed
+   
    ![alt text](assets/images/terraform-on-aws/terraform-destroy.jpg)  
 
