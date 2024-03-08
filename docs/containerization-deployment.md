@@ -130,7 +130,7 @@ Put this basic Declarative pipeline code in script dialog box
 
 This code represents a Jenkins declarative pipeline, which is a popular way to define continuous integration and continuous deployment (CI/CD) workflows. Let’s go through each section and understand its purpose:
 
-- ==**agent any**==: This line specifies that the pipeline can run on any available agent or executor in the Jenkins environment.
+- <mark>**agent any**</mark>: This line specifies that the pipeline can run on any available agent or executor in the Jenkins environment.
 
 - ==**stages**==: This block defines the different stages of the pipeline. Each stage represents a logical step in the CI/CD process.
 
