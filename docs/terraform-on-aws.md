@@ -176,7 +176,7 @@ Follow these steps to deploy the architecture:
 
    You will be prompt to type the username and password for the database. After you enter those criticals data the process of creation will start and you will be able to see which resourse is on the way to be create and the time it taking to create.
 
-    ![alt text](assets/images/terraform-on-aws/terraform-proces.jpg)  
+   ![alt text](assets/images/terraform-on-aws/terraform-proces.jpg)  
 
    At the end you will recieve a prompt message showing all resources status: created, changed and the numbers of them. 
 
