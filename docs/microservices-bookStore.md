@@ -29,7 +29,13 @@ We Will try to cover more Technologies and concept in this Article as possible.
 
 ## 🔧 Problem Statement
 
-In the context of software development on AWS, there exists a need to establish a robust and efficient continuous integration and deployment (CI/CD) pipeline. The current manual processes for code commits, code analysis, artifact building, and deployment are prone to errors, inconsistencies, and inefficiencies. To address these challenges, the objective is to design and implement an automated CI/CD pipeline that seamlessly integrates with AWS services. This pipeline should enable developers to commit code changes confidently, knowing that they will undergo thorough code analysis, dependency management, artifact building, and deployment processes. Additionally, the pipeline should facilitate seamless database connection, software testing, and scalability of deployed applications. The ultimate goal is to streamline the software development lifecycle, ensuring consistent, reliable, and timely delivery of software updates while minimizing manual intervention and maximizing resource utilization.
+In today's rapidly evolving tech landscape, mastering DevOps tools and technologies is a top priority for IT professionals seeking to streamline workflows, foster collaboration, and expedite project delivery. Many individuals dedicate significant time and effort to completing courses on essential tools such as Terraform, ArgoCD, Istio, Kubernetes, and AWS, equipping themselves with the theoretical knowledge needed to revolutionize their development processes.
+
+However, what often remains unaddressed is the significant challenge that arises once the courses are completed and the real-world integration journey begins. The struggle of connecting the dots between these powerful tools and effectively implementing them into a cohesive DevOps pipeline can be both daunting and perplexing.
+
+This is a narrative that many of us have encountered firsthand – the initial excitement of acquiring new skills, followed by the frustration of translating those skills into tangible results within our projects. This workshop aims to address this gap by offering a comprehensive guide not only on the 'how' of using these tools but also on the 'how' within the context of a holistic DevOps approach.
+
+
 
 ## 💽 Techonology Stack
 
@@ -50,6 +56,7 @@ In the context of software development on AWS, there exists a need to establish 
 **Technology Stack Diagram:**
 
 ![alt diagram](assets/images/microservices-bookstore/stack.gif)
+
 ## 🚦 Getting Started
 
 ### Prerequisites
@@ -58,8 +65,9 @@ Before you get started, make sure you have the following prerequisites in place:
 
 - AWS account.
 - AWS CLI.
-- SonarCloud account.
+- Docker.
 - Git for cloning the repository.
+- Any modern code editor (e.g., Visual Studio Code, Sublime Text, etc.)
 
 ## 📋 Table of Contents
 
