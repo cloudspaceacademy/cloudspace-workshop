@@ -1,30 +1,31 @@
-# Continuous Delivery on AWS
+# Building a BookStore leveraging MicroServices. 
 
-Continous 'Delivery' on AWS.
+Step by Step BookStore DevOps Project.
 
 ## 🚀 Project Overview
 
-The project involves a continuous integration and deployment (CI/CD) pipeline for software development on AWS. Here's an overview of the process:
+Our DevOps initiative will focus on constructing an AWS environment, setting up a Kubernetes cluster through Amazon Elastic Kubernetes Service (EKS), and implementing an efficient process for continuous integration and deployment.
 
-- **Code Commit**: Developers regularly commit code changes, which trigger the CI/CD pipeline.
+To lay the groundwork, we'll utilize the Bookinfo demonstration application. This application, consisting of multiple services, serves as an illustration of the intricacies inherent in a contemporary Microservices architecture.
 
-- **CodeBuild Trigger**: Commits trigger AWS CodeBuild, which initiates the build process.
+- **GitHub Actions**: CI/CD platform integrated with GitHub for automating workflows.
 
-- **Code Analysis**: CodeBuild performs code analysis using Sonarcloud. SonarCloud (same as SonarQube) is a cloud-based code quality and security service provided by SonarSource. It integrates with Git repositories to analyze code for bugs, vulnerabilities, code smells, and other issues.
+- **AWS**: Cloud services provider for hosting applications and managing infrastructure.
 
-- **Dependency Management**: Dependencies required for the project are downloaded from AWS CodeArtifact, ensuring consistency and reliability.
+- **EKS**: Amazon Elastic Kubernetes Service for deploying, managing, and scaling containerized applications.
 
-- **Artifact Building**: CodeBuild utilizes Maven to build the artifact from the source code.
+- **ArgoCD**: Declarative GitOps continuous delivery tool for Kubernetes.
 
-- **Artifact Storage**: The built artifact is stored in an S3 bucket for future deployment.
+- **Terraform**: Infrastructure as Code (IaC) tool for provisioning and managing AWS resources.
 
-- **Deployment**: AWS Deploy deploys the artifact to an Elastic Beanstalk environment, ensuring scalability and ease of management.
+- **ECR**: Amazon Elastic Container Registry for securely storing and managing Docker images.
 
-- **Database Connection**: The Beanstalk environment is connected to an RDS (Relational Database Service) instance for data storage and retrieval.
+- **Grafana**: Monitoring and visualization platform for metrics.
 
-- **Software Testing**: After deployment, software testing is executed using AWS CodeBuild services to verify the functionality and stability of the deployed application.
+- **Prometheus**: Open-source monitoring and alerting toolkit.
 
-This CI/CD pipeline automates the software development process, from code commits to deployment, ensuring efficient and reliable delivery of software updates.
+
+We Will try to cover more Technologies and concept in this Article as possible.
 
 ## 🔧 Problem Statement
 
@@ -42,9 +43,13 @@ In the context of software development on AWS, there exists a need to establish 
 
 ## 📌 Architecture Diagram
 
+**Microservices Diagram:**
 
-![alt diagram](assets/images/aws-continuous-delivery/architecture-diagram.webp)
+![alt diagram](assets/images/microservices-bookstore/microservices%20diagram.gif)
 
+**Technology Stack Diagram:**
+
+![alt diagram](assets/images/microservices-bookstore/stack.gif)
 ## 🚦 Getting Started
 
 ### Prerequisites
