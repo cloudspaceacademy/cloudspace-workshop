@@ -145,17 +145,17 @@ This Terraform configuration block includes settings for Terraform Cloud (former
 
    **1. Terraform Cloud Configuration:**
 
-      ```bash
-    terraform {
-    cloud {
-        organization = "devops-project-org"
+```bash
+        terraform {
+        cloud {
+            organization = "devops-project-org"
 
-        workspaces {
-        name = "devops-project-workspace"
+            workspaces {
+            name = "devops-project-workspace"
+            }
         }
-    }
-    }  
-   ```  
+        }  
+```  
    Let's breakdown the above code:
    
    In this part of the code, you are configuring Terraform Cloud settings:
