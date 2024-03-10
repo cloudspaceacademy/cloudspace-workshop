@@ -82,7 +82,7 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 
 - [Step-1: Clone the repository](#-Step-1-Clone-the-repository)
 - [Step-2: Terraform Workflow](#-Step-2-Terraform-Workflow)
-- [Step-3: Setup SonarCloud](#-Setup-SonarCloud)
+- [Step-3: Terraform Cloud Env Vars](#-Setup-Terraform-Cloud-Env-Vars)
 - [Step-4: Store SonarCloud variables in System Manager Parameter Store](#-Step-3-Store-Sonar-in-SSM-Parameter-Store)
 - [Step-5: AWS CodeBuild for SonarQube Code Analysis](#-Step-4-CodeBuild-for-SonarQube)
 - [Step-6: AWS CodeBuild for Build Artifact](#-Step-5-CodeBuild-for-Build-Artifact)
@@ -328,25 +328,61 @@ This block configures cluster addons like CoreDNS, kube-proxy, and vpc-cni to us
 
 These parameters specify the Virtual Private Cloud (VPC) and subnet details for the EKS cluster using outputs from another module (likely named "vpc").
 
-## 🚀 Step-3-Setup-SonarCloud
+   **5. Managed Node Group Configuration**:
 
-- Create an Account with SonarCloud. https://sonarcloud.io/ 
+```bash
+eks_managed_node_group_defaults = {
+  instance_types = ["m6i.large", "m5.large", "m5n.large", "t3.large"]
+}
 
-- From account avatar -> My Account -> Security. Generate token name as vprofile-sonartoken. Note the token.
+eks_managed_node_groups = {
+  green = {
+    use_custom_launch_template = false
+    min_size     = 1
+    max_size     = 10
+    desired_size = 1
+    instance_types = ["t3.large"]
+    capacity_type  = "SPOT"
+  }
+}   
+``` 
 
-![alt diagram](assets/images/aws-continuous-delivery/sonarcloud.png)
+   This section configures an EKS managed node group named "green" with specific instance types, sizes, and capacity type (SPOT).
 
-- Next we create a project, + -> Analyze Project -> create project manually. Below details will be used in our Build.
+   **6. Fargate Profiles**:
+   
+```bash
+    fargate_profiles = {
+    default = {
+        name = "default"
+        selectors = [ { namespace = "default" } ]
+    }
+    }    
+``` 
 
-   ```bash
-    Organization: kubeirving-projects
-    Project key: vprofile-repo8
-   ```  
+  This section defines a Fargate profile named "default" that targets the "default" namespace.
+  
+  ***aws-auth Configuration***: This section defines how IAM roles, users, and accounts will be mapped to Kubernetes RBAC roles for cluster access.
 
-- Sonar Cloud is ready!
+  **7. Tags**:
 
+  ```bash
+    tags = {
+    Environment = "dev"
+    Terraform   = "true"
+    }      
+``` 
+ Tags are assigned to the created resources for organization and identification purposes.
+## 🚀 Step-3-Terraform-Cloud-Env-Vars
 
-![alt diagram](assets/images/aws-continuous-delivery/sonarcloud2.webp)
+We need to configure our organization with our Access Key and Secret Key and you can do it specific for the workspace or globally for the organization.
+
+We will do it globally now for the organization by creating Variable Set
+
+under the organization setting go to Variable sets and Create new one
+
+![alt diagram](assets/images/microservices-bookstore/terra1.jpeg)
+
 
 
 ## 💽 Step-4-Store-Sonar-in-SSM-Parameter-Store
