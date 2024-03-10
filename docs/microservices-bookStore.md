@@ -115,16 +115,86 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 
 - First create an account on Terraform Cloud if you don’t have one.
 
-[Terraform Cloud Sign up](https://app.terraform.io/public/signup/account?trk=article-ssr-frontend-pulse_little-text-block) ( it has a Free License if you are asking 😃 )
+[Terraform Cloud Sign up](https://app.terraform.io/public/signup/account?trk=article-ssr-frontend-pulse_little-text-block) (Terraform Cloud has a Free License so no need to worry about pricing)
 
-   ```bash
-    Name: vprofile-maven-repo
-    Public upstraem Repo: maven-central-store
-    This AWS account
-    Domain name: visualpath
+- Create your first organization and then Set up a workspace in Terraform Cloud. This will help manage your infrastructure as code and enable collaboration.
+
+![alt diagram](assets/images/microservices-bookstore/workspace.jpeg)
+
+- Choose Version Control Workflow to work with your repository on Github which we will choose to do here.
+
+- If you want to work with Terraform from your Terminal you can go for CLI-driven Workflow.
+
+**Version Control Workflow > Connect to Github > choose the repository > configure Setting**
+
+![alt diagram](assets/images/microservices-bookstore/config.jpeg)
+
+
+- In Advanced options configure the Terraform Working Directory terraform as our Terraform code is inside **terraform directory**
+
+Before talking about the Terraform files, let's take time to read about Terraform — Best Practices  t[erraform-best-practices](https://www.terraform-best-practices.com/) and [Terraform — Best Practices](https://medium.com/devops-mojo/terraform-best-practices-top-best-practices-for-terraform-configuration-style-formatting-structure-66b8d938f00c)
+
+Learn and Pick the right Terraform code Structure you need to follow.
+
+Now let’s talk about the Terraform Directory before running our first plan and apply.
+
+
+**terraform.tf**
+
+This Terraform configuration block includes settings for Terraform Cloud (formerly known as Terraform Enterprise) and configures the AWS provider. Let's break down the code step by step:
+
+   **1. Terraform Cloud Configuration:**
+
+      ```bash
+    terraform {
+    cloud {
+        organization = "devops-project-org"
+
+        workspaces {
+        name = "devops-project-workspace"
+        }
+    }
+    }  
    ```  
+   Let's breakdown the above code:
+   
+   In this part of the code, you are configuring Terraform Cloud settings:
 
-- Follow connection instructions given in CodeArtifact for maven-central-repo.
+   ***organization***: The name of the Terraform Cloud organization is set to "devops-project-org".
+
+   ***workspaces***: Within the organization, a workspace is configured with the name "devops-project-workspace". A workspace in Terraform Cloud is an isolated environment for managing infrastructure.
+
+   **2. AWS Provider Configuration:**
+
+    ```bash
+    provider "aws" {
+    region = "us-east-1"
+    }  
+   ```  
+   Let's breakdown the above code:
+
+   This part of the code configures the AWS provider using the provider block:
+
+   ***aws***: The name of the provider is "aws", indicating that this block configures resources from Amazon Web Services (AWS).
+
+   ***region***: The AWS region is set to "us-east-1", which means resources created using this provider will be located in the US East (North Virginia) region.
+
+
+**vpc.tf**
+
+This Terraform code snippet is used to create a Virtual Private Cloud (VPC) in Amazon Web Services (AWS) using the ***terraform-aws-modules/vpc/aws*** module. Let's break down the code step by step:
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ![alt diagram](assets/images/aws-continuous-delivery/maven-artifact.webp)
