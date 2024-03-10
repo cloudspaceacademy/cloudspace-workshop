@@ -69,10 +69,19 @@ Before you get started, make sure you have the following prerequisites in place:
 - Git for cloning the repository.
 - Any modern code editor (e.g., Visual Studio Code, Sublime Text, etc.)
 
+
+To begin, you need an AWS account. If you don't have one, head to the AWS website and sign up for an account.
+
+We need IAM user Access Key and Secret Key to be used with Terraform
+
+![alt diagram](assets/images/microservices-bookstore/iam.jpeg)
+
+Never disclose your Access Keys to anyone, and consistently utilize Secrets Managers.
+
 ## 📋 Table of Contents
 
-- [Step-1: Setup AWS CodeCommit](#-Step-1-Setup-AWS-CodeCommit)
-- [Step-2: Setup AWS CodeArtifact](#-Step-2-Setup-AWS-CodeArtifact)
+- [Step-1: Clone the repository](#-Step-1-Clone-the-repository)
+- [Step-2: Terraform Workflow](#-Step-2-Terraform-Workflow)
 - [Step-3: Setup SonarCloud](#-Setup-SonarCloud)
 - [Step-4: Store SonarCloud variables in System Manager Parameter Store](#-Step-3-Store-Sonar-in-SSM-Parameter-Store)
 - [Step-5: AWS CodeBuild for SonarQube Code Analysis](#-Step-4-CodeBuild-for-SonarQube)
@@ -89,86 +98,24 @@ Before you get started, make sure you have the following prerequisites in place:
 - [Step-16: SNS Notification](#-Step-16-SNS-Notification)
 - [Step-17: Validate & Test](#-Step-17-Validate&Test)
 
-## ✨ Step-1-Setup-AWS-CodeCommit
+## ✨ Step-1-Clone-the-repository
 
 
-- Go to AWS Console, and pick us-east-1 region then go to CodeCommit service. Create repository.
-
-   ```bash
-   Name: vprofile-code-repo
-   ```
-
-- Next, create an IAM user with CodeCommit access from IAM console. We will create a policy for CodeCommit and allow full access only for vprofile-code-repo.
+- Please clone the project repository to your local machine. (You will need to be added to the CloudSpace organization before you can clone this.)
 
    ```bash
-   Name: vprofile-code-admin-repo-fullaccess
+   git clone https://github.com/waleedmagdy/devops_project.git
    ```
 
-![alt diagram](assets/images/aws-continuous-delivery/iam.webp)
+## 🌟 Step-2-Terraform-Workflow
 
+- In this workshop, we are using **Terraform Cloud** to let Terraform runs in a consistent and reliable environment.
 
-- To be able connect our repo, follow steps given in CodeCommit.
+![alt diagram](assets/images/microservices-bookstore/terraformworkflow.png)
 
+- First create an account on Terraform Cloud if you don’t have one.
 
-![alt diagram](assets/images/aws-continuous-delivery/CodeCommit.webp)
-
-
-
-- Create SSH key in local server and add public key to IAM role Security credentials.
-
-
-![alt diagram](assets/images/aws-continuous-delivery/ssh.webp)
-
-
-
-- Update configuration under .ssh/config and add our Host information. And change permissions with chmod 600 config
-
-
-   ```bash
-   Host git-codecommit.us-east-1.amazonaws.com
-       User <SSH_Key_ID_from IAM_user>
-       IdentityFile ~/.ssh/vpro-codecommit_rsa
-   ```
-
-
-- We can test our ssh connection to CodeCommit.
-
-
-   ```bash
-   ssh git-codecommit.us-east-1.amazonaws.com
-   ```
-
-![alt diagram](assets/images/aws-continuous-delivery/committest.webp)
-
-
-- Next, clone the repository to a location of your choice in your local server.
-
-- Convert the Github repository for vprofile-project in your local server, to your CodeCommit repository. In Github repo directory.
-
-- Run the command below.
-
-
-   ```bash
-    git checkout master
-    git branch -a | grep -v HEAD | cur -d'/' -f3 | grep -v master > /tmp/branches
-    for i in `cat  /tmp/branches`; do git checkout $i; done
-    git fetch --tags
-    git remote rm origin
-    git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/vprofile-code-repo
-    cat .git/config
-    git push origin --all
-    git push --tags
-   ```
-
-
-- Our repo is ready on CodeCommit with all branches.
-
-
-![alt diagram](assets/images/aws-continuous-delivery/repobranches.webp)
-
-## 🌟 Step-2-Setup-AWS-CodeArtifact
-
-- Create CodeArtifact repository for Maven:
+[Terraform Cloud Sign up](https://app.terraform.io/public/signup/account?trk=article-ssr-frontend-pulse_little-text-block) ( it has a Free License if you are asking 😃 )
 
    ```bash
     Name: vprofile-maven-repo
