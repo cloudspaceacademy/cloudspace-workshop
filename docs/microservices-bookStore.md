@@ -283,6 +283,51 @@ This part of the code defines an output named "repository_url" that will display
 This Terraform code is used to create an Amazon Elastic Kubernetes Service (EKS) cluster using the ***terraform-aws-modules/eks/aws*** module. Let's break down the code step by step:
 
    **1. Module Declaration**:
+
+```bash
+    module "eks" {
+    source  = "terraform-aws-modules/eks/aws"
+    version = "~> 19.0"
+}    
+``` 
+
+   This declares a Terraform module named "eks" and specifies the source from which to fetch the EKS module (terraform-aws-modules/eks/aws) along with a version constraint.
+
+   **2. Cluster Configuration**: 
+
+```bash
+    cluster_name    = "my-cluster"
+    cluster_version = "1.27"
+    cluster_endpoint_public_access  = true  
+``` 
+
+These parameters configure the EKS cluster:
+
+  ***cluster_name***: The name of the EKS cluster will be set to "my-cluster".
+  ***cluster_version***: The Kubernetes version of the cluster will be "1.27".
+  ***cluster_endpoint_public_access***: The Kubernetes API server endpoint will have public access.
+
+  **3. Cluster Addons**:
+
+```bash
+    cluster_addons = {
+    coredns = { most_recent = true }
+    kube-proxy = { most_recent = true }
+    vpc-cni = { most_recent = true }
+    }     
+``` 
+This block configures cluster addons like CoreDNS, kube-proxy, and vpc-cni to use the most recent versions.
+
+   **4. VPC and Subnet Configuration**:
+
+```bash
+    vpc_id                   = module.vpc.vpc_id
+    subnet_ids               = module.vpc.private_subnets
+    control_plane_subnet_ids = module.vpc.public_subnets     
+``` 
+
+These parameters specify the Virtual Private Cloud (VPC) and subnet details for the EKS cluster using outputs from another module (likely named "vpc").
+
 ## 🚀 Step-3-Setup-SonarCloud
 
 - Create an Account with SonarCloud. https://sonarcloud.io/ 
