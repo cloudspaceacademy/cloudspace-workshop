@@ -185,17 +185,54 @@ This Terraform configuration block includes settings for Terraform Cloud (former
 This Terraform code snippet is used to create a Virtual Private Cloud (VPC) in Amazon Web Services (AWS) using the ***terraform-aws-modules/vpc/aws*** module. Let's break down the code step by step:
 
 
+   **1. Module Declaration**:
+
+```bash
+    module "vpc" {
+    source = "terraform-aws-modules/vpc/aws"
+    }    
+```  
+   Here, you are declaring a Terraform module named "vpc" using the module source ***terraform-aws-modules/vpc/aws***. This module is available in the Terraform registry and is designed to create a VPC with AWS resources.
 
 
+   **2. Module Parameters**:
+
+```bash
+    name = "my-vpc"
+    cidr = "10.0.0.0/16"  
+``` 
+   These parameters define the basic configuration of the VPC:
+
+   ***name***: The name of the VPC will be set to "my-vpc".
+   ***cidr***: The IP range for the VPC is set to "10.0.0.0/16".
 
 
+   **3. Availability Zones and Subnets**:
 
+```bash
+    azs             = ["us-east-1a", "us-east-1b", "us-east-1c"]
+    private_subnets = ["10.0.1.0/24", "10.0.2.0/24", "10.0.3.0/24"]
+    public_subnets  = ["10.0.101.0/24", "10.0.102.0/24", "10.0.103.0/24"]  
+``` 
 
+   These parameters specify the availability zones and subnets for the VPC:
 
+   ***azs***: The list of Availability Zones where the subnets will be created.
+   ***private_subnets***: The list of private subnet CIDR blocks.
+   ***public_subnets***: The list of public subnet CIDR blocks.
 
+   **4. NAT and VPN Gateways**:
 
+```bash
+    enable_nat_gateway = true
+    enable_vpn_gateway = true  
+``` 
 
+    These settings enable NAT and VPN gateways for the VPC:
 
+   ***enable_nat_gateway***: NAT gateways will be created for the private subnets.
+
+   ***enable_vpn_gateway***: A VPN gateway will be created for the VPC.
 
 ![alt diagram](assets/images/aws-continuous-delivery/maven-artifact.webp)
 
