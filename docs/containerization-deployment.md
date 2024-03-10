@@ -39,12 +39,12 @@ Click on Launch Instance, then connect to the EC2 instance and install following
 2. [Docker installation](https://docs.docker.com/engine/install/)
 
 3. Java installation
-Install Openjdk-17-jre- by running the following command: ==sudo apt install openjdk-17-jre==
+Install Openjdk-17-jre- by running the following command: `sudo apt install openjdk-17-jre`
 
 4. [Jenkins installation](https://www.jenkins.io/doc/book/installing/)
 
 5. Docker compose 
-run the following command: ==sudo apt-get install docker-compose==
+run the following command: `sudo apt-get install docker-compose`
 
 Make sure you have this Installed on your system.
 
@@ -64,7 +64,7 @@ Remember to reboot the system after making these changes.
 
 * We need an Administrator Password to unlock this. Run following command
 
-* ==cat /var/lib/jenkins/secrets/initialAdminPassord==
+* `cat /var/lib/jenkins/secrets/initialAdminPassord`
 
 * Now Click on, “Install Suggested Plugins”
 
@@ -130,17 +130,17 @@ Put this basic Declarative pipeline code in script dialog box
 
 This code represents a Jenkins declarative pipeline, which is a popular way to define continuous integration and continuous deployment (CI/CD) workflows. Let’s go through each section and understand its purpose:
 
-- <mark>**agent any**</mark> : This line specifies that the pipeline can run on any available agent or executor in the Jenkins environment.
+- `**agent any**` : This line specifies that the pipeline can run on any available agent or executor in the Jenkins environment.
 
 - `**stages**`: This block defines the different stages of the pipeline. Each stage represents a logical step in the CI/CD process.
 
-- ==**stage('Clone Code')**==: This stage is responsible for cloning the source code repository. In this case, the pipeline simply echoes the message "Cloning the code." In a real scenario, this stage would typically include commands to clone the repository using a version control system like Git.
+- `**stage('Clone Code')**`: This stage is responsible for cloning the source code repository. In this case, the pipeline simply echoes the message "Cloning the code." In a real scenario, this stage would typically include commands to clone the repository using a version control system like Git.
 
--  ==**stage('Build')**==: This stage is responsible for building the application or project. Here, the pipeline echoes the message "This is the Build Stage." In a real scenario, this stage would typically include commands to compile the code, run tests, and generate build artifacts.
+-  `**stage('Build')**`: This stage is responsible for building the application or project. Here, the pipeline echoes the message "This is the Build Stage." In a real scenario, this stage would typically include commands to compile the code, run tests, and generate build artifacts.
 
--  ==**stage('Push to Docker hub')**==: This stage is responsible for pushing the built artifacts to a Docker registry (such as Docker Hub). The pipeline echoes the message "This is the Test stage." In a real scenario, this stage would typically include commands to package the application into a Docker container and push it to the desired registry.
+-  `**stage('Push to Docker hub')**`: This stage is responsible for pushing the built artifacts to a Docker registry (such as Docker Hub). The pipeline echoes the message "This is the Test stage." In a real scenario, this stage would typically include commands to package the application into a Docker container and push it to the desired registry.
 
-- ==**stage('Deployment')**==: This stage is responsible for deploying the application or container to the target environment. The pipeline echoes the message "Deploying container." In a real scenario, this stage would typically include commands to deploy the Docker container or perform any necessary configuration and setup for the application to run.
+- `**stage('Deployment')**`: This stage is responsible for deploying the application or container to the target environment. The pipeline echoes the message "Deploying container." In a real scenario, this stage would typically include commands to deploy the Docker container or perform any necessary configuration and setup for the application to run.
 
 Each stage can have more complex logic and multiple steps, such as running shell commands, executing scripts, or invoking external tools.
 
@@ -180,9 +180,9 @@ Create Credentials in Dashboard > Manage jenkins > Credentials > System > Global
 >    sh "docker push ${env.dockerhubuser}/notes-app:latest"
 >   }
 
-1. ==**withCredentials**==: This is a Jenkins pipeline step provided by the "Credentials Binding Plugin." It allows you to securely retrieve and use credentials within the block. In this case, we are retrieving the Docker Hub credentials using the ==usernamePassword== method.
+1. `**withCredentials**`: This is a Jenkins pipeline step provided by the "Credentials Binding Plugin." It allows you to securely retrieve and use credentials within the block. In this case, we are retrieving the Docker Hub credentials using the `usernamePassword` method.
 
-2. ==**usernamePassword(credentialsId: "dockerhub-login", passwordVariable: "dockerhubpass", usernameVariable: "dockerhubuser")**==: This line retrieves the username and password from the Jenkins credentials store. The credentialsId parameter specifies the unique identifier of the stored Docker Hub credentials. The usernameVariable and passwordVariable parameters define the environment variables where the username and password will be stored, respectively. The environment variables are prefixed with env. in Jenkins, which is why you see env.dockerhubuser and env.dockerhubpass later in the code.
+2. `**usernamePassword(credentialsId: "dockerhub-login", passwordVariable: "dockerhubpass", usernameVariable: "dockerhubuser")**`: This line retrieves the username and password from the Jenkins credentials store. The credentialsId parameter specifies the unique identifier of the stored Docker Hub credentials. The usernameVariable and passwordVariable parameters define the environment variables where the username and password will be stored, respectively. The environment variables are prefixed with env. in Jenkins, which is why you see env.dockerhubuser and env.dockerhubpass later in the code.
 
 
 
