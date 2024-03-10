@@ -166,11 +166,11 @@ This Terraform configuration block includes settings for Terraform Cloud (former
 
    **2. AWS Provider Configuration:**
 
-    ```bash
+```bash
     provider "aws" {
     region = "us-east-1"
     }  
-   ```  
+```  
    Let's breakdown the above code:
 
    This part of the code configures the AWS provider using the provider block:
