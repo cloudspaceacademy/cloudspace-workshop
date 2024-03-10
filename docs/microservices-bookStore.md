@@ -218,7 +218,9 @@ This Terraform code snippet is used to create a Virtual Private Cloud (VPC) in A
    These parameters specify the availability zones and subnets for the VPC:
 
    ***azs***: The list of Availability Zones where the subnets will be created.
+
    ***private_subnets***: The list of private subnet CIDR blocks.
+   
    ***public_subnets***: The list of public subnet CIDR blocks.
 
    **4. NAT and VPN Gateways**:
