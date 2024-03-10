@@ -220,7 +220,7 @@ This Terraform code snippet is used to create a Virtual Private Cloud (VPC) in A
    ***azs***: The list of Availability Zones where the subnets will be created.
 
    ***private_subnets***: The list of private subnet CIDR blocks.
-   
+
    ***public_subnets***: The list of public subnet CIDR blocks.
 
    **4. NAT and VPN Gateways**:
@@ -230,37 +230,59 @@ This Terraform code snippet is used to create a Virtual Private Cloud (VPC) in A
     enable_vpn_gateway = true  
 ``` 
 
-    These settings enable NAT and VPN gateways for the VPC:
+These settings enable NAT and VPN gateways for the VPC:
 
    ***enable_nat_gateway***: NAT gateways will be created for the private subnets.
 
    ***enable_vpn_gateway***: A VPN gateway will be created for the VPC.
 
-![alt diagram](assets/images/aws-continuous-delivery/maven-artifact.webp)
+   **5. Tags**:
 
-- Create an IAM user for CodeArtifact and configure aws CLI with its credentials. We will give Programmatic access to this user to enable use of aws cli and download credentials file.
+```bash
+    enable_nat_gateway = true
+    enable_vpn_gateway = true  
+``` 
 
-
-   ```bash
-    aws configure # provide iam user credentials
-   ```  
-
-![alt diagram](assets/images/aws-continuous-delivery/iamarti.webp)
+   This block assigns tags to the resources created by the module. Tags are metadata that provide additional information about resources. Here, two tags are added: "Terraform" with the value "true" and "Environment" with the value "dev".
 
 
-- Run command get token as in the instructions.
+**ecr.tf**:
+
+This Terraform code snippet creates an Amazon Elastic Container Registry (ECR) repository and defines an output to display the repository URL. Let's break down the code step by step:
 
 
-   ```bash
-    export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain visualpath --domain-owner 392530415763 --region us-east-1 --query authorizationToken --output text`
-   ```  
-- Update pom.xml and setting.xml file with correct urls as suggested in instruction then push files to codeCommit.
+   **1. ECR Repository Resource**:
 
-   ```bash
-    git add .
-    git commit -m "message"
-    git push origin ci-aws
-   ```  
+
+```bash
+    resource "aws_ecr_repository" "my_repo" {
+    name = "my-ecr-repo"
+    image_tag_mutability = "MUTABLE"
+} 
+``` 
+
+In this part of the code, you are creating an AWS ECR repository named "my-ecr-repo" using the ***aws_ecr_repository*** resource. The parameters you've set are:
+
+   ***name***: The name of the ECR repository is set to "my-ecr-repo".
+
+   ***image_tag_mutability***: The mutability of image tags is set to "MUTABLE", which means you can overwrite tags on images.
+
+
+   **2. Output for Repository URL**:
+
+```bash
+  output "repository_url" {
+  value = aws_ecr_repository.my_repo.repository_url
+}  
+``` 
+This part of the code defines an output named "repository_url" that will display the URL of the ECR repository. The value of this output is set to the repository URL of the ***aws_ecr_repository.my_repo*** resource.
+
+
+**eks.tf**:
+
+This Terraform code is used to create an Amazon Elastic Kubernetes Service (EKS) cluster using the ***terraform-aws-modules/eks/aws*** module. Let's break down the code step by step:
+
+   **1. Module Declaration**:
 ## 🚀 Step-3-Setup-SonarCloud
 
 - Create an Account with SonarCloud. https://sonarcloud.io/ 
