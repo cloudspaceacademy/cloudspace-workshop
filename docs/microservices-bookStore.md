@@ -384,6 +384,11 @@ under the organization setting go to Variable sets and Create new one
 ![alt diagram](assets/images/microservices-bookstore/terra1.jpeg)
 
 
+   **1. Plan and Apply Terraform Code**:
+
+   Now we are ready to start the Plan
+
+![alt diagram](assets/images/microservices-bookstore/plan.jpeg)
 
 ## 💽 Step-4-Store-Sonar-in-SSM-Parameter-Store
 
