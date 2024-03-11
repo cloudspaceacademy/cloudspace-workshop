@@ -87,7 +87,7 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 - [Step-5: Update Workflows with ECR URL](#-Step-5-Update-Workflows-with-ECR-URL)
 - [Step-6: Update GitHub Repo with AWS Secrets](#-Step-6-Update-GitHub-Repo-with-AWS-Secrets)
 - [Step-7: Deploy the Microservices Manifests](#-Step-7-Deploy-the-Microservices-Manifests)
-- [Step-8: Validate CodePipeline](#-Step-8-Validate-CodePipeline)
+- [Step-8: Istio Proxy uses Envoy](#-Step-8-Istio-Proxy-uses-Envoy)
 - [Step-9: Create Elastic Beanstalk environment](#-Step-9-Create-Elastic-Beanstalk-environment)
 - [Step-10: Create RDS MySQL Database](#-Step-10-Create-RDS-MySQL-Database)
 - [Step-11: Update RDS Security Group](#-Step-11-Update-RDS-Security-Group)
@@ -656,95 +656,62 @@ If you check any POD in staging Namespace you will find that each one has two Co
 
 
 
+## 🔒 Step-8-Istio-Proxy-uses-Envoy
+
+Envoy proxies are deployed as sidecars to services, logically augmenting the services with Envoy’s many built-in features, for example:
+
+- Dynamic service discovery
+
+- Load balancing
+
+- TLS termination
+
+- HTTP/2 and gRPC proxies
+
+- Circuit breakers
+
+- Health checks
+
+- Staged rollouts with %-based traffic split
+
+- Fault injection
+
+- Rich metrics
+
+**Istio Gateways and VirtualServices**:
+
+- **Istio Gateway**: An Istio Gateway is a configuration resource that describes how external traffic (e.g., traffic from outside the Kubernetes cluster) is brought into the service mesh and how it's routed to services. It acts as an entry point into the mesh for incoming traffic. Gateways can be used to manage different protocols, such as HTTP, HTTPS, or TCP, and they can handle traffic based on hostnames, paths, and ports.
+
+   - ***Hosts and Ports***: A Gateway is configured with a set of hosts and ports that it listens on. These could be domain names (for HTTP/HTTPS) or IP addresses and port numbers (for TCP).
+
+   - ***TLS Termination***: Gateways can perform TLS termination, meaning they can handle SSL/TLS encryption and decryption for incoming traffic.
+
+   - ***Virtual Services***: Gateways are often associated with VirtualServices to define how incoming traffic should be forwarded to specific services.
 
 
+- **Istio VirtualService**: A VirtualService is a configuration resource that defines how traffic should be routed within the service mesh. It allows you to control the routing of traffic based on criteria like URI paths, headers, and more. VirtualServices are associated with one or more Istio Services and are often used in conjunction with Gateways to control how external traffic is routed to services.
+
+   - ***Destination Rules***: VirtualServices can refer to DestinationRules, which define how traffic should be load-balanced between different versions of a service (canary deployments, blue-green deployments, etc.).
+   - ***Traffic Splitting***: VirtualServices can split traffic between different versions of services based on weights or other criteria.
+   - ***Match Conditions:*** VirtualServices define match conditions that determine which traffic is affected by the rules defined within them.
+   - ***Fault Injection***: VirtualServices can also be used to inject faults or delays into requests for testing purposes.
 
 
+   **Deploy Gateways and VirtualServices**
 
+   - under **manifests/networking/gateways** Create Argo CD app to deploy them
 
+   ![alt diagram](assets/images/microservices-bookstore/ergraph.jpeg)
 
-
-
-- First we will create an SNS topic from SNS service and subscribe to topic with email.
-
-
-![alt diagram](assets/images/aws-continuous-delivery/sns.webp)
-
-
-- Confirm your subscription from your email.
-
-
-![alt diagram](assets/images/aws-continuous-delivery/emailvalid.webp)
-
-
-- Next, create an S3 bucket to store our deploy artifacts.
-
-
-![alt diagram](assets/images/aws-continuous-delivery/s3art.webp)
-
-
-- Create CodePipeline.
-
-
-   ```bash
-    Name: vprofile-CI-Pipeline
-    SourceProvider: Codecommit
-    branch: ci-aws
-    Change detection options: CloudWatch events
-    Build Provider: CodeBuild
-    ProjectName: vprofile-Build-Aetifact
-    BuildType: single build
-    Deploy provider: Amazon S3
-    Bucket name: vprofile98-build-artifact
-    object name: pipeline-artifact
-   ```
-
-- Add Test and Deploy stages to your pipeline.
-- Last step before running the pipeline is to setup Notifications.
-- Go to Settings in CodePipeline -> Notifications.
-- Time to run our CodePipeline.
-
-
-![alt diagram](assets/images/aws-continuous-delivery/codepipeline.webp)
-
-
-## ✅ Step-8: Validate CodePipeline
-- Make some changes in README file in your source code, once this change is pushed, CloudWatch will detect the changes and a notification event will trigger Pipeline.
-## 🌱 Step-9-Create-Elastic-Beanstalk-environment
-
-Create an environment using Sample application.
+   - Now you can browse to
+   - istio-ingressgateway url/productpage
+   - To get the url
 
    ```bash
-    Name: vprofile-app
-    Capacity: LoadBalanced
-        Min: 2
-        Max: 4
-    Security: Choose existing key-pair usedin previous steps
-    Tags: 
-        Name:Project
-        Value: vprofile
+    kubectl get services -n istio-system
+    NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                                                      AGE
+    istio-ingressgateway   LoadBalancer   172.20.27.197    ae271cd157c214ab888061809021225a-1922516608.us-east-1.elb.amazonaws.com   15021:32042/TCP,80:30092/TCP,443:31659/TCP,31400:31529/TCP,15443:32377/TCP   148m
    ```
-## 🗄️ Step-10-Create-RDS-MySQL-Database
-
-- Create an RDS service with the details below.
-- Don’t forget the click View credential details to note down your password.
-
-   ```bash
-    Engine: MySQL
-    version: 5.7
-    Free-Tier
-    DB Identifier: vprofile-cicd-mysql
-    credentials: admin
-    Auto generate password (will take note of pwd once RDS is created)
-    db.t2.micro
-    Create new SecGrp: 
-    * Name: vprofile-cicd-rds-mysql-sg
-    Additional Configurations: 
-    * initial db name: accounts
-   ```
-## 🔒 Step-11-Update-RDS-Security-Group
-
-Go to instances, find BeanStalk instance and copy its Secgrp ID. Update RDS SecGrp Inbound rules to allow access for Beanstalk instances on port 3306.
 ## 🗄️ Step-12-Beanstalk-instance-to-connect-RDS-to-deploy-schemas
 
 - Although, SSH into your beanstalk instance to make changes is not a good practice as its better to create a new EC2 and perform these tasks, but for this project, we will make an exception.
