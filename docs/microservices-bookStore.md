@@ -88,8 +88,8 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 - [Step-6: Update GitHub Repo with AWS Secrets](#-Step-6-Update-GitHub-Repo-with-AWS-Secrets)
 - [Step-7: Deploy the Microservices Manifests](#-Step-7-Deploy-the-Microservices-Manifests)
 - [Step-8: Istio Proxy uses Envoy](#-Step-8-Istio-Proxy-uses-Envoy)
-- [Step-9: Create Elastic Beanstalk environment](#-Step-9-Create-Elastic-Beanstalk-environment)
-- [Step-10: Create RDS MySQL Database](#-Step-10-Create-RDS-MySQL-Database)
+- [Step-9: Test our BookStore Application](#-Step-9-Test-our-BookStore-Application)
+- [Step-10: Monitoring](#-Step-10-Monitoring)
 - [Step-11: Update RDS Security Group](#-Step-11-Update-RDS-Security-Group)
 - [Step-12: Use Beanstalk instance to connect RDS to deploy schemas](#-Step-12-Beanstalk-instance-to-connect-RDS-to-deploy-schemas)
 - [Step-13: Update Code with pom & setting.xml](#-Step-13-Update-Code-with-pom-setting.xml)
@@ -703,8 +703,9 @@ Envoy proxies are deployed as sidecars to services, logically augmenting the ser
 
    ![alt diagram](assets/images/microservices-bookstore/ergraph.jpeg)
 
-   - Now you can browse to
-   - istio-ingressgateway url/productpage
+## 🗄️ Step-9-Test-our-BookStore-Application
+
+   - From the previous step you can browse to **istio-ingressgateway url/productpage**
    - To get the url
 
    ```bash
@@ -712,225 +713,39 @@ Envoy proxies are deployed as sidecars to services, logically augmenting the ser
     NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                                                      AGE
     istio-ingressgateway   LoadBalancer   172.20.27.197    ae271cd157c214ab888061809021225a-1922516608.us-east-1.elb.amazonaws.com   15021:32042/TCP,80:30092/TCP,443:31659/TCP,31400:31529/TCP,15443:32377/TCP   148m
    ```
-## 🗄️ Step-12-Beanstalk-instance-to-connect-RDS-to-deploy-schemas
+   It will be the elb/dns under External-IP. We will open the application on our browser using that same link.
 
-- Although, SSH into your beanstalk instance to make changes is not a good practice as its better to create a new EC2 and perform these tasks, but for this project, we will make an exception.
+![alt diagram](assets/images/microservices-bookstore/page.jpeg)
 
-- Go to Beanstalk SecGrp group, and change access to port 22 from Anywhere to MyIP. Install mysql client in this instance to be able to connect RDS. We also need to install git since we will clone our source code and get scripts to create schema in our database.
+## 💻 Step-10-Monitoring
 
-   ```bash
-    sudo -i
-    yum install mysql git -y
-    mysql -h <RDS_endpoint> -u <RDS_username> -p<RDS_password>
-    show databases;
-    git clone https://github.com/rumeysakdogan/vprofileproject-all.git
-    cd vprofileproject-all/
-    git checkout cd-aws
-    cd src/main/resources
-    mysql -h <RDS_endpoint> -u <RDS_username> -p<RDS_password> accounts < db_backup.sql
-    mysql -h <RDS_endpoint> -u <RDS_username> -p<RDS_password>
-    use accounts;
-    show tables;
-   ```
+Under **argocd/apps/observability** Create NEW APP in monitoring Namespace
 
-Now go back to Beanstalk environment and under Configuration -> load balancer -> Processes , update Health check path to /login. Then apply changes.
+![alt diagram](assets/images/microservices-bookstore/monitor.jpeg)
 
-## 💻 Step-13-Update-Code-with-pom-setting.xml
+We have **Prometheus (Metrics Datastore), Loki (Logging), Jaeger (Tracing)** In a short words
 
-- Go to CodeCommit, select cd-aws branch. We will do the same updates that we did in ci-aws branch to the pom & settings.xml files. We can directory select file and Edit in CodeCommit, then commit our changes.
+- **Logging**: Recording events and activities for troubleshooting.
 
-- For pom.xml, add the correct url from your code artifact connection steps:
+- **Metrics**: Measuring performance with numbers and graphs.
 
-   ```bash
-    <repository>
-            <id>codeartifact</id>
-            <name>codeartifact</name>
-        <url>https://visualpath-392530415763.d.codeartifact.us-east-1.amazonaws.com/maven/maven-central-store/</url>
-        </repository>
-   ```
-for settings.xml, update below parts with correct url from code artifact.
+- **Tracing**: Following data flow to find performance issues.
 
-   ```bash
-    <profiles>
-    <profile>
-        <id>default</id>
-        <repositories>
-        <repository>
-            <id>codeartifact</id>
-        <url>https://visualpath-392530415763.d.codeartifact.us-east-1.amazonaws.com/maven/maven-central-store/</url>
-        </repository>
-        </repositories>
-    </profile>
-    </profiles>
-    <activeProfiles>
-            <activeProfile>default</activeProfile>
-        </activeProfiles>
-    <mirrors>
-    <mirror>
-        <id>codeartifact</id>
-        <name>visualpath-maven-central-store</name>
-        <url>https://visualpath-392530415763.d.codeartifact.us-east-1.amazonaws.com/maven/maven-central-store/</url>
-        <mirrorOf>*</mirrorOf>
-    </mirror>
-    </mirrors>
-   ```
+**Grafana**
 
-## 🔧 Step-14-Build-Job-Setup
+one of a many dashboard you can import and a lot to explore
 
-- Go to CodeBuild and change Source for Vprofile-Build & Vprofile-build-Artifact projects. Currently these projects are triggered from ci-aws branch, we will change branch to cd-aws.
+![alt diagram](assets/images/microservices-bookstore/graffana.jpeg)
 
-**Create “BuildAndRelease” Build Project**
+**Kiali**
 
-Then we create a new project called Build Project for deploying artifacts to BeanStalk.
+A comprehensive monitoring tool for Istio Service Mesh and also there is a lot to explore.
 
-   ```bash
-    Name: Vprofile-BuildAndRelease
-    Repo: CodeCommit
-    branch: cd-aws
-    Environment
-    *Managed image: Ubuntu
-    *Standard
-    Image 5.0
-    We will use existing role from previous Build project which has access to SSM Parameter Store
-    Insert build commands: 
-    * From source code we will get spec file under `aws-files/buildAndRelease_buildspec.yml`.
-    Logs:
-    *LogGroup:vprofile-cicd-logs
-    *StreamnameBuildAndReleaseJob
-   ```
+![alt diagram](assets/images/microservices-bookstore/kiali.gif)
 
-We need to create 3 new parameters as used in BuilAndRelease_buildspec.yml file in SSM Parameter store. we have noted these values from RDS creation step, we will use them now.
+The dashboard can give you a Live fast response to any issue the could happen to any of your Microservice
 
-   ```bash
-    RDS-Endpoint: String
-    RDSUSER: String
-    RDSPASS: SecureString
-   ```
-
-Let’s run the project to know if successful!
-
-![alt diagram](assets/images/aws-continuous-delivery/brelease.webp)
-
-**Create “SoftwareTesting” Build Project**
-
-In this Build Project, we will run our Selenium Automation scripts and store the artifacts in S3 bucket.
-
-First, we will create an S3 bucket.
-
-   ```bash
-    Name: vprofile-cicd-testoutput-rd (give a unique name)
-    Region: it should be the same region we create our pipeline
-   ```
-
-Next, create a new Build project for Selenium Automation Tests. Create a new Build project with details below:
-
-   ```bash
-    Name: SoftwareTesting
-    Repo: CodeCommit
-    branch: seleniumAutoScripts
-    Environment:
-    * Windows Server 2019
-    * Runtime: Base
-    * Image: 1.0
-    We will use existing role from previous Build project which has access to SSM Parameter Store
-    Insert build commands: 
-    * From source code we will get spec file under `aws-files/win_buildspec.yml`.
-    * We need to update url part to our Elastic Beanstalk URL.
-    Artifacts:
-    *Type: S3
-    * Bucketname: vprofile-cicd-testoutput-rd
-    * Enable semantic versioning
-    Artifcats packaging: zip
-    Logs:
-    *LogGroup: vprofile-cicd-logs
-    *Streamname:
-   ```
-## ⛓️ Step-15-Create-Pipeline
-
-Create CodePipeline with name vprofile-cicd-pipeline
-
-   ```bash
-    Source:
-    * CodeCommit
-    * vprofile-code-repo
-    * cd-aws
-    * Amazon CloudWatch Events
-
-    Build
-    * BuildProvider: CodeBuild
-    * ProjectName: Vprofile-BuildAndRelease
-    * Single Build
-
-    Deploy
-    * Deploy provider: Beanstalk
-    * application: vprofile-app
-    * Environment: vprofile-app-env
-   ```
-
-   ```bash
-    We will Disable transitions and Edit pipeline to add more stages.
-   ```
-
-Add this stage in our codepipeline after “Source”:
-
-   ```bash
-    Name: CodeAnalysis
-    Action provider: CodeBuild
-    Input artifacts: SourceArtifact
-    Project name: Vprofile-Build
-   ```
-
-Add second stage after CodeAnalysis:
-
-   ```bash
-    Name: BuildAndStore
-    Action provider: CodeBuild
-    Input artifacts: SourceArtifact
-    Project name: Vprofile-Build-artifact
-    OutputArtifact: BuildArtifact
-   ```
-
-Add third stage after BuildAndStore:
-
-   ```bash
-    Name: DeployToS3
-    Action provider: Amazon S3
-    Input artifacts: BuildArtifact
-    Bucket name: vprofile98-build-artifact
-    Extract file before deploy
-   ```
-
-Edit the ouput artifacts of Build and Deploy stages. Go to Build stage Edit Stage. Change Output artifact name as BuildArtifactToBean.
-
-Go to Deploy stage, Edit stage. We change InputArtifact to BuildArtifactToBean.
-
-Last Stage will be added after Deploy stage:
-
-   ```bash
-    Name: Software Testing
-    Action provider: CodeBuild
-    Input artifacts: SourceArtifact
-    ProjectName: SoftwareTesting
-   ```
-
-Save and Release change. This will start our CodePipeline.
-
-## 🔔 Step-16-SNS-Notification
-
-Select your pipeline. Click Notify, then Manage Notification. We will create a new notification.
-
-   ```bash
-    vprofile-aws-cicd-pipeline-notification
-    Select all
-    Notification Topic: use same topic from CI pipeline
-   ```
-## 🧪 Step-17-Validate&Test
-
-Time to test our pipeline.
-
-![alt diagram](assets/images/aws-continuous-delivery/test.webp)
-
-We can check the app from browser with Beanstalk endpoint to view result.
+![alt diagram](assets/images/microservices-bookstore/kiali2.gif)
 
 ## 📄 License
 
