@@ -390,6 +390,82 @@ under the organization setting go to Variable sets and Create new one
 
 ![alt diagram](assets/images/microservices-bookstore/plan.jpeg)
 
+   Review the Plan resources and then **Confirm & Apply**
+
+   **2. Check AWS Resources Creation**:
+
+   Verify in the AWS Management Console that your defined resources have been created as intended.
+
+   **3. Deploy EKS-Manage EC2 Instance**:
+
+   Of course it doesn’t have to be an EC2 instance you can use your Terminal.
+
+   We will setup this instance to manage our EKS cluster from.
+
+
+   - Deploy ubuntu instance
+
+   - Install tools like **kubectl** (Kubernetes command-line tool), **aws-cli** (AWS Command Line Interface), and any other utilities you might need.
+
+   - Install aws-cli
+
+```bash
+sudo apt install unzip	
+curl "<https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip>" -o "awscliv2.zip"	
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version  
+``` 
+
+   - Install **kubectl**
+
+```bash
+curl -LO "<https://dl.k8s.io/release/$>(curl -L -s <https://dl.k8s.io/release/stable.txt>)/bin/linux/amd64/kubectl"	
+Kubectl
+curl -LO "<https://dl.k8s.io/$>(curl -L -s <https://dl.k8s.io/release/stable.txt>)/bin/linux/amd64/kubectl.sha256"
+echo "$(cat kubectl.sha256) kubectl" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client   
+``` 
+
+   - Configure AWS Credentials
+
+   - Run **aws configure** and provide your AWS Access Key ID, Secret Access Key, default region, and output format.
+
+   - Configure **kubectl**
+
+
+```bash
+aws eks update-kubeconfig --name my-cluster --region us-east-1  
+```
+
+   - Test **kubectl** by running
+
+```bash
+kubectl get nodes
+
+connect: connection refused    
+```
+
+**"Not working" 😕**
+
+You need to troubleshoot why **kubectl** client can’t talk with the EKS endpoint
+
+***Hint***: Something is blocking the requests to the EKS endpoint 
+
+Now after You can talk to our EKS, you should add this fix to our Terraform code.
+
+Now you can run
+
+```bash
+    kubectl get nodes
+
+    ##OUTPUT##
+
+    NAME                         STATUS   ROLES    AGE   VERSION
+    ip-10-0-1-149.ec2.internal   Ready    <none>   64s   v1.27.3-eks-a5565ad           
+```
+
 ## 💽 Step-4-Store-Sonar-in-SSM-Parameter-Store
 
 
