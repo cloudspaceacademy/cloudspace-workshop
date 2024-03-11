@@ -34,6 +34,10 @@ Before diving into the project, let’s ensure that we have the necessary prereq
 
 ## 📋 Table of Contents
 
+- [Step-1: Setup EC2 instance](#-Step-1-Setup-EC2-instance)
+- [Step-2: Setup Jenkins](#-Step-2-Setup-Jenkins)
+- [Step-3: Setup Jenkins pipeline](#-Step-3-Setup-Jenkins-Pipeline)
+- [Step-4: Push Docker container to Dockerhub](#-Step-4-push-Docker-container-to-Dockerhub)
 
 ## ✨ Step-1-Setup-EC2-instance
 
@@ -173,8 +177,7 @@ By defining the pipeline stages and their associated steps, Jenkins can automate
 
 * After getting success, you can see stages are green boxes with execution time.
 
-## ✨ Step-3-push-Docker-container-to-Dockerhub
-## Developing the Notes App Code: To develop the Django notes app code, follow these steps:
+## ✨ Step-4-push-Docker-container-to-Dockerhub
 
 1. Clone the code
     In the pipeline script, add the following code to clone the code from your repository:
