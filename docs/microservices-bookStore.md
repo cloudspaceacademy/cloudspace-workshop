@@ -85,8 +85,8 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 - [Step-3: Terraform Cloud Env Vars](#-Setup-3-Terraform-Cloud-Env-Vars)
 - [Step-4: Install Required CLIs](#-Step-4-Install-Required-CLIs)
 - [Step-5: Update Workflows with ECR URL](#-Step-5-Update-Workflows-with-ECR-URL)
-- [Step-6: AWS CodeBuild for Build Artifact](#-Step-5-CodeBuild-for-Build-Artifact)
-- [Step-7: AWS CodePipeline and Notification with SNS](#-Step-6-CodePipeline-and-Notification-with-SNS)
+- [Step-6: Update GitHub Repo with AWS Secrets](#-Step-6-Update-GitHub-Repo-with-AWS-Secrets)
+- [Step-7: Deploy the Microservices Manifests](#-Step-7-Deploy-the-Microservices-Manifests)
 - [Step-8: Validate CodePipeline](#-Step-8-Validate-CodePipeline)
 - [Step-9: Create Elastic Beanstalk environment](#-Step-9-Create-Elastic-Beanstalk-environment)
 - [Step-10: Create RDS MySQL Database](#-Step-10-Create-RDS-MySQL-Database)
@@ -554,83 +554,116 @@ Under **.github/workflows/** you will find the Github Actions we will use to **b
 
    Here's what each step does:
 
-   Checkout code: Retrieves the repository's code using the actions/checkout GitHub Action.
+   ***Checkout code***: Retrieves the repository's code using the actions/checkout GitHub Action.
 
-   Configure AWS credentials: Configures AWS credentials to access the ECR registry.
+   ***Configure AWS credentials***: Configures AWS credentials to access the ECR registry.
 
-   Login to Amazon ECR: Uses the aws-actions/amazon-ecr-login GitHub Action to log in to the ECR registry.
+   ***Login to Amazon ECR***: Uses the aws-actions/amazon-ecr-login GitHub Action to log in to the ECR registry.
 
-   Get short SHA: Retrieves the short SHA hash of the latest Git commit.
+   ***Get short SHA***: Retrieves the short SHA hash of the latest Git commit.
 
-   Build and push Docker image: Builds a Docker image and pushes it to the specified ECR repository.
+   ***Build and push Docker image***: Builds a Docker image and pushes it to the specified ECR repository.
 
-   Update Kubernetes Deployment Image: Updates the image tag in a Kubernetes deployment YAML file to match the built Docker image.
-   
-   Commit and Push Changes: Commits the changes made to the Kubernetes deployment YAML file and pushes them to the repository.
+   ***Update Kubernetes Deployment Image***: Updates the image tag in a Kubernetes deployment YAML file to match the built Docker image.
 
-- From AWS Console, go to CodeBuild -> Create Build Project. This step is similar to Jenkins Job.
+   ***Commit and Push Changes***: Commits the changes made to the Kubernetes deployment YAML file and pushes them to the repository.
 
 
-   ```bash
-    ProjectName: Vprofile-Build
-    Source: CodeCommit
-    Branch: ci-aws
-    Environment: Ubuntu
-    runtime: standard:5.0
-    New service role
-    Insert build commands from foler aws-files/sonar_buildspec.yml
-    Logs-> GroupName: vprofile-buildlogs
-    StreamName: sonarbuildjob
-   ```  
+## 🚀 Step-6-Update-GitHub-Repo-with-AWS-Secrets
 
-- Update sonar_buildspec.yml file parameter store sections with the exact names we have given in SSM Parameter store.
+under **Setting > Secrets** and **Variables > Actions**
+
+![alt diagram](assets/images/microservices-bookstore/awssecret.jpeg)
+
+**Run Workflows**
+
+Let’s the party begins
 
 
-![alt diagram](assets/images/aws-continuous-delivery/buildspec.webp)
+   - as we are using one repository we need our Github Workflow to update the new image
+
+   - we should configure the Actions to be able to Read and Write to it’s repository
+
+   - under Setting > Actions > General
+
+![alt diagram](assets/images/microservices-bookstore/workflowpermission.jpeg)
+
+The Workflows Will run if there is a push inside the services directories or manually, I will run them Manually Now.
+
+![alt diagram](assets/images/microservices-bookstore/work.jpeg)
+
+You will find that I only added the Update Kubernetes Deployment Image part to **details_workflow.yml**
+
+You need to complete the other Workflows
+
+You need to check the **manifests/kubernetes** image part to mach it with the Workflows
 
 
-- Add a policy to the service role created for this Build project -> find name of role from Environment, go to IAM add policy as below:
+**Check ECR Repo**
+
+![alt diagram](assets/images/microservices-bookstore/ecrrepo.jpeg)
+
+**Argo CD**
+
+- add the repository to argo cd
+- I will do it VIA SSH
+- add the public ssh key to you Github account setting
+- add the private ssh key to the argocd repository connect page
+
+![alt diagram](assets/images/microservices-bookstore/argo2.jpeg)
+
+- deploy Namespaces to the cluster **staging** and **monitoring**
+- under **manifests/networking/namespaces/** Add **NEW APP** in the argocd homepage
+- follow the configuration
+- Path: **manifests/networking/namespaces/**
+- you can keep the Namespace field blank
+
+## 💼 Step-7-Deploy-the-Microservices-Manifests
+
+- under **argocd/apps/services** you will find Application CRD for argocd app to deploy our manifest resources to Kubernetes
+
+- argocd homepage create **NEW APP**
+
+- Application Name: app-services
+
+- Project Name: default
+
+- Sync Policy: Automatic
+
+- [x] PRUNE RESOURCES
+
+- [x] SELF HEAL
+
+- [x] AUTO-CREATE NAMESPACE
+
+- Repository URL:
+
+- Path: **argocd/apps /services/**
+
+- Cluster URL:
+
+- Namespace: staging
+
+![alt diagram](assets/images/microservices-bookstore/argo2.jpeg)
+
+You can check the Argo CD home page also you can check the resources in the EKS on AWS Console
+
+![alt diagram](assets/images/microservices-bookstore/argo3.jpeg)
+
+If you check any POD in staging Namespace you will find that each one has two Containers
+
+![alt diagram](assets/images/microservices-bookstore/argo4.jpeg)
 
 
-![alt diagram](assets/images/aws-continuous-delivery/policy.webp)
 
 
-- Build your project.
 
 
-![alt diagram](assets/images/aws-continuous-delivery/project1.webp)
-![alt diagram](assets/images/aws-continuous-delivery/project2.webp)
 
 
-- Check from SonarCloud too.
 
 
-![alt diagram](assets/images/aws-continuous-delivery/sonar2.webp)
 
-## 🚀 Step-6-CodeBuild-for-Build-Artifact
-
-- From AWS Console, go to CodeBuild -> Create Build Project. This step is similar to Jenkins Job.
-
-
-   ```bash
-    ProjectName: Vprofile-Build-Artifact
-    Source: CodeCommit
-    Branch: ci-aws
-    Environment: Ubuntu
-    runtime: standard:5.0
-    Use existing role from previous build
-    Insert build commands from foler aws-files/build_buildspec.yml
-    Logs-> GroupName: vprofile-buildlogs
-    StreamName: artifactbuildjob
-   ```
-
-- It’s time to build project.
-
-
-![alt diagram](assets/images/aws-continuous-delivery/buildpro.webp)
-
-
-## 💼 Step-7-CodePipeline-and-Notification-with-SNS
 
 - First we will create an SNS topic from SNS service and subscribe to topic with email.
 
