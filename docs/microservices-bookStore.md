@@ -82,9 +82,9 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 
 - [Step-1: Clone the repository](#-Step-1-Clone-the-repository)
 - [Step-2: Terraform Workflow](#-Step-2-Terraform-Workflow)
-- [Step-3: Terraform Cloud Env Vars](#-Setup-Terraform-Cloud-Env-Vars)
-- [Step-4: Store SonarCloud variables in System Manager Parameter Store](#-Step-3-Store-Sonar-in-SSM-Parameter-Store)
-- [Step-5: AWS CodeBuild for SonarQube Code Analysis](#-Step-4-CodeBuild-for-SonarQube)
+- [Step-3: Terraform Cloud Env Vars](#-Setup-3-Terraform-Cloud-Env-Vars)
+- [Step-4: Install Required CLIs](#-Step-4-Install-Required-CLIs)
+- [Step-5: Update Workflows with ECR URL](#-Step-5-Update-Workflows-with-ECR-URL)
 - [Step-6: AWS CodeBuild for Build Artifact](#-Step-5-CodeBuild-for-Build-Artifact)
 - [Step-7: AWS CodePipeline and Notification with SNS](#-Step-6-CodePipeline-and-Notification-with-SNS)
 - [Step-8: Validate CodePipeline](#-Step-8-Validate-CodePipeline)
@@ -466,23 +466,107 @@ Now you can run
     ip-10-0-1-149.ec2.internal   Ready    <none>   64s   v1.27.3-eks-a5565ad           
 ```
 
-## 💽 Step-4-Store-Sonar-in-SSM-Parameter-Store
+## 💽 Step-4-Install-Required-CLIs
 
+We installed the **AWS CLI, kubectl** Now we need to install **istioctl** and **argo CLI** and install the required k8s resources.
 
-- Create parameters with the variables below.
+- **istioctl**
+
+```bash
+    curl -L <https://istio.io/downloadIstio> | sh -	
+    cd istio-1.18.2/
+    export PATH=$PWD/bin:$PATH
+    istioctl install --set profile=demo -y 
+```  
+   **istioctl** is a command-line utility provided by Istio for installing and interacting with Istio deployments.
+
+   **install** is the subcommand used to install Istio components.
+
+   **-set profile=demo** specifies the installation profile. The "demo" profile includes a set of Istio components suitable for demonstration purposes.
+
+- **argo CLI**
+
+```bash
+    curl -sSL -o argocd-linux-amd64 <https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64>	
+    sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+    rm argocd-linux-amd64
+    sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd 
+```  
+
+- **Argo CD install**
+
+```bash
+    kubectl create namespace argocd	
+    kubectl apply -n argocd -f <https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml>
+    kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'        
+```  
+
+ ***kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'*** This command patches (updates) the Argo CD server service to change its service type to a LoadBalancer. This modification makes the Argo CD server accessible from outside the Kubernetes cluster via a load balancer's public IP address or DNS.
+
+   - Argo CD intial admin secret
 
 
    ```bash
-    CODEARTIFACT_TOKEN	   SecureString	
-    HOST                   https://sonarcloud.io
-    ORGANIZATION           kubeirving-projects
-    PROJECT                vprofile-repo8
-    SONARTOKEN             SecureString
+    argocd admin initial-password -n argocd  
    ```  
+![alt diagram](assets/images/microservices-bookstore/argocd.jpeg)
+
+***It’s not a best practice to do it from the Terminal but I will give you a hint “Terrafrom”***
+
+## 🔧 Step-5-Update-Workflows-with-ECR-URL
+
+Modify your continuous integration workflows to include the ECR repository URL for Container image storage.
 
 
-## 🔧 Step-5-CodeBuild-for-SonarQube
+![alt diagram](assets/images/microservices-bookstore/output.jpeg)
 
+
+Under **.github/workflows/** you will find the Github Actions we will use to **build/push** our container images let’s break one workflow down.
+   
+   **details_workflow.yml** :
+
+   ***Workflow Name and Trigger:name: Details Service Build, Push and Deploy***: Describes the name of the workflow.
+
+   ***on***: Specifies the events that trigger the workflow.
+
+   ***workflow_dispatch***: Allows manual triggering of the workflow.
+
+   ***push***: Triggers the workflow when code changes are pushed to the repository's specified paths.
+
+   ***Environment Variables:env***: Defines environment variables that will be available to the workflow steps.
+
+   ***ECR_REGISTRY***: Specifies the Amazon ECR (Elastic Container Registry) registry URL.
+
+   ***ECR_REPOSITORY***: Specifies the ECR repository name.
+
+   ***Jobs:jobs***: Contains one or more jobs to be executed in sequence.
+
+   ***build_and_push_image***: Describes a job named "build_and_push_image" that runs on an Ubuntu environment.
+
+   ***runs-on***: Specifies the type of runner environment.
+
+   ***steps***: Lists the individual steps within the job.
+
+   ***Steps***:A series of steps, each with a specific name, purpose, and associated actions.
+
+   ***uses*** refers to pre-built GitHub Actions that perform specific tasks.
+
+
+   Here's what each step does:
+
+   Checkout code: Retrieves the repository's code using the actions/checkout GitHub Action.
+
+   Configure AWS credentials: Configures AWS credentials to access the ECR registry.
+
+   Login to Amazon ECR: Uses the aws-actions/amazon-ecr-login GitHub Action to log in to the ECR registry.
+
+   Get short SHA: Retrieves the short SHA hash of the latest Git commit.
+
+   Build and push Docker image: Builds a Docker image and pushes it to the specified ECR repository.
+
+   Update Kubernetes Deployment Image: Updates the image tag in a Kubernetes deployment YAML file to match the built Docker image.
+   
+   Commit and Push Changes: Commits the changes made to the Kubernetes deployment YAML file and pushes them to the repository.
 
 - From AWS Console, go to CodeBuild -> Create Build Project. This step is similar to Jenkins Job.
 
