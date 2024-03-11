@@ -90,13 +90,6 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 - [Step-8: Istio Proxy uses Envoy](#-Step-8-Istio-Proxy-uses-Envoy)
 - [Step-9: Test our BookStore Application](#-Step-9-Test-our-BookStore-Application)
 - [Step-10: Monitoring](#-Step-10-Monitoring)
-- [Step-11: Update RDS Security Group](#-Step-11-Update-RDS-Security-Group)
-- [Step-12: Use Beanstalk instance to connect RDS to deploy schemas](#-Step-12-Beanstalk-instance-to-connect-RDS-to-deploy-schemas)
-- [Step-13: Update Code with pom & setting.xml](#-Step-13-Update-Code-with-pom-setting.xml)
-- [Step-14: Build Job Setup](#-Step-14-Build-Job-Setup)
-- [Step-15: Create Pipeline](#-Step-15-Create-Pipeline)
-- [Step-16: SNS Notification](#-Step-16-SNS-Notification)
-- [Step-17: Validate & Test](#-Step-17-Validate&Test)
 
 ## ✨ Step-1-Clone-the-repository
 
