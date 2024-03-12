@@ -46,6 +46,15 @@ You must also know Terraform workflow
 
 ![alt text](assets/images/terraform-on-aws/terraform-workflow.jpg)
 
+## 📋 Table of Contents
+
+- [Step 1: Terraform Configuration files](#-terraform-configuration-files)
+- [Step 2: Instructions of Deployment](#-Instructions-of-Deployment)
+- [Step 3: Conclusion](#-conclusion)
+- [Step 4: License](#-license)
+
+## ✨Terraform Configuration files 
+
 You need to write different files generating resources
 
 1 - Provider
@@ -122,7 +131,7 @@ Know as Output Value : it is a convenient way to get useful information about yo
 
 - [Output Configuration](outputs.tf)
 
-## 💼 Instructions
+## 💼 Instructions of Deployment
 
 Follow these steps to deploy the architecture:
 
