@@ -239,35 +239,35 @@ At the end you will recieve a prompt message showing all resources status: creat
 Go back on the console and check all actual state resources one by one to see. You will have
 
   
-                                        VPC: 
+VPC
 
    ![alt text](assets/images/terraform-on-aws/terraform-vpc.jpg) 
 
    
-                                Instances running: 
+Instances running
 
    ![alt text](assets/images/terraform-on-aws/terraform-instances.jpg) 
 
    
-                             Application Load Balancer: 
+Application Load Balancer
 
    ![alt text](assets/images/terraform-on-aws/terraform-ALB.jpg) 
 
    
-                               Autoscaling groups: 
+Autoscaling groups 
 
 
    ![alt text](assets/images/terraform-on-aws/terraform-ASG.jpg) 
 
   
-                                      Database: 
+Database 
 
 
    ![alt text](assets/images/terraform-on-aws/terraform-db.jpg) 
 
   
-                                     Web page: 
-                                     
+Web page 
+
 
    ![alt text](assets/images/terraform-on-aws/terraform-web.jpg) 
 
