@@ -49,67 +49,50 @@ You must also know Terraform workflow
 ## 📋 Table of Contents
 
 - [Step 1: Terraform Configuration files](#-terraform-configuration-files)
+  
+  1-ProviderConfiguration
+
+  2-Variables Configuration
+
+  3-VPC Configuration
+
+  4-Web Tier Configuration
+
+  5-Application tier Configuration
+
+  6-Database tier Configuration
+
+  7-Output Configuration
+
 - [Step 2: Instructions of Deployment](#-Instructions-of-Deployment)
-- [Step 3: Conclusion](#-conclusion)
-- [Step 4: License](#-license)
+
+   1-Clone Repository
+
+   2-Initialize Folder
+
+   3-Format files
+
+   4-Validate files
+
+   5-Plan
+
+   6- Apply 
+
+   7- Review of Resources 
+
+   8- Destroy 
 
 ## ✨Terraform Configuration files 
 
 You need to write different files generating resources
 
-1 - Provider
+1 - Provider Configuratin
 
 Here we declare our cloud provider and we specify the region where we will be launching resources
 
 - [provider Configuration](providers.tf)
 
-2 - Foundation and Networking
-
-This is where you create the basement where all the resources will be launch. It includes VPC, Subnets, IGW, NATGateway, EIP and Route table
-
-- [VPC Configuration](vpc.tf)
-
-3 - Web Tier
-
-The Web Tier is the entry point for incoming user requests. Resources are launched in the public subnets. It typically includes:
-
-- **Web Servers**: These run your application code that contains the apache which will deploy the index.html located in the user data.
-- **Load Balancer**: Distributes traffic across multiple web servers running in the public subnets.
-- **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
-- **Security Groups**: Controls incoming and outgoing traffic from outside to the web servers.
-
-
-- [Web ASG Configuration](web_asg.tf)
-- [Web ELB Configuration](web_alb.tf)
-
-
-4 - Application Tier
-
-The Application Tier hosts the application servers responsible for running business logic and interacting with the database tier. Key components include:
-
-- **Application Servers**: These run your application code and can be horizontally scaled.
-- **Load Balancer**: Distributes traffic to the application servers running in the private subnets.
-- **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
-- **Security Groups**: Controls incoming and outgoing traffic from the web servers to the application servers.
-
-Application Tier Configuration
-
-- [App ASG Configuration](app_asg.tf)
-- [App ELB Configuration](app_alb.tf)
-
-5 - Database Tier
-
-The Database Tier stores and manages our application data. We use Amazon RDS for a managed, a highly available and scalable database to store application data. Key components include:
-
-- **Subnets groups**: List of subnets wherether Server databases will run.
-- **Amazon RDS**: A managed database service for MySQL/PostgreSQL/SQL Server databases.
-- **Security Groups**: Control incoming and outgoing traffic to the database.
-
-Database Tier Configuration
-
-- [DB Configuration](db.tf)
-
-6 - Variables
+2 - Variables Configuration
 
 This is where we declare all variables and thier value. It includes
 
@@ -125,7 +108,54 @@ We have
 - [value Configuration](terraform.tfvars)
 - [Secrets Configuration](secrets.tfvars)
 
-7 - Output
+3 - VPC Configuration
+
+This is where you create the basement where all the resources will be launch. It includes VPC, Subnets, IGW, NATGateway, EIP and Route table
+
+- [VPC Configuration](vpc.tf)
+
+4 - Web Tier Configuration
+
+The Web Tier is the entry point for incoming user requests. Resources are launched in the public subnets. It typically includes:
+
+- **Web Servers**: These run your application code that contains the apache which will deploy the index.html located in the user data.
+- **Load Balancer**: Distributes traffic across multiple web servers running in the public subnets.
+- **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
+- **Security Groups**: Controls incoming and outgoing traffic from outside to the web servers.
+
+
+- [Web ASG Configuration](web_asg.tf)
+- [Web ELB Configuration](web_alb.tf)
+
+
+5 - Application Tier Configuration
+
+The Application Tier hosts the application servers responsible for running business logic and interacting with the database tier. Key components include:
+
+- **Application Servers**: These run your application code and can be horizontally scaled.
+- **Load Balancer**: Distributes traffic to the application servers running in the private subnets.
+- **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
+- **Security Groups**: Controls incoming and outgoing traffic from the web servers to the application servers.
+
+Application Tier Configuration
+
+- [App ASG Configuration](app_asg.tf)
+- [App ELB Configuration](app_alb.tf)
+
+6 - Database Tier Configuration
+
+The Database Tier stores and manages our application data. We use Amazon RDS for a managed, a highly available and scalable database to store application data. Key components include:
+
+- **Subnets groups**: List of subnets wherether Server databases will run.
+- **Amazon RDS**: A managed database service for MySQL/PostgreSQL/SQL Server databases.
+- **Security Groups**: Control incoming and outgoing traffic to the database.
+
+Database Tier Configuration
+
+- [DB Configuration](db.tf)
+
+
+7 - Output Configuration
 
 Know as Output Value : it is a convenient way to get useful information about your infranstructure printed on the CLI. It is showing the ARN, name or ID of a resource. In this case we are bringing out the DNS name of the web application Load balancer.  
 
@@ -135,13 +165,17 @@ Know as Output Value : it is a convenient way to get useful information about yo
 
 Follow these steps to deploy the architecture:
 
-1. Clone the repository:
+1. Clone Repository:
+
+Clone the repository in your local machine using the command "git clone" 
 
    ```bash
    git clone https://github.com/mathesh-me/multi-tier-architecture-using-terraform.git
    ```
 
-2. Initialize the folder Terraform and apply the configuration by typing command:
+2. Inititize Folder
+
+Initialize the folder containing configuation files that were clone to Terraform and apply the configuration by typing  the following command
   
    ```bash
    terraform init
@@ -151,13 +185,17 @@ Follow these steps to deploy the architecture:
 
    ![alt text](assets/images/terraform-on-aws/terraform-init.jpg)
 
-3. Apply any changes on files and Review the changes and confirm the good format with command:
+3. Format Files
+
+Apply any changes on files and Review the changes and confirm the good format with command:
    
     ```bash
    terraform fmt
    ```
    
-4. Ensure that every files are good and ready to go with the command: 
+4. Validate Files
+
+Ensure that every files are syntactically valid and ready to go with the command: 
    
     ```bash
    terraform validate
@@ -167,7 +205,9 @@ Follow these steps to deploy the architecture:
 
   ![alt text](assets/images/terraform-on-aws/terraform-validate.jpg) 
 
-5. Check and confirm the numbers of resources that will be created by using command:
+5. Plan
+
+Create an excution plan to provide the achievement of the desired state. It Check and confirm the numbers of resources that will be create. Use command:
    
    ```bash
    terraform plan
@@ -177,21 +217,25 @@ Follow these steps to deploy the architecture:
 
    ![alt text](assets/images/terraform-on-aws/terraform-plan.jpg) 
 
-6. Launch the creation of all resources with the command:  
+6. Apply
+
+Bring all desired state resources on life. It Launch and create all resources listed in the configuration files. The command to perform the task is:  
    
-    ```bash
+   ```bash
    terraform apply -auto-approve
    ```
 
-   You will be prompt to type the username and password for the database. After you enter those criticals data the process of creation will start and you will be able to see which resourse is on the way to be create and the time it taking to create.
+You will be prompt to type the username and password for the database. After you enter those criticals data the process of creation will start and you will be able to see which resourse is on the way to be create and the time it taking to create.
 
    ![alt text](assets/images/terraform-on-aws/terraform-proces.jpg)  
 
-   At the end you will recieve a prompt message showing all resources status: created, changed and the numbers of them. 
+At the end you will recieve a prompt message showing all resources status: created, changed and the numbers of them. 
 
    ![alt text](assets/images/terraform-on-aws/terraform-apply.jpg)  
 
-7. Go back on the console and check all resources one by one to see. You will have
+7. Review of resources
+
+Go back on the console and check all actual state resources one by one to see. You will have
 
    VPC: 
 
@@ -217,13 +261,15 @@ Follow these steps to deploy the architecture:
 
    ![alt text](assets/images/terraform-on-aws/terraform-web.jpg) 
 
-8. Destroy all resources after with the command:
+8. Destroy
+
+Destroy the terraform managed infrastructure meaning all resourcescreated will be shut down. This action can be done with the command "terraform destroy" 
    
-    ```bash
+   ```bash
    terraform destroy -auto-approve
    ```
    
-   At the end you will recieve a prompt message showing all resources has been destroyed
+At the end you will recieve a prompt message showing all resources has been destroyed
 
    ![alt text](assets/images/terraform-on-aws/terraform-destroy.jpg)  
 
