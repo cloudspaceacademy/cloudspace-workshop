@@ -38,9 +38,9 @@ Before you get started, make sure you have the following prerequisites in place:
 
 You must know and understand:
 
-- **High Availability**: The architecture is designed for fault tolerance and redundancy.
-- **Scalability**: Easily scale the web and application tiers to handle varying workloads.
-- **Security**: Security groups and network ACLs are configured to ensure a secure environment.
+- **High Availability**: The architecture is designed for fault tolerance and redundancy. Reason why resources will be deploy across two avaibility zones to ensure resilience to failures. 
+- **Scalability**: Easily scale the web and application tiers to handle varying workloads automaticaly based on demand.
+- **Security**: Implementing security best practices such as Security groups and network ACLs are configured to ensure a secure and protected environment.
 
 You must also know Terraform workflow
 
@@ -90,7 +90,7 @@ Application Tier Configuration
 
 5 - Database Tier
 
-The Database Tier stores and manages our application data. We use Amazon RDS for a managed database service. Key components include:
+The Database Tier stores and manages our application data. We use Amazon RDS for a managed, a highly available and scalable database to store application data. Key components include:
 
 - **Subnets groups**: List of subnets wherether Server databases will run.
 - **Amazon RDS**: A managed database service for MySQL/PostgreSQL/SQL Server databases.
@@ -132,7 +132,7 @@ Follow these steps to deploy the architecture:
    git clone https://github.com/mathesh-me/multi-tier-architecture-using-terraform.git
    ```
 
-2. Initialize the folder Terraform by typing command:
+2. Initialize the folder Terraform and apply the configuration by typing command:
   
    ```bash
    terraform init
@@ -218,3 +218,11 @@ Follow these steps to deploy the architecture:
 
    ![alt text](assets/images/terraform-on-aws/terraform-destroy.jpg)  
 
+
+## 🤝 Conclusion
+
+The Multi-Tier Architecture project on AWS using Terraform offers a scalable, resilient, and automated solution for deploying multi-tier applications on the AWS cloud platform. By leveraging Terraform and AWS services, the project enables developers to quickly provision, manage, and scale infrastructure resources, facilitating efficient application deployment and operations.
+
+## 📄 License
+
+This project is licensed under the CloudSpace Academy License
