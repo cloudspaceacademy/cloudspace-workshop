@@ -189,7 +189,7 @@ Initialize the folder containing configuation files that were clone to Terraform
 
 Apply any changes on files and Review the changes and confirm the good format with command:
    
-    ```bash
+   ```bash
    terraform fmt
    ```
    
@@ -197,7 +197,7 @@ Apply any changes on files and Review the changes and confirm the good format wi
 
 Ensure that every files are syntactically valid and ready to go with the command: 
    
-    ```bash
+   ```bash
    terraform validate
    ```
 
