@@ -50,7 +50,7 @@ You must also know Terraform workflow
 
 - [Step 1: Terraform Configuration files](#-terraform-configuration-files)
   
-  1-ProviderConfiguration
+  1-Provider Configuration
 
   2-Variables Configuration
 
@@ -110,7 +110,7 @@ We have
 
 3 - VPC Configuration
 
-This is where you create the basement where all the resources will be launch. It includes VPC, Subnets, IGW, NATGateway, EIP and Route table
+This is where you create the basement, foundation and networking where all the resources will be launch. It includes VPC, Subnets, IGW, NatGateway, EIP and Route tables
 
 - [VPC Configuration](vpc.tf)
 
@@ -123,6 +123,7 @@ The Web Tier is the entry point for incoming user requests. Resources are launch
 - **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
 - **Security Groups**: Controls incoming and outgoing traffic from outside to the web servers.
 
+Web tier configuration files are :
 
 - [Web ASG Configuration](web_asg.tf)
 - [Web ELB Configuration](web_alb.tf)
@@ -137,7 +138,7 @@ The Application Tier hosts the application servers responsible for running busin
 - **Auto Scaling**: Automatically adjusts the number of web servers based on traffic.
 - **Security Groups**: Controls incoming and outgoing traffic from the web servers to the application servers.
 
-Application Tier Configuration
+Application Tier Configuration files are: 
 
 - [App ASG Configuration](app_asg.tf)
 - [App ELB Configuration](app_alb.tf)
@@ -150,7 +151,7 @@ The Database Tier stores and manages our application data. We use Amazon RDS for
 - **Amazon RDS**: A managed database service for MySQL/PostgreSQL/SQL Server databases.
 - **Security Groups**: Control incoming and outgoing traffic to the database.
 
-Database Tier Configuration
+Database Tier Configuration file:
 
 - [DB Configuration](db.tf)
 
@@ -173,7 +174,7 @@ Clone the repository in your local machine using the command "git clone"
    git clone https://github.com/mathesh-me/multi-tier-architecture-using-terraform.git
    ```
 
-2. Inititize Folder
+2. Initialize Folder
 
 Initialize the folder containing configuation files that were clone to Terraform and apply the configuration by typing  the following command
   
@@ -237,29 +238,39 @@ At the end you will recieve a prompt message showing all resources status: creat
 
 Go back on the console and check all actual state resources one by one to see. You will have
 
-   VPC: 
+  
+                                        VPC: 
 
    ![alt text](assets/images/terraform-on-aws/terraform-vpc.jpg) 
 
-   Instances running: 
+   
+                                Instances running: 
 
    ![alt text](assets/images/terraform-on-aws/terraform-instances.jpg) 
 
-   Application Load Balancer: 
+   
+                             Application Load Balancer: 
 
    ![alt text](assets/images/terraform-on-aws/terraform-ALB.jpg) 
 
-   Autoscaling groups: 
+   
+                               Autoscaling groups: 
+
 
    ![alt text](assets/images/terraform-on-aws/terraform-ASG.jpg) 
 
-   Database: 
+  
+                                      Database: 
+
 
    ![alt text](assets/images/terraform-on-aws/terraform-db.jpg) 
 
-   Web page: 
+  
+                                     Web page: 
+                                     
 
    ![alt text](assets/images/terraform-on-aws/terraform-web.jpg) 
+
 
 8. Destroy
 
@@ -269,6 +280,7 @@ Destroy the terraform managed infrastructure meaning all resourcescreated will b
    terraform destroy -auto-approve
    ```
    
+
 At the end you will recieve a prompt message showing all resources has been destroyed
 
    ![alt text](assets/images/terraform-on-aws/terraform-destroy.jpg)  
