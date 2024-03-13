@@ -38,7 +38,7 @@ GitHub Actions is an integrated continuous integration and continuous deployment
 
 ## 📌 Architecture Diagram
 
-![alt diagram](assets/images/netflix-ish-deployment-netflix-ish-deployment-architecture-diagram.png)
+![alt diagram](assets/images/netflix-ish-deployment-architecture-diagram.png)
 
 ## 🚦 Getting Started
 
