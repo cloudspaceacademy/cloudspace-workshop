@@ -54,10 +54,14 @@ Before diving into the project, let’s ensure that we have the necessary prereq
 ## 📋 Table of Contents
 
 - [Step-1: Setup EC2 instance](#-Step-1-Setup-EC2-instance)
-- [Step-2: Setup Jenkins](#-Step-2-Setup-Jenkins)
-- [Step-3: Setup Jenkins pipeline](#-Step-3-Setup-Jenkins-Pipeline)
-- [Step-4: Push Docker container to Dockerhub](#-Step-4-push-Docker-container-to-Dockerhub)
-- [Step-5: AWS-CodeArtifact](Step-5-Setup-AWS-CodeArtifact)
+- [Step-2: Setup SonarQube](#-Step-2-Setup-SonarQube)
+- [Step-3: Integration SonarQube with GitHub Actions](#-Step-3-Integration-SonarQube-with-GitHub-Actions)
+- [Step-4: Scanning file with Trivy](Step-5-Scanning-file-with-Trivy)
+- [Step-5: Push Docker container to Dockerhub](#-Step-5-Push-Docker-container-to-Dockerhub)
+- [Step-6: Create TMDB API Key](Step-6-Create-TMDB-API-Key)
+- [Step-7: Add a self hosted runner to EC2](Step-7-Add-a-self-hosted-runner-to-EC2)
+- [Step-8: Final workflow to run the container](Step-8-Final-workflow-to-run-the-container)
+
 
 ## ✨ Step-1-Setup-EC2-instance
 
@@ -65,7 +69,7 @@ Launch an “ubuntu (t2.medium) “ instance and login through “putty” or �
 
 ![alt diagram](assets/images/netflix-ish-deployment3.png)
 
-## ✨ Step-2-Setup-Jenkins
+## ✨ Step-2-Setup-SonarQube
 
 Connect to your Ec2 instance using Putty, Mobaxterm or Git bash and install docker on it.
 
@@ -368,7 +372,7 @@ If you go to your Docker hub, you will find that the image is pushed to Dockerhu
 
 ![alt diagram](assets/images/netflix-ish-deployment44.png)
 
-## ✨ Step-6-Add-a-self-hosted-runner-to-EC2
+## ✨ Step-7-Add-a-self-hosted-runner-to-EC2
 
 Go to GitHub and click on Settings → Actions → Runners
 
@@ -404,7 +408,7 @@ Let’s start runner
 
 ![alt diagram](assets/images/netflix-ish-deployment50.png)
 
-## ✨ Step-6-Final-workflow-to-run-the-container
+## ✨ Step-8-Final-workflow-to-run-the-container
 
 Let’s add a deployment workflow
 
