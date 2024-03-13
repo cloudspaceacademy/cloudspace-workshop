@@ -48,51 +48,51 @@ You must also know Terraform workflow
 
 ## 📋 Table of Contents
 
-- [Step 1: Terraform Configuration files](#-terraform-configuration-files)
+I - Terraform Configuration files
   
-  1-Provider Configuration
+  [Step 1: Provider Configuration](#-Provider-configuration)
 
-  2-Variables Configuration
+  [Step 2: Variables Configuration](#-variables-configuration)
 
-  3-VPC Configuration
+  [Step 3: VPC Configuration](#-VPC-configuration)
 
-  4-Web Tier Configuration
+  [Step 4: web tier Configuration](#-we-tier-configuration)
 
-  5-Application tier Configuration
+  [Step 5: Application tier Configuration](#-Applicayion-tier-configuration)
 
-  6-Database tier Configuration
+  [Step 6: Database tier Configuration](#-database-tier-configuration)
 
-  7-Output Configuration
+  [Step 7: Output Configuration](#-Output-configuration)
 
-- [Step 2: Instructions of Deployment](#-Instructions-of-Deployment)
+II - Instructions of Deployment
 
-   1-Clone Repository
+  [Step 8: Clone Repository](#-Clone-Repository)
 
-   2-Initialize Folder
+  [Step 9: Initialize Folder](#-Initialize-Folder)
 
-   3-Format files
+  [Step 10: Format Files](#-Format-Files)
 
-   4-Validate files
+  [Step 11: Validate Files](#-Validate-Files)
 
-   5-Plan
+  [Step 12: Plan](#-Plan)
 
-   6- Apply 
+  [Step 13: Apply](#-Apply)
 
-   7- Review of Resources 
+  [Step 14: Review of Resources](#-Review-Of-Resources)
 
-   8- Destroy 
+  [Step 15: Destroy](#-Destroy)
 
 ## ✨Terraform Configuration files 
 
 You need to write different files generating resources
 
-1 - Provider Configuratin
+Step 1:  Provider Configuration
 
 Here we declare our cloud provider and we specify the region where we will be launching resources
 
 - [provider Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/providers.tf)
 
-2 - Variables Configuration
+Step 2:  Variables Configuration
 
 This is where we declare all variables and thier value. It includes
 
@@ -108,13 +108,13 @@ We have
 - [value Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/terraform.tfvars)
 - [Secrets Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/secret.tfvars)
 
-3 - VPC Configuration
+Step 3: VPC Configuration
 
 This is where you create the basement, foundation and networking where all the resources will be launch. It includes VPC, Subnets, IGW, NatGateway, EIP and Route tables
 
 - [VPC Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/vpc.tf)
 
-4 - Web Tier Configuration
+Step 4:  Web Tier Configuration
 
 The Web Tier is the entry point for incoming user requests. Resources are launched in the public subnets. It typically includes:
 
@@ -129,7 +129,7 @@ Web tier configuration files are :
 - [Web ELB Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/web_alb.tf)
 
 
-5 - Application Tier Configuration
+Step 5: Application Tier Configuration
 
 The Application Tier hosts the application servers responsible for running business logic and interacting with the database tier. Key components include:
 
@@ -143,7 +143,7 @@ Application Tier Configuration files are:
 - [App ASG Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/app_asg.tf)
 - [App ELB Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/app_alb.tf)
 
-6 - Database Tier Configuration
+Step 6:  Database Tier Configuration
 
 The Database Tier stores and manages our application data. We use Amazon RDS for a managed, a highly available and scalable database to store application data. Key components include:
 
@@ -156,7 +156,7 @@ Database Tier Configuration file:
 - [DB Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/db.tf)
 
 
-7 - Output Configuration
+Step 7: Output Configuration
 
 Know as Output Value : it is a convenient way to get useful information about your infranstructure printed on the CLI. It is showing the ARN, name or ID of a resource. In this case we are bringing out the DNS name of the web application Load balancer.  
 
@@ -166,7 +166,7 @@ Know as Output Value : it is a convenient way to get useful information about yo
 
 Follow these steps to deploy the architecture:
 
-1. Clone Repository:
+Step 8: Clone Repository:
 
 Clone the repository in your local machine using the command "git clone" 
 
@@ -174,7 +174,7 @@ Clone the repository in your local machine using the command "git clone"
    git clone https://github.com/cloudspaceacademy/terraform-on-aws.git
    ```
 
-2. Initialize Folder
+Step 9: Initialize Folder
 
 Initialize the folder containing configuation files that were clone to Terraform and apply the configuration by typing  the following command
   
@@ -186,7 +186,7 @@ Initialize the folder containing configuation files that were clone to Terraform
 
    ![alt text](assets/images/terraform-on-aws/terraform-init.jpg)
 
-3. Format Files
+Step 10: Format Files
 
 Apply any changes on files and Review the changes and confirm the good format with command:
    
@@ -194,7 +194,7 @@ Apply any changes on files and Review the changes and confirm the good format wi
    terraform fmt
    ```
    
-4. Validate Files
+Step 11: Validate Files
 
 Ensure that every files are syntactically valid and ready to go with the command: 
    
@@ -206,7 +206,7 @@ Ensure that every files are syntactically valid and ready to go with the command
 
   ![alt text](assets/images/terraform-on-aws/terraform-validate.jpg) 
 
-5. Plan
+Step 12: Plan
 
 Create an excution plan to provide the achievement of the desired state. It Check and confirm the numbers of resources that will be create. Use command:
    
@@ -218,7 +218,7 @@ Create an excution plan to provide the achievement of the desired state. It Chec
 
    ![alt text](assets/images/terraform-on-aws/terraform-plan.jpg) 
 
-6. Apply
+Step 13: Apply
 
 Bring all desired state resources on life. It Launch and create all resources listed in the configuration files. The command to perform the task is:  
    
@@ -234,7 +234,7 @@ At the end you will recieve a prompt message showing all resources status: creat
 
    ![alt text](assets/images/terraform-on-aws/terraform-apply.jpg)  
 
-7. Review of resources
+Step 14: Review of resources
 
 Go back on the console and check all actual state resources one by one to see. You will have
 
@@ -272,7 +272,7 @@ Web page
    ![alt text](assets/images/terraform-on-aws/terraform-web.jpg) 
 
 
-8. Destroy
+Step 15: Destroy
 
 Destroy the terraform managed infrastructure meaning all resourcescreated will be shut down. This action can be done with the command "terraform destroy" 
    
