@@ -90,7 +90,7 @@ You need to write different files generating resources
 
 Here we declare our cloud provider and we specify the region where we will be launching resources
 
-- [provider Configuration](providers.tf)
+- [provider Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/providers.tf)
 
 2 - Variables Configuration
 
@@ -104,15 +104,15 @@ Reminder: Never push terraform.tfvars and secrets.tfvars file on Github
 
 We have 
 
-- [variables Configuration](variables.tf)
-- [value Configuration](terraform.tfvars)
-- [Secrets Configuration](secrets.tfvars)
+- [variables Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/variables.tf)
+- [value Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/terraform.tfvars)
+- [Secrets Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/secret.tfvars)
 
 3 - VPC Configuration
 
 This is where you create the basement, foundation and networking where all the resources will be launch. It includes VPC, Subnets, IGW, NatGateway, EIP and Route tables
 
-- [VPC Configuration](vpc.tf)
+- [VPC Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/vpc.tf)
 
 4 - Web Tier Configuration
 
@@ -125,8 +125,8 @@ The Web Tier is the entry point for incoming user requests. Resources are launch
 
 Web tier configuration files are :
 
-- [Web ASG Configuration](web_asg.tf)
-- [Web ELB Configuration](web_alb.tf)
+- [Web ASG Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/web_asg.tf)
+- [Web ELB Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/web_alb.tf)
 
 
 5 - Application Tier Configuration
@@ -140,8 +140,8 @@ The Application Tier hosts the application servers responsible for running busin
 
 Application Tier Configuration files are: 
 
-- [App ASG Configuration](app_asg.tf)
-- [App ELB Configuration](app_alb.tf)
+- [App ASG Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/app_asg.tf)
+- [App ELB Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/app_alb.tf)
 
 6 - Database Tier Configuration
 
@@ -153,14 +153,14 @@ The Database Tier stores and manages our application data. We use Amazon RDS for
 
 Database Tier Configuration file:
 
-- [DB Configuration](db.tf)
+- [DB Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/db.tf)
 
 
 7 - Output Configuration
 
 Know as Output Value : it is a convenient way to get useful information about your infranstructure printed on the CLI. It is showing the ARN, name or ID of a resource. In this case we are bringing out the DNS name of the web application Load balancer.  
 
-- [Output Configuration](outputs.tf)
+- [Output Configuration](https://github.com/cloudspaceacademy/terraform-on-aws/blob/main/outputs.tf)
 
 ## 💼 Instructions of Deployment
 
@@ -171,7 +171,7 @@ Follow these steps to deploy the architecture:
 Clone the repository in your local machine using the command "git clone" 
 
    ```bash
-   git clone https://github.com/mathesh-me/multi-tier-architecture-using-terraform.git
+   git clone https://github.com/cloudspaceacademy/terraform-on-aws.git
    ```
 
 2. Initialize Folder
@@ -285,10 +285,6 @@ At the end you will recieve a prompt message showing all resources has been dest
 
    ![alt text](assets/images/terraform-on-aws/terraform-destroy.jpg)  
 
-
-## 🤝 Conclusion
-
-The Multi-Tier Architecture project on AWS using Terraform offers a scalable, resilient, and automated solution for deploying multi-tier applications on the AWS cloud platform. By leveraging Terraform and AWS services, the project enables developers to quickly provision, manage, and scale infrastructure resources, facilitating efficient application deployment and operations.
 
 ## 📄 License
 
