@@ -70,9 +70,13 @@ Make sure you have this Installed on your system.
 
 Additionally, we need to add users to the Docker group to grant them appropriate permissions. Run the following commands to add users to the Docker group:
 
->   sudo usermod -aG docker $USER
->   sudo usermod -aG docker jenkins
->   sudo reboot
+```bash
+
+    sudo usermod -aG docker $USER
+    sudo usermod -aG docker jenkins
+    sudo reboot
+
+```
 
 Remember to reboot the system after making these changes.
 
