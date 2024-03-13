@@ -38,6 +38,7 @@ Before diving into the project, let’s ensure that we have the necessary prereq
 - [Step-2: Setup Jenkins](#-Step-2-Setup-Jenkins)
 - [Step-3: Setup Jenkins pipeline](#-Step-3-Setup-Jenkins-Pipeline)
 - [Step-4: Push Docker container to Dockerhub](#-Step-4-push-Docker-container-to-Dockerhub)
+- [Step-5: AWS-CodeArtifact](Step-5-Setup-AWS-CodeArtifact)
 
 ## ✨ Step-1-Setup-EC2-instance
 
@@ -272,7 +273,7 @@ Here is the full Declarative pipeline code for django-notes-app deployment on ec
 
 ```
 
-## 🌟 Step-2-Setup-AWS-CodeArtifact
+## ✨ Step-5-Setup-AWS-CodeArtifact
 
 Whenever the developer commits their code in GitHub, after every commit, it should reflect in the live web app.
 · For that, we will use “github webhook”.
