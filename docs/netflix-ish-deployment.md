@@ -53,14 +53,14 @@ Before diving into the project, let’s ensure that we have the necessary prereq
 
 ## 📋 Table of Contents
 
-- [Step-1: Setup EC2 instance](#✨-step-1-setup-ec2-instance)
-- [Step-2: Setup SonarQube](#✨-step-2-setup-sonarqube)
-- [Step-3: Integration SonarQube with GitHub Actions](#✨-step-3-integration-sonarqube-with-github-actions)
-- [Step-4: Scanning file with Trivy](#✨-step-4-scanning-file-with-trivy)
-- [Step-5: Push Docker container to Dockerhub](#✨-step-5-push-docker-container-to-dockerhub)
-- [Step-6: Create TMDB API Key](#✨-step-6-create-tmdb-api-key)
-- [Step-7: Add a self hosted runner to EC2](#✨-step-7-add-a-self-hosted-runner-to-ec2)
-- [Step-8: Final workflow to run the container](#✨-step-8-final-workflow-to-run-the-container)
+- [Step-1: Setup EC2 instance](#-step-1-setup-ec2-instance)
+- [Step-2: Setup SonarQube](#-step-2-setup-sonarqube)
+- [Step-3: Integration SonarQube with GitHub Actions](#-step-3-integration-sonarqube-with-github-actions)
+- [Step-4: Scanning file with Trivy](#-step-4-scanning-file-with-trivy)
+- [Step-5: Push Docker container to Dockerhub](#-step-5-push-docker-container-to-dockerhub)
+- [Step-6: Create TMDB API Key](#-step-6-create-tmdb-api-key)
+- [Step-7: Add a self hosted runner to EC2](#-step-7-add-a-self-hosted-runner-to-ec2)
+- [Step-8: Final workflow to run the container](#-step-8-final-workflow-to-run-the-container)
 
 
 ## ✨ Step-1-Setup-EC2-instance
