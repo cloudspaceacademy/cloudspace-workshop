@@ -402,6 +402,7 @@ eks_managed_node_groups = {
 ``` 
  Tags are assigned to the created resources for organization and identification purposes.
 
+
 ## 🚀 Step-3-Terraform-Cloud-Env-Vars
 
 We need to configure our organization with our Access Key and Secret Key and you can do it specific for the workspace or globally for the organization.
@@ -438,6 +439,7 @@ under the organization setting go to Variable sets and Create new one
 
    - Install aws-cli
 
+
 ```bash
 sudo apt install unzip	
 curl "<https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip>" -o "awscliv2.zip"	
@@ -446,7 +448,9 @@ sudo ./aws/install
 aws --version  
 ``` 
 
+
    - Install **kubectl**
+
 
 ```bash
 curl -LO "<https://dl.k8s.io/release/$>(curl -L -s <https://dl.k8s.io/release/stable.txt>)/bin/linux/amd64/kubectl"	
@@ -457,11 +461,13 @@ sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 kubectl version --client   
 ``` 
 
+
    - Configure AWS Credentials
 
    - Run **aws configure** and provide your AWS Access Key ID, Secret Access Key, default region, and output format.
 
    - Configure **kubectl**
+
 
 
 ```bash
@@ -470,6 +476,7 @@ aws eks update-kubeconfig --name my-cluster --region us-east-1
 
    - Test **kubectl** by running
 
+
 ```bash
 kubectl get nodes
 
@@ -477,6 +484,8 @@ connect: connection refused
 ```
 
 **"Not working" 😕**
+
+
 
 You need to troubleshoot why **kubectl** client can’t talk with the EKS endpoint
 
@@ -497,7 +506,9 @@ Now you can run
 
 
 
+
 ## 💽 Step-4-Install-Required-CLIs
+
 
 We installed the **AWS CLI, kubectl** Now we need to install **istioctl** and **argo CLI** and install the required k8s resources.
 
@@ -529,6 +540,7 @@ We installed the **AWS CLI, kubectl** Now we need to install **istioctl** and **
 
 - **Argo CD install**
 
+
 ```bash
     kubectl create namespace argocd	
     kubectl apply -n argocd -f <https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml>
@@ -555,6 +567,7 @@ Modify your continuous integration workflows to include the ECR repository URL f
 
 
 ![alt diagram](assets/images/microservices-bookstore/output.jpeg)
+
 
 
 Under **.github/workflows/** you will find the Github Actions we will use to **build/push** our container images let’s break one workflow down.
@@ -605,15 +618,20 @@ Under **.github/workflows/** you will find the Github Actions we will use to **b
    ***Commit and Push Changes***: Commits the changes made to the Kubernetes deployment YAML file and pushes them to the repository.
 
 
+
 ## 🚀 Step-6-Update-GitHub-Repo-with-AWS-Secrets
+
 
 
 under **Setting > Secrets** and **Variables > Actions**
 
+
 ![alt diagram](assets/images/microservices-bookstore/awssecret.jpeg)
 
 
+
 **Run Workflows**
+
 
 Let’s the party begins
 
@@ -624,11 +642,15 @@ Let’s the party begins
 
    - under Setting > Actions > General
 
+
 ![alt diagram](assets/images/microservices-bookstore/workflowpermission.jpeg)
+
 
 The Workflows Will run if there is a push inside the services directories or manually, I will run them Manually Now.
 
+
 ![alt diagram](assets/images/microservices-bookstore/work.jpeg)
+
 
 You will find that I only added the Update Kubernetes Deployment Image part to **details_workflow.yml**
 
@@ -644,12 +666,15 @@ You need to check the **manifests/kubernetes** image part to mach it with the Wo
 
 **Argo CD**
 
+
 - add the repository to argo cd
 - I will do it VIA SSH
 - add the public ssh key to you Github account setting
 - add the private ssh key to the argocd repository connect page
 
+
 ![alt diagram](assets/images/microservices-bookstore/argo2.jpeg)
+
 
 - deploy Namespaces to the cluster **staging** and **monitoring**
 - under **manifests/networking/namespaces/** Add **NEW APP** in the argocd homepage
@@ -658,6 +683,7 @@ You need to check the **manifests/kubernetes** image part to mach it with the Wo
 - you can keep the Namespace field blank
 
 ## 💼 Step-7-Deploy-the-Microservices-Manifests
+
 
 - under **argocd/apps/services** you will find Application CRD for argocd app to deploy our manifest resources to Kubernetes
 
@@ -683,13 +709,18 @@ You need to check the **manifests/kubernetes** image part to mach it with the Wo
 
 - Namespace: staging
 
+
 ![alt diagram](assets/images/microservices-bookstore/argo2.jpeg)
+
 
 You can check the Argo CD home page also you can check the resources in the EKS on AWS Console
 
+
 ![alt diagram](assets/images/microservices-bookstore/argo3.jpeg)
 
+
 If you check any POD in staging Namespace you will find that each one has two Containers
+
 
 ![alt diagram](assets/images/microservices-bookstore/argo4.jpeg)
 
@@ -698,6 +729,7 @@ If you check any POD in staging Namespace you will find that each one has two Co
 ## 🔒 Step-8-Istio-Proxy-uses-Envoy
 
 Envoy proxies are deployed as sidecars to services, logically augmenting the services with Envoy’s many built-in features, for example:
+
 
 - Dynamic service discovery
 
@@ -721,6 +753,7 @@ Envoy proxies are deployed as sidecars to services, logically augmenting the ser
 
 **Istio Gateways and VirtualServices**:
 
+
 - **Istio Gateway**: An Istio Gateway is a configuration resource that describes how external traffic (e.g., traffic from outside the Kubernetes cluster) is brought into the service mesh and how it's routed to services. It acts as an entry point into the mesh for incoming traffic. Gateways can be used to manage different protocols, such as HTTP, HTTPS, or TCP, and they can handle traffic based on hostnames, paths, and ports.
 
    - ***Hosts and Ports***: A Gateway is configured with a set of hosts and ports that it listens on. These could be domain names (for HTTP/HTTPS) or IP addresses and port numbers (for TCP).
@@ -738,6 +771,7 @@ Envoy proxies are deployed as sidecars to services, logically augmenting the ser
    - ***Fault Injection***: VirtualServices can also be used to inject faults or delays into requests for testing purposes.
 
 
+
    **Deploy Gateways and VirtualServices**
 
    - under **manifests/networking/gateways** Create Argo CD app to deploy them
@@ -745,7 +779,9 @@ Envoy proxies are deployed as sidecars to services, logically augmenting the ser
    ![alt diagram](assets/images/microservices-bookstore/ergraph.jpeg)
 
 
+
 ## 🗄️ Step-9-Test-our-BookStore-Application
+
 
    - From the previous step you can browse to **istio-ingressgateway url/productpage**
    - To get the url
