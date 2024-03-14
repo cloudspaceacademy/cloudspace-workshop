@@ -148,7 +148,7 @@ Now let’s talk about the Terraform Directory before running our first plan and
 
 
 
-[terraform.tf]
+## terraform.tf :
 
 This Terraform configuration block includes settings for Terraform Cloud (formerly known as Terraform Enterprise) and configures the AWS provider. Let's break down the code step by step:
 
@@ -202,7 +202,7 @@ This Terraform configuration block includes settings for Terraform Cloud (former
 
 
 
-**vpc.tf**
+## vpc.tf :
 
 This Terraform code snippet is used to create a Virtual Private Cloud (VPC) in Amazon Web Services (AWS) using the ***terraform-aws-modules/vpc/aws*** module. Let's break down the code step by step:
 
@@ -271,7 +271,7 @@ These settings enable NAT and VPN gateways for the VPC:
 
 
 
-**ecr.tf**:
+## ecr.tf :
 
 This Terraform code snippet creates an Amazon Elastic Container Registry (ECR) repository and defines an output to display the repository URL. Let's break down the code step by step:
 
@@ -306,7 +306,7 @@ This part of the code defines an output named "repository_url" that will display
 
 
 
-**eks.tf**:
+## eks.tf :
 
 This Terraform code is used to create an Amazon Elastic Kubernetes Service (EKS) cluster using the ***terraform-aws-modules/eks/aws*** module. Let's break down the code step by step:
 
