@@ -97,44 +97,61 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 - Please clone the project repository to your local machine. (You will need to be added to the CloudSpace organization before you can clone this.)
 
    ```bash
-   git clone https://github.com/waleedmagdy/devops_project.git
+   git clone https://github.com/cloudspaceacademy/microservice-bookstore.git
    ```
 
 ## 🌟 Step-2-Terraform-Workflow
 
+
 - In this workshop, we are using **Terraform Cloud** to let Terraform runs in a consistent and reliable environment.
+
 
 ![alt diagram](assets/images/microservices-bookstore/terraformworkflow.png)
 
+
 - First create an account on Terraform Cloud if you don’t have one.
+
 
 [Terraform Cloud Sign up](https://app.terraform.io/public/signup/account?trk=article-ssr-frontend-pulse_little-text-block) (Terraform Cloud has a Free License so no need to worry about pricing)
 
+
 - Create your first organization and then Set up a workspace in Terraform Cloud. This will help manage your infrastructure as code and enable collaboration.
+
 
 ![alt diagram](assets/images/microservices-bookstore/workspace.jpeg)
 
+
 - Choose Version Control Workflow to work with your repository on Github which we will choose to do here.
+
 
 - If you want to work with Terraform from your Terminal you can go for CLI-driven Workflow.
 
+
 **Version Control Workflow > Connect to Github > choose the repository > configure Setting**
+
 
 ![alt diagram](assets/images/microservices-bookstore/config.jpeg)
 
 
 - In Advanced options configure the Terraform Working Directory terraform as our Terraform code is inside **terraform directory**
 
+
 Before talking about the Terraform files, let's take time to read about Terraform — Best Practices  t[erraform-best-practices](https://www.terraform-best-practices.com/) and [Terraform — Best Practices](https://medium.com/devops-mojo/terraform-best-practices-top-best-practices-for-terraform-configuration-style-formatting-structure-66b8d938f00c)
+
 
 Learn and Pick the right Terraform code Structure you need to follow.
 
+
 Now let’s talk about the Terraform Directory before running our first plan and apply.
+
+
+
 
 
 **terraform.tf**
 
 This Terraform configuration block includes settings for Terraform Cloud (formerly known as Terraform Enterprise) and configures the AWS provider. Let's break down the code step by step:
+
 
    **1. Terraform Cloud Configuration:**
 
@@ -149,28 +166,40 @@ This Terraform configuration block includes settings for Terraform Cloud (former
         }
         }  
 ```  
+
    Let's breakdown the above code:
+
    
    In this part of the code, you are configuring Terraform Cloud settings:
 
+
    ***organization***: The name of the Terraform Cloud organization is set to "devops-project-org".
+
 
    ***workspaces***: Within the organization, a workspace is configured with the name "devops-project-workspace". A workspace in Terraform Cloud is an isolated environment for managing infrastructure.
 
+
    **2. AWS Provider Configuration:**
+
 
 ```bash
     provider "aws" {
     region = "us-east-1"
     }  
 ```  
+
    Let's breakdown the above code:
+
 
    This part of the code configures the AWS provider using the provider block:
 
    ***aws***: The name of the provider is "aws", indicating that this block configures resources from Amazon Web Services (AWS).
 
+
    ***region***: The AWS region is set to "us-east-1", which means resources created using this provider will be located in the US East (North Virginia) region.
+
+
+
 
 
 **vpc.tf**
@@ -239,6 +268,9 @@ These settings enable NAT and VPN gateways for the VPC:
    This block assigns tags to the resources created by the module. Tags are metadata that provide additional information about resources. Here, two tags are added: "Terraform" with the value "true" and "Environment" with the value "dev".
 
 
+
+
+
 **ecr.tf**:
 
 This Terraform code snippet creates an Amazon Elastic Container Registry (ECR) repository and defines an output to display the repository URL. Let's break down the code step by step:
@@ -269,6 +301,9 @@ In this part of the code, you are creating an AWS ECR repository named "my-ecr-r
 }  
 ``` 
 This part of the code defines an output named "repository_url" that will display the URL of the ECR repository. The value of this output is set to the repository URL of the ***aws_ecr_repository.my_repo*** resource.
+
+
+
 
 
 **eks.tf**:
@@ -366,6 +401,7 @@ eks_managed_node_groups = {
     }      
 ``` 
  Tags are assigned to the created resources for organization and identification purposes.
+
 ## 🚀 Step-3-Terraform-Cloud-Env-Vars
 
 We need to configure our organization with our Access Key and Secret Key and you can do it specific for the workspace or globally for the organization.
@@ -459,9 +495,12 @@ Now you can run
     ip-10-0-1-149.ec2.internal   Ready    <none>   64s   v1.27.3-eks-a5565ad           
 ```
 
+
+
 ## 💽 Step-4-Install-Required-CLIs
 
 We installed the **AWS CLI, kubectl** Now we need to install **istioctl** and **argo CLI** and install the required k8s resources.
+
 
 - **istioctl**
 
@@ -471,6 +510,7 @@ We installed the **AWS CLI, kubectl** Now we need to install **istioctl** and **
     export PATH=$PWD/bin:$PATH
     istioctl install --set profile=demo -y 
 ```  
+
    **istioctl** is a command-line utility provided by Istio for installing and interacting with Istio deployments.
 
    **install** is the subcommand used to install Istio components.
@@ -486,6 +526,7 @@ We installed the **AWS CLI, kubectl** Now we need to install **istioctl** and **
     sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd 
 ```  
 
+
 - **Argo CD install**
 
 ```bash
@@ -493,6 +534,7 @@ We installed the **AWS CLI, kubectl** Now we need to install **istioctl** and **
     kubectl apply -n argocd -f <https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml>
     kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'        
 ```  
+
 
  ***kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'*** This command patches (updates) the Argo CD server service to change its service type to a LoadBalancer. This modification makes the Argo CD server accessible from outside the Kubernetes cluster via a load balancer's public IP address or DNS.
 
@@ -505,6 +547,7 @@ We installed the **AWS CLI, kubectl** Now we need to install **istioctl** and **
 ![alt diagram](assets/images/microservices-bookstore/argocd.jpeg)
 
 ***It’s not a best practice to do it from the Terminal but I will give you a hint “Terrafrom”***
+
 
 ## 🔧 Step-5-Update-Workflows-with-ECR-URL
 
@@ -564,9 +607,11 @@ Under **.github/workflows/** you will find the Github Actions we will use to **b
 
 ## 🚀 Step-6-Update-GitHub-Repo-with-AWS-Secrets
 
+
 under **Setting > Secrets** and **Variables > Actions**
 
 ![alt diagram](assets/images/microservices-bookstore/awssecret.jpeg)
+
 
 **Run Workflows**
 
@@ -590,6 +635,7 @@ You will find that I only added the Update Kubernetes Deployment Image part to *
 You need to complete the other Workflows
 
 You need to check the **manifests/kubernetes** image part to mach it with the Workflows
+
 
 
 **Check ECR Repo**
@@ -671,6 +717,8 @@ Envoy proxies are deployed as sidecars to services, logically augmenting the ser
 
 - Rich metrics
 
+
+
 **Istio Gateways and VirtualServices**:
 
 - **Istio Gateway**: An Istio Gateway is a configuration resource that describes how external traffic (e.g., traffic from outside the Kubernetes cluster) is brought into the service mesh and how it's routed to services. It acts as an entry point into the mesh for incoming traffic. Gateways can be used to manage different protocols, such as HTTP, HTTPS, or TCP, and they can handle traffic based on hostnames, paths, and ports.
@@ -696,6 +744,7 @@ Envoy proxies are deployed as sidecars to services, logically augmenting the ser
 
    ![alt diagram](assets/images/microservices-bookstore/ergraph.jpeg)
 
+
 ## 🗄️ Step-9-Test-our-BookStore-Application
 
    - From the previous step you can browse to **istio-ingressgateway url/productpage**
@@ -709,6 +758,8 @@ Envoy proxies are deployed as sidecars to services, logically augmenting the ser
    It will be the elb/dns under External-IP. We will open the application on our browser using that same link.
 
 ![alt diagram](assets/images/microservices-bookstore/page.jpeg)
+
+
 
 ## 💻 Step-10-Monitoring
 
@@ -730,6 +781,7 @@ one of a many dashboard you can import and a lot to explore
 
 ![alt diagram](assets/images/microservices-bookstore/graffana.jpeg)
 
+
 **Kiali**
 
 A comprehensive monitoring tool for Istio Service Mesh and also there is a lot to explore.
@@ -739,6 +791,7 @@ A comprehensive monitoring tool for Istio Service Mesh and also there is a lot t
 The dashboard can give you a Live fast response to any issue the could happen to any of your Microservice
 
 ![alt diagram](assets/images/microservices-bookstore/kiali2.gif)
+
 
 ## 📄 License
 
