@@ -148,7 +148,7 @@ Now let’s talk about the Terraform Directory before running our first plan and
 
 
 
-**terraform.tf**
+[terraform.tf]
 
 This Terraform configuration block includes settings for Terraform Cloud (formerly known as Terraform Enterprise) and configures the AWS provider. Let's break down the code step by step:
 
