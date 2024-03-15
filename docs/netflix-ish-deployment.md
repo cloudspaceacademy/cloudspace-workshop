@@ -530,3 +530,10 @@ FULL WORKFLOW
             run: docker run -d --name netflix -p 8081:80 sushantkapare1717/netflix:latest
 
 ```
+
+
+```bash 
+
+    #!/bin/bash
+
+```
