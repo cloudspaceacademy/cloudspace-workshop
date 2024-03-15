@@ -65,7 +65,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#lambda-and-s3events-demo" class="md-skip">
+        <a href="#lambda-and-s3-events-demo" class="md-skip">
           Skip to content
         </a>
       
@@ -321,6 +321,17 @@
         
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Serverless on AWS
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -330,6 +341,103 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Project Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Problem Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#techonology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Techonology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌟 Project Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-create-the-s3-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 1 - Create the S3 Buckets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-create-the-lambda-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 2 - Create the Lambda Role
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1538,6 +1646,92 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Project Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Problem Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#techonology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Techonology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#project-requirements" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌟 Project Requirements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#instructions" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Instructions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Instructions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#stage-1-create-the-s3-buckets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 1 - Create the S3 Buckets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#stage-2-create-the-lambda-role" class="md-nav__link">
+    <span class="md-ellipsis">
+      Stage 2 - Create the Lambda Role
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -1551,16 +1745,75 @@
                   
 
 
-<h1 id="lambda-and-s3events-demo">Lambda and S3Events DEMO</h1>
+<h1 id="lambda-and-s3-events-demo">Lambda and S3 Events DEMO</h1>
 <p><img alt="alt text" src="../assets/images/aws-lambda-s3/lambda-s3-1.png" /></p>
-<p><img alt="alt text" src="../assets/images/aws-lambda-s3/lambda-s3-2.png" /></p>
-<h1 id="video-guides-for-this-mini-project">Video Guides for this Mini Project</h1>
+<!-- ![alt text](assets/images/aws-lambda-s3/lambda-s3-2.png) -->
+
+<!-- # Video Guides for this Mini Project -->
+
 <!-- - [PART1](https://youtu.be/_7AKW8cSGU0)
 - [PART2](https://youtu.be/KQOS0ggsrfE)
 - [PLAYLIST](https://youtube.com/playlist?list=PLTk5ZYSbd9MjgSy227IkAB0GS4WAU5qcU) -->
 
+<h2 id="project-overview">🚀 Project Overview</h2>
 <p>In this demo lesson you're going to create a simple event-driven image processing pipeline. The pipeline uses two S3 buckets, a source bucket and a processed bucket. When images are added to the source bucket a lambda function is triggered based on the PUT.  When invoked the lambda function receives the <code>event</code> and extracts the bucket and object information. Once those details are known, the lambda function, using the <code>PIL</code> module pixelates the image with <code>5</code> different variations (8x8, 16x16, 32x32, 48x48 and 64x64) and uploads them to the processed bucket.</p>
-<h1 id="stage-1-create-the-s3-buckets">Stage 1 - Create the S3 Buckets</h1>
+<h2 id="problem-statement">🔧 Problem Statement</h2>
+<p>The existing manual image pixelation process faces challenges of scalability, operational inefficiency, and inconsistency, necessitating the development of an automated solution. This project seeks to address these issues by creating an event-driven image processing pipeline utilizing AWS services. By leveraging S3 buckets for input and output, Lambda functions for processing triggered events, and the Python Imaging Library (PIL) for pixelation, the pipeline aims to automate the pixelation of images with various resolutions upon their addition to the source bucket. This approach will enhance scalability, reduce operational overhead, ensure consistency, and improve the efficiency of image processing tasks, thereby streamlining the entire process and enabling reliable and timely delivery of pixelated images.</p>
+<h2 id="techonology-stack">💽 Techonology Stack</h2>
+<p>● <strong>Lambda Function:</strong> AWS Lambda to execute the code in the cloud</p>
+<p>● <strong>Storage:</strong> AWS S3 for file storage.</p>
+<p>● <strong>Python:</strong> Python3 runtime (PIL Library)</p>
+<h2 id="architecture-diagram">📌 Architecture Diagram</h2>
+<p><img alt="alt diagram" src="../assets/images/aws-lambda-s3/lambda-s3-2.png" /></p>
+<h2 id="project-requirements">🌟 Project Requirements</h2>
+<ol>
+<li>
+<p><strong>AWS Account</strong>: Access to an AWS account with permissions to create and manage S3 buckets, Lambda functions, and IAM roles.</p>
+</li>
+<li>
+<p><strong>S3 Buckets</strong>:</p>
+</li>
+<li>Source Bucket: A designated bucket to receive incoming images triggering the pipeline.</li>
+<li>
+<p>Processed Bucket: Another bucket to store processed images after pixelation.</p>
+</li>
+<li>
+<p><strong>Lambda Function</strong>:</p>
+</li>
+<li>Python runtime environment configured for Lambda.</li>
+<li>Integration with the source S3 bucket to trigger on object upload events.</li>
+<li>Use of the Python Imaging Library (PIL) or similar libraries for image pixelation.</li>
+<li>
+<p>Ability to upload pixelated images to the processed bucket.</p>
+</li>
+<li>
+<p><strong>Event Configuration</strong>:</p>
+</li>
+<li>
+<p>Setup S3 event notifications to trigger the Lambda function upon image uploads to the source bucket.</p>
+</li>
+<li>
+<p><strong>Permissions and Roles</strong>:</p>
+</li>
+<li>
+<p>IAM roles and policies configured to grant necessary permissions for Lambda function to access S3 buckets and perform pixelation tasks.</p>
+</li>
+<li>
+<p><strong>Testing and Validation</strong>:</p>
+</li>
+<li>Testing of the entire pipeline to ensure proper triggering of events, image pixelation, and uploading of processed images.</li>
+<li>
+<p>Validation of pixelated images in the processed bucket to ensure accuracy and quality.</p>
+</li>
+<li>
+<p><strong>Documentation</strong>:</p>
+</li>
+<li>Comprehensive documentation covering setup instructions, configuration steps, and troubleshooting guidelines.</li>
+<li>Instructions for maintaining and monitoring the pipeline for ongoing operations.</li>
+</ol>
+<p>These requirements form the foundation for developing the event-driven image processing pipeline and ensure its successful implementation, operation, and maintenance within the AWS environment.</p>
+<h2 id="instructions">🚀 Instructions</h2>
+<h3 id="stage-1-create-the-s3-buckets">Stage 1 - Create the S3 Buckets</h3>
 <p>Move to the S3 Console https://s3.console.aws.amazon.com/s3/home?region=us-east-1#<br />
 We will be creating <code>2</code> buckets, both with the same name, but each suffixed with a functional title (see below) , all settings apart from region and bucket name can be left as default.<br />
 Click <code>Create Bucket</code> and create a bucket in the format of unique-name-<code>source</code> in the <code>us-east-1</code> region<br />
@@ -1568,7 +1821,7 @@ Click <code>Create Bucket</code> and create a another bucket in the format of un
 These names will need to be unique, but as an example  </p>
 <p>Bucket 1 : <code>dontusethisname-source</code><br />
 Bucket 2 : <code>dontusethisname-processed</code>  </p>
-<h1 id="stage-2-create-the-lambda-role">Stage 2 - Create the Lambda Role</h1>
+<h3 id="stage-2-create-the-lambda-role">Stage 2 - Create the Lambda Role</h3>
 <p>Move to the IAM Console https://console.aws.amazon.com/iamv2/home?#/home<br />
 Click Roles, then Create Role<br />
 For <code>Trusted entity type</code>, pick <code>AWS service</code><br />
@@ -1625,7 +1878,7 @@ run <code>unzip Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_6
 These are the Pillow module files ... required for image manipulation in Python 3.9 (which is what the lambda function will be using)<br />
 From the same folder, run <code>zip -r ../my-deployment-package.zip .</code> which will create a lambda function zip, containing all these files in the parent directory.  </p>
 <p>This zip will be the same zip which i link below, so if you do have any issues with the lambda function, you can use the one i've pre-created.</p>
-<h1 id="stage-3-create-the-lambda-function">Stage 3 - Create the Lambda Function</h1>
+<h3 id="stage-3-create-the-lambda-function">Stage 3 - Create the Lambda Function</h3>
 <p>Move to the lambda console (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)<br />
 Click <code>Create Function</code><br />
 We're going to be <code>Authoring from Scratch</code><br />
@@ -1640,7 +1893,7 @@ Either 1, download this zip to your local machine (https://github.com/acantril/l
 or 2, locate the .zip you created yourself in the <code>Stage 3(pre)</code> above - they will be identical<br />
 On the lambda screen, click <code>Upload</code> locate and select that .zip, and then click the <code>Save</code> button<br />
 This upload will take a few minutes, but once complete you might see something saying <code>The deployment package of your Lambda function "pixelator" is too large to enable inline code editing. However, you can still invoke your function.</code> which is OK :)  </p>
-<h1 id="stage-4-configure-the-lambda-function-trigger">Stage 4 - Configure the Lambda Function &amp; Trigger</h1>
+<h3 id="stage-4-configure-the-lambda-function-trigger">Stage 4 - Configure the Lambda Function &amp; Trigger</h3>
 <p>Click <code>Configuration</code> tab and then <code>Environment variables</code><br />
 We need to add an environment variable telling the pixelator function which processed bucket to use, it will know the source bucket because it's told about that in the event data.<br />
 Click <code>Edit</code> then <code>Add environment variable</code>, under Key put <code>processed_bucket</code> and for <code>Value</code> put the bucket name of <em>your</em> processed bucket. 
@@ -1655,7 +1908,7 @@ In the dropdown pick <code>S3</code><br />
 Under <code>Bucket</code> pick your <em>source</em> bucket ... <em>AGAIN</em> be really really sure this is your source bucket and <em>NOT</em> your destination bucket and <em>NOT</em> any other bucket. Only pick your <em>SOURCE</em> bucket here.<br />
 You will need to check the <code>Recursive invocation</code> acknowledgment box, this is because this lambda function is invoked every time anything is added to the <em>source</em> bucket, if you configure this wrongly, or configure the environment variable above wrongly ... it will run the lambda function over and over again <em>for ever</em>. 
 Once checked, click <code>Add</code>  </p>
-<h1 id="stage-5-test-and-monitor">Stage 5 - Test and Monitor</h1>
+<h3 id="stage-5-test-and-monitor">Stage 5 - Test and Monitor</h3>
 <p>open a tab to the <code>cloudwatch logs</code> console (https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups)<br />
 make sure you have two tabs open to the <code>s3 console</code> (https://s3.console.aws.amazon.com/s3/home?region=us-east-1) 
 In one tab open your <code>-source</code> bucket &amp; in the other open the `-processed' bucket  </p>
@@ -1672,7 +1925,7 @@ Select each of the pixelated versions of the image ... you should have 5 (<code>
 Click <code>Open</code><br />
 You browser will either open or save all of the images<br />
 Open them one by one, starting with <code>8x8</code> and finally <code>64x64</code> in order ... notice how they are the same image, but less and less pixelated :)  </p>
-<h1 id="stage-6-cleanup">Stage 6 - Cleanup</h1>
+<h3 id="stage-6-cleanup">Stage 6 - Cleanup</h3>
 <p>Open the <code>pixelator</code> lambda function (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/pixelator?tab=code)<br />
 Delete the function<br />
 Move to the IAM Roles console (https://console.aws.amazon.com/iamv2/home#/roles) 
@@ -1687,6 +1940,8 @@ For each of the <code>source</code> and <code>processed</code> buckets do:</p>
 <li>Make sure the bucket is still selected, click <code>Delete</code>.   </li>
 <li>Type the name of the bucket then delete the bucket.  </li>
 </ul>
+<h2 id="license">📄 License</h2>
+<p>This project is licensed under the <strong>MIT License.</strong></p>
 
 
 
