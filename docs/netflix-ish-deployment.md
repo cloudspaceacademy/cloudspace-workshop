@@ -113,6 +113,8 @@ Update your Sonarqube password & This is the Sonarqube dashboard
 
 ## ✨ Step-3-Integration-SonarQube-with-GitHub-Actions
 
+First, clone the project on github using this [link](https://github.com/cloudspaceacademy/netflix-inspired-app.git)
+
 Integrating SonarQube with GitHub Actions allows you to automatically analyze your code for quality and security as part of your continuous integration pipeline.
 
 We already have Sonarqube up and running
