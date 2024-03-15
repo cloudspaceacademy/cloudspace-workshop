@@ -19,6 +19,7 @@ In this demo lesson you're going to create a simple event-driven image processin
 The existing manual image pixelation process faces challenges of scalability, operational inefficiency, and inconsistency, necessitating the development of an automated solution. This project seeks to address these issues by creating an event-driven image processing pipeline utilizing AWS services. By leveraging S3 buckets for input and output, Lambda functions for processing triggered events, and the Python Imaging Library (PIL) for pixelation, the pipeline aims to automate the pixelation of images with various resolutions upon their addition to the source bucket. This approach will enhance scalability, reduce operational overhead, ensure consistency, and improve the efficiency of image processing tasks, thereby streamlining the entire process and enabling reliable and timely delivery of pixelated images.
 
 ## 💽 Techonology Stack
+
 ● **Lambda Function:** AWS Lambda to execute the code in the cloud
 
 ● **Storage:** AWS S3 for file storage.
