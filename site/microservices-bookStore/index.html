@@ -571,6 +571,42 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#terraformtf" class="md-nav__link">
+    <span class="md-ellipsis">
+      terraform.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpctf" class="md-nav__link">
+    <span class="md-ellipsis">
+      vpc.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecrtf" class="md-nav__link">
+    <span class="md-ellipsis">
+      ecr.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ekstf" class="md-nav__link">
+    <span class="md-ellipsis">
+      eks.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-4-install-required-clis" class="md-nav__link">
     <span class="md-ellipsis">
       💽 Step-4-Install-Required-CLIs
@@ -1821,6 +1857,42 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#terraformtf" class="md-nav__link">
+    <span class="md-ellipsis">
+      terraform.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpctf" class="md-nav__link">
+    <span class="md-ellipsis">
+      vpc.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecrtf" class="md-nav__link">
+    <span class="md-ellipsis">
+      ecr.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ekstf" class="md-nav__link">
+    <span class="md-ellipsis">
+      eks.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-4-install-required-clis" class="md-nav__link">
     <span class="md-ellipsis">
       💽 Step-4-Install-Required-CLIs
@@ -1985,7 +2057,7 @@
 <li>Please clone the project repository to your local machine. (You will need to be added to the CloudSpace organization before you can clone this.)</li>
 </ul>
 <p><code>bash
-   git clone https://github.com/waleedmagdy/devops_project.git</code></p>
+   git clone https://github.com/cloudspaceacademy/microservice-bookstore.git</code></p>
 <h2 id="step-2-terraform-workflow">🌟 Step-2-Terraform-Workflow</h2>
 <ul>
 <li>In this workshop, we are using <strong>Terraform Cloud</strong> to let Terraform runs in a consistent and reliable environment.</li>
@@ -2015,7 +2087,7 @@
 <p>Before talking about the Terraform files, let's take time to read about Terraform — Best Practices  t<a href="https://www.terraform-best-practices.com/">erraform-best-practices</a> and <a href="https://medium.com/devops-mojo/terraform-best-practices-top-best-practices-for-terraform-configuration-style-formatting-structure-66b8d938f00c">Terraform — Best Practices</a></p>
 <p>Learn and Pick the right Terraform code Structure you need to follow.</p>
 <p>Now let’s talk about the Terraform Directory before running our first plan and apply.</p>
-<p><strong>terraform.tf</strong></p>
+<h2 id="terraformtf">terraform.tf :</h2>
 <p>This Terraform configuration block includes settings for Terraform Cloud (formerly known as Terraform Enterprise) and configures the AWS provider. Let's break down the code step by step:</p>
 <p><strong>1. Terraform Cloud Configuration:</strong></p>
 <pre><code class="language-bash">        terraform {
@@ -2041,7 +2113,7 @@
 <p>This part of the code configures the AWS provider using the provider block:</p>
 <p><strong><em>aws</em></strong>: The name of the provider is "aws", indicating that this block configures resources from Amazon Web Services (AWS).</p>
 <p><strong><em>region</em></strong>: The AWS region is set to "us-east-1", which means resources created using this provider will be located in the US East (North Virginia) region.</p>
-<p><strong>vpc.tf</strong></p>
+<h2 id="vpctf">vpc.tf :</h2>
 <p>This Terraform code snippet is used to create a Virtual Private Cloud (VPC) in Amazon Web Services (AWS) using the <strong><em>terraform-aws-modules/vpc/aws</em></strong> module. Let's break down the code step by step:</p>
 <p><strong>1. Module Declaration</strong>:</p>
 <pre><code class="language-bash">    module &quot;vpc&quot; {
@@ -2077,7 +2149,7 @@
     enable_vpn_gateway = true  
 </code></pre>
 <p>This block assigns tags to the resources created by the module. Tags are metadata that provide additional information about resources. Here, two tags are added: "Terraform" with the value "true" and "Environment" with the value "dev".</p>
-<p><strong>ecr.tf</strong>:</p>
+<h2 id="ecrtf">ecr.tf :</h2>
 <p>This Terraform code snippet creates an Amazon Elastic Container Registry (ECR) repository and defines an output to display the repository URL. Let's break down the code step by step:</p>
 <p><strong>1. ECR Repository Resource</strong>:</p>
 <pre><code class="language-bash">    resource &quot;aws_ecr_repository&quot; &quot;my_repo&quot; {
@@ -2094,7 +2166,7 @@
 }  
 </code></pre>
 <p>This part of the code defines an output named "repository_url" that will display the URL of the ECR repository. The value of this output is set to the repository URL of the <strong><em>aws_ecr_repository.my_repo</em></strong> resource.</p>
-<p><strong>eks.tf</strong>:</p>
+<h2 id="ekstf">eks.tf :</h2>
 <p>This Terraform code is used to create an Amazon Elastic Kubernetes Service (EKS) cluster using the <strong><em>terraform-aws-modules/eks/aws</em></strong> module. Let's break down the code step by step:</p>
 <p><strong>1. Module Declaration</strong>:</p>
 <pre><code class="language-bash">    module &quot;eks&quot; {
@@ -2160,6 +2232,8 @@ eks_managed_node_groups = {
     Terraform   = "true"
     }      </p>
 <pre><code> Tags are assigned to the created resources for organization and identification purposes.
+
+
 ## 🚀 Step-3-Terraform-Cloud-Env-Vars
 
 We need to configure our organization with our Access Key and Secret Key and you can do it specific for the workspace or globally for the organization.
@@ -2195,6 +2269,7 @@ under the organization setting go to Variable sets and Create new one
    - Install tools like **kubectl** (Kubernetes command-line tool), **aws-cli** (AWS Command Line Interface), and any other utilities you might need.
 
    - Install aws-cli
+
 
 ```bash
 sudo apt install unzip  
