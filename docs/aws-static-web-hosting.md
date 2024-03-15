@@ -22,7 +22,7 @@ Inefficient manual deployment processes and lack of content delivery network (CD
 
 Your team has asked you to create a way to automate the deployment of a website. Currently your developers have to go through the process manually to test each new update to their code. You’ll need to provide the static site URL to the developers and also make a modification to the code in the GitHub repo to verify the pipeline is working.
 
-https://github.com/cloudspaceacademy/aws-static-web-hosting.git
+`https://github.com/cloudspaceacademy/aws-static-web-hosting.git`
 
 1. Create a new repository in GitHub or CodeCommit and load the attached HTML.
 2. Create and configure a S3 bucket to host your static website.
@@ -68,7 +68,7 @@ File has been pushed from our local repo to CodeCommit.
 
 `Navigate to S3 -> Create Bucket.`
 
-Uncheck “Block all Public Access” and acknowledge.
+Uncheck **Block all Public Access** and acknowledge.
 
 `Navigate to your bucket -> Properties -> Edit Static website hosting`
 
@@ -88,7 +88,7 @@ The following will allow everyone to access the bucket using the GetObject comma
 
 Source Provider = **AWS CodeCommit**
 
-Repository name = “Select your repo from the list”
+Repository name = **Select your repo from the list**
 
 Branch Name = **Master**
 
@@ -146,7 +146,7 @@ Scroll down a little bit and change the view to Redirect HTTP to HTTPS and then 
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting13.png)
 
-This should send any HTTP request to HTTPS.
+This should send any **HTTP** request to **HTTPS**.
 
 Wait about 10 mins for the status to change from Deploying to Enabled.
 
