@@ -531,9 +531,3 @@ FULL WORKFLOW
 
 ```
 
-
-```bash 
-
-    #!/bin/bash
-
-```
