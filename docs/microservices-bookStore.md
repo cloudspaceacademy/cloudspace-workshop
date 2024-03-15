@@ -96,9 +96,9 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 
 - Please clone the project repository to your local machine. (You will need to be added to the CloudSpace organization before you can clone this.)
 
-   ```bash
-   git clone https://github.com/cloudspaceacademy/microservice-bookstore.git
-   ```
+```bash
+       git clone https://github.com/cloudspaceacademy/microservice-bookstore.git
+```
 
 ## 🌟 Step-2-Terraform-Workflow
 
@@ -136,7 +136,7 @@ Never disclose your Access Keys to anyone, and consistently utilize Secrets Mana
 - In Advanced options configure the Terraform Working Directory terraform as our Terraform code is inside **terraform directory**
 
 
-Before talking about the Terraform files, let's take time to read about Terraform — Best Practices  t[erraform-best-practices](https://www.terraform-best-practices.com/) and [Terraform — Best Practices](https://medium.com/devops-mojo/terraform-best-practices-top-best-practices-for-terraform-configuration-style-formatting-structure-66b8d938f00c)
+Before talking about the Terraform files, let's take time to read about Terraform — Best Practices  [terraform-best-practices](https://www.terraform-best-practices.com/) and [Terraform — Best Practices](https://medium.com/devops-mojo/terraform-best-practices-top-best-practices-for-terraform-configuration-style-formatting-structure-66b8d938f00c)
 
 
 Learn and Pick the right Terraform code Structure you need to follow.
@@ -394,7 +394,7 @@ eks_managed_node_groups = {
 
   **7. Tags**:
 
-  ```bash
+```bash
     tags = {
     Environment = "dev"
     Terraform   = "true"
@@ -441,11 +441,11 @@ under the organization setting go to Variable sets and Create new one
 
 
 ```bash
-sudo apt install unzip	
-curl "<https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip>" -o "awscliv2.zip"	
-unzip awscliv2.zip
-sudo ./aws/install
-aws --version  
+      sudo apt install unzip	
+      curl "<https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip>" -o "awscliv2.zip"	
+      unzip awscliv2.zip
+      sudo ./aws/install
+      aws --version  
 ``` 
 
 
@@ -453,12 +453,12 @@ aws --version
 
 
 ```bash
-curl -LO "<https://dl.k8s.io/release/$>(curl -L -s <https://dl.k8s.io/release/stable.txt>)/bin/linux/amd64/kubectl"	
-Kubectl
-curl -LO "<https://dl.k8s.io/$>(curl -L -s <https://dl.k8s.io/release/stable.txt>)/bin/linux/amd64/kubectl.sha256"
-echo "$(cat kubectl.sha256) kubectl" | sha256sum --check
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-kubectl version --client   
+      curl -LO "<https://dl.k8s.io/release/$>(curl -L -s <https://dl.k8s.io/release/stable.txt>)/bin/linux/amd64/kubectl"	
+      Kubectl
+      curl -LO "<https://dl.k8s.io/$>(curl -L -s <https://dl.k8s.io/release/stable.txt>)/bin/linux/amd64/kubectl.sha256"
+      echo "$(cat kubectl.sha256) kubectl" | sha256sum --check
+      sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+      kubectl version --client   
 ``` 
 
 
@@ -471,16 +471,16 @@ kubectl version --client
 
 
 ```bash
-aws eks update-kubeconfig --name my-cluster --region us-east-1  
+      aws eks update-kubeconfig --name my-cluster --region us-east-1  
 ```
 
    - Test **kubectl** by running
 
 
 ```bash
-kubectl get nodes
+      kubectl get nodes
 
-connect: connection refused    
+      connect: connection refused    
 ```
 
 **"Not working" 😕**
@@ -554,7 +554,7 @@ We installed the **AWS CLI, kubectl** Now we need to install **istioctl** and **
 
 
    ```bash
-    argocd admin initial-password -n argocd  
+      argocd admin initial-password -n argocd  
    ```  
 ![alt diagram](assets/images/microservices-bookstore/argocd.jpeg)
 
@@ -787,9 +787,9 @@ Envoy proxies are deployed as sidecars to services, logically augmenting the ser
    - To get the url
 
    ```bash
-    kubectl get services -n istio-system
-    NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                                                      AGE
-    istio-ingressgateway   LoadBalancer   172.20.27.197    ae271cd157c214ab888061809021225a-1922516608.us-east-1.elb.amazonaws.com   15021:32042/TCP,80:30092/TCP,443:31659/TCP,31400:31529/TCP,15443:32377/TCP   148m
+      kubectl get services -n istio-system
+      NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                                                      AGE
+      istio-ingressgateway   LoadBalancer   172.20.27.197    ae271cd157c214ab888061809021225a-1922516608.us-east-1.elb.amazonaws.com   15021:32042/TCP,80:30092/TCP,443:31659/TCP,31400:31529/TCP,15443:32377/TCP   148m
    ```
    It will be the elb/dns under External-IP. We will open the application on our browser using that same link.
 
@@ -826,7 +826,7 @@ A comprehensive monitoring tool for Istio Service Mesh and also there is a lot t
 
 The dashboard can give you a Live fast response to any issue the could happen to any of your Microservice
 
-![alt diagram](assets/images/microservices-bookstore/kiali2.gif)
+![alt diagram](assets/images/microservices-bookstore/kiali2.jpeg)
 
 
 ## 📄 License
