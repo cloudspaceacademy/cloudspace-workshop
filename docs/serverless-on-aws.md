@@ -1,7 +1,8 @@
 # Lambda and S3Events DEMO
 
-![alt text](assets/images/aws-lambda-s3/aws-lambda-s3-1.png)
-![alt text](assets/images/aws-lambda-s3/aws-lambda-s3-2.png)
+![alt text](assets/images/aws-lambda-s3/lambda-s3-1.png)
+
+![alt text](assets/images/aws-lambda-s3/lambda-s3-2.png)
 
 # Video Guides for this Mini Project
 
