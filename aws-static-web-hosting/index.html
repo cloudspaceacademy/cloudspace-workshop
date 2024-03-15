@@ -1849,7 +1849,7 @@
 <p><img alt="alt diagram" src="../assets/images/aws-static-web-hosting/architecture-diagram.png" /></p>
 <h2 id="project-requirements">🌟 Project Requirements</h2>
 <p>Your team has asked you to create a way to automate the deployment of a website. Currently your developers have to go through the process manually to test each new update to their code. You’ll need to provide the static site URL to the developers and also make a modification to the code in the GitHub repo to verify the pipeline is working.</p>
-<p>https://github.com/cloudspaceacademy/aws-static-web-hosting.git</p>
+<p><code>https://github.com/cloudspaceacademy/aws-static-web-hosting.git</code></p>
 <ol>
 <li>Create a new repository in GitHub or CodeCommit and load the attached HTML.</li>
 <li>Create and configure a S3 bucket to host your static website.</li>
@@ -1881,7 +1881,7 @@
 <h3 id="step-1-setup-s3-bucket">✨ Step-1-Setup-S3-Bucket</h3>
 <p><strong>Create S3 Bucket</strong></p>
 <p><code>Navigate to S3 -&gt; Create Bucket.</code></p>
-<p>Uncheck “Block all Public Access” and acknowledge.</p>
+<p>Uncheck <strong>Block all Public Access</strong> and acknowledge.</p>
 <p><code>Navigate to your bucket -&gt; Properties -&gt; Edit Static website hosting</code></p>
 <p>Enable Static website hosting and add your index document</p>
 <p>Now we need to create a bucket policy. Got to Permissions and edit the bucket policy.</p>
@@ -1891,7 +1891,7 @@
 <p><strong>Setup Pipeline</strong></p>
 <p><code>Navigate to CodePipeline -&gt; Create pipeline provide a name and click next.</code></p>
 <p>Source Provider = <strong>AWS CodeCommit</strong></p>
-<p>Repository name = “Select your repo from the list”</p>
+<p>Repository name = <strong>Select your repo from the list</strong></p>
 <p>Branch Name = <strong>Master</strong></p>
 <p><img alt="alt text" src="../assets/images/aws-static-web-hosting/a-web-hosting4.png" /></p>
 <p>Skip the build stage.</p>
@@ -1920,7 +1920,7 @@
 <p><img alt="alt text" src="../assets/images/aws-static-web-hosting/a-web-hosting12.png" /></p>
 <p>Scroll down a little bit and change the view to Redirect HTTP to HTTPS and then create distribution.</p>
 <p><img alt="alt text" src="../assets/images/aws-static-web-hosting/a-web-hosting13.png" /></p>
-<p>This should send any HTTP request to HTTPS.</p>
+<p>This should send any <strong>HTTP</strong> request to <strong>HTTPS</strong>.</p>
 <p>Wait about 10 mins for the status to change from Deploying to Enabled.</p>
 <p>Click on your distribution and copy the Distribution domain name.</p>
 <p><img alt="alt text" src="../assets/images/aws-static-web-hosting/a-web-hosting14.png" /></p>
