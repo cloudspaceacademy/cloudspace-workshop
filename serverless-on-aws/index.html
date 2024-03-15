@@ -1552,13 +1552,13 @@
 
 
 <h1 id="lambda-and-s3events-demo">Lambda and S3Events DEMO</h1>
-<p><img alt="DEMOARCHITECTURE" src="https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/02_LABINSTRUCTIONS/Architecture.png" /></p>
+<p><img alt="alt text" src="assets/images/aws-lambda-s3/aws-lambda-s3-1.png" />
+<img alt="alt text" src="assets/images/aws-lambda-s3/aws-lambda-s3-2.png" /></p>
 <h1 id="video-guides-for-this-mini-project">Video Guides for this Mini Project</h1>
-<ul>
-<li><a href="https://youtu.be/_7AKW8cSGU0">PART1</a></li>
-<li><a href="https://youtu.be/KQOS0ggsrfE">PART2</a></li>
-<li><a href="https://youtube.com/playlist?list=PLTk5ZYSbd9MjgSy227IkAB0GS4WAU5qcU">PLAYLIST</a></li>
-</ul>
+<!-- - [PART1](https://youtu.be/_7AKW8cSGU0)
+- [PART2](https://youtu.be/KQOS0ggsrfE)
+- [PLAYLIST](https://youtube.com/playlist?list=PLTk5ZYSbd9MjgSy227IkAB0GS4WAU5qcU) -->
+
 <p>In this demo lesson you're going to create a simple event-driven image processing pipeline. The pipeline uses two S3 buckets, a source bucket and a processed bucket. When images are added to the source bucket a lambda function is triggered based on the PUT.  When invoked the lambda function receives the <code>event</code> and extracts the bucket and object information. Once those details are known, the lambda function, using the <code>PIL</code> module pixelates the image with <code>5</code> different variations (8x8, 16x16, 32x32, 48x48 and 64x64) and uploads them to the processed bucket.</p>
 <h1 id="stage-1-create-the-s3-buckets">Stage 1 - Create the S3 Buckets</h1>
 <p>Move to the S3 Console https://s3.console.aws.amazon.com/s3/home?region=us-east-1#<br />
@@ -1687,7 +1687,6 @@ For each of the <code>source</code> and <code>processed</code> buckets do:</p>
 <li>Make sure the bucket is still selected, click <code>Delete</code>.   </li>
 <li>Type the name of the bucket then delete the bucket.  </li>
 </ul>
-<p>That's all folks! :)  </p>
 
 
 
