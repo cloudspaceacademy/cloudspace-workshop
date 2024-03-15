@@ -1,18 +1,67 @@
-# Lambda and S3Events DEMO
+# Lambda and S3 Events DEMO
 
 ![alt text](assets/images/aws-lambda-s3/lambda-s3-1.png)
 
-![alt text](assets/images/aws-lambda-s3/lambda-s3-2.png)
+<!-- ![alt text](assets/images/aws-lambda-s3/lambda-s3-2.png) -->
 
-# Video Guides for this Mini Project
+<!-- # Video Guides for this Mini Project -->
 
 <!-- - [PART1](https://youtu.be/_7AKW8cSGU0)
 - [PART2](https://youtu.be/KQOS0ggsrfE)
 - [PLAYLIST](https://youtube.com/playlist?list=PLTk5ZYSbd9MjgSy227IkAB0GS4WAU5qcU) -->
 
+## 🚀 Project Overview
+
 In this demo lesson you're going to create a simple event-driven image processing pipeline. The pipeline uses two S3 buckets, a source bucket and a processed bucket. When images are added to the source bucket a lambda function is triggered based on the PUT.  When invoked the lambda function receives the `event` and extracts the bucket and object information. Once those details are known, the lambda function, using the `PIL` module pixelates the image with `5` different variations (8x8, 16x16, 32x32, 48x48 and 64x64) and uploads them to the processed bucket.
 
-# Stage 1 - Create the S3 Buckets
+## 🔧 Problem Statement
+
+The existing manual image pixelation process faces challenges of scalability, operational inefficiency, and inconsistency, necessitating the development of an automated solution. This project seeks to address these issues by creating an event-driven image processing pipeline utilizing AWS services. By leveraging S3 buckets for input and output, Lambda functions for processing triggered events, and the Python Imaging Library (PIL) for pixelation, the pipeline aims to automate the pixelation of images with various resolutions upon their addition to the source bucket. This approach will enhance scalability, reduce operational overhead, ensure consistency, and improve the efficiency of image processing tasks, thereby streamlining the entire process and enabling reliable and timely delivery of pixelated images.
+
+## 💽 Techonology Stack
+● **Lambda Function:** AWS Lambda to execute the code in the cloud
+
+● **Storage:** AWS S3 for file storage.
+
+● **Python:** Python3 runtime (PIL Library)
+
+## 📌 Architecture Diagram
+
+![alt diagram](assets/images/aws-lambda-s3/lambda-s3-2.png)
+
+## 🌟 Project Requirements
+
+1. **AWS Account**: Access to an AWS account with permissions to create and manage S3 buckets, Lambda functions, and IAM roles.
+
+2. **S3 Buckets**:
+   - Source Bucket: A designated bucket to receive incoming images triggering the pipeline.
+   - Processed Bucket: Another bucket to store processed images after pixelation.
+
+3. **Lambda Function**:
+   - Python runtime environment configured for Lambda.
+   - Integration with the source S3 bucket to trigger on object upload events.
+   - Use of the Python Imaging Library (PIL) or similar libraries for image pixelation.
+   - Ability to upload pixelated images to the processed bucket.
+
+4. **Event Configuration**:
+   - Setup S3 event notifications to trigger the Lambda function upon image uploads to the source bucket.
+
+5. **Permissions and Roles**:
+   - IAM roles and policies configured to grant necessary permissions for Lambda function to access S3 buckets and perform pixelation tasks.
+
+6. **Testing and Validation**:
+   - Testing of the entire pipeline to ensure proper triggering of events, image pixelation, and uploading of processed images.
+   - Validation of pixelated images in the processed bucket to ensure accuracy and quality.
+
+7. **Documentation**:
+   - Comprehensive documentation covering setup instructions, configuration steps, and troubleshooting guidelines.
+   - Instructions for maintaining and monitoring the pipeline for ongoing operations.
+
+These requirements form the foundation for developing the event-driven image processing pipeline and ensure its successful implementation, operation, and maintenance within the AWS environment.
+
+## 🚀 Instructions
+
+### Stage 1 - Create the S3 Buckets
 
 Move to the S3 Console https://s3.console.aws.amazon.com/s3/home?region=us-east-1#  
 We will be creating `2` buckets, both with the same name, but each suffixed with a functional title (see below) , all settings apart from region and bucket name can be left as default.  
@@ -23,7 +72,7 @@ These names will need to be unique, but as an example
 Bucket 1 : `dontusethisname-source`  
 Bucket 2 : `dontusethisname-processed`  
 
-# Stage 2 - Create the Lambda Role
+### Stage 2 - Create the Lambda Role
 
 Move to the IAM Console https://console.aws.amazon.com/iamv2/home?#/home  
 Click Roles, then Create Role  
@@ -93,9 +142,7 @@ From the same folder, run `zip -r ../my-deployment-package.zip .` which will cre
 
 This zip will be the same zip which i link below, so if you do have any issues with the lambda function, you can use the one i've pre-created.
 
-
-
-# Stage 3 - Create the Lambda Function
+### Stage 3 - Create the Lambda Function
 
 Move to the lambda console (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)  
 Click `Create Function`  
@@ -112,8 +159,7 @@ or 2, locate the .zip you created yourself in the `Stage 3(pre)` above - they wi
 On the lambda screen, click `Upload` locate and select that .zip, and then click the `Save` button  
 This upload will take a few minutes, but once complete you might see something saying `The deployment package of your Lambda function "pixelator" is too large to enable inline code editing. However, you can still invoke your function.` which is OK :)  
 
-
-# Stage 4 - Configure the Lambda Function & Trigger
+### Stage 4 - Configure the Lambda Function & Trigger
 
 Click `Configuration` tab and then `Environment variables`  
 We need to add an environment variable telling the pixelator function which processed bucket to use, it will know the source bucket because it's told about that in the event data.  
@@ -132,7 +178,7 @@ Under `Bucket` pick your *source* bucket ... *AGAIN* be really really sure this 
 You will need to check the `Recursive invocation` acknowledgment box, this is because this lambda function is invoked every time anything is added to the *source* bucket, if you configure this wrongly, or configure the environment variable above wrongly ... it will run the lambda function over and over again *for ever*. 
 Once checked, click `Add`  
 
-# Stage 5 - Test and Monitor
+### Stage 5 - Test and Monitor
 
 open a tab to the `cloudwatch logs` console (https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups)  
 make sure you have two tabs open to the `s3 console` (https://s3.console.aws.amazon.com/s3/home?region=us-east-1) 
@@ -152,7 +198,7 @@ Click `Open`
 You browser will either open or save all of the images  
 Open them one by one, starting with `8x8` and finally `64x64` in order ... notice how they are the same image, but less and less pixelated :)  
 
-# Stage 6 - Cleanup
+### Stage 6 - Cleanup
 
 Open the `pixelator` lambda function (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/pixelator?tab=code)  
 Delete the function  
@@ -168,3 +214,6 @@ For each of the `source` and `processed` buckets do:
 - Make sure the bucket is still selected, click `Delete`.   
 - Type the name of the bucket then delete the bucket.  
 
+## 📄 License
+
+This project is licensed under the **MIT License.**
