@@ -127,8 +127,8 @@ Click `Review Policy`
 For name put `pixelator_access_inline`  and create the policy.  
 
 ### Stage 3 (pre) - ONLY DO THIS PART IF YOU WANT TO GET EXPERIENCE OF CREATING A LAMBDA ZIP
-## this guide is only tested on macOS, it should work on linux, windows may require different tools.
-## if in doubt, skip to step 3 below
+This guide is only tested on macOS, it should work on linux, windows may require different tools.
+if in doubt, skip to step 3 below
 
 From the CLI/Terminal
 Create a folder my_lambda_deployment  
