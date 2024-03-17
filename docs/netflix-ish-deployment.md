@@ -19,7 +19,7 @@ This project aims to automate the deployment of an application using CI/CD tools
 The Automated Deployment of Containerized a Netflix-Like Application project aims to automate the deployment process of a video streaming platform using modern DevOps tools and practices. Leveraging GitHub Actions for CI/CD, Docker for containerization, Trivy for container image vulnerability scanning, and SonarQube for code quality analysis.
 GitHub Actions is an integrated continuous integration and continuous deployment (CI/CD) platform provided by GitHub that allows developers to automate various software development workflows. It enables you to create, customize, and share automated tasks, or “actions,” directly within your GitHub repositories. These actions can be triggered by events like code pushes, pull requests, or external inputs, and they can perform tasks such as building, testing, deploying, and more. GitHub Actions simplifies the automation of repetitive tasks, streamlining the software development process and ensuring code quality and consistency by automating various stages of the development lifecycle, ultimately helping teams to collaborate more efficiently and deploy code with confidence.
 
-![alt diagram](assets/images/netflix-ish-deployment2.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment2.png)
 
 ## 💽 Techonology Stack
 
@@ -38,7 +38,7 @@ GitHub Actions is an integrated continuous integration and continuous deployment
 
 ## 📌 Architecture Diagram
 
-![alt diagram](assets/images/netflix-ish-deployment-architecture-diagram.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment-architecture-diagram.png)
 
 ## 🚦 Getting Started
 
@@ -67,7 +67,7 @@ Before diving into the project, let’s ensure that we have the necessary prereq
 
 Launch an “ubuntu (t2.medium) “ instance and login through “putty” or “mobaxtream” app.
 
-![alt diagram](assets/images/netflix-ish-deployment3.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment3.png)
 
 ## ✨ Step-2-Setup-SonarQube
 
@@ -90,7 +90,7 @@ After the docker installation, we will create a Sonarqube container
     docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
 ```
 
-![alt diagram](assets/images/netflix-ish-deployment4.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment4.png)
 
 Now copy the IP address of the ec2 instance
 
@@ -98,7 +98,7 @@ Now copy the IP address of the ec2 instance
     <ec2-public-ip:9000>
 ```
 
-![alt diagram](assets/images/netflix-ish-deployment5.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment5.png)
 
 Provide the following Login and password:
 
@@ -109,7 +109,7 @@ Provide the following Login and password:
 
 Update your Sonarqube password & This is the Sonarqube dashboard
 
-![alt diagram](assets/images/netflix-ish-deployment6.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment6.png)
 
 ## ✨ Step-3-Integration-SonarQube-with-GitHub-Actions
 
@@ -120,25 +120,25 @@ Integrating SonarQube with GitHub Actions allows you to automatically analyze yo
 We already have Sonarqube up and running
 On Sonarqube Dashboard click on `Manually`
 
-![alt diagram](assets/images/netflix-ish-deployment7.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment7.png)
 
 Next, provide a name for your project and provide a Branch name and click on `setup`
 
-![alt diagram](assets/images/netflix-ish-deployment8.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment8.png)
 
 On the next page click on With GitHub actions
 
 This will Generate an overview of the Project and provide some instructions to integrate
 
-![alt diagram](assets/images/netflix-ish-deployment9.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment9.png)
 
 Let’s Open your GitHub and select your Repository and Click on Settings,
 
-![alt diagram](assets/images/netflix-ish-deployment10.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment10.png)
 
 Search for Secrets and variables and click on and again click on actions
 
-![alt diagram](assets/images/netflix-ish-deployment11.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment11.png)
 
 It will open a page like this click on New Repository secret
 
@@ -148,45 +148,45 @@ Copy SONAR_TOKEN and click on Generate Token
 
 Click on `Generate`
 
-![alt diagram](assets/images/netflix-ish-deployment12.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment12.png)
 
 Let’s copy the Token and add it to GitHub secrets
 
-![alt diagram](assets/images/netflix-ish-deployment13.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment13.png)
 
 Now go back to GitHub and Paste the copied name for the secret and token
 
-![alt diagram](assets/images/netflix-ish-deployment14.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment14.png)
 
 Now go back to the Sonarqube Dashboard
 
 Copy the Name and Value
 
-![alt diagram](assets/images/netflix-ish-deployment15.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment15.png)
 
 Go to GitHub now and paste-like this and click on add secret
 
-![alt diagram](assets/images/netflix-ish-deployment16.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment16.png)
 
 Our Sonarqube secrets are added and you can see
 
-![alt diagram](assets/images/netflix-ish-deployment17.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment17.png)
 
 Go to Sonarqube Dashboard and click on continue
 
 Now create your Workflow for your Project. In my case, the Netflix project is built using React Js.
 
-![alt diagram](assets/images/netflix-ish-deployment18.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment18.png)
 
 Now it Generates and workflow for my Project
 
-![alt diagram](assets/images/netflix-ish-deployment19.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment19.png)
 
 Go back to GitHub. click on Add file and then create a new file.
 
 Go back to the Sonarqube dashboard and copy the file name and content
 
-![alt diagram](assets/images/netflix-ish-deployment20.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment20.png)
 
 File name is:
 
@@ -202,7 +202,7 @@ The content to add to the file is
 
 Add in GitHub like this
 
-![alt diagram](assets/images/netflix-ish-deployment21.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment21.png)
 
 Let’s add our workflow
 
@@ -212,7 +212,7 @@ To do that click on Add file and then click on Create a new file as
     .github/workflows/build.yml  #you can use any name iam using sonar.yml
 ```
 
-![alt diagram](assets/images/netflix-ish-deployment22.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment22.png)
 
 Copy content and add it to the file and Click on commit changes.
 
@@ -242,7 +242,7 @@ Copy content and add it to the file and Click on commit changes.
 
 Now workflow is created and Click on “Actions” now
 
-![alt diagram](assets/images/netflix-ish-deployment23.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment23.png)
 
 Now it’s automatically started the workflow
 
@@ -250,11 +250,11 @@ Let’s click on `Build` and see what are the steps involved
 
 Build complete.
 
-![alt diagram](assets/images/netflix-ish-deployment24.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment24.png)
 
 Go to the Sonarqube dashboard and click on `projects` and you can see the analysis
 
-![alt diagram](assets/images/netflix-ish-deployment25.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment25.png)
 
 If you want to see the full report, click on `issues`.
 
@@ -277,15 +277,15 @@ Add this code to your build.yml and Commit changes.
 
 ```
 
-![alt diagram](assets/images/netflix-ish-deployment26.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment26.png)
 
 It started the workflow build , Click on Build, Analyze and scan , It installed .
 
-![alt diagram](assets/images/netflix-ish-deployment27.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment27.png)
 
 It installed Trivy version 0.46.0 and scanned files also. See report
 
-![alt diagram](assets/images/netflix-ish-deployment28.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment28.png)
 
 
 ## ✨ Step-5-Push-Docker-container-to-Dockerhub
@@ -294,13 +294,13 @@ Create a Personal Access token for your Dockerhub account
 
 Go to docker hub and click on your profile → Account settings → security → New access token
 
-![alt diagram](assets/images/netflix-ish-deployment29.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment29.png)
 
-![alt diagram](assets/images/netflix-ish-deployment30.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment30.png)
 
 It asks for a name Provide a name and click on generate token
 
-![alt diagram](assets/images/netflix-ish-deployment31.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment31.png)
 
 Copy the token save it in a safe place, and close
 
@@ -314,7 +314,7 @@ Add your Dockerhub username with the secret name as
 
 ```
 
-![alt diagram](assets/images/netflix-ish-deployment32.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment32.png)
 
 Let’s add our token also and click on the new repository secret again
 
@@ -324,7 +324,7 @@ Let’s add our token also and click on the new repository secret again
 
 ```
 
-![alt diagram](assets/images/netflix-ish-deployment33.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment33.png)
 
 ## ✨ Step-6-Create-TMDB-API-Key
 
@@ -332,65 +332,65 @@ Next, we will create a TMDB API key
 
 Open a new tab in the Browser and search for TMDB
 
-![alt diagram](assets/images/netflix-ish-deployment34.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment34.png)
 
 Click on the Login on the top right. You will get this page.
 
 You need to create an account here. click on click here. I have an account that’s why I added my details there.
 
-![alt diagram](assets/images/netflix-ish-deployment35.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment35.png)
 
 Let’s create an API key, By clicking on your profile and clicking settings.
 
 Now click on API from the left side panel. Now click on create
 
-![alt diagram](assets/images/netflix-ish-deployment36.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment36.png)
 
 Click on Developer and Now you have to accept the terms and conditions. and Provide basic details.
 
-![alt diagram](assets/images/netflix-ish-deployment37.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment37.png)
 
-![alt diagram](assets/images/netflix-ish-deployment38.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment38.png)
 
 Click on submit and you will get your API key.
 
-![alt diagram](assets/images/netflix-ish-deployment39.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment39.png)
 
 Let’s add the below step to the workflow , You have to add API at the Build command , Change your username also.
 
-![alt diagram](assets/images/netflix-ish-deployment40.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment40.png)
 
 t started the workflow build , Click on Build, Analyze and Scan. You will see this Docker image is building now and Build Succeeded
 
-![alt diagram](assets/images/netflix-ish-deployment41.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment41.png)
 
-![alt diagram](assets/images/netflix-ish-deployment42.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment42.png)
 
 Build Succeeded
 
-![alt diagram](assets/images/netflix-ish-deployment43.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment43.png)
 
 If you go to your Docker hub, you will find that the image is pushed to Dockerhub
 
-![alt diagram](assets/images/netflix-ish-deployment44.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment44.png)
 
 ## ✨ Step-7-Add-a-self-hosted-runner-to-EC2
 
 Go to GitHub and click on Settings → Actions → Runners
 
-![alt diagram](assets/images/netflix-ish-deployment45.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment45.png)
 
 Click on New self-hosted runner
 
-![alt diagram](assets/images/netflix-ish-deployment46.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment46.png)
 
 Now select Linux and Architecture X64
 
-![alt diagram](assets/images/netflix-ish-deployment47.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment47.png)
 
 Use the below commands to add a self-hosted runner
 
-![alt diagram](assets/images/netflix-ish-deployment48.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment48.png)
 
 ```bash
   Picture to be changed. put the code here
@@ -399,7 +399,7 @@ Use the below commands to add a self-hosted runner
 
 Go to Putty or Mobaxterm and connect to your ec2 instance and copy paste the commands
 
-![alt diagram](assets/images/netflix-ish-deployment49.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment49.png)
 
 Let’s start runner
 
@@ -408,7 +408,7 @@ Let’s start runner
 
 ```
 
-![alt diagram](assets/images/netflix-ish-deployment50.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment50.png)
 
 ## ✨ Step-8-Final-workflow-to-run-the-container
 
@@ -450,17 +450,17 @@ Commit changes
 
 You will see two different Jobs now
 
-![alt diagram](assets/images/netflix-ish-deployment51.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment51.png)
 
 Now come back by clicking on Summary and click on Deploy now
 
 It starts running the job on your Ec2 instance
 
-![alt diagram](assets/images/netflix-ish-deployment52.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment52.png)
 
 On GitHub, you will see this. the build succeeded
 
-![alt diagram](assets/images/netflix-ish-deployment53.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment53.png)
 
 Now copy your ec2 instance ip and go to the browser
 
@@ -472,7 +472,7 @@ Now copy your ec2 instance ip and go to the browser
 
 You will see Netflix app will run
 
-![alt diagram](assets/images/netflix-ish-deployment54.png)
+![alt diagram](assets/images/netflix-ish-deployment/netflix-ish-deployment54.png)
 
 
 FULL WORKFLOW
