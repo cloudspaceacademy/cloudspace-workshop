@@ -822,3 +822,15 @@ This is the pipeline script generated, similarly whenever we need to generate an
 
     2. Enter the URL of your jenkins host with port suffixed with
        /sonarqube-webhook/ - The URL will be `http://jenkins_ip:8080/sonarqube-webhook/`
+
+![alt diagram](assets/images/java-web-app-deployment/image29.png)
+
+* The data that will be sent to jenkins via the sonarqube webhook can be seen by clicking the small icon beside the time in the `Last delivery` column (it will be available after we start a new build after creating the webhook).
+Go back to jenkins dashboard and click on `Build Now`. Once the build is completed successfully, go back to SonarQube Dashboard and check the Last Delivery Data.
+
+
+![alt diagram](assets/images/java-web-app-deployment/image30.png)
+
+
+* We are interested in the qualityGate section of the Last Delivery data.
+
