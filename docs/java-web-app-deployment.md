@@ -763,3 +763,7 @@ Choose name as jenkins and leave the `Expires in` field at the default value of 
 
 * Copy this token, we will create a Jenkins secret using this token which will used to authenticate jenkins while connecting with sonarqube.
 Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `add credentials`, select `Kind` as Secret text and `ID` as `sonar-token`
+
+![alt diagram](assets/images/java-web-app-deployment/image25.png)
+
+* Now, we need to configure SonarQube settings, Goto `Manage Jenkins` > `Configure System` . There will be a section SonarQube servers, we need to update the details in this section. Click on `Add SonarQube`, Enter the name as `sonarserver, Server URL is `http://IP:PORT`, select `Server authentication` token as `sonar-token`. Also enable `Environment variables`.
