@@ -1023,8 +1023,8 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
             * Define the `VERSION` in the pipeline using environment variable which will be availabe for use during the execution of the pipeline.
             
-            ```bash
+ ```bash
               environment{
-          VERSION = "${env.BUILD_ID}"
-      }
+              VERSION = "${env.BUILD_ID}"
+              }
 ```
