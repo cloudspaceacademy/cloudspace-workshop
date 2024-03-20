@@ -834,3 +834,15 @@ Go back to jenkins dashboard and click on `Build Now`. Once the build is complet
 
 * We are interested in the qualityGate section of the Last Delivery data.
 
+![alt diagram](assets/images/java-web-app-deployment/image31.png)
+
+
+```bash
+  "qualityGate": {
+              "name": "Sonar way",
+              "status": "OK",
+```
+
+* If the status is `ok` then only our pipeline will move on to the next stage otherwise the build will fail.
+
+* Now, we will add a block to our `Sonar Quality Check` stage which will wait for 15 minutes for the Quality Gate status to chaneg to `ok` state.
