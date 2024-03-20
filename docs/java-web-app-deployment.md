@@ -591,3 +591,35 @@ For such scenarios or if you make mistakes during Phase I and need to start over
 After automating the provisioning and configuration management processes, you will still need to complete certain manual steps in the initial setup of applications such as Jenkins, SonarQube, and Nexus. To do this, you can access the dashboards of each application using the public IP followed by the port in your web browser.
 
 That's it for Phase I, let's proceed to Phase II.
+
+## **Phase II: The CICD Pipeline**
+
+* In this phase we will do everything from integrating our Jenkins, SonarQube, Nexus Repository Manager, Kubernetes cluster, Helm, datree.io applications with each other to deploying our Java web application on the K8s cluster using Helm charts based on pull request triggers. Let's begin.
+
+
+### **Clone the git repository**
+* We will be updating and pushing the changes to the repository so we need to clone the repository via ssh to do so first create a fork of the repository and then
+
+clone it using the ssh URL.
+
+```bash
+  git clone git@github.com:mandeepsingh10/java-gradle-app.git
+```
+
+* Currently we only have `main` branch in the repository, so we will create a new branch called `dev` as it is not a good practice to modify the `main` branch.
+
+```bash
+  java-gradle-app on main via 🅶 v7.1.1 via ☕ 
+  ➜ git branch
+  * main
+  java-gradle-app on main via 🅶 v7.1.1 via ☕ 
+  ➜ git checkout -b dev
+  Switched to a new branch 'dev'
+  java-gradle-app on dev via 🅶 v7.1.1 via ☕ 
+  ➜ git branch
+  * dev
+    main
+```
+
+### **Creating a pipeline job**
+* Go to the jenkins dashboard and click on `New Item`, select the type as `Pipeline` and Enter a name for the pipeline. Click on `OK`.
