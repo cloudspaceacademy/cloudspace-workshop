@@ -901,3 +901,86 @@ Go back to jenkins dashboard and click on `Build Now`. Once the build is complet
 
 
 ![alt diagram](assets/images/java-web-app-deployment/image33.png)
+
+
+* Next, we need to configure this repository on our jenkins server as an insecure registry to so that we can push our docker images to this repo.
+To do so, go to the jenkins server and create or edit the file `/etc/docker/daemon.json`
+
+```bash
+  vim /etc/docker/daemon.json
+  { "insecure-registries":["nexus_machine_ip:8083"] }
+```
+
+It will look like this `{ "insecure-registries":["13.235.91.151:8083"] }`
+
+* Now restart the docker service using `systemctl restart docker.service` and check if the insecure registry is added properly.
+
+```bash
+  root@jenkins:~# docker info | grep Insecure -A1
+   Insecure Registries:
+    13.235.91.151:8083
+```
+
+* We have successfully created and configured the nexus repository for storing our docker images, now let's try to login to the repository.
+
+```bash
+  root@jenkins:~# docker login -u admin 13.235.91.151:8083
+  Password: 
+  WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+  Configure a credential helper to remove this warning. See
+  https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+  Login Succeeded
+```
+
+* Next, we need to add the password for our nexus repository as a secret in jenkins so that we can use it in our pipeline stages.
+Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `add credentials`, select kind as `secret text`. Click on `Create`.
+
+
+![alt diagram](assets/images/java-web-app-deployment/image34.png)
+
+
+2. ### **Creating a multi-stage Dockerfile**
+
+* This Dockerfile is creating a Docker image that deploys a Java web application to Tomcat using Docker multi-stage build.
+
+```bash
+  FROM openjdk:11 as base
+
+  WORKDIR /app
+
+  COPY . .
+
+  RUN chmod +x gradlew
+
+  RUN ./gradlew build
+
+  FROM tomcat:9
+
+  WORKDIR webapps/
+
+  COPY --from=base /app/build/libs/sampleWeb-0.0.1-SNAPSHOT.war .
+
+  RUN rm -rf ROOT && mv sampleWeb-0.0.1-SNAPSHOT.war ROOT.war
+```
+
+* Here is a breakdown of what is happening in each step:
+
+    1. FROM openjdk:11 as base - This line sets the base image for the build process to the official OpenJDK 11 image.
+
+    2. WORKDIR /app - This line sets the working directory for the Docker container to /app.
+
+    3. COPY . . - This line copies the current directory (where the Dockerfile is located) into the /app directory in the Docker container.
+
+    4. RUN chmod +x gradlew - This line makes the gradlew script executable.
+
+    5. RUN ./gradlew build - This line runs the gradlew script to build the Java application.
+
+    6. FROM tomcat:9 - This line sets the base image to the official Tomcat 9 image for the second stage of our multi stage Dockerfile
+
+    7. WORKDIR webapps/ - This line sets the working directory for the Docker container to /usr/local/tomcat/webapps, where Tomcat looks for web applications.
+
+    8. COPY --from=base /app/build/libs/sampleWeb-0.0.1-SNAPSHOT.war . - This line copies the built Java web application from the "base" image to the current directory in the second image which is our final image.
+
+    9. RUN rm -rf ROOT && mv sampleWeb-0.0.1-SNAPSHOT.war ROOT.war - This line removes the existing ROOT web application and renames the copied application to ROOT.war so that it becomes the default application served by Tomcat.
+
+We can check if our docker file is working as expected or not, go to the jenkins server and navigate to the path /var/lib/jenkins/workspace/sampleWeb_app, here we will have all our project files from the git repo. We can create our Dockerfile here and try to build test images.
