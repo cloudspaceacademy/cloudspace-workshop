@@ -984,3 +984,47 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
     9. `RUN rm -rf ROOT && mv sampleWeb-0.0.1-SNAPSHOT.war ROOT.war` - This line removes the existing ROOT web application and renames the copied application to ROOT.war so that it becomes the default application served by Tomcat.
 
 * We can check if our docker file is working as expected or not, go to the jenkins server and navigate to the path `/var/lib/jenkins/workspace/sampleWeb_app`, here we will have all our project files from the git repo. We can create our Dockerfile here and try to build test images.
+
+```bash
+  docker build -t test-tomcat .
+
+  jenkins@jenkins:~/workspace/java-gradle-app$ docker images 
+  REPOSITORY    TAG       IMAGE ID       CREATED          SIZE
+  test-tomcat   latest    0589959663b8   25 minutes ago   514MB
+```
+
+```bash
+  docker run -itd -p 7777:8080 test-tomcat
+
+  jenkins@jenkins:~/workspace/java-gradle-app$ docker run -itd -p 7777:8080 test-tomcat
+  584f79d32cfa20f8b7428cdc9d2ca80928f717e14fb93ee59ee0bd7019ce2372
+  jenkins@jenkins:~/workspace/java-gradle-app$ docker ps
+  CONTAINER ID   IMAGE         COMMAND             CREATED         STATUS         PORTS                                       NAMES
+  584f79d32cfa   test-tomcat   "catalina.sh run"   5 seconds ago   Up 3 seconds   0.0.0.0:7777->8080/tcp, :::7777->8080/tcp   nice_mcclintock
+```
+
+* We can access the web application by going to `jenkins_ip:7777` in our web browser.
+
+* Make sure to delete the containers and images we created for our testing purpose in the previous test after confirming that our container is running as expected
+
+
+3. ### **Adding Stage II : Build docker images and push to Nexus to Jenkinsfile**
+
+    * We need to do four steps to build our image and push the image to the nexus repository.
+
+        1. Tag and build docker image
+
+            * We can tag our image using the command
+             `docker build -t nexus_server_ip:8083/myapp:$VERSION`
+
+            * `VERSION` needs to be unique as every change to the application will trigger a new job and will create a new image so we need a variable which we can use as tag, we can use the build number of our jenkins job as a tag. The image created by the job will have the build number as tag.
+
+            * For this to work, first we need to define `$VERSION` in the pipeline, it's value will be build number of the jenkins job.
+
+            * Define the `VERSION` in the pipeline using environment variable which will be availabe for use during the execution of the pipeline.
+            
+            ```bash
+              environment{
+          VERSION = "${env.BUILD_ID}"
+      }
+```
