@@ -174,3 +174,16 @@ This means that our terraform configuration is correct and is working as expecte
  public_ip = "3.109.154.107"
  securityGroupDetails = "sg-02b24f714c8b6b86a"
 ```
+
+5. Let's try accessing the `jenkins` server by `ssh` using it's public IP. By default, `ubuntu` user is created on all our servers, as we are using **Ubuntu** ami image.
+
+```bash
+     ssh ubuntu@3.109.154.107
+     ubuntu@jenkins:~$
+```
+
+We can access the Jenkins server, which means we are good to go.
+
+6. We can automate the provisioning of all the AWS resources using the `t_createall.sh` script located in the `cicd-setup/scripts`. While implementing Phase I for the first time, I recommend against using the `t_createall.sh` script to create all necessary resources at once. This is because our infrastructure setup utilizes `t2.medium` EC2 instances, and creating all resources simultaneously may result in higher AWS EC2 costs if instances remain idle while we configure other servers. Additionally, running a script may not provide a thorough understanding of how things work.
+
+7. Let's move on to our next step, which is configuring our servers using Ansible playbooks. We can refer to this section whenever we need to provision the remaining servers on AWS. 
