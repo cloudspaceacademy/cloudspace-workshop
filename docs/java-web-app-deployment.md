@@ -1044,3 +1044,61 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
               docker build -t nexus_server_ip:8083/myappapp:${VERSION} .
               docker login -u admin -p $nexus_docker_repo_pass_var nexus_server_ip:8083
             ```
+
+        3. ### **Push the docker image to the nexus repo**
+
+            ```bash
+              #Use this command to push the image to nexus repo
+              docker push nexus_server_ip:8083/myappapp:${VERSION}
+            ```
+
+        4. ### **Remove the image from the server after the image is pushed to nexus**
+
+            ```bash
+              docker rmi nexus_server_ip:8083/myapp:${VERSION}
+            ```
+
+        * The final code of this stage of pipeline will look like this:
+          We've also created a new environment variable in the pipeline called DOCKER_HOSTED_EP which will declare the value of nexus_machine_ip:8083 as an variable which will be available to the pipeline through all the stages.
+
+            ```bash
+                    pipeline{
+            agent any
+            environment{
+                VERSION = "${env.BUILD_ID}"
+                DOCKER_HOSTED_EP = "13.235.91.151:8083" 
+            }
+            stages{
+                stage("Sonar Quality Check"){
+                    steps{
+                        script{
+                            withSonarQubeEnv(credentialsId: 'sonar-token') {
+                                sh 'chmod +x gradlew'
+                                sh './gradlew sonarqube --info'
+                            }
+                            timeout(time: 1, unit: 'MINUTES') {
+                                def qg = waitForQualityGate()
+                                if (qg.status != 'OK') {
+                                    error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                                }
+                            }
+                        }
+                    }
+                }
+                stage("Build docker images and push to Nexus"){
+                    steps{
+                        script{
+                            withCredentials([string(credentialsId: 'nexus_pass', variable: 'nexus_pass_var')]) {
+                                sh '''
+                                docker build -t $DOCKER_HOSTED_EP/javawebapp:${VERSION} .
+                                docker login -u admin -p $nexus_pass_var $DOCKER_HOSTED_EP
+                                docker push $DOCKER_HOSTED_EP/javawebapp:${VERSION}
+                                docker rmi $DOCKER_HOSTED_EP/javawebapp:${VERSION}
+                                '''
+                            }
+                        }
+                    }
+                }
+            }            
+        }
+```
