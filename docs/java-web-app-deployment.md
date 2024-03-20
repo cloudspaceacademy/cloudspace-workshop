@@ -815,3 +815,10 @@ This is the pipeline script generated, similarly whenever we need to generate an
 * We can see that the job was a success, we can also check the SonarQube Dashboard.
 
 ![alt diagram](assets/images/java-web-app-deployment/image28.png)
+
+* Now, we will we also need to create a webhook to have connection between jenkins and sonarqube.
+
+    1. To create a webhook navigate to sonarqube dashboard then `administration` > `configuration` > `webhooks`.
+
+    2. Enter the URL of your jenkins host with port suffixed with
+       /sonarqube-webhook/ - The URL will be `http://jenkins_ip:8080/sonarqube-webhook/`
