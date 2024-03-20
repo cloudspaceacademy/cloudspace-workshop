@@ -208,3 +208,102 @@ The `playall.sh` script provides an option to automate the configuration managem
 ```
 
 Check the newly created inventory file under ansible_config directory.
+
+```bash
+  ~/repo/cicd-setup$
+  ➜ cat ansible_config/inventory
+  jenkins ansible_host=3.109.154.107 ansible_user=ubuntu ansible_connection=ssh
+  sonar ansible_host= ansible_user=ubuntu ansible_connection=ssh
+  nexus ansible_host= ansible_user=ubuntu ansible_connection=ssh
+  k8s-master ansible_host= ansible_user=ubuntu ansible_connection=ssh
+  k8s-node1 ansible_host= ansible_user=ubuntu ansible_connection=ssh
+```
+
+We can see that the file is generated with the details required by Ansible to connect to the `jenkins` server. As we haven't provisioned the remaining servers yet, the IP details are empty for them.
+
+* Now, to configure the `jenkins` server as per our requirements for this project, simply run the Ansible playbook located at `ansible_config/jenkins/jenkins.yaml`. You can check the Ansible playbook to understand how we are configuring the `jenkins` server. The playbook output shows us what all tasks are being performed.
+
+```bash
+  ~/repos/cicd-setup/ansible_config$ 
+  ➜ ansible-playbook -i inventory jenkins/jenkins.yaml
+
+  PLAY [Install and start Jenkins] ********************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [ensure the jenkins apt repository key is installed] *******************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [ensure the repository is configured] **********************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Ensure java is installed] *********************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [ensure jenkins is installed] ******************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [ensure jenkins is running] ********************************************************************************************************************************************
+  ok: [jenkins]
+
+  PLAY [Install Helm and datree.io helm plugin] *******************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [Check if Helm is installed] *******************************************************************************************************************************************
+  fatal: [jenkins]: FAILED! => {"changed": false, "cmd": "helm version", "delta": "0:00:00.002648", "end": "2023-05-12 18:31:45.516957", "msg": "non-zero return code", "rc": 127, "start": "2023-05-12 18:31:45.514309", "stderr": "/bin/sh: 1: helm: not found", "stderr_lines": ["/bin/sh: 1: helm: not found"], "stdout": "", "stdout_lines": []}
+  ...ignoring
+
+  TASK [Download Helm script] *************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Install Helm] *********************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Install unzip] ********************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Check if Datree plugin exists] ****************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [Install Datree plugin] ************************************************************************************************************************************************
+  changed: [jenkins]
+
+  PLAY [Install Docker] *******************************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [Install required packages] ********************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add Docker GPG key] ***************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add Docker repository] ************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Install Docker] *******************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add jenkins to sudo group] ********************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add jenkins to docker group] ******************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add jenkins to sudoers file] ******************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Install kubectl] ******************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Create kubectl alias for root user] ***********************************************************************************************************************************
+  changed: [jenkins]
+
+  PLAY RECAP ******************************************************************************************************************************************************************
+  jenkins                    : ok=23   changed=17   unreachable=0    failed=0    skipped=0    rescued=0    ignored=1
+
+```
