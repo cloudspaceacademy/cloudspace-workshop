@@ -326,3 +326,14 @@ We can see that the file is generated with the details required by Ansible to co
 * Once the suggested plugins are installed, you will be prompted to create a user. Create the user according to your preferences.
 
 ![alt diagram](assets/images/java-web-app-deployment/image10.png)
+
+* Next, you will see this screen, click on `Save and Finish` and then click on `Start using Jenkins` on the next screen.
+
+![alt diagram](assets/images/java-web-app-deployment/image11.png)
+
+![alt diagram](assets/images/java-web-app-deployment/image12.png)
+
+* Finally, you will see the Jenkins dashboard, setup is completed.
+
+![alt diagram](assets/images/java-web-app-deployment/image13.png)
+
