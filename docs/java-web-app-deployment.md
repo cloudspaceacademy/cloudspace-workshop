@@ -772,3 +772,46 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
 * We need to use this token in our Jenkinsfile so we will need to generate a pipeline script for that, navigate to the pipeline job and click on `Pipeline Syntax` and generate sonarqube pipeline script from the **Snippet Generator**.
 Select `Sample Step` as `withSonarQubeEnv` , select `Server authentication token` as `sonar-token`, click on `Generate Pipeline Script`.
+
+```bash
+  withSonarQubeEnv {
+      // some block
+  }
+```
+
+This is the pipeline script generated, similarly whenever we need to generate any script we can use the `Snipper Generator`.
+
+* Now add this pipeline script to the Jenkinsfile. Remove the previous test stages and create a new Stage `Sonar Quality Check` where we will perform code analysis by querying SonarQube.
+
+```bash
+  pipeline{
+      agent any
+      environment{
+          VERSION = "{env.BUILD_ID}"
+      }
+      stages{
+          stage("Sonar Quality Check"){
+              steps{
+                  script{
+                      withSonarQubeEnv(credentialsId: 'sonar-token') {
+                          sh 'chmod +x gradlew'
+                          sh './gradlew sonarqube --info'
+                      }
+                  }
+              }
+          }
+      }
+  }
+```
+
+* We have give execute permission to gradlew and then we have executed `./gradlew sonarqube` which helps us in pushing the code to sonarQube, where we will validate our checks against the sonar rules.
+
+* Add the JenkinsFile to the git repo and push the changes.
+
+* Go to the Jenkins dashboard and build the pipeline job and see if it builds successfully.
+
+![alt diagram](assets/images/java-web-app-deployment/image27.png)
+
+* We can see that the job was a success, we can also check the SonarQube Dashboard.
+
+![alt diagram](assets/images/java-web-app-deployment/image28.png)
