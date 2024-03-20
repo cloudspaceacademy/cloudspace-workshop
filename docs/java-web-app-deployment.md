@@ -153,3 +153,24 @@ We need to initialize all the directories where we have our Terraform configurat
    + securityGroupDetails = (known after apply)
 
 ```
+
+This means that our terraform configuration is correct and is working as expected.
+
+3. To provision the jenkins server on AWS by running the command
+`terraform apply --auto-approve` in the `cicd-setup/terraform_config/jenkins` directory.
+
+4. Once the server is provisioned, the command will display details about the server, such as the hostname, `ami_id` of the image used, public and private IP addresses, similar to this:
+
+```bash
+ Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
+
+ Outputs:
+
+ Name = "jenkins"
+ ami_id = "ami-0bcb40eb5cb6d6f9e"
+ instance_id = "i-09a9d9b364b692fb7"
+ keyname = "jenkins-key"
+ public_dns = "ec2-3-109-154-107.ap-south-1.compute.amazonaws.com"
+ public_ip = "3.109.154.107"
+ securityGroupDetails = "sg-02b24f714c8b6b86a"
+```
