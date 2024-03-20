@@ -1030,3 +1030,17 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
             ```
 
         2. ### **Login to the Nexus repo**
+
+            * This can be done using the command
+              `docker login -u admin -p $nexus_pass_var nexus_server_ip:8083`
+
+            * `$nexus_pass_var` is variable through which we access the jenkins credential that we created for the storing the admin password of the nexus repository.
+
+            * We will use a withCredentials block to access the credential `nexus_pass`.
+
+            ```bash
+              withCredentials([string(credentialsId: 'nexus_pass', variable: 'nexus_pass_var')]) {
+              sh '''
+              docker build -t nexus_server_ip:8083/myappapp:${VERSION} .
+              docker login -u admin -p $nexus_docker_repo_pass_var nexus_server_ip:8083
+            ```
