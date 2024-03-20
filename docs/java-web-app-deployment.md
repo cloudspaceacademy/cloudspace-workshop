@@ -846,3 +846,58 @@ Go back to jenkins dashboard and click on `Build Now`. Once the build is complet
 * If the status is `ok` then only our pipeline will move on to the next stage otherwise the build will fail.
 
 * Now, we will add a block to our `Sonar Quality Check` stage which will wait for 15 minutes for the Quality Gate status to chaneg to `ok` state.
+
+```bash
+  timeout(time: 15, unit: 'MINUTES') {
+      def qg = waitForQualityGate()
+      if (qg.status != 'OK') {
+          error "Pipeline aborted due to quality gate failure: ${qg.status}"
+          }
+      }
+```
+```bash
+  pipeline{
+      agent any
+      environment{
+          VERSION = "{env.BUILD_ID}"
+      }
+      stages{
+          stage("Sonar Quality Check"){
+              steps{
+                  script{
+                      withSonarQubeEnv(credentialsId: 'sonar-token') {
+                          sh 'chmod +x gradlew'
+                          sh './gradlew sonarqube --info'
+                      }
+                      timeout(time: 15, unit: 'MINUTES') {
+                          def qg = waitForQualityGate()
+                          if (qg.status != 'OK') {
+                              error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+```
+
+* Commit and push the changes to the dev branch and then run the build.
+
+![alt diagram](assets/images/java-web-app-deployment/image32.png)
+
+
+* This concludes the SonarQube Integration.
+
+## **STAGE II : Build docker images and push to Nexus**
+
+
+1. ### **Create a private repository in Nexus Repository Manager**
+
+    * We will create a private repository to store our docker images on the Nexus Repository Manager.
+
+        * Go to Nexus dashboard > `Repositories` > `Create Repositor`y Select Recipe as `docker-hosted` Select HTTP port as `8083` Click on Create repository
+
+
+
+![alt diagram](assets/images/java-web-app-deployment/image32.png)
