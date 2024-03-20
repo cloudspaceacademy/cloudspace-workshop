@@ -430,3 +430,25 @@ Run the script `cicd-setup/scripts/generate_ansible_inventory.sh`.
 
 ![alt diagram](assets/images/java-web-app-deployment/image17.png)
 
+* Click on "Sign In" and follow the on-screen instructions to get the initial admin password for Nexus. You will be prompted to set a new password for **Nexus**. Make sure to store this password as we will need it in Phase II of our project where we integrate different applications together.
+
+* On the next screen make sure `Enable anonymous` access is selected and then click on Next.
+
+![alt diagram](assets/images/java-web-app-deployment/image18.png)
+
+* Click on Finish, the setup is completed.
+
+### 4. **Kubernetes Cluster**
+
+* In this section we will setup and configure a kubernetes cluster on AWS using kubeadm tool.
+
+* We will be deploying two k8s nodes, one control plane node `k8s-master` and one worker node `k8s-node1`
+
+* Follow the steps mentioned in **Create AWS instances using Terraform** section to provision the `k8s-master` and `k8s-node1` servers for our kubernetes cluster.
+
+* Once both the servers are provisioned, we need to repopulate the Ansible inventory file before running the playbook to setup and configure our kubernetes cluster.
+
+Run the script `cicd-setup/scripts/generate_ansible_inventory.sh`.
+
+* Run the Ansible playbook located at `ansible_config/k8s/k8s_cluster_setup.yaml`.
+
