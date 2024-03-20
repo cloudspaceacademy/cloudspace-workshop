@@ -724,3 +724,42 @@ We ran the command `git push --set-upstream origin dev` to push the changes afte
 * Our test build was successfull. Let's check the logs, click on the `#1` build and then select `Console Output`.
 
 ![alt diagram](assets/images/java-web-app-deployment/image22.png)
+
+We can see the commands that were executed during the execution and some other details, this completes our test run, now let's integrate SonarQube with our Jenkins server.
+
+## **STAGE I : SonarQube Integration**
+
+* In this step, we will integrate our SonarQube server with our Jenkins server so that we can perform Code Quality checks, code smells etc.
+
+* To start, we'll need to install some jenkins plugins, to do so, navigate to
+`Manage Jenkins` > `Manage Plugins` > `Available` and install the plugins listed below:
+
+    1. SonarQube Scanner for Jenkins
+
+    2. Sonar Gerrit
+
+    3. Sonar Quality Gates
+
+    4. SonarQube Generic Coverage
+
+    5.Quality Gates
+
+    6. Docker
+
+    7. Docker Pipeline
+
+    8. docker-build-step
+
+Click on `Install without restart`, it will take some time to install the plugins.
+
+* Next, we will establish connection between SonarQube and Jenkins Server for that we will need an authentication token from SonarQube.
+Goto SonarQube dashboard, goto `Administration` > `Security`, generate a token for administrator user by clicking on the icon below the Tokens column.
+
+![alt diagram](assets/images/java-web-app-deployment/image23.png)
+
+Choose name as jenkins and leave the `Expires in` field at the default value of 30 days and click on `Generate`.
+
+![alt diagram](assets/images/java-web-app-deployment/image24.png)
+
+* Copy this token, we will create a Jenkins secret using this token which will used to authenticate jenkins while connecting with sonarqube.
+Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `add credentials`, select `Kind` as Secret text and `ID` as `sonar-token`
