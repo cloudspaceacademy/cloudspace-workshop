@@ -141,3 +141,15 @@ git clone https://github.com/mandeepsingh10/cicd-setup.git
 We need to initialize all the directories where we have our Terraform configuration files. To do this, navigate to each directory under `cicd/terraform_config` - `jenkins`, `master`, `nexus`, `node1`, and `sonar` - and run the command `terraform init`.
 
 2. Next, we can try provisioning any one of the instances to check if our configuration is working as expected. To do this, navigate to the `Jenkins` directory and run the command `terraform plan`. If everything is set up correctly, it should display a message similar to this at the end:
+
+```bash
+ Changes to Outputs:
+   + Name                 = "jenkins"
+   + ami_id               = "ami-0bcb40eb5cb6d6f9e"
+   + instance_id          = (known after apply)
+   + keyname              = "jenkins-key"
+   + public_dns           = (known after apply)
+   + public_ip            = (known after apply)
+   + securityGroupDetails = (known after apply)
+
+```
