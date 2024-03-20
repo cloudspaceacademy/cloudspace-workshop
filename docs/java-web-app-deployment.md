@@ -100,9 +100,9 @@ This concludes the brief description of the servers needed for our project. We c
             export TF_VAR_secret_key="Enter the secret access key here"
 ```
 
-    Replace the data with your AWS access and secret keys and save the file. We have used the same variables in our terraform config files so make sure the name of the environment variables are exactly as mentioned in the code block above.
+Replace the data with your AWS access and secret keys and save the file. We have used the same variables in our terraform config files so make sure the name of the environment variables are exactly as mentioned in the code block above.
 
-    * Edit your `.bashrc` file and add this line at the end `source ~/.envrc`
+* Edit your `.bashrc` file and add this line at the end `source ~/.envrc`
 save the file and exit. 
     
 # **Clone the Git repository**
