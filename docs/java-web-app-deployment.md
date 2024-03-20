@@ -577,3 +577,17 @@ Run the script `cicd-setup/scripts/generate_ansible_inventory.sh`.
 **Note:**
 
 <mark style="background-color: #FFFF00" >When implementing Phase I for the first time, it may take a considerable amount of time to complete. If you need to take a break or are unable to continue for a few days, it is not advisable to keep the AWS resources running during this time as it can result in significantly higher charges.</mark >
+
+For such scenarios or if you make mistakes during Phase I and need to start over but don't want to repeat the same steps again, you can use the following scripts in the cicd-setup/scripts directory:
+
+    1. t_createall.sh: provisions all EC2 instances
+
+    2.t_destroyall.sh: destroys all EC2 instances
+
+    3. playall.sh: automates the configuration management of all servers
+
+    4. phase1.sh: automates both provisioning and configuration management processes
+
+After automating the provisioning and configuration management processes, you will still need to complete certain manual steps in the initial setup of applications such as Jenkins, SonarQube, and Nexus. To do this, you can access the dashboards of each application using the public IP followed by the port in your web browser.
+
+That's it for Phase I, let's proceed to Phase II.
