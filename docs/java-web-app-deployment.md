@@ -766,4 +766,4 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
 ![alt diagram](assets/images/java-web-app-deployment/image25.png)
 
-* Now, we need to configure SonarQube settings, Goto `Manage Jenkins` > `Configure System` . There will be a section SonarQube servers, we need to update the details in this section. Click on `Add SonarQube`, Enter the name as `sonarserver, Server URL is `http://IP:PORT`, select `Server authentication` token as `sonar-token`. Also enable `Environment variables`.
+* Now, we need to configure SonarQube settings, Goto `Manage Jenkins` > `Configure System` . There will be a section SonarQube servers, we need to update the details in this section. Click on `Add SonarQube`, Enter the name as `sonarserver`, Server URL is `http://IP:PORT`, select `Server authentication` token as `sonar-token`. Also enable `Environment variables`.
