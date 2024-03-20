@@ -1095,10 +1095,10 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
                                 docker push $DOCKER_HOSTED_EP/javawebapp:${VERSION}
                                 docker rmi $DOCKER_HOSTED_EP/javawebapp:${VERSION}
                                 '''
+                                 }
                             }
                         }
                     }
-                }
-            }            
-        }
+                }            
+            }
             ```
