@@ -307,3 +307,22 @@ We can see that the file is generated with the details required by Ansible to co
   jenkins                    : ok=23   changed=17   unreachable=0    failed=0    skipped=0    rescued=0    ignored=1
 
 ```
+
+* If the playbook is executed without any errors, we should be able to access the Jenkins application from your browser using the public IP address followed by port `8080`.
+
+![alt diagram](assets/images/java-web-app-deployment/image7.png)
+
+* Enter the initial admin password and click on continue.
+
+* Select Installed suggested plugins.
+
+
+![alt diagram](assets/images/java-web-app-deployment/image8.png)
+
+* Now jenkins will install the suggested plugins, it will take 5-10 minutes for this to complete.
+
+![alt diagram](assets/images/java-web-app-deployment/image9.png)
+
+* Once the suggested plugins are installed, you will be prompted to create a user. Create the user according to your preferences.
+
+![alt diagram](assets/images/java-web-app-deployment/image10.png)
