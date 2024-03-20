@@ -623,3 +623,11 @@ clone it using the ssh URL.
 
 ### **Creating a pipeline job**
 * Go to the jenkins dashboard and click on `New Item`, select the type as `Pipeline` and Enter a name for the pipeline. Click on `OK`.
+
+![alt diagram](assets/images/java-web-app-deployment/image19.png)
+
+
+* Navigate to the `Pipeline` section of the job and select `Pipeline script from SCM`, select `SCM` as `Git`, enter the repository URL, leave the `Credentials` field empty as our repo is public. In the `Branches to build` section, select `Branch Specifier` as the newly created dev branch. Click on `Save`.
+
+
+![alt diagram](assets/images/java-web-app-deployment/image20.png)
