@@ -900,4 +900,4 @@ Go back to jenkins dashboard and click on `Build Now`. Once the build is complet
 
 
 
-![alt diagram](assets/images/java-web-app-deployment/image32.png)
+![alt diagram](assets/images/java-web-app-deployment/image33.png)
