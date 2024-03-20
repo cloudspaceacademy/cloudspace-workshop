@@ -194,3 +194,17 @@ I have created Ansible playbooks to configure all the servers according to the a
 The `playall.sh` script provides an option to automate the configuration management of all servers. However, as previously mentioned, solely relying on a script may not provide a comprehensive understanding of the underlying processes involved. 
 
 ### 1. **Jenkins server**
+* Let's start with the `jenkins` server, but first, we need to populate our Ansible inventory file with the public IP addresses of our AWS instances so that we can run our Ansible playbooks. To do so, run the `generate_ansible_inventory.sh` from the `cicd-setup/scripts directory`.
+
+```bash
+  ~/repo/cicd-setup/scripts$
+  ➜ ./generate_ansible_inventory.sh
+
+  Creating inventory file for ansible ....
+
+  Populating inventory file for ansible ....
+
+  Done!!!
+```
+
+Check the newly created inventory file under ansible_config directory.
