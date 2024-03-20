@@ -631,3 +631,96 @@ clone it using the ssh URL.
 
 
 ![alt diagram](assets/images/java-web-app-deployment/image20.png)
+
+* Now, let's create a `Jenkinsfile` in the dev branch with a simple one stage pipeline to check if our code is getting pulled properly or not. Open your favorite code editor and create the `Jenkinsfile` in the root directory of the repo, make sure you are checked out to `dev` branch.
+
+```bash
+  pipeline{
+      agent any
+      stages{
+          stage("Git Test"){
+              steps{
+                  echo "Executing git connection test"
+              }
+              post{
+                  success{
+                      echo "git repository cloned successfully"
+                  }
+                  failure{
+                      echo "git clone action failed"
+                  }
+              }
+          }
+      }
+      post{
+          success{
+              echo "========pipeline executed successfully ========"
+          }
+          failure{
+              echo "========pipeline execution failed========"
+          }
+      }
+  }
+```
+
+* Add the Jenkinsfile to dev branch and commit the changes.
+
+```bash
+  java-gradle-app on  dev  🛤️ ×1via 🅶 v7.1.1 via ☕ 
+  ➜ git branch
+  * dev
+    main
+
+  java-gradle-app on  dev  🛤️ ×1via 🅶 v7.1.1 via ☕ 
+  ➜ git status
+  On branch dev
+  Untracked files:
+    (use "git add <file>..." to include in what will be committed)
+      Jenkinsfile
+
+  nothing added to commit but untracked files present (use "git add" to track)
+
+  java-gradle-app on  dev  🛤️ ×1via 🅶 v7.1.1 via ☕ 
+  ➜ git add .
+
+  java-gradle-app on  dev  🗃️×1via 🅶 v7.1.1 via ☕ 
+  ➜ git commit -m "Added Jenkinsfile"
+  [dev 5b6b195] Added Jenkinsfile
+   1 file changed, 26 insertions(+)
+   create mode 100644 Jenkinsfile
+
+  java-gradle-app on  dev via 🅶 v7.1.1 via ☕ 
+  ➜ git push
+  fatal: The current branch dev has no upstream branch.
+  To push the current branch and set the remote as upstream, use
+
+      git push --set-upstream origin dev
+
+  java-gradle-app on  dev via 🅶 v7.1.1 via ☕ 
+  ✖  git push --set-upstream origin dev
+  Enumerating objects: 4, done.
+  Counting objects: 100% (4/4), done.
+  Delta compression using up to 8 threads
+  Compressing objects: 100% (3/3), done.
+  Writing objects: 100% (3/3), 459 bytes | 459.00 KiB/s, done.
+  Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+  remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+  remote: 
+  remote: Create a pull request for 'dev' on GitHub by visiting:
+  remote:      https://github.com/mandeepsingh10/java-gradle-app/pull/new/dev
+  remote: 
+  To github.com:mandeepsingh10/java-gradle-app.git
+   * [new branch]      dev -> dev
+  Branch 'dev' set up to track remote branch 'dev' from 'origin'.
+```
+
+We received an error saying `The current branch dev has no upstream branch`. This was because we created a new branch but didn't set the remote upstream for it.
+We ran the command `git push --set-upstream origin dev` to push the changes after setting the upstream.
+
+* Now, let's try building our pipeline job in jenkins. Goto Jenkins dashboard and then select `java-gradle-app` and click on `Build Now`.
+
+![alt diagram](assets/images/java-web-app-deployment/image21.png)
+
+* Our test build was successfull. Let's check the logs, click on the `#1` build and then select `Console Output`.
+
+![alt diagram](assets/images/java-web-app-deployment/image22.png)
