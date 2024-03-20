@@ -1012,7 +1012,7 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
     * We need to do four steps to build our image and push the image to the nexus repository.
 
-        1. Tag and build docker image
+        1. ### **Tag and build docker image**
 
             * We can tag our image using the command
              `docker build -t nexus_server_ip:8083/myapp:$VERSION`
@@ -1023,8 +1023,10 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
             * Define the `VERSION` in the pipeline using environment variable which will be availabe for use during the execution of the pipeline.
             
- ```bash
+            ```bash
               environment{
               VERSION = "${env.BUILD_ID}"
               }
-```
+            ```
+
+        2. ### **Login to the Nexus repo**
