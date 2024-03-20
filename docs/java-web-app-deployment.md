@@ -92,16 +92,13 @@ This concludes the brief description of the servers needed for our project. We c
 
     * Create a file called `.envrc` in your home directory and write the commands to export the environment variables in it.
 
-    ![alt diagram](assets/images/java-web-app-deployment/image.png)
-
-    ---
+```bash
 
             #!/bin/bash
             ##Access_keys for AWS Terraform User##
             export TF_VAR_access_key="Enter the aws access key here"
             export TF_VAR_secret_key="Enter the secret access key here"
-
-    ---
+```
 
     Replace the data with your AWS access and secret keys and save the file. We have used the same variables in our terraform config files so make sure the name of the environment variables are exactly as mentioned in the code block above.
 
