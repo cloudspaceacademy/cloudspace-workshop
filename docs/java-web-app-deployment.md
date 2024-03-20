@@ -452,3 +452,128 @@ Run the script `cicd-setup/scripts/generate_ansible_inventory.sh`.
 
 * Run the Ansible playbook located at `ansible_config/k8s/k8s_cluster_setup.yaml`.
 
+```bash
+  ~/repos/cicd-setup/ansible_config$ 
+  ➜ ansible-playbook -i inventory k8s/k8s_cluster_setup.yaml
+
+  PLAY [Add private IP of k8s instances to init scripts] **********************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [localhost]
+
+  TASK [Run add_k8s_ip.sh] ****************************************************************************************************************************************************
+  changed: [localhost]
+
+  PLAY [Setup k8s Control Plane (master) node] ********************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [k8s-master]
+
+  TASK [Copy master.sh script to remote server] *******************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Configure Control Plane (master) node] ********************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Get kubeadm join command] *********************************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Generate token to join the k8s cluster] *******************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Create join_cluster.sh] ***********************************************************************************************************************************************
+  changed: [k8s-master -> localhost]
+
+  TASK [Create kubectl alias] *************************************************************************************************************************************************
+  changed: [k8s-master]
+
+  PLAY [Configure kubectl for ubuntu user] ************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [k8s-master]
+
+  TASK [Create .kube directory for ubuntu user] *******************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Copy admin.conf to ubuntu's .kube directory] **************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Change ownership of .kube/config file] ********************************************************************************************************************************
+  ok: [k8s-master]
+
+  TASK [Create kubectl alias for ubuntu] **************************************************************************************************************************************
+  changed: [k8s-master]
+
+  PLAY [Setup k8s worker node] ************************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [k8s-node1]
+
+  TASK [Copy nodes.sh script to remote server] ********************************************************************************************************************************
+  changed: [k8s-node1]
+
+  TASK [Configure Worker node] ************************************************************************************************************************************************
+  changed: [k8s-node1]
+
+  TASK [Copy join_cluster.sh] *************************************************************************************************************************************************
+  changed: [k8s-node1]
+
+  TASK [Join k8s cluster] *****************************************************************************************************************************************************
+  changed: [k8s-node1]
+
+  PLAY [Copy the kubeconfig form k8s-master] **********************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [k8s-master]
+
+  TASK [Fetch the file from the k8s-master to localhost] **********************************************************************************************************************
+  changed: [k8s-master]
+
+  PLAY [Jenkins User kubectl Setup] *******************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [create directory and set ownership of .kube directory for jenkins user] ***********************************************************************************************
+  changed: [jenkins]
+
+  TASK [Copy the file from localhost to jenkins] ******************************************************************************************************************************
+  changed: [jenkins]
+
+  PLAY RECAP ******************************************************************************************************************************************************************
+  jenkins                    : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+  k8s-master                 : ok=14   changed=10   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+  k8s-node1                  : ok=5    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+  localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
+* Once the playbook is successfully executed, we can login to our master nodes to verify the setup and configuration of our k8s cluster.
+
+```bash
+  ssh ubuntu@65.0.21.196
+
+  ubuntu@k8s-master:~$ kubectl get nodes
+  NAME         STATUS   ROLES           AGE     VERSION
+  k8s-master   Ready    control-plane   11m     v1.27.1
+  k8s-node1    Ready    <none>          9m39s   v1.27.1
+
+  ubuntu@k8s-master:~$ kubectl get pods -n kube-system
+  NAME                                 READY   STATUS    RESTARTS      AGE
+  coredns-5d78c9869d-blhx8             1/1     Running   0             21m
+  coredns-5d78c9869d-tfzj6             1/1     Running   0             21m
+  etcd-k8s-master                      1/1     Running   0             21m
+  kube-apiserver-k8s-master            1/1     Running   0             21m
+  kube-controller-manager-k8s-master   1/1     Running   0             21m
+  kube-proxy-qsp48                     1/1     Running   0             19m
+  kube-proxy-rv87l                     1/1     Running   0             21m
+  kube-scheduler-k8s-master            1/1     Running   0             21m
+  weave-net-mx4lj                      2/2     Running   0             19m
+  weave-net-zddmr                      2/2     Running   1 (20m ago)   21m
+```
+
+* We can see that both nodes are in a Ready state, and all pods in the kube-system namespace are up and running, indicating that our k8s cluster has been deployed properly.
+
+### **With this we have successfully completed Phase I of our project, the required infrastructure for the CICD pipeline is successfully provisioned and configured.
+**Note:**
+
+==When implementing Phase I for the first time, it may take a considerable amount of time to complete. If you need to take a break or are unable to continue for a few days, it is not advisable to keep the AWS resources running during this time as it can result in significantly higher charges.==
