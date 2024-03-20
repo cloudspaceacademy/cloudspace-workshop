@@ -337,3 +337,96 @@ We can see that the file is generated with the details required by Ansible to co
 
 ![alt diagram](assets/images/java-web-app-deployment/image13.png)
 
+
+### 2. **SonarQube Server**
+
+* Follow the steps mentioned in **Create AWS instances using Terraform** section to provision the **SonarQube server** - `sonar`.
+
+* Once the server is provisioned, we need to repopulate the Ansible inventory file before running the playbook to configure sonarqube server.
+
+Run the script `cicd-setup/scripts/generate_ansible_inventory.sh`.
+
+* Run the Ansible playbook located at `ansible_config/sonar/sonar.yaml`.
+
+```bash
+  ~/repos/cicd-setup/ansible_config$ 
+  ➜ ansible-playbook -i inventory sonar/sonar.yaml
+
+  PLAY [Install Docker and SonarQube] *****************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [sonar]
+
+  TASK [Install required packages] ********************************************************************************************************************************************
+  changed: [sonar]
+
+  TASK [Add Docker GPG key] ***************************************************************************************************************************************************
+  changed: [sonar]
+
+  TASK [Add Docker repository] ************************************************************************************************************************************************
+  changed: [sonar]
+
+  TASK [Install Docker] *******************************************************************************************************************************************************
+  changed: [sonar]
+
+  TASK [Start SonarQube container] ********************************************************************************************************************************************
+  changed: [sonar]
+
+  PLAY RECAP ******************************************************************************************************************************************************************
+  sonar                      : ok=6    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+* We have deployed our SonarQube application on a docker container and exposed it on 9000 port. We should be able to access the Jenkins application from your browser using the public IP address followed by port `9000`.
+
+![alt diagram](assets/images/java-web-app-deployment/image14.png)
+
+
+* The default username is `admin` and password is also `admin`.
+
+* Next you will be promted to set a new password for the SonarQube application, set the new password and click on `update`.
+
+![alt diagram](assets/images/java-web-app-deployment/image15.png)
+
+* Now you will see the SonarQube dashboard, setup is complete.
+
+![alt diagram](assets/images/java-web-app-deployment/image16.png)
+
+
+### 3. **SonaType Nexus Server**
+
+* Follow the steps mentioned in **Create AWS instances using Terraform** section to provision the **Nexus Repository Manager** server - `nexus`.
+
+* Once the server is provisioned, we need to repopulate the Ansible inventory file before running the playbook to configure nexus server.
+
+Run the script `cicd-setup/scripts/generate_ansible_inventory.sh`.
+
+* Run the Ansible playbook located at `ansible_config/nexus/nexus.yaml`.
+
+```bash
+  ~/repos/cicd-setup/ansible_config$ 
+  ➜ ansible-playbook -i inventory nexus/nexus.yaml
+
+  PLAY [Install Nexus] ********************************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [nexus]
+
+  TASK [Install Java 8] *******************************************************************************************************************************************************
+  changed: [nexus]
+
+  TASK [Download Nexus] *******************************************************************************************************************************************************
+  changed: [nexus]
+
+  TASK [Extract Nexus] ********************************************************************************************************************************************************
+  changed: [nexus]
+
+  TASK [Start Nexus] **********************************************************************************************************************************************************
+  changed: [nexus]
+
+  PLAY RECAP ******************************************************************************************************************************************************************
+  nexus                      : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+```
+
+* Nexus takes some time to load so wait for 2-3 minutes and then access it using the public IP address followed by port `8081`.
+
+![alt diagram](assets/images/java-web-app-deployment/image17.png)
+
