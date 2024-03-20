@@ -767,3 +767,8 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 ![alt diagram](assets/images/java-web-app-deployment/image25.png)
 
 * Now, we need to configure SonarQube settings, Goto `Manage Jenkins` > `Configure System` . There will be a section SonarQube servers, we need to update the details in this section. Click on `Add SonarQube`, Enter the name as `sonarserver`, Server URL is `http://IP:PORT`, select `Server authentication` token as `sonar-token`. Also enable `Environment variables`.
+
+![alt diagram](assets/images/java-web-app-deployment/image26.png)
+
+* We need to use this token in our Jenkinsfile so we will need to generate a pipeline script for that, navigate to the pipeline job and click on `Pipeline Syntax` and generate sonarqube pipeline script from the **Snippet Generator**.
+Select `Sample Step` as `withSonarQubeEnv` , select `Server authentication token` as `sonar-token`, click on `Generate Pipeline Script`.
