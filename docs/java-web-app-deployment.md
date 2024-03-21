@@ -1173,6 +1173,145 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
           }
         ```
 
+        3. Run the command `helm datree test myapp/`
+
+        ```bash
+          dir('kubernetes/') {
+          withCredentials([string(credentialsId: 'datree-token', variable: 'datree_token_var')]) {
+          sh '''
+          sudo helm datree config set token $datree_token_var
+          sudo helm datree test myapp/
+          '''
+            }    
+          }
+        ```
+
+        4. Now, the complete pipeline for this stage will look like this:
+
+        ```bash
+         stage('Identifying the misconfiguration in HELM charts using datree'){
+        steps{
+         script{
+             dir('kubernetes/') {
+                 withCredentials([string(credentialsId: 'datree-token', variable: 'datree_token_var')]) {
+                     sh '''
+                     sudo helm datree config set token $datree_token_var
+                     sudo helm datree test myapp/
+                     '''
+                         }    
+                     }
+                 }
+             }
+         }
+        ```
+
+        5. Next, we wil edit the jenkins file and commit the changes to the dev branch and then start a new build.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image42.png)
+
+
+        6. Build was successful, let's check the console output for more details.
+
+        ```bash
+             Pipeline] { (Identify misconfigurations in HELM charts using datree.io)
+            [Pipeline] script
+            [Pipeline] {
+            [Pipeline] dir
+            Running in /var/lib/jenkins/workspace/java-gradle-app/kubernetes
+            [Pipeline] {
+            [Pipeline] withCredentials
+            Masking supported pattern matches of $datree_token_var
+            [Pipeline] {
+            [Pipeline] sh
+            + sudo helm datree config set token ****
+            + sudo helm datree test myapp/
+
+            [K
+            | Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            / Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            - Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            \ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            | Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            / Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            - Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            \ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            | Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            / Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            - Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            \ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            | Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            / Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            - Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            \ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            | Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            / Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            - Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            \ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            | Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            / Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+            [K
+            (Summary)
+
+            - Passing YAML validation: 1/1
+
+            - Passing Kubernetes (1.24.0) schema validation: 1/1
+
+            - Passing policy check: 1/1
+
+            +-----------------------------------+-----------------------+
+            | Enabled rules in policy "Starter" | 0                     |
+            | Configs tested against policy     | 2                     |
+            | Total rules evaluated             | 0                     |
+            | [36mTotal rules skipped[0m               | [36m0[0m                     |
+            | [91mTotal rules failed[0m                | [91m0[0m                     |
+            | [32mTotal rules passed[0m                | [32m0[0m                     |
+            | See all rules in policy           | https://app.datree.io |
+            +-----------------------------------+-----------------------+
+            [Pipeline] }
+            [Pipeline] // withCredentials
+            [Pipeline] }
+            [Pipeline] // dir
+            [Pipeline] }
+            [Pipeline] // script
+            [Pipeline] }
+            [Pipeline] // stage
+            [Pipeline] }
+            [Pipeline] // withEnv
+            [Pipeline] }
+            [Pipeline] // withEnv
+            [Pipeline] }
+            [Pipeline] // node
+            [Pipeline] End of Pipeline
+            Finished: SUCCESS
+        ```
+
+
+        
+
+
+
+
 
 
 
