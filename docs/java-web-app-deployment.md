@@ -1521,7 +1521,7 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
             * Once these steps are completed on the k8s worker node as well then we are good to go.
 
-    3. ### **Configure Mail Server and add post block in Jenkins Pipeline
+    3. ### **Configure Mail Server and add post block in Jenkins Pipeline**
 
         * Goto `Manage Jankins` > `Manage Plugins` > `Installed` and make sure that the `Email Extension Plugin` is installed.
 
