@@ -1128,3 +1128,12 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 * First we will need a token from our [datree.io](https://www.datree.io) account in start analzing helm charts based on the policies/rules set in our [datree.io](https://www.datree.io) account.
 
     1. Go to [datree.io](https://www.datree.io) and login using your github or gmail account, after successful login, we will see the [datree.io](https://www.datree.io) dashboard
+
+
+    ![alt diagram](assets/images/java-web-app-deployment/image37.png)
+
+    2. The policies/rules against which our helm chart will be analzed can se accesed by navigating to **Policies > Active Rules**.
+
+    ![alt diagram](assets/images/java-web-app-deployment/image38.png)
+
+
