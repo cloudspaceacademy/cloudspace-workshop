@@ -1132,8 +1132,53 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
     ![alt diagram](assets/images/java-web-app-deployment/image37.png)
 
+
     2. The policies/rules against which our helm chart will be analzed can se accesed by navigating to **Policies > Active Rules**.
 
     ![alt diagram](assets/images/java-web-app-deployment/image38.png)
+
+
+    3. Next, go to **SETTINGS > TOKEN MANAGEMENT**, click on `Create Token`
+
+    ![alt diagram](assets/images/java-web-app-deployment/image39.png)
+
+
+    * Enter a name in the `Label` section and select `write` in the `Type`
+      section, click on Generate Token.
+
+    ![alt diagram](assets/images/java-web-app-deployment/image40.png)
+
+
+    4. Copy the token and create a Jenkins credential datree-token of Kind Secret text, enter the token as secret, click on `Create`.
+
+    ![alt diagram](assets/images/java-web-app-deployment/image41.png)
+
+
+    5. Our helm charts are in the kubernetes/myapp directory so we have to perform three steps sop that we can do static code analysis of our helm charts using datree.
+
+        1. Change the working directory to `kubernetes/`
+
+        ```bash
+          dir('kubernetes/') {
+          }
+        ```
+
+        2. Set datree token from the value of jenkins secret credential `datree-token`.
+
+        ```bash
+          dir('kubernetes/') {
+          withCredentials([string(credentialsId: 'datree-token', variable: 'datree_token_var')]) {                
+          sudo helm datree config set token $datree_token_var
+            }    
+          }
+        ```
+
+
+
+
+
+
+
+
 
 
