@@ -1117,3 +1117,14 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
         * **Docker image successfully pushed to the nexus repository!!!!!**
 
         * This concludes Stage II of our Pipeline, let's move on to Stage III.
+
+
+## **STAGE III : Identify misconfigurations in Helm charts using datree.io**
+
+* In this stage we will identify the misconfigurations in our HELM charts.
+
+* We have already created the required YAML files for deployments, services and helm charts. These are present in the kubernetes/myapp folder in the root directory of the repo.
+
+* First we will need a token from our datree.io account in start analzing helm charts based on the policies/rules set in our datree.io account.
+
+    1. Go to datree.io and login using your github or gmail account, after successful login, we will see the datree.io dashboard
