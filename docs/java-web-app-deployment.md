@@ -1443,6 +1443,43 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
                     group: jenkins
         ```
 
+        * We decided to add these plays to the `k8s_cluster_setup.yaml` instead of a standalone Ansible playbook because they have a dependency on the K8s cluster being set up.
+
+        * If we created a standalone playbook and someone tried to run it before the cluster was provisioned, they would encounter errors. By including the plays in the `k8s_cluster_setup.yaml`, we ensure that all necessary configurations for the Jenkins node to communicate with the K8s cluster are completed after the cluster is provisioned.
+
+        * We can now sit back and relax knowing that once the cluster is provisioned in the earlier stages, everything is set up correctly.
+
+    2. ### **Adding the docker-hosted Nexus repository on both the k8s cluster nodes**
+
+        1. We are using containerd (CRI) so we cannot install docker runtime and configure insecure repo for docker as it will cause many issues in our cluster.
+
+        2. We will have to configure our nexus repo as an insecure repository for containerd. The below mentioned steps need to be performed on both the k8s-nodes (we are only scheduling our deployments on k8s-node1 but it's a good practice to keep the configuration consisitent so we will do it for both the nodes).
+
+            1. Set the default config file for **container.d** as `/etc/containerd/config.toml`
+
+            ```bash
+                 mkdir -p /etc/containerd
+                 containerd config default>/etc/containerd/config.toml
+                 systemctl restart containerd
+                 systemctl status containerd.service
+            ```
+
+            2. Edit the `/etc/containerd/config.toml`
+
+                * Find the line [plugins."io.containerd.grpc.v1.cri".registry.configs]
+
+                * Add these six lines below it
+            
+            ```bash
+              [plugins."io.containerd.grpc.v1.cri".registry.configs."13.235.91.151:8083"]     
+                      [plugins."io.containerd.grpc.v1.cri".registry.configs."13.235.91.151:8083".tls]
+                            ca_file = ""
+                            cert_file = ""
+                            insecure_skip_verify = true
+                            key_file = ""
+            ```
+
+
 
 
 
