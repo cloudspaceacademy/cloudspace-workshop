@@ -1306,6 +1306,78 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
             Finished: SUCCESS
         ```
 
+        7. We can see that datree plugin worked as expected. This concludes Stage III.
+
+
+## **STAGE IV : Push Helm Charts to Nexus Repo**
+
+1. ### **Create a private repository in Nexus Repository Manager**
+
+    * We will create a private repository to store our Helm charts on the Nexus Repository Manager and
+
+        * Go to Nexus dashboard > `Repositories` > `Create Repository` Select Recipe as `helm-hosted`. Click on `Create repository`.
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image43.png)
+
+        * We can see our `helm-hosted` repository listed under repositories.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image44.png)
+
+
+        * Next step is to create the Stage in Jenkins Pipeline for pushing the helm charts to Nexus repo, for this no other configuration is need in Jenkins host because we will use Nexus repo api to push the helm charts.
+
+
+        ```bash
+          curl -u admin:$nexus_pass_var http://nexus_machine_ip:8081/repository/helm-hosted/ --upload-file myapp-${helmchartversion}.tgz -v
+        ```
+
+        * We will create a new environment variable in the pipeline called `HELM_HOSTED_EP` which will replace hard coded value for `nexus_machine_ip:8081` same as when we pushed the docker images and used the environment variable `DOCKER_HOSTED_EP`.
+
+        * Next, we need to package our helm according to the helm chart version, this can be done by simply running the command `helm package myapp`.
+
+        ```bash
+          jenkins@jenkins:~/workspace/java-gradle-app/kubernetes$ cat myapp/Chart.yaml | grep 'version:'
+          version: 0.1.0
+
+          jenkins@jenkins:~/workspace/java-gradle-app/kubernetes$ helm package myapp/
+
+          Successfully packaged chart and saved it to: /var/lib/jenkins/workspace/java-gradle-app/kubernetes/myapp-0.1.0.tgz
+        ```
+
+        * Helm package command will package the helm charts accoding to the chart `version` mentioned in `myapp/Chart.yaml`.
+
+        * Our final code for this stage of the pipeline will look like this
+
+        ```bash
+        environment{
+                VERSION = "${env.BUILD_ID}"
+                DOCKER_HOSTED_EP = "13.235.91.151:8083" 
+                HELM_HOSTED_EP = "13.235.91.151:8081"
+            }
+        ...
+        ...
+            stage("Push Helm Charts to Nexus Repo"){
+            steps{
+                script{
+                dir('kubernetes/'){
+                    withCredentials([string(credentialsId: 'nexus_pass', variable: 'nexus_pass_var')]) {
+                            sh '''
+                            helmchartversion=$(helm show chart myapp/ | grep version | awk '{print $2}')
+                            helm package myapp/
+                            curl -u admin:$nexus_pass_var http://$HELM_HOSTED_EP/repository/helm-hosted/ --upload-file myapp-${helmchartversion}.tgz -v
+                                    '''
+                                }   
+                            }
+                        }
+                    }
+                }
+        ```
+
+
+
+
+
 
         
 
