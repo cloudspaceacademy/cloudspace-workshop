@@ -1556,6 +1556,123 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
         * Use the created app password in the Email configuration for Jenkins (Step 2) After filling the required fields, it will look similar to this. Click on `Test Configuration`.
 
+        ![alt diagram](assets/images/java-web-app-deployment/image48.png)
+
+
+
+    * Our test config is working properly, let's setup the email now.
+
+      First, we have to create a credential to use the app password in the jenkins pipeline to allow access jenkins to send emails.
+
+        1. Goto `Manage Jenkins` > `Credentials` > `select global`, select kind as `Username with password`.
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image49.png)
+
+
+        2. Goto `Manage Jenkins` > `Configure Systems` > `Extended E-mail Notification`.
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image50.png)
+
+
+        3. Add a post block to the jenkins pipeline after the stages block.
+
+        ```bash
+         post {
+            always {
+                mail bcc: '', body: "<br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br>Build URL: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "${currentBuild.result} CI: Project name -> ${env.JOB_NAME}", to: "mandeepsingh1018@gmail.com";
+                }
+            }
+        ```
+
+        4. Also make sure that you have filled the Email Notification section as well in addition to the Extended Email Notification, if this is missed then the build will fail.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image51.png)
+
+
+        5. Now build the job again, this time you'll recieve an email about the Status of the job.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image52.png)
+
+
+    4. ### **Configure Slack notifications**
+
+        * Download Slack plugin
+
+        * Goto `Manage Jenkins` > `Manage Plugins` > `Available`, search for slack and download the plugin
+
+        * Login to your slack account and create a channel for jenkins notifications.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image53.png)
+
+
+        * On next screen, select `Public` and then click on `Create`.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image54.png)
+
+
+        * Goto https://my.slack.com/services/new/jenkins-ci
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image55.png)
+
+
+
+        * Select the newly created slack channel for jenkins and click on Add `Jenkins CI Integration`.
+
+        * Follow the on-screen instructions in step4 and get the **workspace (team subdomain)**, and **Integration Token Credential ID**
+
+        * Create a secret text credential with **Integration Token Credential ID**
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image56.png)
+
+
+
+        * Goto `Manage Jenkins` > `Configure Systems`, Search for `Slack` settings.
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image57.png)
+
+
+        * Add this to the post block in your pipeline, you can also choose to change the frequency to always, success, or failure etc, I have added it in the same always block where mail is configured.
+
+        ```bash
+          slackSend channel: '#jenkins-cicd', message: "Project: ${env.JOB_NAME} \n Build Number: ${env.BUILD_NUMBER} \n Status: *${currentBuild.result}* \n More info at: ${env.BUILD_URL}"
+        ```
+
+        ```bash
+            post {
+                always {
+                    mail bcc: '', body: "<br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br>Build URL: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "${currentBuild.result} CI: Project name -> ${env.JOB_NAME}", to: "mandeepsingh1018@gmail.com";
+                    slackSend channel: '#jenkins-cicd', message: "Project: ${env.JOB_NAME} \n Build Number: ${env.BUILD_NUMBER} \n Status: *${currentBuild.result}* \n More info at: ${env.BUILD_URL}"
+                    }
+                }
+        ```
+
+        * Make sure to change the TeamDomain and channel name.
+
+        * Make the changes to Jenkinsfile and push it to the dev branch.
+
+        * Now, let's build the job and check if we get any slack notifications.
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image58.png)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
