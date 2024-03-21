@@ -1108,3 +1108,12 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
             
         ![alt diagram](assets/images/java-web-app-deployment/image35.png)  
+
+        * Build was successfull, build number is **9**, let's see if we have docker images in the nexus repository with tag as **9**.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image36.png)
+
+
+        * **Docker image successfully pushed to the nexus repository!!!!!**
+
+        * This concludes Stage II of our Pipeline, let's move on to Stage III.
