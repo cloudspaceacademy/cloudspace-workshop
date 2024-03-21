@@ -1374,6 +1374,76 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
                 }
         ```
 
+        * Let's run the build now.
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image45.png)
+
+
+        * The build was successful, now let's check if there were any images pushed to the helm repository.
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image46.png)
+
+
+        * Helm Charts pushed to the helm-hosted Nexus repo with the same tag as the helm chart version.
+
+        * This concludes the Stage IV of our pipeline.
+
+
+## **Stage V: Deploy application on k8s cluster**
+
+
+* To deploy our applicatiojn on k8s-cluster we need to perform some additional steps.
+
+    1. ### **Configuring the Jenkins servers to access the kubernetes cluster and run administrative commands.**
+
+        * This was already done by the magic of our ansible playbooks, the requirement was to install kubectl utility on the Jenkins node (implemented in `jenkins.yaml`) and copy the the kubeconfig file i.e `/etc/kubernetes/admin.conf` or `/root/.kube/config`, both of them are the same.
+
+        * We've copied the `/root/.kube/config` file from the `k8s-master` node to the `$HOME` directory of the jenkins user `/var/lib/jenkins/.kube/config` on the Jenkins node.
+
+        * These steps were performed by these plays in the `k8s_cluster_setup.yaml`.
+
+        ```bash
+        #### Plays to copy kubeconfig to jenkins server for jenkins user #### Required for Stage V & VI : Deploying application on k8s cluster #####
+
+        ##### PLAY 1 : COPY kubeconfig from k8s-master node to localhost #####
+        -   name: Copy the kubeconfig from k8s-master 
+            hosts: k8s-master
+            become: true
+            tasks:
+            - name: Fetch the file from the k8s-master to localhost
+                run_once: yes
+                fetch:
+                src: /root/.kube/config
+                dest: buffer/
+                flat: yes
+        ##### PLAY 2 : INSTALL KUBECTL, CREATE .kube direcoty in $HOME of jenkins user, copy kubeconfig from localhost buffer to Jenkins server and sets the permission to 0600 and ownership to jenkins:jenkins#####
+        -   name: Jenkins User kubectl Setup
+            hosts: jenkins
+            become: true
+            tasks:
+                - name: Install kubectl  
+                snap: 
+                    name: kubectl
+                    classic: true
+                    state: present
+                - name: Create directory and set ownership of .kube directory for jenkins user
+                file:
+                    path: /var/lib/jenkins/.kube
+                    state: directory
+                    owner: jenkins
+                    group: jenkins
+                - name: Copy the file from localhost to jenkins
+                copy:
+                    src: buffer/config
+                    dest: /var/lib/jenkins/.kube/config
+                    mode: "0600"
+                    owner: jenkins
+                    group: jenkins
+        ```
+
+
 
 
 
