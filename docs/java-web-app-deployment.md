@@ -1125,6 +1125,6 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
 * We have already created the required YAML files for deployments, services and helm charts. These are present in the kubernetes/myapp folder in the root directory of the repo.
 
-* First we will need a token from our [datree.io](https://wwwdatree.io) account in start analzing helm charts based on the policies/rules set in our [datree.io](https://wwwdatree.io) account.
+* First we will need a token from our [datree.io](https://www.datree.io) account in start analzing helm charts based on the policies/rules set in our [datree.io](https://www.datree.io) account.
 
-    1. Go to [datree.io](datree.io) and login using your github or gmail account, after successful login, we will see the [datree.io](datree.io) dashboard
+    1. Go to [datree.io](https://www.datree.io) and login using your github or gmail account, after successful login, we will see the [datree.io](https://www.datree.io) dashboard
