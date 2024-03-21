@@ -1102,3 +1102,9 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
                 }            
             }
             ```
+
+            * Once the build is successfully completed, check the nexus repository
+              `docker-hosted` to see if the docker images were pushed to it.
+
+            
+        ![alt diagram](assets/images/java-web-app-deployment/image35.png)  
