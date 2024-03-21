@@ -1479,6 +1479,87 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
                             key_file = ""
             ```
 
+                Our docker-hosted repository is at 13.235.91.151:8083 so we are using this IP:PORT combination. Replace the IP address with the public ip of the Nexus Repository Manager and if you specified a different port for docker-hosted while confguring then use that.
+
+            * Find the line `[plugins."io.containerd.grpc.v1.cri".registry.mirrors]`
+
+            * Add these two lines below it
+
+            ```bash
+              [plugins."io.containerd.grpc.v1.cri".registry.mirrors."13.235.91.151:8083"]
+              endpoint = ["http://13.235.91.151:8083"]
+            ```
+
+            * It will look like this after all the changes.
+
+            ```bash
+              [plugins."io.containerd.grpc.v1.cri".registry.configs]      [plugins."io.containerd.grpc.v1.cri".registry.configs."13.235.91.151:8081"]       [plugins."io.containerd.grpc.v1.cri".registry.configs."13.235.91.151:8081".tls]
+                  ca_file = ""
+                  cert_file = ""
+                  insecure_skip_verify = true
+                  key_file = ""    [plugins."io.containerd.grpc.v1.cri".registry.headers]      [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
+               [plugins."io.containerd.grpc.v1.cri".registry.mirrors."13.235.91.151:8083"]
+                    endpoint = ["http://13.235.91.151:8083"]
+            ```
+
+            * Restart `containerd` service and try pulling an image from the `docker-hosted` Nexus repo.
+
+            ```bash
+              root@k8s-master:~# systemctl restart containerd.service
+
+              root@k8s-master:~# crictl pull 13.235.91.151:8083/javawebapp:11
+              Image is up to date for sha256:603cc7300cb07bf4ec156ddfcdaa72698fbeb441bda60bbc84704505e3c1428e
+
+              root@k8s-master:~# crictl images | grep javawebapp
+              13.235.91.151:8083/javawebapp             11                  603cc7300cb07       287MB
+            ```
+
+            * We are able to pull the container images from our private nexus repository docker-hosted.
+
+            * Repeat the steps on the k8s-node1, our application will be deployed on the worker node as by default k8s control plane node has a taint on it which forbids us to deploy any pods on it except the kube-system ones.
+            Taints: node-role.kubernetes.io/control-plane:NoSchedule
+
+            * Once these steps are completed on the k8s worker node as well then we are good to go.
+
+    3. ### **Configure Mail Server and add post block in Jenkins Pipeline
+
+        * Goto `Manage Jankins` > `Manage Plugins` > `Installed` and make sure that the `Email Extension Plugin` is installed.
+
+        * Goto `Manage Jankins` > `Configure Systems` > `Email Notification` Let's configure smtp config for our gmail account and try sending a test email.
+
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image47.png)
+
+
+        * To configure these setting we'll need to go to our gmail account settings > `Manage Your Google Account`. Now we need to create an app password so that our jenkins app can send emails to our gmail account.
+
+        * **Important**: To create an app password, you need 2-Step Verification on your Google Account.
+
+        If you use 2-Step-Verification and get a "password incorrect" error when you sign in, you can try to use an app password.
+
+        1. Go to your Google Account.
+
+        2. Select **Security**
+
+        3. Under "**Signing in to Google**," select **2-Step Verification**.
+
+        4. At the bottom of the page, select **App passwords**.
+
+        5. Enter a name that helps you remember where you’ll use the app password.
+
+        6. Select **Generate**.
+
+        7. To enter the app password, follow the instructions on your screen. The app password is the 16-character code that generates on your device.
+
+        8. Select **Done**.
+
+        * Use the created app password in the Email configuration for Jenkins (Step 2) After filling the required fields, it will look similar to this. Click on `Test Configuration`.
+
+
+
+
+
 
 
 
