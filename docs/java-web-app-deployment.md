@@ -1660,6 +1660,69 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 
         ![alt diagram](assets/images/java-web-app-deployment/image58.png)
 
+    
+    5. ### **Deploy Helm Charts on k8s cluster**
+
+        1. Let's start by checking if we have any release created on our cluster.
+
+        ```bash
+         jenkins@jenkins:~$ helm list
+         NAME    NAMESPACE    REVISION    UPDATED    STATUS    CHART    APP VERSION
+        ```
+
+        We don't have any helm releases
+
+        2. Let's add a new stage to our jenkins pipeline to create a release
+
+        ```bash
+        stage('Deploy application on k8s-cluster') {
+          steps {
+            script{
+              dir ("kubernetes/"){  
+                  sh 'helm upgrade --install --set image.repository="$DOCKER_HOSTED_EP/javawebapp" --set image.tag="${VERSION}" jwa1 myapp/ ' 
+                     }   
+                 }
+             }
+         }
+         ```
+
+        * The `steps` block contains a `script` block that changes the working directory to `kubernetes/` using the `dir` directive. This is where the Helm chart and the Kubernetes deployment configuration files are stored.
+
+        * The command is a Helm CLI command that upgrades an existing Kubernetes deployment or installs a new one using a Helm chart located in the `myapp/` directory.
+
+        * The command is broken down as follows:
+
+            1. `helm upgrade`: This command upgrades a Helm release if it already exists, or installs a new one if it does not exist.
+
+            2. `--install`: This flag indicates that a new release should be installed if it does not already exist.
+
+            3. `--set`: This flag sets one or more values in the Helm chart's values file. In this case, it sets the `image.repository` and `image.tag` values to the specified values.
+
+            4. `image.repository="13.235.91.151:8083/javawebapp"`: This sets the Docker image repository for the application to `13.235.91.151:8083/javawebapp`.
+
+            5. `image.tag="${VERSION}"`: This sets the Docker image tag for the application to a value stored in the `${VERSION}` environment variable defined in the pipeline
+
+            6. `jwa1`: This is the name of the Helm release.
+
+            7. `myapp/`: This is the path to the Helm chart directory containing the `values.yaml` file and any other necessary files.
+
+        3. Create a a kubernetes secret for nexus docker-hosted repo
+
+        ```bash
+         kubectl create secret docker-registry registry-secret --docker-server=13.235.91.151:8083 --docker-username=admin --docker-password=msx@9797 --docker-email=not-needed@yolo.com
+        ```
+
+        We need this secret to authenticate to the nexus repo hosted on our nexus server
+
+        This is a kubectl command that creates a `Kubernetes secret` named `registry-secret` of type docker-registry. This secret is used to store credentials for authenticating with a Docker registry located at the specified IP address and port number
+
+        `(13.235.91.151:8083)`. The `--docker-username`, `--docker-password`, and `--docker-email` flags are used to set the corresponding authentication credentials for the Docker registry.
+
+        When we run the commands mentioned in **step2**, the image.tag will get the value of $VERSION variable that is build number and it will also be replaced in the `values.yaml` file in helm charts directory
+
+
+
+
 
 
 
