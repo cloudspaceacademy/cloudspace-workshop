@@ -1855,6 +1855,16 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
         * This concludes Stage V of our pipeline.
 
 
+## **Stage VI: Verify application deployment on k8s cluster**
+
+* ```bash
+                  kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-myapp:8080
+  ```
+
+
+
+
+
 
 
 
