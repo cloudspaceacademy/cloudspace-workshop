@@ -829,6 +829,7 @@ The dashboard can give you a Live fast response to any issue the could happen to
 ![alt diagram](assets/images/microservices-bookstore/kiali2.jpeg)
 
 
+
 ## 📄 License
 
 This project is licensed under the MIT License.
