@@ -1980,6 +1980,11 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
     * We have successfully replicated an advanced end-to-end DevOps pipeline.
 
 
+    ## 📄 License
+
+    This project is licensed under the **MIT License.**
+
+
 
 
 
