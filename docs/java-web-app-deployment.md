@@ -1858,8 +1858,53 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
 ## **Stage VI: Verify application deployment on k8s cluster**
 
 * ```bash
-                  kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-myapp:8080
+    kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-myapp:8080
   ```
+
+* We can verify the application deployent using the kubectl command. We create a pod with curl image which curls the service at 8080 port and then the pod is deleted after it's work is done.
+
+* If the exit code of this commad is 0 that means our application deployment was a success else it was a failure
+
+  ```bash
+            stage("Verify application deployment on k8s-cluster") {
+              steps {
+                  script{
+                      dir ("kubernetes/"){  
+                          sh 'kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl jwa1-myapp:8080 ' 
+                              }   
+                          }
+                      }
+                  }
+  ```
+
+* Add this stage to the Jenkinsfile, push the code to dev branch and start the build.
+
+    ![alt diagram](assets/images/java-web-app-deployment/image66.png)
+
+
+    **Configure PR based trigger in Jenkins**
+
+    * We should never make changes to the main/master branch of the project, we should create separate branches, develop the code and then we should create a Pull request to merge the changes of our request into the main branch.
+
+    * It is a common practice that when we raise a pull request it will automatically trigger the CICD Pipeline and then update back the status of the CI pipeline onto the pull request, because reviewers should also check who has made what changes and that the changes should not break our CICD pipeline.
+
+    * Let's setup PR based Triggers, install the GitHub Pull Request Builder plugin.
+
+    * Navigate to Manage Jenkins > Configure System, search for GitHub Pull Request Builder section.
+
+    * In this section we need to add our github creds, so go to your github account and navigate to Settings > Developer settings > Personal access tokens
+
+      Select Tokens (classic), click on Generate new token
+      then Generate new token (classic). You will be prompted to enter your github password, enter the password and proceed.
+
+    * Give a name to the Token, choose expiration and then select relevant scopes.
+
+    ![alt diagram](assets/images/java-web-app-deployment/image67.png)
+
+
+
+
+
 
 
 
