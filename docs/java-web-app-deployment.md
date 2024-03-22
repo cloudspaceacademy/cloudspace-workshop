@@ -45,19 +45,19 @@ In the rapidly evolving landscape of software development, the implementation of
 
 * We need five servers to set up our CICD pipeline infrastructure. We have used Ubuntu as the base operating system for all our servers.
 
-        1. Jenkins Server - jenkins
+    1. Jenkins Server - jenkins
         ● This will host our jenkins application to implement our CI/CD pipelines.
 
-        2.  SonarQube Server - sonar
+    2.  SonarQube Server - sonar
         ● This server will host the SonarQube application. It is used for continuous inspection of code quality to perform automatic reviews with static analysis of code to detect bugs and code smells.
 
-        3.  Nexus Repository server - nexus
+    3.  Nexus Repository server - nexus
         ●  Sonatype Nexus Repository Manager provides a central platform for storing build artifacts. This server will host our two private repositories one for storing docker images and another for storing helm charts.
 
-        4. Kubernetes control plane node - k8s-master
+    4. Kubernetes control plane node - k8s-master
         ●  This server will act as the control plane node for our kubernetes cluster.
 
-        5. Kubernetes worker node - k8s-node1
+    5. Kubernetes worker node - k8s-node1
         ●  The k8s-node1 server will act as a worker node for our kubernetes cluster
 This concludes the brief description of the servers needed for our project. We can now proceed to Phase I.
 
