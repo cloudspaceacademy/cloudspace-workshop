@@ -1837,6 +1837,38 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
         * We can use the build URL mentioned in the notifications to approve or reject the deployment request.
 
 
+        ![alt diagram](assets/images/java-web-app-deployment/image63.png)
+
+
+        * enkins was waiting for us to manually Deploy or Abort the deployment request. Once we approved the request, the application was deployed to the k8s cluster.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image64.png)
+
+
+        * Received slack notification for the same
+
+        ![alt diagram](assets/images/java-web-app-deployment/image65.png)
+
+
+        * First notification is for approving the deployment request and the second one is for the Build status update.
+
+        * This concludes Stage V of our pipeline.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
