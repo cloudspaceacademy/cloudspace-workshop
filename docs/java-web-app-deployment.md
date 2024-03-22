@@ -1,5 +1,9 @@
 ![alt diagram](assets/images/java-web-app-deployment/image1.png)
 
+**Advanced End-to-End CICD Pipeline for a** 
+  **Java Web Application: A Step-by-Step** 
+                  **Guide**
+
 ## 🚀 Project Overview
 This project aims to build an advanced end-to-end CICD DevOps pipeline for a Java web application.
 Our project is divided into two main parts:
