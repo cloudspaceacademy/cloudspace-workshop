@@ -246,6 +246,7 @@ Here is the full Declarative pipeline code for django-notes-app deployment on ec
             stage('Clone Code') {
                 steps {
                     echo 'Cloning the code'
+
                     git url: "https://github.com/cloudspaceacademy/containerization-deployment.git", branch: "main"
                 }
             }
