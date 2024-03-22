@@ -1802,6 +1802,55 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
         * The java web application is up and running, we have successfully deployed our application on a k8s cluster using helm charts.
 
 
+    6. ### **Add approval request to manually approve deployments**
+
+        * We can use this stage block to add a manual approval to deploy or abort the deployment.
+
+        ```bash
+          stage("Deployment Approval"){
+            steps{
+                script{
+                    timeout(10){
+                        mail bcc: '', body: "<br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> Goto : ${env.BUILD_URL} and approve/reject the deployment", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "CICD APPROVAL REQUEST: Project name -> ${env.JOB_NAME}", to: "mandeepsingh1018@gmail.com";  
+                            slackSend channel: '#jenkins-cicd', message: "*CICD Approval Request* \nProject: *${env.JOB_NAME}* \n Build Number: ${env.BUILD_NUMBER} \n Status: *${currentBuild.result}* \n  Go to ${env.BUILD_URL} to approve or reject the deployment request."  
+                             input(id: "DeployGate", message: "Approval required to proceed, deploy ${env.JOB_NAME}?", ok: 'Deploy')
+                            }
+                        }
+                }
+            }
+        ```
+
+        ```bash
+              input(id: "DeployGate", message: "Approval required to proceed, deploy ${env.JOB_NAME}?", ok: 'Deploy')
+        ```
+
+        * We have use an input block to register input from the approvers.
+
+        * Let's push the code and build the job
+
+        * We will receive email and slack notifications like this:
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image61.png)
+        ![alt diagram](assets/images/java-web-app-deployment/image62.png)
+
+        * We can use the build URL mentioned in the notifications to approve or reject the deployment request.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
