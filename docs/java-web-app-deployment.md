@@ -1902,6 +1902,85 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
     ![alt diagram](assets/images/java-web-app-deployment/image67.png)
 
 
+    * Once done, click on **Generate Token.**
+
+    * Create a Jenkins credential of Kind **Username and Password** using this token as password and your github account name as username.
+
+    * Now, navigate to the project and go to configuration and under general, select the following things.
+
+        1. Add a project URL
+
+        2. Tick the option - `GitHub Pull Request Builde`, also do the same for
+            `Use github hooks for build triggering`.
+
+        3. `Build every pull request automatically without asking (Dangerous!)`.' This whitelist everyone, and it's not advisable in an actual production setting but as we are doing a project       for learning we can enable it. Otherwise, it's better to add an organization or add people individually, and only yourself as the Admin.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image68.png)
+
+
+    * Now go to Trigger setups and Add `Build Status Messages`    
+
+        ![alt diagram](assets/images/java-web-app-deployment/image69.png)
+
+        ![alt diagram](assets/images/java-web-app-deployment/image70.png)
+
+
+    * Now go to the Pipeline section and provide the credentials, same one that we just created using PAT and few other settings.
+
+    * Update the Refspec and Branch Specifier fields. `+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*`
+      By adding a refspec and a branch specifier, including variables that are set by the plugin, the job will always build what is specified by the webhook trigger, that comes from GitHub itself.
+
+    * Branch Specifier (blank for 'any') is : `${ghprbActualCommit}`
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image71.png)
+
+
+    * Next, go back to your github account, then go to the repo settings and then add a webhook `http://jenkins_public_ip:8080/ghprbhook/`
+
+    * Select, `Let me select individual events`, and then select issue comments, Pushes, Pull Requests.
+
+    * Click on Add Webhook. After some time there should be a green tick beside the webhook.  
+
+        ![alt diagram](assets/images/java-web-app-deployment/image72.png)
+
+
+    * Now, let's raise a pull request.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image73.png)
+
+
+
+    * Next we can add reviewers, but in our case we'll be the only contributors so that's why we won't be able to add a reviewer.
+
+    * Next click on **Create Pull Request**. As soon as we create a pull request a trigger has happened.  
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image74.png)
+
+
+
+    * A jenkins build was triggered.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image75.png)
+
+
+    * Our build was successful so now we can go ahead and merge the pull request.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image76.png)
+
+
+    * Now our dev branch was merged into Main branch, so we don't need the dev branch, we can safely delete it.
+
+    * Now we can see that all the updated config files from the dev branch are available in the Main branch.
+
+        ![alt diagram](assets/images/java-web-app-deployment/image77.png)
+
+
+    * We have successfully replicated an advanced end-to-end DevOps pipeline.
+
+
+
 
 
 
