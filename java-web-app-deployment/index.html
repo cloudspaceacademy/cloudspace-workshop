@@ -64,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#advanced-end-to-end-cicd-pipeline-for-a-java-web-application-a-step-by-step-guide" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -460,6 +465,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Java Webapp Deployment
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -470,6 +488,70 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Project Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Problem Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#techonology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Techonology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-i-installation-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase I: Installation and configuration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1528,6 +1610,61 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Project Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Problem Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#techonology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Techonology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#phase-i-installation-and-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Phase I: Installation and configuration
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1542,9 +1679,2090 @@
                   
 
 
-  <h1>Java Webapp Deployment</h1>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image1.png" /></p>
+<h1 id="advanced-end-to-end-cicd-pipeline-for-a-java-web-application-a-step-by-step-guide"><strong>Advanced End-to-End CICD Pipeline for a Java Web Application: A Step-by-Step Guide</strong></h1>
+<h2 id="project-overview">🚀 Project Overview</h2>
+<p>This project aims to build an advanced end-to-end CICD DevOps pipeline for a Java web application.
+Our project is divided into two main parts:</p>
+<ol>
+<li>
+<p>The initial phase involves the installation and configuration of various tools and servers.</p>
+</li>
+<li>
+<p>In the second phase, we will create an advanced end-to-end Jenkins pipeline with multiple stages.</p>
+</li>
+</ol>
+<h2 id="problem-statement">🔧 Problem Statement</h2>
+<p>In the rapidly evolving landscape of software development, the implementation of Continuous Integration/Continuous Deployment (CICD) processes has become indispensable. For Java web applications, a robust CICD pipeline not only streamlines the development process but also ensures the delivery of high-quality, reliable software to end-users. This project aims to construct an advanced end-to-end CICD DevOps pipeline tailored specifically for Java web applications.</p>
+<h2 id="techonology-stack">💽 Techonology Stack</h2>
+<p>● <strong>AWS</strong></p>
+<p>● <strong>Git</strong></p>
+<p>● <strong>Gradle</strong></p>
+<p>● <strong>Ansible</strong></p>
+<p>● <strong>Terraform</strong></p>
+<p>● <strong>Jenkins</strong></p>
+<p>● <strong>SonarQube</strong></p>
+<p>● <strong>SonaType Nexus Repository Manager</strong></p>
+<p>● <strong>Kubernetes (kubeadm k8s cluster)</strong></p>
+<p>● <strong>Helm</strong></p>
+<p>● <strong>datree.io</strong></p>
+<p>● <strong>Slack</strong></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<ol>
+<li>AWS account</li>
+<li>Terraform and Ansible should be installed and configured on your local computer</li>
+</ol>
+<h2 id="phase-i-installation-and-configuration">Phase I: Installation and configuration</h2>
+<ul>
+<li>
+<p>We have used terraform config files to provision AWS resources and ansible playbooks to configure the instances as per our requirement, so you should know how to write terraform config files and ansible playbooks for understanding this phase of the project clearly. If you want to test the project then you can just clone the repo and run the commands which will automatically set up the required AWS resources.</p>
+</li>
+<li>
+<p>We need five servers to set up our CICD pipeline infrastructure. We have used Ubuntu as the base operating system for all our servers.</p>
+<ol>
+<li>
+<p>Jenkins Server - <code>jenkins</code></p>
+<ul>
+<li>This will host our jenkins application to implement our CI/CD pipelines.</li>
+</ul>
+</li>
+<li>
+<p>SonarQube Server - <code>sonar</code></p>
+<ul>
+<li>This server will host the SonarQube application. It is used for continuous inspection of code quality to perform automatic reviews with static analysis of code to detect bugs and code smells.</li>
+</ul>
+</li>
+<li>
+<p>Nexus Repository server - <code>nexus</code></p>
+<ul>
+<li>Sonatype Nexus Repository Manager provides a central platform for storing build artifacts. This server will host our two private repositories one for storing docker images and another for storing helm charts.</li>
+</ul>
+</li>
+<li>
+<p>Kubernetes control plane node - <code>k8s-master</code></p>
+<ul>
+<li>This server will act as the control plane node for our kubernetes cluster.</li>
+</ul>
+</li>
+<li>
+<p>Kubernetes worker node - <code>k8s-node1</code></p>
+<ul>
+<li>The <code>k8s-node1</code> server will act as a worker node for our kubernetes cluster
+This concludes the brief description of the servers needed for our project. We can now proceed to Phase I.</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="setup-aws-account-for-terraform"><strong>Setup AWS account for Terraform</strong></h1>
+<ol>
+<li>
+<p>To be able to set up the AWS resources with Terraform, we need to access AWS using <strong>Access Keys</strong></p>
+</li>
+<li>
+<p>Create a new user with administrator access to the AWS account</p>
+<ul>
+<li>Goto <strong>IAM &gt; Users</strong>, click on <strong>Add users</strong> and enter the user name and click <strong>Next</strong>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image2.png" /></p>
+<ul>
+<li>On the next page, select <strong>Attach policies directly</strong> and attach the <strong>AdministratorAccess</strong> policy to the user. Click on <strong>Next</strong>, then click on <strong>Create user</strong>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image3.png" /></p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image4.png" /></p>
+</li>
+<li>
+<p>Create an AWS access key for the newly created user.</p>
+<ul>
+<li>
+<p>Navigate to <strong>IAM &gt; Users &gt; tf-user</strong>, select <strong>Security credentials</strong> and click on <strong>Create access key</strong>, select <strong>Other</strong> and click on <strong>Next</strong>. </p>
+</li>
+<li>
+<p>Enter a name for your access key and click on <strong>Create access key</strong> to create the key. </p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image5.png" /></p>
+<ul>
+<li>Next, you will get an option to download the <code>.csv</code> file containing the access key and secret key or you can simply copy and store them in a safe place</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image6.png" /></p>
+</li>
+<li>
+<p>Set environment variables on your local system for Terraform to access the AWS access key.</p>
+<ul>
+<li>Create a file called <code>.envrc</code> in your home directory and write the commands to export the environment variables in it.</li>
+</ul>
+</li>
+</ol>
+<pre><code class="language-bash">
+            #!/bin/bash
+            ##Access_keys for AWS Terraform User##
+            export TF_VAR_access_key=&quot;Enter the aws access key here&quot;
+            export TF_VAR_secret_key=&quot;Enter the secret access key here&quot;
+</code></pre>
+<p>Replace the data with your AWS access and secret keys and save the file. We have used the same variables in our terraform config files so make sure the name of the environment variables are exactly as mentioned in the code block above.</p>
+<ul>
+<li>Edit your <code>.bashrc</code> file and add this line at the end <code>source ~/.envrc</code>
+save the file and exit. </li>
+</ul>
+<h1 id="clone-the-git-repository"><strong>Clone the Git repository</strong></h1>
+<pre><code class="language-bash">git clone https://github.com/mandeepsingh10/cicd-setup.git
+</code></pre>
+<ol>
+<li>
+<p>In the git repo, we have three directories.</p>
+<ul>
+<li>
+<p><strong>ansible_config</strong> - contains all the ansible playbooks</p>
+</li>
+<li>
+<p><strong>terraform_config</strong> - contains all the terraform config files</p>
+</li>
+<li>
+<p><strong>scripts</strong> - contains miscellaneous scripts to automate some tasks</p>
+</li>
+</ul>
+</li>
+<li>
+<p>To provision AWS instances using Terraform, we need to specify a <strong>public key</strong> to access the resources, we can use our public key for this instead of creating a new pair as it will help us to directly access the EC2 instances without doing any additional configuration for ssh.</p>
+</li>
+<li>
+<p>Copy your <strong>public key</strong> from <code>~/.ssh</code> directory to every Terraform configuration directory under <code>terraform_config</code> directory in the repository.</p>
+</li>
+</ol>
+<pre><code class="language-bash">    cp $HOME/.ssh/id_rsa.pub $HOME/repos/cicd-setup/terraform_config/jenkins/publickey.pub
+</code></pre>
+<p>My repository is present at <code>$HOME/repos</code> path, change that path as per your repo path and copy the public key as <code>publickey.pub</code> to all the directories <code>jenkins</code>, <code>master</code>, <code>nexus</code>, <code>node1</code> and <code>sonar</code> under <code>terraform_config</code> directory.</p>
+<ol>
+<li>Now we will be able to provision the terraform resources by just running the <code>terraform apply</code> command.</li>
+</ol>
+<h1 id="create-aws-instances-using-terraform"><strong>Create AWS instances using Terraform</strong></h1>
+<ol>
+<li>First, we need to initialize all the directories where we have our Terraform configuration files.</li>
+</ol>
+<pre><code class="language-bash"> cd  $HOME/repos/cicd-setup/terraform_config/jenkins
+ terraform init
+</code></pre>
+<p>We need to initialize all the directories where we have our Terraform configuration files. To do this, navigate to each directory under <code>cicd/terraform_config</code> - <code>jenkins</code>, <code>master</code>, <code>nexus</code>, <code>node1</code>, and <code>sonar</code> - and run the command <code>terraform init</code>.</p>
+<ol>
+<li>Next, we can try provisioning any one of the instances to check if our configuration is working as expected. To do this, navigate to the <code>Jenkins</code> directory and run the command <code>terraform plan</code>. If everything is set up correctly, it should display a message similar to this at the end:</li>
+</ol>
+<pre><code class="language-bash"> Changes to Outputs:
+   + Name                 = &quot;jenkins&quot;
+   + ami_id               = &quot;ami-0bcb40eb5cb6d6f9e&quot;
+   + instance_id          = (known after apply)
+   + keyname              = &quot;jenkins-key&quot;
+   + public_dns           = (known after apply)
+   + public_ip            = (known after apply)
+   + securityGroupDetails = (known after apply)
 
+</code></pre>
+<p>This means that our terraform configuration is correct and is working as expected.</p>
+<ol>
+<li>
+<p>To provision the jenkins server on AWS by running the command
+<code>terraform apply --auto-approve</code> in the <code>cicd-setup/terraform_config/jenkins</code> directory.</p>
+</li>
+<li>
+<p>Once the server is provisioned, the command will display details about the server, such as the hostname, <code>ami_id</code> of the image used, public and private IP addresses, similar to this:</p>
+</li>
+</ol>
+<pre><code class="language-bash"> Apply complete! Resources: 3 added, 0 changed, 0 destroyed.
 
+ Outputs:
+
+ Name = &quot;jenkins&quot;
+ ami_id = &quot;ami-0bcb40eb5cb6d6f9e&quot;
+ instance_id = &quot;i-09a9d9b364b692fb7&quot;
+ keyname = &quot;jenkins-key&quot;
+ public_dns = &quot;ec2-3-109-154-107.ap-south-1.compute.amazonaws.com&quot;
+ public_ip = &quot;3.109.154.107&quot;
+ securityGroupDetails = &quot;sg-02b24f714c8b6b86a&quot;
+</code></pre>
+<ol>
+<li>Let's try accessing the <code>jenkins</code> server by <code>ssh</code> using it's public IP. By default, <code>ubuntu</code> user is created on all our servers, as we are using <strong>Ubuntu</strong> ami image.</li>
+</ol>
+<pre><code class="language-bash">     ssh ubuntu@3.109.154.107
+     ubuntu@jenkins:~$
+</code></pre>
+<p>We can access the Jenkins server, which means we are good to go.</p>
+<ol>
+<li>
+<p>We can automate the provisioning of all the AWS resources using the <code>t_createall.sh</code> script located in the <code>cicd-setup/scripts</code>. While implementing Phase I for the first time, I recommend against using the <code>t_createall.sh</code> script to create all necessary resources at once. This is because our infrastructure setup utilizes <code>t2.medium</code> EC2 instances, and creating all resources simultaneously may result in higher AWS EC2 costs if instances remain idle while we configure other servers. Additionally, running a script may not provide a thorough understanding of how things work.</p>
+</li>
+<li>
+<p>Let's move on to our next step, which is configuring our servers using Ansible playbooks. We can refer to this section whenever we need to provision the remaining servers on AWS. </p>
+</li>
+</ol>
+<h1 id="configure-the-servers-using-ansible"><strong>Configure the servers using Ansible</strong></h1>
+<p>I have created Ansible playbooks to configure all the servers according to the application/service we need to run on them.
+The <code>playall.sh</code> script provides an option to automate the configuration management of all servers. However, as previously mentioned, solely relying on a script may not provide a comprehensive understanding of the underlying processes involved. </p>
+<h3 id="1-jenkins-server">1. <strong>Jenkins server</strong></h3>
+<ul>
+<li>Let's start with the <code>jenkins</code> server, but first, we need to populate our Ansible inventory file with the public IP addresses of our AWS instances so that we can run our Ansible playbooks. To do so, run the <code>generate_ansible_inventory.sh</code> from the <code>cicd-setup/scripts directory</code>.</li>
+</ul>
+<pre><code class="language-bash">  ~/repo/cicd-setup/scripts$
+  ➜ ./generate_ansible_inventory.sh
+
+  Creating inventory file for ansible ....
+
+  Populating inventory file for ansible ....
+
+  Done!!!
+</code></pre>
+<p>Check the newly created inventory file under ansible_config directory.</p>
+<pre><code class="language-bash">  ~/repo/cicd-setup$
+  ➜ cat ansible_config/inventory
+  jenkins ansible_host=3.109.154.107 ansible_user=ubuntu ansible_connection=ssh
+  sonar ansible_host= ansible_user=ubuntu ansible_connection=ssh
+  nexus ansible_host= ansible_user=ubuntu ansible_connection=ssh
+  k8s-master ansible_host= ansible_user=ubuntu ansible_connection=ssh
+  k8s-node1 ansible_host= ansible_user=ubuntu ansible_connection=ssh
+</code></pre>
+<p>We can see that the file is generated with the details required by Ansible to connect to the <code>jenkins</code> server. As we haven't provisioned the remaining servers yet, the IP details are empty for them.</p>
+<ul>
+<li>Now, to configure the <code>jenkins</code> server as per our requirements for this project, simply run the Ansible playbook located at <code>ansible_config/jenkins/jenkins.yaml</code>. You can check the Ansible playbook to understand how we are configuring the <code>jenkins</code> server. The playbook output shows us what all tasks are being performed.</li>
+</ul>
+<pre><code class="language-bash">  ~/repos/cicd-setup/ansible_config$ 
+  ➜ ansible-playbook -i inventory jenkins/jenkins.yaml
+
+  PLAY [Install and start Jenkins] ********************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [ensure the jenkins apt repository key is installed] *******************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [ensure the repository is configured] **********************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Ensure java is installed] *********************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [ensure jenkins is installed] ******************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [ensure jenkins is running] ********************************************************************************************************************************************
+  ok: [jenkins]
+
+  PLAY [Install Helm and datree.io helm plugin] *******************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [Check if Helm is installed] *******************************************************************************************************************************************
+  fatal: [jenkins]: FAILED! =&gt; {&quot;changed&quot;: false, &quot;cmd&quot;: &quot;helm version&quot;, &quot;delta&quot;: &quot;0:00:00.002648&quot;, &quot;end&quot;: &quot;2023-05-12 18:31:45.516957&quot;, &quot;msg&quot;: &quot;non-zero return code&quot;, &quot;rc&quot;: 127, &quot;start&quot;: &quot;2023-05-12 18:31:45.514309&quot;, &quot;stderr&quot;: &quot;/bin/sh: 1: helm: not found&quot;, &quot;stderr_lines&quot;: [&quot;/bin/sh: 1: helm: not found&quot;], &quot;stdout&quot;: &quot;&quot;, &quot;stdout_lines&quot;: []}
+  ...ignoring
+
+  TASK [Download Helm script] *************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Install Helm] *********************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Install unzip] ********************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Check if Datree plugin exists] ****************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [Install Datree plugin] ************************************************************************************************************************************************
+  changed: [jenkins]
+
+  PLAY [Install Docker] *******************************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [Install required packages] ********************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add Docker GPG key] ***************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add Docker repository] ************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Install Docker] *******************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add jenkins to sudo group] ********************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add jenkins to docker group] ******************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Add jenkins to sudoers file] ******************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Install kubectl] ******************************************************************************************************************************************************
+  changed: [jenkins]
+
+  TASK [Create kubectl alias for root user] ***********************************************************************************************************************************
+  changed: [jenkins]
+
+  PLAY RECAP ******************************************************************************************************************************************************************
+  jenkins                    : ok=23   changed=17   unreachable=0    failed=0    skipped=0    rescued=0    ignored=1
+
+</code></pre>
+<ul>
+<li>If the playbook is executed without any errors, we should be able to access the Jenkins application from your browser using the public IP address followed by port <code>8080</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image7.png" /></p>
+<ul>
+<li>
+<p>Enter the initial admin password and click on continue.</p>
+</li>
+<li>
+<p>Select Installed suggested plugins.</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image8.png" /></p>
+<ul>
+<li>Now jenkins will install the suggested plugins, it will take 5-10 minutes for this to complete.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image9.png" /></p>
+<ul>
+<li>Once the suggested plugins are installed, you will be prompted to create a user. Create the user according to your preferences.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image10.png" /></p>
+<ul>
+<li>Next, you will see this screen, click on <code>Save and Finish</code> and then click on <code>Start using Jenkins</code> on the next screen.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image11.png" /></p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image12.png" /></p>
+<ul>
+<li>Finally, you will see the Jenkins dashboard, setup is completed.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image13.png" /></p>
+<h3 id="2-sonarqube-server">2. <strong>SonarQube Server</strong></h3>
+<ul>
+<li>
+<p>Follow the steps mentioned in <strong>Create AWS instances using Terraform</strong> section to provision the <strong>SonarQube server</strong> - <code>sonar</code>.</p>
+</li>
+<li>
+<p>Once the server is provisioned, we need to repopulate the Ansible inventory file before running the playbook to configure sonarqube server.</p>
+</li>
+</ul>
+<p>Run the script <code>cicd-setup/scripts/generate_ansible_inventory.sh</code>.</p>
+<ul>
+<li>Run the Ansible playbook located at <code>ansible_config/sonar/sonar.yaml</code>.</li>
+</ul>
+<pre><code class="language-bash">  ~/repos/cicd-setup/ansible_config$ 
+  ➜ ansible-playbook -i inventory sonar/sonar.yaml
+
+  PLAY [Install Docker and SonarQube] *****************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [sonar]
+
+  TASK [Install required packages] ********************************************************************************************************************************************
+  changed: [sonar]
+
+  TASK [Add Docker GPG key] ***************************************************************************************************************************************************
+  changed: [sonar]
+
+  TASK [Add Docker repository] ************************************************************************************************************************************************
+  changed: [sonar]
+
+  TASK [Install Docker] *******************************************************************************************************************************************************
+  changed: [sonar]
+
+  TASK [Start SonarQube container] ********************************************************************************************************************************************
+  changed: [sonar]
+
+  PLAY RECAP ******************************************************************************************************************************************************************
+  sonar                      : ok=6    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+</code></pre>
+<ul>
+<li>We have deployed our SonarQube application on a docker container and exposed it on 9000 port. We should be able to access the Jenkins application from your browser using the public IP address followed by port <code>9000</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image14.png" /></p>
+<ul>
+<li>
+<p>The default username is <code>admin</code> and password is also <code>admin</code>.</p>
+</li>
+<li>
+<p>Next you will be promted to set a new password for the SonarQube application, set the new password and click on <code>update</code>.</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image15.png" /></p>
+<ul>
+<li>Now you will see the SonarQube dashboard, setup is complete.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image16.png" /></p>
+<h3 id="3-sonatype-nexus-server">3. <strong>SonaType Nexus Server</strong></h3>
+<ul>
+<li>
+<p>Follow the steps mentioned in <strong>Create AWS instances using Terraform</strong> section to provision the <strong>Nexus Repository Manager</strong> server - <code>nexus</code>.</p>
+</li>
+<li>
+<p>Once the server is provisioned, we need to repopulate the Ansible inventory file before running the playbook to configure nexus server.</p>
+</li>
+</ul>
+<p>Run the script <code>cicd-setup/scripts/generate_ansible_inventory.sh</code>.</p>
+<ul>
+<li>Run the Ansible playbook located at <code>ansible_config/nexus/nexus.yaml</code>.</li>
+</ul>
+<pre><code class="language-bash">  ~/repos/cicd-setup/ansible_config$ 
+  ➜ ansible-playbook -i inventory nexus/nexus.yaml
+
+  PLAY [Install Nexus] ********************************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [nexus]
+
+  TASK [Install Java 8] *******************************************************************************************************************************************************
+  changed: [nexus]
+
+  TASK [Download Nexus] *******************************************************************************************************************************************************
+  changed: [nexus]
+
+  TASK [Extract Nexus] ********************************************************************************************************************************************************
+  changed: [nexus]
+
+  TASK [Start Nexus] **********************************************************************************************************************************************************
+  changed: [nexus]
+
+  PLAY RECAP ******************************************************************************************************************************************************************
+  nexus                      : ok=5    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+</code></pre>
+<ul>
+<li>Nexus takes some time to load so wait for 2-3 minutes and then access it using the public IP address followed by port <code>8081</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image17.png" /></p>
+<ul>
+<li>
+<p>Click on "Sign In" and follow the on-screen instructions to get the initial admin password for Nexus. You will be prompted to set a new password for <strong>Nexus</strong>. Make sure to store this password as we will need it in Phase II of our project where we integrate different applications together.</p>
+</li>
+<li>
+<p>On the next screen make sure <code>Enable anonymous</code> access is selected and then click on Next.</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image18.png" /></p>
+<ul>
+<li>Click on Finish, the setup is completed.</li>
+</ul>
+<h3 id="4-kubernetes-cluster">4. <strong>Kubernetes Cluster</strong></h3>
+<ul>
+<li>
+<p>In this section we will setup and configure a kubernetes cluster on AWS using kubeadm tool.</p>
+</li>
+<li>
+<p>We will be deploying two k8s nodes, one control plane node <code>k8s-master</code> and one worker node <code>k8s-node1</code></p>
+</li>
+<li>
+<p>Follow the steps mentioned in <strong>Create AWS instances using Terraform</strong> section to provision the <code>k8s-master</code> and <code>k8s-node1</code> servers for our kubernetes cluster.</p>
+</li>
+<li>
+<p>Once both the servers are provisioned, we need to repopulate the Ansible inventory file before running the playbook to setup and configure our kubernetes cluster.</p>
+</li>
+</ul>
+<p>Run the script <code>cicd-setup/scripts/generate_ansible_inventory.sh</code>.</p>
+<ul>
+<li>Run the Ansible playbook located at <code>ansible_config/k8s/k8s_cluster_setup.yaml</code>.</li>
+</ul>
+<pre><code class="language-bash">  ~/repos/cicd-setup/ansible_config$ 
+  ➜ ansible-playbook -i inventory k8s/k8s_cluster_setup.yaml
+
+  PLAY [Add private IP of k8s instances to init scripts] **********************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [localhost]
+
+  TASK [Run add_k8s_ip.sh] ****************************************************************************************************************************************************
+  changed: [localhost]
+
+  PLAY [Setup k8s Control Plane (master) node] ********************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [k8s-master]
+
+  TASK [Copy master.sh script to remote server] *******************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Configure Control Plane (master) node] ********************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Get kubeadm join command] *********************************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Generate token to join the k8s cluster] *******************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Create join_cluster.sh] ***********************************************************************************************************************************************
+  changed: [k8s-master -&gt; localhost]
+
+  TASK [Create kubectl alias] *************************************************************************************************************************************************
+  changed: [k8s-master]
+
+  PLAY [Configure kubectl for ubuntu user] ************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [k8s-master]
+
+  TASK [Create .kube directory for ubuntu user] *******************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Copy admin.conf to ubuntu's .kube directory] **************************************************************************************************************************
+  changed: [k8s-master]
+
+  TASK [Change ownership of .kube/config file] ********************************************************************************************************************************
+  ok: [k8s-master]
+
+  TASK [Create kubectl alias for ubuntu] **************************************************************************************************************************************
+  changed: [k8s-master]
+
+  PLAY [Setup k8s worker node] ************************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [k8s-node1]
+
+  TASK [Copy nodes.sh script to remote server] ********************************************************************************************************************************
+  changed: [k8s-node1]
+
+  TASK [Configure Worker node] ************************************************************************************************************************************************
+  changed: [k8s-node1]
+
+  TASK [Copy join_cluster.sh] *************************************************************************************************************************************************
+  changed: [k8s-node1]
+
+  TASK [Join k8s cluster] *****************************************************************************************************************************************************
+  changed: [k8s-node1]
+
+  PLAY [Copy the kubeconfig form k8s-master] **********************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [k8s-master]
+
+  TASK [Fetch the file from the k8s-master to localhost] **********************************************************************************************************************
+  changed: [k8s-master]
+
+  PLAY [Jenkins User kubectl Setup] *******************************************************************************************************************************************
+
+  TASK [Gathering Facts] ******************************************************************************************************************************************************
+  ok: [jenkins]
+
+  TASK [create directory and set ownership of .kube directory for jenkins user] ***********************************************************************************************
+  changed: [jenkins]
+
+  TASK [Copy the file from localhost to jenkins] ******************************************************************************************************************************
+  changed: [jenkins]
+
+  PLAY RECAP ******************************************************************************************************************************************************************
+  jenkins                    : ok=3    changed=2    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+  k8s-master                 : ok=14   changed=10   unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+  k8s-node1                  : ok=5    changed=4    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0  
+  localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
+</code></pre>
+<ul>
+<li>Once the playbook is successfully executed, we can login to our master nodes to verify the setup and configuration of our k8s cluster.</li>
+</ul>
+<pre><code class="language-bash">  ssh ubuntu@65.0.21.196
+
+  ubuntu@k8s-master:~$ kubectl get nodes
+  NAME         STATUS   ROLES           AGE     VERSION
+  k8s-master   Ready    control-plane   11m     v1.27.1
+  k8s-node1    Ready    &lt;none&gt;          9m39s   v1.27.1
+
+  ubuntu@k8s-master:~$ kubectl get pods -n kube-system
+  NAME                                 READY   STATUS    RESTARTS      AGE
+  coredns-5d78c9869d-blhx8             1/1     Running   0             21m
+  coredns-5d78c9869d-tfzj6             1/1     Running   0             21m
+  etcd-k8s-master                      1/1     Running   0             21m
+  kube-apiserver-k8s-master            1/1     Running   0             21m
+  kube-controller-manager-k8s-master   1/1     Running   0             21m
+  kube-proxy-qsp48                     1/1     Running   0             19m
+  kube-proxy-rv87l                     1/1     Running   0             21m
+  kube-scheduler-k8s-master            1/1     Running   0             21m
+  weave-net-mx4lj                      2/2     Running   0             19m
+  weave-net-zddmr                      2/2     Running   1 (20m ago)   21m
+</code></pre>
+<ul>
+<li>We can see that both nodes are in a Ready state, and all pods in the kube-system namespace are up and running, indicating that our k8s cluster has been deployed properly.</li>
+</ul>
+<h3 id="with-this-we-have-successfully-completed-phase-i-of-our-project-the-required-infrastructure-for-the-cicd-pipeline-is-successfully-provisioned-and-configured"><strong>With this we have successfully completed Phase I of our project, the required infrastructure for the CICD pipeline is successfully provisioned and configured.</strong></h3>
+<p><strong>Note:</strong></p>
+<p><mark style="background-color: #FFFF00" >When implementing Phase I for the first time, it may take a considerable amount of time to complete. If you need to take a break or are unable to continue for a few days, it is not advisable to keep the AWS resources running during this time as it can result in significantly higher charges.</mark ></p>
+<p>For such scenarios or if you make mistakes during Phase I and need to start over but don't want to repeat the same steps again, you can use the following scripts in the cicd-setup/scripts directory:</p>
+<pre><code>1. t_createall.sh: provisions all EC2 instances
+
+2.t_destroyall.sh: destroys all EC2 instances
+
+3. playall.sh: automates the configuration management of all servers
+
+4. phase1.sh: automates both provisioning and configuration management processes
+</code></pre>
+<p>After automating the provisioning and configuration management processes, you will still need to complete certain manual steps in the initial setup of applications such as Jenkins, SonarQube, and Nexus. To do this, you can access the dashboards of each application using the public IP followed by the port in your web browser.</p>
+<p>That's it for Phase I, let's proceed to Phase II.</p>
+<h2 id="phase-ii-the-cicd-pipeline"><strong>Phase II: The CICD Pipeline</strong></h2>
+<ul>
+<li>In this phase we will do everything from integrating our Jenkins, SonarQube, Nexus Repository Manager, Kubernetes cluster, Helm, datree.io applications with each other to deploying our Java web application on the K8s cluster using Helm charts based on pull request triggers. Let's begin.</li>
+</ul>
+<h3 id="clone-the-git-repository_1"><strong>Clone the git repository</strong></h3>
+<ul>
+<li>We will be updating and pushing the changes to the repository so we need to clone the repository via ssh to do so first create a fork of the repository and then</li>
+</ul>
+<p>clone it using the ssh URL.</p>
+<pre><code class="language-bash">  git clone git@github.com:mandeepsingh10/java-gradle-app.git
+</code></pre>
+<ul>
+<li>Currently we only have <code>main</code> branch in the repository, so we will create a new branch called <code>dev</code> as it is not a good practice to modify the <code>main</code> branch.</li>
+</ul>
+<pre><code class="language-bash">  java-gradle-app on main via 🅶 v7.1.1 via ☕ 
+  ➜ git branch
+  * main
+  java-gradle-app on main via 🅶 v7.1.1 via ☕ 
+  ➜ git checkout -b dev
+  Switched to a new branch 'dev'
+  java-gradle-app on dev via 🅶 v7.1.1 via ☕ 
+  ➜ git branch
+  * dev
+    main
+</code></pre>
+<h3 id="creating-a-pipeline-job"><strong>Creating a pipeline job</strong></h3>
+<ul>
+<li>Go to the jenkins dashboard and click on <code>New Item</code>, select the type as <code>Pipeline</code> and Enter a name for the pipeline. Click on <code>OK</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image19.png" /></p>
+<ul>
+<li>Navigate to the <code>Pipeline</code> section of the job and select <code>Pipeline script from SCM</code>, select <code>SCM</code> as <code>Git</code>, enter the repository URL, leave the <code>Credentials</code> field empty as our repo is public. In the <code>Branches to build</code> section, select <code>Branch Specifier</code> as the newly created dev branch. Click on <code>Save</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image20.png" /></p>
+<ul>
+<li>Now, let's create a <code>Jenkinsfile</code> in the dev branch with a simple one stage pipeline to check if our code is getting pulled properly or not. Open your favorite code editor and create the <code>Jenkinsfile</code> in the root directory of the repo, make sure you are checked out to <code>dev</code> branch.</li>
+</ul>
+<pre><code class="language-bash">  pipeline{
+      agent any
+      stages{
+          stage(&quot;Git Test&quot;){
+              steps{
+                  echo &quot;Executing git connection test&quot;
+              }
+              post{
+                  success{
+                      echo &quot;git repository cloned successfully&quot;
+                  }
+                  failure{
+                      echo &quot;git clone action failed&quot;
+                  }
+              }
+          }
+      }
+      post{
+          success{
+              echo &quot;========pipeline executed successfully ========&quot;
+          }
+          failure{
+              echo &quot;========pipeline execution failed========&quot;
+          }
+      }
+  }
+</code></pre>
+<ul>
+<li>Add the Jenkinsfile to dev branch and commit the changes.</li>
+</ul>
+<pre><code class="language-bash">  java-gradle-app on  dev  🛤️ ×1via 🅶 v7.1.1 via ☕ 
+  ➜ git branch
+  * dev
+    main
+
+  java-gradle-app on  dev  🛤️ ×1via 🅶 v7.1.1 via ☕ 
+  ➜ git status
+  On branch dev
+  Untracked files:
+    (use &quot;git add &lt;file&gt;...&quot; to include in what will be committed)
+      Jenkinsfile
+
+  nothing added to commit but untracked files present (use &quot;git add&quot; to track)
+
+  java-gradle-app on  dev  🛤️ ×1via 🅶 v7.1.1 via ☕ 
+  ➜ git add .
+
+  java-gradle-app on  dev  🗃️×1via 🅶 v7.1.1 via ☕ 
+  ➜ git commit -m &quot;Added Jenkinsfile&quot;
+  [dev 5b6b195] Added Jenkinsfile
+   1 file changed, 26 insertions(+)
+   create mode 100644 Jenkinsfile
+
+  java-gradle-app on  dev via 🅶 v7.1.1 via ☕ 
+  ➜ git push
+  fatal: The current branch dev has no upstream branch.
+  To push the current branch and set the remote as upstream, use
+
+      git push --set-upstream origin dev
+
+  java-gradle-app on  dev via 🅶 v7.1.1 via ☕ 
+  ✖  git push --set-upstream origin dev
+  Enumerating objects: 4, done.
+  Counting objects: 100% (4/4), done.
+  Delta compression using up to 8 threads
+  Compressing objects: 100% (3/3), done.
+  Writing objects: 100% (3/3), 459 bytes | 459.00 KiB/s, done.
+  Total 3 (delta 1), reused 0 (delta 0), pack-reused 0
+  remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+  remote: 
+  remote: Create a pull request for 'dev' on GitHub by visiting:
+  remote:      https://github.com/mandeepsingh10/java-gradle-app/pull/new/dev
+  remote: 
+  To github.com:mandeepsingh10/java-gradle-app.git
+   * [new branch]      dev -&gt; dev
+  Branch 'dev' set up to track remote branch 'dev' from 'origin'.
+</code></pre>
+<p>We received an error saying <code>The current branch dev has no upstream branch</code>. This was because we created a new branch but didn't set the remote upstream for it.
+We ran the command <code>git push --set-upstream origin dev</code> to push the changes after setting the upstream.</p>
+<ul>
+<li>Now, let's try building our pipeline job in jenkins. Goto Jenkins dashboard and then select <code>java-gradle-app</code> and click on <code>Build Now</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image21.png" /></p>
+<ul>
+<li>Our test build was successfull. Let's check the logs, click on the <code>#1</code> build and then select <code>Console Output</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image22.png" /></p>
+<p>We can see the commands that were executed during the execution and some other details, this completes our test run, now let's integrate SonarQube with our Jenkins server.</p>
+<h2 id="stage-i-sonarqube-integration"><strong>STAGE I : SonarQube Integration</strong></h2>
+<ul>
+<li>
+<p>In this step, we will integrate our SonarQube server with our Jenkins server so that we can perform Code Quality checks, code smells etc.</p>
+</li>
+<li>
+<p>To start, we'll need to install some jenkins plugins, to do so, navigate to
+<code>Manage Jenkins</code> &gt; <code>Manage Plugins</code> &gt; <code>Available</code> and install the plugins listed below:</p>
+<ol>
+<li>
+<p>SonarQube Scanner for Jenkins</p>
+</li>
+<li>
+<p>Sonar Gerrit</p>
+</li>
+<li>
+<p>Sonar Quality Gates</p>
+</li>
+<li>
+<p>SonarQube Generic Coverage</p>
+</li>
+</ol>
+<p>5.Quality Gates</p>
+<ol>
+<li>
+<p>Docker</p>
+</li>
+<li>
+<p>Docker Pipeline</p>
+</li>
+<li>
+<p>docker-build-step</p>
+</li>
+</ol>
+</li>
+</ul>
+<p>Click on <code>Install without restart</code>, it will take some time to install the plugins.</p>
+<ul>
+<li>Next, we will establish connection between SonarQube and Jenkins Server for that we will need an authentication token from SonarQube.
+Goto SonarQube dashboard, goto <code>Administration</code> &gt; <code>Security</code>, generate a token for administrator user by clicking on the icon below the Tokens column.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image23.png" /></p>
+<p>Choose name as jenkins and leave the <code>Expires in</code> field at the default value of 30 days and click on <code>Generate</code>.</p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image24.png" /></p>
+<ul>
+<li>Copy this token, we will create a Jenkins secret using this token which will used to authenticate jenkins while connecting with sonarqube.
+Goto <code>Manage Jenkins</code> &gt; <code>Security</code> &gt; <code>Credentials</code>. Click on <code>global</code> and then <code>add credentials</code>, select <code>Kind</code> as Secret text and <code>ID</code> as <code>sonar-token</code></li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image25.png" /></p>
+<ul>
+<li>Now, we need to configure SonarQube settings, Goto <code>Manage Jenkins</code> &gt; <code>Configure System</code> . There will be a section SonarQube servers, we need to update the details in this section. Click on <code>Add SonarQube</code>, Enter the name as <code>sonarserver</code>, Server URL is <code>http://IP:PORT</code>, select <code>Server authentication</code> token as <code>sonar-token</code>. Also enable <code>Environment variables</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image26.png" /></p>
+<ul>
+<li>We need to use this token in our Jenkinsfile so we will need to generate a pipeline script for that, navigate to the pipeline job and click on <code>Pipeline Syntax</code> and generate sonarqube pipeline script from the <strong>Snippet Generator</strong>.
+Select <code>Sample Step</code> as <code>withSonarQubeEnv</code> , select <code>Server authentication token</code> as <code>sonar-token</code>, click on <code>Generate Pipeline Script</code>.</li>
+</ul>
+<pre><code class="language-bash">  withSonarQubeEnv {
+      // some block
+  }
+</code></pre>
+<p>This is the pipeline script generated, similarly whenever we need to generate any script we can use the <code>Snipper Generator</code>.</p>
+<ul>
+<li>Now add this pipeline script to the Jenkinsfile. Remove the previous test stages and create a new Stage <code>Sonar Quality Check</code> where we will perform code analysis by querying SonarQube.</li>
+</ul>
+<pre><code class="language-bash">  pipeline{
+      agent any
+      environment{
+          VERSION = &quot;{env.BUILD_ID}&quot;
+      }
+      stages{
+          stage(&quot;Sonar Quality Check&quot;){
+              steps{
+                  script{
+                      withSonarQubeEnv(credentialsId: 'sonar-token') {
+                          sh 'chmod +x gradlew'
+                          sh './gradlew sonarqube --info'
+                      }
+                  }
+              }
+          }
+      }
+  }
+</code></pre>
+<ul>
+<li>
+<p>We have give execute permission to gradlew and then we have executed <code>./gradlew sonarqube</code> which helps us in pushing the code to sonarQube, where we will validate our checks against the sonar rules.</p>
+</li>
+<li>
+<p>Add the JenkinsFile to the git repo and push the changes.</p>
+</li>
+<li>
+<p>Go to the Jenkins dashboard and build the pipeline job and see if it builds successfully.</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image27.png" /></p>
+<ul>
+<li>We can see that the job was a success, we can also check the SonarQube Dashboard.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image28.png" /></p>
+<ul>
+<li>
+<p>Now, we will we also need to create a webhook to have connection between jenkins and sonarqube.</p>
+<ol>
+<li>
+<p>To create a webhook navigate to sonarqube dashboard then <code>administration</code> &gt; <code>configuration</code> &gt; <code>webhooks</code>.</p>
+</li>
+<li>
+<p>Enter the URL of your jenkins host with port suffixed with
+   /sonarqube-webhook/ - The URL will be <code>http://jenkins_ip:8080/sonarqube-webhook/</code></p>
+</li>
+</ol>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image29.png" /></p>
+<ul>
+<li>The data that will be sent to jenkins via the sonarqube webhook can be seen by clicking the small icon beside the time in the <code>Last delivery</code> column (it will be available after we start a new build after creating the webhook).
+Go back to jenkins dashboard and click on <code>Build Now</code>. Once the build is completed successfully, go back to SonarQube Dashboard and check the Last Delivery Data.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image30.png" /></p>
+<ul>
+<li>We are interested in the qualityGate section of the Last Delivery data.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image31.png" /></p>
+<pre><code class="language-bash">  &quot;qualityGate&quot;: {
+              &quot;name&quot;: &quot;Sonar way&quot;,
+              &quot;status&quot;: &quot;OK&quot;,
+</code></pre>
+<ul>
+<li>
+<p>If the status is <code>ok</code> then only our pipeline will move on to the next stage otherwise the build will fail.</p>
+</li>
+<li>
+<p>Now, we will add a block to our <code>Sonar Quality Check</code> stage which will wait for 15 minutes for the Quality Gate status to chaneg to <code>ok</code> state.</p>
+</li>
+</ul>
+<pre><code class="language-bash">  timeout(time: 15, unit: 'MINUTES') {
+      def qg = waitForQualityGate()
+      if (qg.status != 'OK') {
+          error &quot;Pipeline aborted due to quality gate failure: ${qg.status}&quot;
+          }
+      }
+</code></pre>
+<pre><code class="language-bash">  pipeline{
+      agent any
+      environment{
+          VERSION = &quot;{env.BUILD_ID}&quot;
+      }
+      stages{
+          stage(&quot;Sonar Quality Check&quot;){
+              steps{
+                  script{
+                      withSonarQubeEnv(credentialsId: 'sonar-token') {
+                          sh 'chmod +x gradlew'
+                          sh './gradlew sonarqube --info'
+                      }
+                      timeout(time: 15, unit: 'MINUTES') {
+                          def qg = waitForQualityGate()
+                          if (qg.status != 'OK') {
+                              error &quot;Pipeline aborted due to quality gate failure: ${qg.status}&quot;
+                          }
+                      }
+                  }
+              }
+          }
+      }
+  }
+</code></pre>
+<ul>
+<li>Commit and push the changes to the dev branch and then run the build.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image32.png" /></p>
+<ul>
+<li>This concludes the SonarQube Integration.</li>
+</ul>
+<h2 id="stage-ii-build-docker-images-and-push-to-nexus"><strong>STAGE II : Build docker images and push to Nexus</strong></h2>
+<ol>
+<li>
+<h3 id="create-a-private-repository-in-nexus-repository-manager"><strong>Create a private repository in Nexus Repository Manager</strong></h3>
+<ul>
+<li>
+<p>We will create a private repository to store our docker images on the Nexus Repository Manager.</p>
+<ul>
+<li>Go to Nexus dashboard &gt; <code>Repositories</code> &gt; <code>Create Repositor</code>y Select Recipe as <code>docker-hosted</code> Select HTTP port as <code>8083</code> Click on Create repository</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image33.png" /></p>
+<ul>
+<li>Next, we need to configure this repository on our jenkins server as an insecure registry to so that we can push our docker images to this repo.
+To do so, go to the jenkins server and create or edit the file <code>/etc/docker/daemon.json</code></li>
+</ul>
+<pre><code class="language-bash">  vim /etc/docker/daemon.json
+  { &quot;insecure-registries&quot;:[&quot;nexus_machine_ip:8083&quot;] }
+</code></pre>
+<p>It will look like this <code>{ "insecure-registries":["13.235.91.151:8083"] }</code></p>
+<ul>
+<li>Now restart the docker service using <code>systemctl restart docker.service</code> and check if the insecure registry is added properly.</li>
+</ul>
+<pre><code class="language-bash">  root@jenkins:~# docker info | grep Insecure -A1
+   Insecure Registries:
+    13.235.91.151:8083
+</code></pre>
+<ul>
+<li>We have successfully created and configured the nexus repository for storing our docker images, now let's try to login to the repository.</li>
+</ul>
+<pre><code class="language-bash">  root@jenkins:~# docker login -u admin 13.235.91.151:8083
+  Password: 
+  WARNING! Your password will be stored unencrypted in /root/.docker/config.json.
+  Configure a credential helper to remove this warning. See
+  https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+  Login Succeeded
+</code></pre>
+<ul>
+<li>Next, we need to add the password for our nexus repository as a secret in jenkins so that we can use it in our pipeline stages.
+Goto <code>Manage Jenkins</code> &gt; <code>Security</code> &gt; <code>Credentials</code>. Click on <code>global</code> and then <code>add credentials</code>, select kind as <code>secret text</code>. Click on <code>Create</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image34.png" /></p>
+<ol>
+<li>
+<h3 id="creating-a-multi-stage-dockerfile"><strong>Creating a multi-stage Dockerfile</strong></h3>
+</li>
+<li>
+<p>This Dockerfile is creating a Docker image that deploys a Java web application to Tomcat using Docker multi-stage build.</p>
+</li>
+</ol>
+<pre><code class="language-bash">  FROM openjdk:11 as base
+
+  WORKDIR /app
+
+  COPY . .
+
+  RUN chmod +x gradlew
+
+  RUN ./gradlew build
+
+  FROM tomcat:9
+
+  WORKDIR webapps/
+
+  COPY --from=base /app/build/libs/sampleWeb-0.0.1-SNAPSHOT.war .
+
+  RUN rm -rf ROOT &amp;&amp; mv sampleWeb-0.0.1-SNAPSHOT.war ROOT.war
+</code></pre>
+<ul>
+<li>
+<p>Here is a breakdown of what is happening in each step:</p>
+<ol>
+<li>
+<p><code>FROM openjdk:11 as base</code> - This line sets the base image for the build process to the official OpenJDK 11 image.</p>
+</li>
+<li>
+<p><code>WORKDIR /app</code> - This line sets the working directory for the Docker container to /app.</p>
+</li>
+<li>
+<p><code>COPY . .</code> - This line copies the current directory (where the Dockerfile is located) into the /app directory in the Docker container.</p>
+</li>
+<li>
+<p><code>RUN chmod +x gradlew</code> - This line makes the gradlew script executable.</p>
+</li>
+<li>
+<p><code>RUN ./gradlew build</code> - This line runs the gradlew script to build the Java application.</p>
+</li>
+<li>
+<p><code>FROM tomcat:9</code> - This line sets the base image to the official Tomcat 9 image for the second stage of our multi stage Dockerfile</p>
+</li>
+<li>
+<p><code>WORKDIR webapps/</code> - This line sets the working directory for the Docker container to /usr/local/tomcat/webapps, where Tomcat looks for web applications.</p>
+</li>
+<li>
+<p><code>COPY --from=base /app/build/libs/sampleWeb-0.0.1-SNAPSHOT.war .</code> - This line copies the built Java web application from the "base" image to the current directory in the second image which is our final image.</p>
+</li>
+<li>
+<p><code>RUN rm -rf ROOT &amp;&amp; mv sampleWeb-0.0.1-SNAPSHOT.war ROOT.war</code> - This line removes the existing ROOT web application and renames the copied application to ROOT.war so that it becomes the default application served by Tomcat.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>We can check if our docker file is working as expected or not, go to the jenkins server and navigate to the path <code>/var/lib/jenkins/workspace/sampleWeb_app</code>, here we will have all our project files from the git repo. We can create our Dockerfile here and try to build test images.</p>
+</li>
+</ul>
+<pre><code class="language-bash">  docker build -t test-tomcat .
+
+  jenkins@jenkins:~/workspace/java-gradle-app$ docker images 
+  REPOSITORY    TAG       IMAGE ID       CREATED          SIZE
+  test-tomcat   latest    0589959663b8   25 minutes ago   514MB
+</code></pre>
+<pre><code class="language-bash">  docker run -itd -p 7777:8080 test-tomcat
+
+  jenkins@jenkins:~/workspace/java-gradle-app$ docker run -itd -p 7777:8080 test-tomcat
+  584f79d32cfa20f8b7428cdc9d2ca80928f717e14fb93ee59ee0bd7019ce2372
+  jenkins@jenkins:~/workspace/java-gradle-app$ docker ps
+  CONTAINER ID   IMAGE         COMMAND             CREATED         STATUS         PORTS                                       NAMES
+  584f79d32cfa   test-tomcat   &quot;catalina.sh run&quot;   5 seconds ago   Up 3 seconds   0.0.0.0:7777-&gt;8080/tcp, :::7777-&gt;8080/tcp   nice_mcclintock
+</code></pre>
+<ul>
+<li>
+<p>We can access the web application by going to <code>jenkins_ip:7777</code> in our web browser.</p>
+</li>
+<li>
+<p>Make sure to delete the containers and images we created for our testing purpose in the previous test after confirming that our container is running as expected</p>
+</li>
+<li>
+<h3 id="adding-stage-ii-build-docker-images-and-push-to-nexus-to-jenkinsfile"><strong>Adding Stage II : Build docker images and push to Nexus to Jenkinsfile</strong></h3>
+<ul>
+<li>
+<p>We need to do four steps to build our image and push the image to the nexus repository.</p>
+<ol>
+<li>
+<h3 id="tag-and-build-docker-image"><strong>Tag and build docker image</strong></h3>
+<ul>
+<li>
+<p>We can tag our image using the command
+ <code>docker build -t nexus_server_ip:8083/myapp:$VERSION</code></p>
+</li>
+<li>
+<p><code>VERSION</code> needs to be unique as every change to the application will trigger a new job and will create a new image so we need a variable which we can use as tag, we can use the build number of our jenkins job as a tag. The image created by the job will have the build number as tag.</p>
+</li>
+<li>
+<p>For this to work, first we need to define <code>$VERSION</code> in the pipeline, it's value will be build number of the jenkins job.</p>
+</li>
+<li>
+<p>Define the <code>VERSION</code> in the pipeline using environment variable which will be availabe for use during the execution of the pipeline.</p>
+</li>
+</ul>
+<p><code>bash
+  environment{
+  VERSION = "${env.BUILD_ID}"
+  }</code></p>
+</li>
+<li>
+<h3 id="login-to-the-nexus-repo"><strong>Login to the Nexus repo</strong></h3>
+<ul>
+<li>
+<p>This can be done using the command
+  <code>docker login -u admin -p $nexus_pass_var nexus_server_ip:8083</code></p>
+</li>
+<li>
+<p><code>$nexus_pass_var</code> is variable through which we access the jenkins credential that we created for the storing the admin password of the nexus repository.</p>
+</li>
+<li>
+<p>We will use a withCredentials block to access the credential <code>nexus_pass</code>.</p>
+</li>
+</ul>
+<p><code>bash
+  withCredentials([string(credentialsId: 'nexus_pass', variable: 'nexus_pass_var')]) {
+  sh '''
+  docker build -t nexus_server_ip:8083/myappapp:${VERSION} .
+  docker login -u admin -p $nexus_docker_repo_pass_var nexus_server_ip:8083</code></p>
+</li>
+<li>
+<h3 id="push-the-docker-image-to-the-nexus-repo"><strong>Push the docker image to the nexus repo</strong></h3>
+<p><code>bash
+  #Use this command to push the image to nexus repo
+  docker push nexus_server_ip:8083/myappapp:${VERSION}</code></p>
+</li>
+<li>
+<h3 id="remove-the-image-from-the-server-after-the-image-is-pushed-to-nexus"><strong>Remove the image from the server after the image is pushed to nexus</strong></h3>
+<p><code>bash
+  docker rmi nexus_server_ip:8083/myapp:${VERSION}</code></p>
+</li>
+<li>
+<p>The final code of this stage of pipeline will look like this:
+  We've also created a new environment variable in the pipeline called DOCKER_HOSTED_EP which will declare the value of nexus_machine_ip:8083 as an variable which will be available to the pipeline through all the stages.</p>
+<p><code>bash
+        pipeline{
+agent any
+environment{
+    VERSION = "${env.BUILD_ID}"
+    DOCKER_HOSTED_EP = "13.235.91.151:8083" 
+}
+stages{
+    stage("Sonar Quality Check"){
+        steps{
+            script{
+                withSonarQubeEnv(credentialsId: 'sonar-token') {
+                    sh 'chmod +x gradlew'
+                    sh './gradlew sonarqube --info'
+                }
+                timeout(time: 1, unit: 'MINUTES') {
+                    def qg = waitForQualityGate()
+                    if (qg.status != 'OK') {
+                        error "Pipeline aborted due to quality gate failure: ${qg.status}"
+                    }
+                }
+            }
+        }
+    }
+    stage("Build docker images and push to Nexus"){
+        steps{
+            script{
+                withCredentials([string(credentialsId: 'nexus_pass', variable: 'nexus_pass_var')]) {
+                    sh '''
+                    docker build -t $DOCKER_HOSTED_EP/javawebapp:${VERSION} .
+                    docker login -u admin -p $nexus_pass_var $DOCKER_HOSTED_EP
+                    docker push $DOCKER_HOSTED_EP/javawebapp:${VERSION}
+                    docker rmi $DOCKER_HOSTED_EP/javawebapp:${VERSION}
+                    '''
+                     }
+                }
+            }
+        }
+    }            
+}</code></p>
+<ul>
+<li>Once the build is successfully completed, check the nexus repository
+  <code>docker-hosted</code> to see if the docker images were pushed to it.</li>
+</ul>
+</li>
+</ol>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image35.png" />  </p>
+<ul>
+<li>Build was successfull, build number is <strong>9</strong>, let's see if we have docker images in the nexus repository with tag as <strong>9</strong>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image36.png" /></p>
+<ul>
+<li>
+<p><strong>Docker image successfully pushed to the nexus repository!!!!!</strong></p>
+</li>
+<li>
+<p>This concludes Stage II of our Pipeline, let's move on to Stage III.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="stage-iii-identify-misconfigurations-in-helm-charts-using-datreeio"><strong>STAGE III : Identify misconfigurations in Helm charts using datree.io</strong></h2>
+<ul>
+<li>
+<p>In this stage we will identify the misconfigurations in our HELM charts.</p>
+</li>
+<li>
+<p>We have already created the required YAML files for deployments, services and helm charts. These are present in the kubernetes/myapp folder in the root directory of the repo.</p>
+</li>
+<li>
+<p>First we will need a token from our <a href="https://www.datree.io">datree.io</a> account in start analzing helm charts based on the policies/rules set in our <a href="https://www.datree.io">datree.io</a> account.</p>
+<ol>
+<li>Go to <a href="https://www.datree.io">datree.io</a> and login using your github or gmail account, after successful login, we will see the <a href="https://www.datree.io">datree.io</a> dashboard</li>
+</ol>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image37.png" /></p>
+<ol>
+<li>The policies/rules against which our helm chart will be analzed can se accesed by navigating to <strong>Policies &gt; Active Rules</strong>.</li>
+</ol>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image38.png" /></p>
+<ol>
+<li>Next, go to <strong>SETTINGS &gt; TOKEN MANAGEMENT</strong>, click on <code>Create Token</code></li>
+</ol>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image39.png" /></p>
+<ul>
+<li>Enter a name in the <code>Label</code> section and select <code>write</code> in the <code>Type</code>
+  section, click on Generate Token.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image40.png" /></p>
+<ol>
+<li>Copy the token and create a Jenkins credential datree-token of Kind Secret text, enter the token as secret, click on <code>Create</code>.</li>
+</ol>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image41.png" /></p>
+<ol>
+<li>
+<p>Our helm charts are in the kubernetes/myapp directory so we have to perform three steps sop that we can do static code analysis of our helm charts using datree.</p>
+<ol>
+<li>Change the working directory to <code>kubernetes/</code></li>
+</ol>
+<p><code>bash
+  dir('kubernetes/') {
+  }</code></p>
+<ol>
+<li>Set datree token from the value of jenkins secret credential <code>datree-token</code>.</li>
+</ol>
+<p><code>bash
+  dir('kubernetes/') {
+  withCredentials([string(credentialsId: 'datree-token', variable: 'datree_token_var')]) {                
+  sudo helm datree config set token $datree_token_var
+    }    
+  }</code></p>
+<ol>
+<li>Run the command <code>helm datree test myapp/</code></li>
+</ol>
+<p><code>bash
+  dir('kubernetes/') {
+  withCredentials([string(credentialsId: 'datree-token', variable: 'datree_token_var')]) {
+  sh '''
+  sudo helm datree config set token $datree_token_var
+  sudo helm datree test myapp/
+  '''
+    }    
+  }</code></p>
+<ol>
+<li>Now, the complete pipeline for this stage will look like this:</li>
+</ol>
+<p><code>bash
+ stage('Identifying the misconfiguration in HELM charts using datree'){
+steps{
+ script{
+     dir('kubernetes/') {
+         withCredentials([string(credentialsId: 'datree-token', variable: 'datree_token_var')]) {
+             sh '''
+             sudo helm datree config set token $datree_token_var
+             sudo helm datree test myapp/
+             '''
+                 }    
+             }
+         }
+     }
+ }</code></p>
+<ol>
+<li>Next, we wil edit the jenkins file and commit the changes to the dev branch and then start a new build.</li>
+</ol>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image42.png" /></p>
+<ol>
+<li>Build was successful, let's check the console output for more details.</li>
+</ol>
+<p>```bash
+     Pipeline] { (Identify misconfigurations in HELM charts using datree.io)
+    [Pipeline] script
+    [Pipeline] {
+    [Pipeline] dir
+    Running in /var/lib/jenkins/workspace/java-gradle-app/kubernetes
+    [Pipeline] {
+    [Pipeline] withCredentials
+    Masking supported pattern matches of $datree_token_var
+    [Pipeline] {
+    [Pipeline] sh
+    + sudo helm datree config set token ****
+    + sudo helm datree test myapp/</p>
+<pre><code>[K
+| Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+/ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+- Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+\ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+| Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+/ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+- Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+\ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+| Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+/ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+- Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+\ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+| Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+/ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+- Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+\ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+| Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+/ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+- Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+\ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+| Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+/ Loading... WWWWWWWWWWWWWW[K[K[K[K[K[K[K[K[K[K[K[K[K[K
+[K
+(Summary)
+
+- Passing YAML validation: 1/1
+
+- Passing Kubernetes (1.24.0) schema validation: 1/1
+
+- Passing policy check: 1/1
+
++-----------------------------------+-----------------------+
+| Enabled rules in policy "Starter" | 0                     |
+| Configs tested against policy     | 2                     |
+| Total rules evaluated             | 0                     |
+| [36mTotal rules skipped[0m               | [36m0[0m                     |
+| [91mTotal rules failed[0m                | [91m0[0m                     |
+| [32mTotal rules passed[0m                | [32m0[0m                     |
+| See all rules in policy           | https://app.datree.io |
++-----------------------------------+-----------------------+
+[Pipeline] }
+[Pipeline] // withCredentials
+[Pipeline] }
+[Pipeline] // dir
+[Pipeline] }
+[Pipeline] // script
+[Pipeline] }
+[Pipeline] // stage
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // withEnv
+[Pipeline] }
+[Pipeline] // node
+[Pipeline] End of Pipeline
+Finished: SUCCESS
+</code></pre>
+<p>```</p>
+<ol>
+<li>We can see that datree plugin worked as expected. This concludes Stage III.</li>
+</ol>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="stage-iv-push-helm-charts-to-nexus-repo"><strong>STAGE IV : Push Helm Charts to Nexus Repo</strong></h2>
+<ol>
+<li>
+<h3 id="create-a-private-repository-in-nexus-repository-manager_1"><strong>Create a private repository in Nexus Repository Manager</strong></h3>
+<ul>
+<li>
+<p>We will create a private repository to store our Helm charts on the Nexus Repository Manager and</p>
+<ul>
+<li>Go to Nexus dashboard &gt; <code>Repositories</code> &gt; <code>Create Repository</code> Select Recipe as <code>helm-hosted</code>. Click on <code>Create repository</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image43.png" /></p>
+<ul>
+<li>We can see our <code>helm-hosted</code> repository listed under repositories.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image44.png" /></p>
+<ul>
+<li>Next step is to create the Stage in Jenkins Pipeline for pushing the helm charts to Nexus repo, for this no other configuration is need in Jenkins host because we will use Nexus repo api to push the helm charts.</li>
+</ul>
+<p><code>bash
+  curl -u admin:$nexus_pass_var http://nexus_machine_ip:8081/repository/helm-hosted/ --upload-file myapp-${helmchartversion}.tgz -v</code></p>
+<ul>
+<li>
+<p>We will create a new environment variable in the pipeline called <code>HELM_HOSTED_EP</code> which will replace hard coded value for <code>nexus_machine_ip:8081</code> same as when we pushed the docker images and used the environment variable <code>DOCKER_HOSTED_EP</code>.</p>
+</li>
+<li>
+<p>Next, we need to package our helm according to the helm chart version, this can be done by simply running the command <code>helm package myapp</code>.</p>
+</li>
+</ul>
+<p>```bash
+  jenkins@jenkins:~/workspace/java-gradle-app/kubernetes$ cat myapp/Chart.yaml | grep 'version:'
+  version: 0.1.0</p>
+<p>jenkins@jenkins:~/workspace/java-gradle-app/kubernetes$ helm package myapp/</p>
+<p>Successfully packaged chart and saved it to: /var/lib/jenkins/workspace/java-gradle-app/kubernetes/myapp-0.1.0.tgz
+```</p>
+<ul>
+<li>
+<p>Helm package command will package the helm charts accoding to the chart <code>version</code> mentioned in <code>myapp/Chart.yaml</code>.</p>
+</li>
+<li>
+<p>Our final code for this stage of the pipeline will look like this</p>
+</li>
+</ul>
+<p><code>bash
+environment{
+        VERSION = "${env.BUILD_ID}"
+        DOCKER_HOSTED_EP = "13.235.91.151:8083" 
+        HELM_HOSTED_EP = "13.235.91.151:8081"
+    }
+...
+...
+    stage("Push Helm Charts to Nexus Repo"){
+    steps{
+        script{
+        dir('kubernetes/'){
+            withCredentials([string(credentialsId: 'nexus_pass', variable: 'nexus_pass_var')]) {
+                    sh '''
+                    helmchartversion=$(helm show chart myapp/ | grep version | awk '{print $2}')
+                    helm package myapp/
+                    curl -u admin:$nexus_pass_var http://$HELM_HOSTED_EP/repository/helm-hosted/ --upload-file myapp-${helmchartversion}.tgz -v
+                            '''
+                        }   
+                    }
+                }
+            }
+        }</code></p>
+<ul>
+<li>Let's run the build now.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image45.png" /></p>
+<ul>
+<li>The build was successful, now let's check if there were any images pushed to the helm repository.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image46.png" /></p>
+<ul>
+<li>
+<p>Helm Charts pushed to the helm-hosted Nexus repo with the same tag as the helm chart version.</p>
+</li>
+<li>
+<p>This concludes the Stage IV of our pipeline.</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<h2 id="stage-v-deploy-application-on-k8s-cluster"><strong>Stage V: Deploy application on k8s cluster</strong></h2>
+<ul>
+<li>
+<p>To deploy our applicatiojn on k8s-cluster we need to perform some additional steps.</p>
+<ol>
+<li>
+<h3 id="configuring-the-jenkins-servers-to-access-the-kubernetes-cluster-and-run-administrative-commands"><strong>Configuring the Jenkins servers to access the kubernetes cluster and run administrative commands.</strong></h3>
+<ul>
+<li>
+<p>This was already done by the magic of our ansible playbooks, the requirement was to install kubectl utility on the Jenkins node (implemented in <code>jenkins.yaml</code>) and copy the the kubeconfig file i.e <code>/etc/kubernetes/admin.conf</code> or <code>/root/.kube/config</code>, both of them are the same.</p>
+</li>
+<li>
+<p>We've copied the <code>/root/.kube/config</code> file from the <code>k8s-master</code> node to the <code>$HOME</code> directory of the jenkins user <code>/var/lib/jenkins/.kube/config</code> on the Jenkins node.</p>
+</li>
+<li>
+<p>These steps were performed by these plays in the <code>k8s_cluster_setup.yaml</code>.</p>
+</li>
+</ul>
+<p>```bash</p>
+<h4 id="plays-to-copy-kubeconfig-to-jenkins-server-for-jenkins-user-required-for-stage-v-vi-deploying-application-on-k8s-cluster">Plays to copy kubeconfig to jenkins server for jenkins user #### Required for Stage V &amp; VI : Deploying application on k8s cluster</h4>
+<h5 id="play-1-copy-kubeconfig-from-k8s-master-node-to-localhost">PLAY 1 : COPY kubeconfig from k8s-master node to localhost</h5>
+<ul>
+<li>name: Copy the kubeconfig from k8s-master 
+    hosts: k8s-master
+    become: true
+    tasks:<ul>
+<li>name: Fetch the file from the k8s-master to localhost
+    run_once: yes
+    fetch:
+    src: /root/.kube/config
+    dest: buffer/
+    flat: yes</li>
+</ul>
+</li>
+</ul>
+<h5 id="play-2-install-kubectl-create-kube-direcoty-in-home-of-jenkins-user-copy-kubeconfig-from-localhost-buffer-to-jenkins-server-and-sets-the-permission-to-0600-and-ownership-to-jenkinsjenkins">PLAY 2 : INSTALL KUBECTL, CREATE .kube direcoty in $HOME of jenkins user, copy kubeconfig from localhost buffer to Jenkins server and sets the permission to 0600 and ownership to jenkins:jenkins</h5>
+<ul>
+<li>
+<p>name: Jenkins User kubectl Setup
+    hosts: jenkins
+    become: true
+    tasks:
+        - name: Install kubectl<br />
+        snap: 
+            name: kubectl
+            classic: true
+            state: present
+        - name: Create directory and set ownership of .kube directory for jenkins user
+        file:
+            path: /var/lib/jenkins/.kube
+            state: directory
+            owner: jenkins
+            group: jenkins
+        - name: Copy the file from localhost to jenkins
+        copy:
+            src: buffer/config
+            dest: /var/lib/jenkins/.kube/config
+            mode: "0600"
+            owner: jenkins
+            group: jenkins
+```</p>
+</li>
+<li>
+<p>We decided to add these plays to the <code>k8s_cluster_setup.yaml</code> instead of a standalone Ansible playbook because they have a dependency on the K8s cluster being set up.</p>
+</li>
+<li>
+<p>If we created a standalone playbook and someone tried to run it before the cluster was provisioned, they would encounter errors. By including the plays in the <code>k8s_cluster_setup.yaml</code>, we ensure that all necessary configurations for the Jenkins node to communicate with the K8s cluster are completed after the cluster is provisioned.</p>
+</li>
+<li>
+<p>We can now sit back and relax knowing that once the cluster is provisioned in the earlier stages, everything is set up correctly.</p>
+</li>
+</ul>
+</li>
+<li>
+<h3 id="adding-the-docker-hosted-nexus-repository-on-both-the-k8s-cluster-nodes"><strong>Adding the docker-hosted Nexus repository on both the k8s cluster nodes</strong></h3>
+<ol>
+<li>
+<p>We are using containerd (CRI) so we cannot install docker runtime and configure insecure repo for docker as it will cause many issues in our cluster.</p>
+</li>
+<li>
+<p>We will have to configure our nexus repo as an insecure repository for containerd. The below mentioned steps need to be performed on both the k8s-nodes (we are only scheduling our deployments on k8s-node1 but it's a good practice to keep the configuration consisitent so we will do it for both the nodes).</p>
+<ol>
+<li>Set the default config file for <strong>container.d</strong> as <code>/etc/containerd/config.toml</code></li>
+</ol>
+<p><code>bash
+     mkdir -p /etc/containerd
+     containerd config default&gt;/etc/containerd/config.toml
+     systemctl restart containerd
+     systemctl status containerd.service</code></p>
+<ol>
+<li>
+<p>Edit the <code>/etc/containerd/config.toml</code></p>
+<ul>
+<li>
+<p>Find the line [plugins."io.containerd.grpc.v1.cri".registry.configs]</p>
+</li>
+<li>
+<p>Add these six lines below it</p>
+</li>
+</ul>
+</li>
+</ol>
+<p><code>bash
+  [plugins."io.containerd.grpc.v1.cri".registry.configs."13.235.91.151:8083"]     
+          [plugins."io.containerd.grpc.v1.cri".registry.configs."13.235.91.151:8083".tls]
+                ca_file = ""
+                cert_file = ""
+                insecure_skip_verify = true
+                key_file = ""</code></p>
+<pre><code>Our docker-hosted repository is at 13.235.91.151:8083 so we are using this IP:PORT combination. Replace the IP address with the public ip of the Nexus Repository Manager and if you specified a different port for docker-hosted while confguring then use that.
+</code></pre>
+<ul>
+<li>
+<p>Find the line <code>[plugins."io.containerd.grpc.v1.cri".registry.mirrors]</code></p>
+</li>
+<li>
+<p>Add these two lines below it</p>
+</li>
+</ul>
+<p><code>bash
+  [plugins."io.containerd.grpc.v1.cri".registry.mirrors."13.235.91.151:8083"]
+  endpoint = ["http://13.235.91.151:8083"]</code></p>
+<ul>
+<li>It will look like this after all the changes.</li>
+</ul>
+<p><code>bash
+  [plugins."io.containerd.grpc.v1.cri".registry.configs]      [plugins."io.containerd.grpc.v1.cri".registry.configs."13.235.91.151:8081"]       [plugins."io.containerd.grpc.v1.cri".registry.configs."13.235.91.151:8081".tls]
+      ca_file = ""
+      cert_file = ""
+      insecure_skip_verify = true
+      key_file = ""    [plugins."io.containerd.grpc.v1.cri".registry.headers]      [plugins."io.containerd.grpc.v1.cri".registry.mirrors]
+   [plugins."io.containerd.grpc.v1.cri".registry.mirrors."13.235.91.151:8083"]
+        endpoint = ["http://13.235.91.151:8083"]</code></p>
+<ul>
+<li>Restart <code>containerd</code> service and try pulling an image from the <code>docker-hosted</code> Nexus repo.</li>
+</ul>
+<p>```bash
+  root@k8s-master:~# systemctl restart containerd.service</p>
+<p>root@k8s-master:~# crictl pull 13.235.91.151:8083/javawebapp:11
+  Image is up to date for sha256:603cc7300cb07bf4ec156ddfcdaa72698fbeb441bda60bbc84704505e3c1428e</p>
+<p>root@k8s-master:~# crictl images | grep javawebapp
+  13.235.91.151:8083/javawebapp             11                  603cc7300cb07       287MB
+```</p>
+<ul>
+<li>
+<p>We are able to pull the container images from our private nexus repository docker-hosted.</p>
+</li>
+<li>
+<p>Repeat the steps on the k8s-node1, our application will be deployed on the worker node as by default k8s control plane node has a taint on it which forbids us to deploy any pods on it except the kube-system ones.
+Taints: node-role.kubernetes.io/control-plane:NoSchedule</p>
+</li>
+<li>
+<p>Once these steps are completed on the k8s worker node as well then we are good to go.</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li>
+<h3 id="configure-mail-server-and-add-post-block-in-jenkins-pipeline"><strong>Configure Mail Server and add post block in Jenkins Pipeline</strong></h3>
+<ul>
+<li>
+<p>Goto <code>Manage Jankins</code> &gt; <code>Manage Plugins</code> &gt; <code>Installed</code> and make sure that the <code>Email Extension Plugin</code> is installed.</p>
+</li>
+<li>
+<p>Goto <code>Manage Jankins</code> &gt; <code>Configure Systems</code> &gt; <code>Email Notification</code> Let's configure smtp config for our gmail account and try sending a test email.</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image47.png" /></p>
+<ul>
+<li>
+<p>To configure these setting we'll need to go to our gmail account settings &gt; <code>Manage Your Google Account</code>. Now we need to create an app password so that our jenkins app can send emails to our gmail account.</p>
+</li>
+<li>
+<p><strong>Important</strong>: To create an app password, you need 2-Step Verification on your Google Account.</p>
+</li>
+</ul>
+<p>If you use 2-Step-Verification and get a "password incorrect" error when you sign in, you can try to use an app password.</p>
+<ol>
+<li>
+<p>Go to your Google Account.</p>
+</li>
+<li>
+<p>Select <strong>Security</strong></p>
+</li>
+<li>
+<p>Under "<strong>Signing in to Google</strong>," select <strong>2-Step Verification</strong>.</p>
+</li>
+<li>
+<p>At the bottom of the page, select <strong>App passwords</strong>.</p>
+</li>
+<li>
+<p>Enter a name that helps you remember where you’ll use the app password.</p>
+</li>
+<li>
+<p>Select <strong>Generate</strong>.</p>
+</li>
+<li>
+<p>To enter the app password, follow the instructions on your screen. The app password is the 16-character code that generates on your device.</p>
+</li>
+<li>
+<p>Select <strong>Done</strong>.</p>
+</li>
+<li>
+<p>Use the created app password in the Email configuration for Jenkins (Step 2) After filling the required fields, it will look similar to this. Click on <code>Test Configuration</code>.</p>
+</li>
+</ol>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image48.png" /></p>
+</li>
+<li>
+<p>Our test config is working properly, let's setup the email now.</p>
+</li>
+</ol>
+<p>First, we have to create a credential to use the app password in the jenkins pipeline to allow access jenkins to send emails.</p>
+<pre><code>1. Goto `Manage Jenkins` &gt; `Credentials` &gt; `select global`, select kind as `Username with password`.
+
+![alt diagram](assets/images/java-web-app-deployment/image49.png)
+
+2. Goto `Manage Jenkins` &gt; `Configure Systems` &gt; `Extended E-mail Notification`.
+
+![alt diagram](assets/images/java-web-app-deployment/image50.png)
+
+3. Add a post block to the jenkins pipeline after the stages block.
+
+```bash
+ post {
+    always {
+        mail bcc: '', body: "&lt;br&gt;Project: ${env.JOB_NAME} &lt;br&gt;Build Number: ${env.BUILD_NUMBER} &lt;br&gt;Build URL: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "${currentBuild.result} CI: Project name -&gt; ${env.JOB_NAME}", to: "mandeepsingh1018@gmail.com";
+        }
+    }
+```
+
+4. Also make sure that you have filled the Email Notification section as well in addition to the Extended Email Notification, if this is missed then the build will fail.
+
+![alt diagram](assets/images/java-web-app-deployment/image51.png)
+
+5. Now build the job again, this time you'll recieve an email about the Status of the job.
+
+![alt diagram](assets/images/java-web-app-deployment/image52.png)
+</code></pre>
+<ol>
+<li>
+<h3 id="configure-slack-notifications"><strong>Configure Slack notifications</strong></h3>
+<ul>
+<li>
+<p>Download Slack plugin</p>
+</li>
+<li>
+<p>Goto <code>Manage Jenkins</code> &gt; <code>Manage Plugins</code> &gt; <code>Available</code>, search for slack and download the plugin</p>
+</li>
+<li>
+<p>Login to your slack account and create a channel for jenkins notifications.</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image53.png" /></p>
+<ul>
+<li>On next screen, select <code>Public</code> and then click on <code>Create</code>.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image54.png" /></p>
+<ul>
+<li>Goto https://my.slack.com/services/new/jenkins-ci</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image55.png" /></p>
+<ul>
+<li>
+<p>Select the newly created slack channel for jenkins and click on Add <code>Jenkins CI Integration</code>.</p>
+</li>
+<li>
+<p>Follow the on-screen instructions in step4 and get the <strong>workspace (team subdomain)</strong>, and <strong>Integration Token Credential ID</strong></p>
+</li>
+<li>
+<p>Create a secret text credential with <strong>Integration Token Credential ID</strong></p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image56.png" /></p>
+<ul>
+<li>Goto <code>Manage Jenkins</code> &gt; <code>Configure Systems</code>, Search for <code>Slack</code> settings.</li>
+</ul>
+<p><img alt="alt diagram" src="assets/images/java-web-app-deployment/image57.png" /></p>
+<ul>
+<li>Add this to the post block in your pipeline, you can also choose to change the frequency to always, success, or failure etc, I have added it in the same always block where mail is configured.</li>
+</ul>
+<p><code>bash
+  slackSend channel: '#jenkins-cicd', message: "Project: ${env.JOB_NAME} \n Build Number: ${env.BUILD_NUMBER} \n Status: *${currentBuild.result}* \n More info at: ${env.BUILD_URL}"</code></p>
+<p><code>bash
+    post {
+        always {
+            mail bcc: '', body: "&lt;br&gt;Project: ${env.JOB_NAME} &lt;br&gt;Build Number: ${env.BUILD_NUMBER} &lt;br&gt;Build URL: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "${currentBuild.result} CI: Project name -&gt; ${env.JOB_NAME}", to: "mandeepsingh1018@gmail.com";
+            slackSend channel: '#jenkins-cicd', message: "Project: ${env.JOB_NAME} \n Build Number: ${env.BUILD_NUMBER} \n Status: *${currentBuild.result}* \n More info at: ${env.BUILD_URL}"
+            }
+        }</code></p>
+<ul>
+<li>
+<p>Make sure to change the TeamDomain and channel name.</p>
+</li>
+<li>
+<p>Make the changes to Jenkinsfile and push it to the dev branch.</p>
+</li>
+<li>
+<p>Now, let's build the job and check if we get any slack notifications.</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image58.png" /></p>
+</li>
+<li>
+<h3 id="deploy-helm-charts-on-k8s-cluster"><strong>Deploy Helm Charts on k8s cluster</strong></h3>
+<ol>
+<li>Let's start by checking if we have any release created on our cluster.</li>
+</ol>
+<p><code>bash
+ jenkins@jenkins:~$ helm list
+ NAME    NAMESPACE    REVISION    UPDATED    STATUS    CHART    APP VERSION</code></p>
+<p>We don't have any helm releases</p>
+<ol>
+<li>Let's add a new stage to our jenkins pipeline to create a release</li>
+</ol>
+<p><code>bash
+stage('Deploy application on k8s-cluster') {
+  steps {
+    script{
+      dir ("kubernetes/"){  
+          sh 'helm upgrade --install --set image.repository="$DOCKER_HOSTED_EP/javawebapp" --set image.tag="${VERSION}" jwa1 myapp/ ' 
+             }   
+         }
+     }
+ }</code></p>
+<ul>
+<li>
+<p>The <code>steps</code> block contains a <code>script</code> block that changes the working directory to <code>kubernetes/</code> using the <code>dir</code> directive. This is where the Helm chart and the Kubernetes deployment configuration files are stored.</p>
+</li>
+<li>
+<p>The command is a Helm CLI command that upgrades an existing Kubernetes deployment or installs a new one using a Helm chart located in the <code>myapp/</code> directory.</p>
+</li>
+<li>
+<p>The command is broken down as follows:</p>
+<ol>
+<li>
+<p><code>helm upgrade</code>: This command upgrades a Helm release if it already exists, or installs a new one if it does not exist.</p>
+</li>
+<li>
+<p><code>--install</code>: This flag indicates that a new release should be installed if it does not already exist.</p>
+</li>
+<li>
+<p><code>--set</code>: This flag sets one or more values in the Helm chart's values file. In this case, it sets the <code>image.repository</code> and <code>image.tag</code> values to the specified values.</p>
+</li>
+<li>
+<p><code>image.repository="13.235.91.151:8083/javawebapp"</code>: This sets the Docker image repository for the application to <code>13.235.91.151:8083/javawebapp</code>.</p>
+</li>
+<li>
+<p><code>image.tag="${VERSION}"</code>: This sets the Docker image tag for the application to a value stored in the <code>${VERSION}</code> environment variable defined in the pipeline</p>
+</li>
+<li>
+<p><code>jwa1</code>: This is the name of the Helm release.</p>
+</li>
+<li>
+<p><code>myapp/</code>: This is the path to the Helm chart directory containing the <code>values.yaml</code> file and any other necessary files.</p>
+</li>
+</ol>
+</li>
+<li>
+<p>Create a a kubernetes secret for nexus docker-hosted repo</p>
+</li>
+</ul>
+<p><code>bash
+ kubectl create secret docker-registry registry-secret --docker-server=13.235.91.151:8083 --docker-username=admin --docker-password=msx@9797 --docker-email=not-needed@yolo.com</code></p>
+<ul>
+<li>
+<p>We need this secret to authenticate to the nexus repo hosted on our nexus server</p>
+</li>
+<li>
+<p>This is a kubectl command that creates a <code>Kubernetes secret</code> named <code>registry-secret</code> of type docker-registry. This secret is used to store credentials for authenticating with a Docker registry located at the specified IP address and port number</p>
+</li>
+</ul>
+<p><code>(13.235.91.151:8083)</code>. The <code>--docker-username</code>, <code>--docker-password</code>, and <code>--docker-email</code> flags are used to set the corresponding authentication credentials for the Docker registry.</p>
+<ul>
+<li>When we run the commands mentioned in <strong>step2</strong>, the image.tag will get the value of $VERSION variable that is build number and it will also be replaced in the <code>values.yaml</code> file in helm charts directory</li>
+</ul>
+<p>```bash</p>
+<h1 id="default-values-for-myapp">Default values for myapp.</h1>
+<h1 id="this-is-a-yaml-formatted-file">This is a YAML-formatted file.</h1>
+<h1 id="declare-variables-to-be-passed-into-your-templates">Declare variables to be passed into your templates.</h1>
+<p>replicaCount: 2</p>
+<p>image:
+    repository: IMAGE_NAME</p>
+<pre><code>### this is image.repository, it will be replaced by nexus_ip:8083/springapp
+
+pullPolicy: IfNotPresent
+
+# Overrides the image tag whose default is the chart appVersion.
+
+tag: IMAGE_TAG 
+#### this is image.tag, it will be replaced by build number of the pipeline
+</code></pre>
+<p>service:
+    type: NodePort  <br />
+    port: 8080
+```</p>
+<ul>
+<li>
+<p>Now when the helm charts command <code>helm upgrade --install --set image.repository="13.235.91.151:8083/javawebapp" --set image.tag="${VERSION}" jwa myapp/</code> will be excuted it will replace all the values of variables, labels, annotation from the helm helper, chart.yaml and values.yaml in the deployment.yaml and services.yaml</p>
+</li>
+<li>
+<p>In deployment.yaml, in the pod template section, we have a field called <code>imagePullSecrets</code>, this field indicates that the container images for the pods are stored in a private repository.</p>
+</li>
+</ul>
+<p><code>bash
+    template:
+        metadata:
+            labels:
+                {{- include "myapp.selectorLabels" . | nindent 8 }}
+        spec:
+            imagePullSecrets:
+                - name: registry-secret</code></p>
+<ul>
+<li>
+<p>The secret <code>registry-secret</code> is the same secret that we created.</p>
+</li>
+<li>
+<p>Commit the Jenkinsfile changes and start a build.</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image59.png" /></p>
+<ul>
+<li>Build was successful, let's verify the application deployment on the k8s cluster.</li>
+</ul>
+<p><code>bash
+   jenkins@jenkins:~$ kubectl get nodes
+    NAME         STATUS   ROLES           AGE   VERSION
+    k8s-master   Ready    control-plane   12h   v1.27.1
+    k8s-node1    Ready    &lt;none&gt;          12h   v1.27.1
+    jenkins@jenkins:~$ kubectl get deployments
+    NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+    jwa1-myapp   2/2     2            2           3m59s
+    jenkins@jenkins:~$ kubectl get pods
+    NAME                          READY   STATUS    RESTARTS   AGE
+    jwa1-myapp-67cd67cbb8-n2w4x   1/1     Running   0          4m5s
+    jwa1-myapp-67cd67cbb8-s895p   1/1     Running   0          4m5s
+    jenkins@jenkins:~$ kubectl get svc
+    NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+    jwa1-myapp   NodePort    10.100.153.6   &lt;none&gt;        8080:30984/TCP   4m10s
+    kubernetes   ClusterIP   10.96.0.1      &lt;none&gt;        443/TCP          12h
+    jenkins@jenkins:~$ helm list
+    NAME    NAMESPACE    REVISION    UPDATED                                    STATUS      CHART          APP VERSION
+    jwa1    default      1           2023-05-13 21:24:01.463472615 +0000 UTC    deployed    myapp-0.2.0    1.16.0</code></p>
+<ul>
+<li>The deployment is up and the pods are running, let's try to access the application from the web browser using the node_ip followed by NodePort, <code>35.154.247.120:30984</code></li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image60.png" /></p>
+<ul>
+<li>The java web application is up and running, we have successfully deployed our application on a k8s cluster using helm charts.</li>
+</ul>
+</li>
+<li>
+<h3 id="add-approval-request-to-manually-approve-deployments"><strong>Add approval request to manually approve deployments</strong></h3>
+<ul>
+<li>We can use this stage block to add a manual approval to deploy or abort the deployment.</li>
+</ul>
+<p><code>bash
+  stage("Deployment Approval"){
+    steps{
+        script{
+            timeout(10){
+                mail bcc: '', body: "&lt;br&gt;Project: ${env.JOB_NAME} &lt;br&gt;Build Number: ${env.BUILD_NUMBER} &lt;br&gt; Goto : ${env.BUILD_URL} and approve/reject the deployment", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "CICD APPROVAL REQUEST: Project name -&gt; ${env.JOB_NAME}", to: "mandeepsingh1018@gmail.com";  
+                    slackSend channel: '#jenkins-cicd', message: "*CICD Approval Request* \nProject: *${env.JOB_NAME}* \n Build Number: ${env.BUILD_NUMBER} \n Status: *${currentBuild.result}* \n  Go to ${env.BUILD_URL} to approve or reject the deployment request."  
+                     input(id: "DeployGate", message: "Approval required to proceed, deploy ${env.JOB_NAME}?", ok: 'Deploy')
+                    }
+                }
+        }
+    }</code></p>
+<p><code>bash
+      input(id: "DeployGate", message: "Approval required to proceed, deploy ${env.JOB_NAME}?", ok: 'Deploy')</code></p>
+<ul>
+<li>
+<p>We have use an input block to register input from the approvers.</p>
+</li>
+<li>
+<p>Let's push the code and build the job</p>
+</li>
+<li>
+<p>We will receive email and slack notifications like this:</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image61.png" />
+<img alt="alt diagram" src="../assets/images/java-web-app-deployment/image62.png" /></p>
+<ul>
+<li>We can use the build URL mentioned in the notifications to approve or reject the deployment request.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image63.png" /></p>
+<ul>
+<li>enkins was waiting for us to manually Deploy or Abort the deployment request. Once we approved the request, the application was deployed to the k8s cluster.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image64.png" /></p>
+<ul>
+<li>Received slack notification for the same</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image65.png" /></p>
+<ul>
+<li>
+<p>First notification is for approving the deployment request and the second one is for the Build status update.</p>
+</li>
+<li>
+<p>This concludes Stage V of our pipeline.</p>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="stage-vi-verify-application-deployment-on-k8s-cluster"><strong>Stage VI: Verify application deployment on k8s cluster</strong></h2>
+<ul>
+<li>
+<p><code>bash
+    kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl myjavaapp-myapp:8080</code></p>
+</li>
+<li>
+<p>We can verify the application deployent using the kubectl command. We create a pod with curl image which curls the service at 8080 port and then the pod is deleted after it's work is done.</p>
+</li>
+<li>
+<p>If the exit code of this commad is 0 that means our application deployment was a success else it was a failure</p>
+</li>
+</ul>
+<p><code>bash
+            stage("Verify application deployment on k8s-cluster") {
+              steps {
+                  script{
+                      dir ("kubernetes/"){  
+                          sh 'kubectl run curl --image=curlimages/curl -i --rm --restart=Never -- curl jwa1-myapp:8080 ' 
+                              }   
+                          }
+                      }
+                  }</code></p>
+<ul>
+<li>
+<p>Add this stage to the Jenkinsfile, push the code to dev branch and start the build.</p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image66.png" /></p>
+<p><strong>Configure PR based trigger in Jenkins</strong></p>
+<ul>
+<li>
+<p>We should never make changes to the main/master branch of the project, we should create separate branches, develop the code and then we should create a Pull request to merge the changes of our request into the main branch.</p>
+</li>
+<li>
+<p>It is a common practice that when we raise a pull request it will automatically trigger the CICD Pipeline and then update back the status of the CI pipeline onto the pull request, because reviewers should also check who has made what changes and that the changes should not break our CICD pipeline.</p>
+</li>
+<li>
+<p>Let's setup PR based Triggers, install the GitHub Pull Request Builder plugin.</p>
+</li>
+<li>
+<p>Navigate to Manage Jenkins &gt; Configure System, search for GitHub Pull Request Builder section.</p>
+</li>
+<li>
+<p>In this section we need to add our github creds, so go to your github account and navigate to Settings &gt; Developer settings &gt; Personal access tokens</p>
+</li>
+</ul>
+<p>Select Tokens (classic), click on Generate new token
+  then Generate new token (classic). You will be prompted to enter your github password, enter the password and proceed.</p>
+<ul>
+<li>Give a name to the Token, choose expiration and then select relevant scopes.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image67.png" /></p>
+<ul>
+<li>
+<p>Once done, click on <strong>Generate Token.</strong></p>
+</li>
+<li>
+<p>Create a Jenkins credential of Kind <strong>Username and Password</strong> using this token as password and your github account name as username.</p>
+</li>
+<li>
+<p>Now, navigate to the project and go to configuration and under general, select the following things.</p>
+<ol>
+<li>
+<p>Add a project URL</p>
+</li>
+<li>
+<p>Tick the option - <code>GitHub Pull Request Builde</code>, also do the same for
+    <code>Use github hooks for build triggering</code>.</p>
+</li>
+<li>
+<p><code>Build every pull request automatically without asking (Dangerous!)</code>.' This whitelist everyone, and it's not advisable in an actual production setting but as we are doing a project       for learning we can enable it. Otherwise, it's better to add an organization or add people individually, and only yourself as the Admin.</p>
+</li>
+</ol>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image68.png" /></p>
+</li>
+<li>
+<p>Now go to Trigger setups and Add <code>Build Status Messages</code>    </p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image69.png" /></p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image70.png" /></p>
+</li>
+<li>
+<p>Now go to the Pipeline section and provide the credentials, same one that we just created using PAT and few other settings.</p>
+</li>
+<li>
+<p>Update the Refspec and Branch Specifier fields. <code>+refs/pull/${ghprbPullId}/*:refs/remotes/origin/pr/${ghprbPullId}/*</code>
+  By adding a refspec and a branch specifier, including variables that are set by the plugin, the job will always build what is specified by the webhook trigger, that comes from GitHub itself.</p>
+</li>
+<li>
+<p>Branch Specifier (blank for 'any') is : <code>${ghprbActualCommit}</code></p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image71.png" /></p>
+</li>
+<li>
+<p>Next, go back to your github account, then go to the repo settings and then add a webhook <code>http://jenkins_public_ip:8080/ghprbhook/</code></p>
+</li>
+<li>
+<p>Select, <code>Let me select individual events</code>, and then select issue comments, Pushes, Pull Requests.</p>
+</li>
+<li>
+<p>Click on Add Webhook. After some time there should be a green tick beside the webhook.  </p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image72.png" /></p>
+</li>
+<li>
+<p>Now, let's raise a pull request.</p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image73.png" /></p>
+</li>
+<li>
+<p>Next we can add reviewers, but in our case we'll be the only contributors so that's why we won't be able to add a reviewer.</p>
+</li>
+<li>
+<p>Next click on <strong>Create Pull Request</strong>. As soon as we create a pull request a trigger has happened.  </p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image74.png" /></p>
+</li>
+<li>
+<p>A jenkins build was triggered.</p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image75.png" /></p>
+</li>
+<li>
+<p>Our build was successful so now we can go ahead and merge the pull request.</p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image76.png" /></p>
+</li>
+<li>
+<p>Now our dev branch was merged into Main branch, so we don't need the dev branch, we can safely delete it.</p>
+</li>
+<li>
+<p>Now we can see that all the updated config files from the dev branch are available in the Main branch.</p>
+<p><img alt="alt diagram" src="../assets/images/java-web-app-deployment/image77.png" /></p>
+</li>
+<li>
+<p>We have successfully replicated an advanced end-to-end DevOps pipeline.</p>
+</li>
+</ul>
+<h2 id="license">📄 License</h2>
+<p>This project is licensed under the <strong>MIT License.</strong></p>
+</li>
+</ul>
 
 
 
