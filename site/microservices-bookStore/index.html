@@ -64,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#building-a-bookstore-leveraging-microservices" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -439,6 +444,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Microservices BookStore
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -449,6 +467,220 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Project Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Problem Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#techonology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Techonology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚦 Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚦 Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-1-Clone-the-repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-terraform-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌟 Step-2-Terraform-Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraformtf" class="md-nav__link">
+    <span class="md-ellipsis">
+      terraform.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpctf" class="md-nav__link">
+    <span class="md-ellipsis">
+      vpc.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecrtf" class="md-nav__link">
+    <span class="md-ellipsis">
+      ecr.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ekstf" class="md-nav__link">
+    <span class="md-ellipsis">
+      eks.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-install-required-clis" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Step-4-Install-Required-CLIs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-update-workflows-with-ecr-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Step-5-Update-Workflows-with-ECR-URL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-update-github-repo-with-aws-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Step-6-Update-GitHub-Repo-with-AWS-Secrets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-deploy-the-microservices-manifests" class="md-nav__link">
+    <span class="md-ellipsis">
+      💼 Step-7-Deploy-the-Microservices-Manifests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-istio-proxy-uses-envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 Step-8-Istio-Proxy-uses-Envoy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-test-our-bookstore-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗄️ Step-9-Test-our-BookStore-Application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 Step-10-Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄 License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -1528,6 +1760,211 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Project Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Problem Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#techonology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Techonology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚦 Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚦 Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-clone-the-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-1-Clone-the-repository
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-terraform-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌟 Step-2-Terraform-Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraformtf" class="md-nav__link">
+    <span class="md-ellipsis">
+      terraform.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vpctf" class="md-nav__link">
+    <span class="md-ellipsis">
+      vpc.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ecrtf" class="md-nav__link">
+    <span class="md-ellipsis">
+      ecr.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ekstf" class="md-nav__link">
+    <span class="md-ellipsis">
+      eks.tf :
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-install-required-clis" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Step-4-Install-Required-CLIs
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-update-workflows-with-ecr-url" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Step-5-Update-Workflows-with-ECR-URL
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-update-github-repo-with-aws-secrets" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Step-6-Update-GitHub-Repo-with-AWS-Secrets
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-deploy-the-microservices-manifests" class="md-nav__link">
+    <span class="md-ellipsis">
+      💼 Step-7-Deploy-the-Microservices-Manifests
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-istio-proxy-uses-envoy" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 Step-8-Istio-Proxy-uses-Envoy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-test-our-bookstore-application" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗄️ Step-9-Test-our-BookStore-Application
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      💻 Step-10-Monitoring
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#license" class="md-nav__link">
+    <span class="md-ellipsis">
+      📄 License
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1542,9 +1979,588 @@
                   
 
 
-  <h1>Microservices BookStore</h1>
+<h1 id="building-a-bookstore-leveraging-microservices">Building a BookStore leveraging MicroServices.</h1>
+<p>Step by Step BookStore DevOps Project.</p>
+<h2 id="project-overview">🚀 Project Overview</h2>
+<p>Our DevOps initiative will focus on constructing an AWS environment, setting up a Kubernetes cluster through Amazon Elastic Kubernetes Service (EKS), and implementing an efficient process for continuous integration and deployment.</p>
+<p>To lay the groundwork, we'll utilize the Bookinfo demonstration application. This application, consisting of multiple services, serves as an illustration of the intricacies inherent in a contemporary Microservices architecture.</p>
+<ul>
+<li>
+<p><strong>GitHub Actions</strong>: CI/CD platform integrated with GitHub for automating workflows.</p>
+</li>
+<li>
+<p><strong>AWS</strong>: Cloud services provider for hosting applications and managing infrastructure.</p>
+</li>
+<li>
+<p><strong>EKS</strong>: Amazon Elastic Kubernetes Service for deploying, managing, and scaling containerized applications.</p>
+</li>
+<li>
+<p><strong>ArgoCD</strong>: Declarative GitOps continuous delivery tool for Kubernetes.</p>
+</li>
+<li>
+<p><strong>Terraform</strong>: Infrastructure as Code (IaC) tool for provisioning and managing AWS resources.</p>
+</li>
+<li>
+<p><strong>ECR</strong>: Amazon Elastic Container Registry for securely storing and managing Docker images.</p>
+</li>
+<li>
+<p><strong>Grafana</strong>: Monitoring and visualization platform for metrics.</p>
+</li>
+<li>
+<p><strong>Prometheus</strong>: Open-source monitoring and alerting toolkit.</p>
+</li>
+</ul>
+<p>We Will try to cover more Technologies and concept in this Article as possible.</p>
+<h2 id="problem-statement">🔧 Problem Statement</h2>
+<p>In today's rapidly evolving tech landscape, mastering DevOps tools and technologies is a top priority for IT professionals seeking to streamline workflows, foster collaboration, and expedite project delivery. Many individuals dedicate significant time and effort to completing courses on essential tools such as Terraform, ArgoCD, Istio, Kubernetes, and AWS, equipping themselves with the theoretical knowledge needed to revolutionize their development processes.</p>
+<p>However, what often remains unaddressed is the significant challenge that arises once the courses are completed and the real-world integration journey begins. The struggle of connecting the dots between these powerful tools and effectively implementing them into a cohesive DevOps pipeline can be both daunting and perplexing.</p>
+<p>This is a narrative that many of us have encountered firsthand – the initial excitement of acquiring new skills, followed by the frustration of translating those skills into tangible results within our projects. This workshop aims to address this gap by offering a comprehensive guide not only on the 'how' of using these tools but also on the 'how' within the context of a holistic DevOps approach.</p>
+<h2 id="techonology-stack">💽 Techonology Stack</h2>
+<p>● <strong>Application Integration:</strong> Simple Notification Service (SNS)</p>
+<p>● <strong>Management &amp; Governance:</strong> CloudWatch.</p>
+<p>● <strong>Security, Identity &amp; Compliance:</strong> Secret Manager, SonarCloud(SonarQube)</p>
+<p>● <strong>CI/CD:</strong> Automate deployment using AWS Code Pipeline, AWS CodeBuild, AWS CodeCommit, AWS CodeArtifact</p>
+<h2 id="architecture-diagram">📌 Architecture Diagram</h2>
+<p><strong>Microservices Diagram:</strong></p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/microservices%20diagram.gif" /></p>
+<p><strong>Technology Stack Diagram:</strong></p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/stack.gif" /></p>
+<h2 id="getting-started">🚦 Getting Started</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<p>Before you get started, make sure you have the following prerequisites in place:</p>
+<ul>
+<li>AWS account.</li>
+<li>AWS CLI.</li>
+<li>Docker.</li>
+<li>Git for cloning the repository.</li>
+<li>Any modern code editor (e.g., Visual Studio Code, Sublime Text, etc.)</li>
+</ul>
+<p>To begin, you need an AWS account. If you don't have one, head to the AWS website and sign up for an account.</p>
+<p>We need IAM user Access Key and Secret Key to be used with Terraform</p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/iam.jpeg" /></p>
+<p>Never disclose your Access Keys to anyone, and consistently utilize Secrets Managers.</p>
+<h2 id="table-of-contents">📋 Table of Contents</h2>
+<ul>
+<li><a href="#-Step-1-Clone-the-repository">Step-1: Clone the repository</a></li>
+<li><a href="#-Step-2-Terraform-Workflow">Step-2: Terraform Workflow</a></li>
+<li><a href="#-Setup-3-Terraform-Cloud-Env-Vars">Step-3: Terraform Cloud Env Vars</a></li>
+<li><a href="#-Step-4-Install-Required-CLIs">Step-4: Install Required CLIs</a></li>
+<li><a href="#-Step-5-Update-Workflows-with-ECR-URL">Step-5: Update Workflows with ECR URL</a></li>
+<li><a href="#-Step-6-Update-GitHub-Repo-with-AWS-Secrets">Step-6: Update GitHub Repo with AWS Secrets</a></li>
+<li><a href="#-Step-7-Deploy-the-Microservices-Manifests">Step-7: Deploy the Microservices Manifests</a></li>
+<li><a href="#-Step-8-Istio-Proxy-uses-Envoy">Step-8: Istio Proxy uses Envoy</a></li>
+<li><a href="#-Step-9-Test-our-BookStore-Application">Step-9: Test our BookStore Application</a></li>
+<li><a href="#-Step-10-Monitoring">Step-10: Monitoring</a></li>
+</ul>
+<h2 id="step-1-clone-the-repository">✨ Step-1-Clone-the-repository</h2>
+<ul>
+<li>Please clone the project repository to your local machine. (You will need to be added to the CloudSpace organization before you can clone this.)</li>
+</ul>
+<p><code>bash
+   git clone https://github.com/cloudspaceacademy/microservice-bookstore.git</code></p>
+<h2 id="step-2-terraform-workflow">🌟 Step-2-Terraform-Workflow</h2>
+<ul>
+<li>In this workshop, we are using <strong>Terraform Cloud</strong> to let Terraform runs in a consistent and reliable environment.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/terraformworkflow.png" /></p>
+<ul>
+<li>First create an account on Terraform Cloud if you don’t have one.</li>
+</ul>
+<p><a href="https://app.terraform.io/public/signup/account?trk=article-ssr-frontend-pulse_little-text-block">Terraform Cloud Sign up</a> (Terraform Cloud has a Free License so no need to worry about pricing)</p>
+<ul>
+<li>Create your first organization and then Set up a workspace in Terraform Cloud. This will help manage your infrastructure as code and enable collaboration.</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/workspace.jpeg" /></p>
+<ul>
+<li>
+<p>Choose Version Control Workflow to work with your repository on Github which we will choose to do here.</p>
+</li>
+<li>
+<p>If you want to work with Terraform from your Terminal you can go for CLI-driven Workflow.</p>
+</li>
+</ul>
+<p><strong>Version Control Workflow &gt; Connect to Github &gt; choose the repository &gt; configure Setting</strong></p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/config.jpeg" /></p>
+<ul>
+<li>In Advanced options configure the Terraform Working Directory terraform as our Terraform code is inside <strong>terraform directory</strong></li>
+</ul>
+<p>Before talking about the Terraform files, let's take time to read about Terraform — Best Practices  t<a href="https://www.terraform-best-practices.com/">erraform-best-practices</a> and <a href="https://medium.com/devops-mojo/terraform-best-practices-top-best-practices-for-terraform-configuration-style-formatting-structure-66b8d938f00c">Terraform — Best Practices</a></p>
+<p>Learn and Pick the right Terraform code Structure you need to follow.</p>
+<p>Now let’s talk about the Terraform Directory before running our first plan and apply.</p>
+<h2 id="terraformtf">terraform.tf :</h2>
+<p>This Terraform configuration block includes settings for Terraform Cloud (formerly known as Terraform Enterprise) and configures the AWS provider. Let's break down the code step by step:</p>
+<p><strong>1. Terraform Cloud Configuration:</strong></p>
+<pre><code class="language-bash">        terraform {
+        cloud {
+            organization = &quot;devops-project-org&quot;
+
+            workspaces {
+            name = &quot;devops-project-workspace&quot;
+            }
+        }
+        }  
+</code></pre>
+<p>Let's breakdown the above code:</p>
+<p>In this part of the code, you are configuring Terraform Cloud settings:</p>
+<p><strong><em>organization</em></strong>: The name of the Terraform Cloud organization is set to "devops-project-org".</p>
+<p><strong><em>workspaces</em></strong>: Within the organization, a workspace is configured with the name "devops-project-workspace". A workspace in Terraform Cloud is an isolated environment for managing infrastructure.</p>
+<p><strong>2. AWS Provider Configuration:</strong></p>
+<pre><code class="language-bash">    provider &quot;aws&quot; {
+    region = &quot;us-east-1&quot;
+    }  
+</code></pre>
+<p>Let's breakdown the above code:</p>
+<p>This part of the code configures the AWS provider using the provider block:</p>
+<p><strong><em>aws</em></strong>: The name of the provider is "aws", indicating that this block configures resources from Amazon Web Services (AWS).</p>
+<p><strong><em>region</em></strong>: The AWS region is set to "us-east-1", which means resources created using this provider will be located in the US East (North Virginia) region.</p>
+<h2 id="vpctf">vpc.tf :</h2>
+<p>This Terraform code snippet is used to create a Virtual Private Cloud (VPC) in Amazon Web Services (AWS) using the <strong><em>terraform-aws-modules/vpc/aws</em></strong> module. Let's break down the code step by step:</p>
+<p><strong>1. Module Declaration</strong>:</p>
+<pre><code class="language-bash">    module &quot;vpc&quot; {
+    source = &quot;terraform-aws-modules/vpc/aws&quot;
+    }    
+</code></pre>
+<p>Here, you are declaring a Terraform module named "vpc" using the module source <strong><em>terraform-aws-modules/vpc/aws</em></strong>. This module is available in the Terraform registry and is designed to create a VPC with AWS resources.</p>
+<p><strong>2. Module Parameters</strong>:</p>
+<pre><code class="language-bash">    name = &quot;my-vpc&quot;
+    cidr = &quot;10.0.0.0/16&quot;  
+</code></pre>
+<p>These parameters define the basic configuration of the VPC:</p>
+<p><strong><em>name</em></strong>: The name of the VPC will be set to "my-vpc".
+   <strong><em>cidr</em></strong>: The IP range for the VPC is set to "10.0.0.0/16".</p>
+<p><strong>3. Availability Zones and Subnets</strong>:</p>
+<pre><code class="language-bash">    azs             = [&quot;us-east-1a&quot;, &quot;us-east-1b&quot;, &quot;us-east-1c&quot;]
+    private_subnets = [&quot;10.0.1.0/24&quot;, &quot;10.0.2.0/24&quot;, &quot;10.0.3.0/24&quot;]
+    public_subnets  = [&quot;10.0.101.0/24&quot;, &quot;10.0.102.0/24&quot;, &quot;10.0.103.0/24&quot;]  
+</code></pre>
+<p>These parameters specify the availability zones and subnets for the VPC:</p>
+<p><strong><em>azs</em></strong>: The list of Availability Zones where the subnets will be created.</p>
+<p><strong><em>private_subnets</em></strong>: The list of private subnet CIDR blocks.</p>
+<p><strong><em>public_subnets</em></strong>: The list of public subnet CIDR blocks.</p>
+<p><strong>4. NAT and VPN Gateways</strong>:</p>
+<pre><code class="language-bash">    enable_nat_gateway = true
+    enable_vpn_gateway = true  
+</code></pre>
+<p>These settings enable NAT and VPN gateways for the VPC:</p>
+<p><strong><em>enable_nat_gateway</em></strong>: NAT gateways will be created for the private subnets.</p>
+<p><strong><em>enable_vpn_gateway</em></strong>: A VPN gateway will be created for the VPC.</p>
+<p><strong>5. Tags</strong>:</p>
+<pre><code class="language-bash">    enable_nat_gateway = true
+    enable_vpn_gateway = true  
+</code></pre>
+<p>This block assigns tags to the resources created by the module. Tags are metadata that provide additional information about resources. Here, two tags are added: "Terraform" with the value "true" and "Environment" with the value "dev".</p>
+<h2 id="ecrtf">ecr.tf :</h2>
+<p>This Terraform code snippet creates an Amazon Elastic Container Registry (ECR) repository and defines an output to display the repository URL. Let's break down the code step by step:</p>
+<p><strong>1. ECR Repository Resource</strong>:</p>
+<pre><code class="language-bash">    resource &quot;aws_ecr_repository&quot; &quot;my_repo&quot; {
+    name = &quot;my-ecr-repo&quot;
+    image_tag_mutability = &quot;MUTABLE&quot;
+} 
+</code></pre>
+<p>In this part of the code, you are creating an AWS ECR repository named "my-ecr-repo" using the <strong><em>aws_ecr_repository</em></strong> resource. The parameters you've set are:</p>
+<p><strong><em>name</em></strong>: The name of the ECR repository is set to "my-ecr-repo".</p>
+<p><strong><em>image_tag_mutability</em></strong>: The mutability of image tags is set to "MUTABLE", which means you can overwrite tags on images.</p>
+<p><strong>2. Output for Repository URL</strong>:</p>
+<pre><code class="language-bash">  output &quot;repository_url&quot; {
+  value = aws_ecr_repository.my_repo.repository_url
+}  
+</code></pre>
+<p>This part of the code defines an output named "repository_url" that will display the URL of the ECR repository. The value of this output is set to the repository URL of the <strong><em>aws_ecr_repository.my_repo</em></strong> resource.</p>
+<h2 id="ekstf">eks.tf :</h2>
+<p>This Terraform code is used to create an Amazon Elastic Kubernetes Service (EKS) cluster using the <strong><em>terraform-aws-modules/eks/aws</em></strong> module. Let's break down the code step by step:</p>
+<p><strong>1. Module Declaration</strong>:</p>
+<pre><code class="language-bash">    module &quot;eks&quot; {
+    source  = &quot;terraform-aws-modules/eks/aws&quot;
+    version = &quot;~&gt; 19.0&quot;
+}    
+</code></pre>
+<p>This declares a Terraform module named "eks" and specifies the source from which to fetch the EKS module (terraform-aws-modules/eks/aws) along with a version constraint.</p>
+<p><strong>2. Cluster Configuration</strong>: </p>
+<pre><code class="language-bash">    cluster_name    = &quot;my-cluster&quot;
+    cluster_version = &quot;1.27&quot;
+    cluster_endpoint_public_access  = true  
+</code></pre>
+<p>These parameters configure the EKS cluster:</p>
+<p><strong><em>cluster_name</em></strong>: The name of the EKS cluster will be set to "my-cluster".
+  <strong><em>cluster_version</em></strong>: The Kubernetes version of the cluster will be "1.27".
+  <strong><em>cluster_endpoint_public_access</em></strong>: The Kubernetes API server endpoint will have public access.</p>
+<p><strong>3. Cluster Addons</strong>:</p>
+<pre><code class="language-bash">    cluster_addons = {
+    coredns = { most_recent = true }
+    kube-proxy = { most_recent = true }
+    vpc-cni = { most_recent = true }
+    }     
+</code></pre>
+<p>This block configures cluster addons like CoreDNS, kube-proxy, and vpc-cni to use the most recent versions.</p>
+<p><strong>4. VPC and Subnet Configuration</strong>:</p>
+<pre><code class="language-bash">    vpc_id                   = module.vpc.vpc_id
+    subnet_ids               = module.vpc.private_subnets
+    control_plane_subnet_ids = module.vpc.public_subnets     
+</code></pre>
+<p>These parameters specify the Virtual Private Cloud (VPC) and subnet details for the EKS cluster using outputs from another module (likely named "vpc").</p>
+<p><strong>5. Managed Node Group Configuration</strong>:</p>
+<pre><code class="language-bash">eks_managed_node_group_defaults = {
+  instance_types = [&quot;m6i.large&quot;, &quot;m5.large&quot;, &quot;m5n.large&quot;, &quot;t3.large&quot;]
+}
+
+eks_managed_node_groups = {
+  green = {
+    use_custom_launch_template = false
+    min_size     = 1
+    max_size     = 10
+    desired_size = 1
+    instance_types = [&quot;t3.large&quot;]
+    capacity_type  = &quot;SPOT&quot;
+  }
+}   
+</code></pre>
+<p>This section configures an EKS managed node group named "green" with specific instance types, sizes, and capacity type (SPOT).</p>
+<p><strong>6. Fargate Profiles</strong>:</p>
+<pre><code class="language-bash">    fargate_profiles = {
+    default = {
+        name = &quot;default&quot;
+        selectors = [ { namespace = &quot;default&quot; } ]
+    }
+    }    
+</code></pre>
+<p>This section defines a Fargate profile named "default" that targets the "default" namespace.</p>
+<p><strong><em>aws-auth Configuration</em></strong>: This section defines how IAM roles, users, and accounts will be mapped to Kubernetes RBAC roles for cluster access.</p>
+<p><strong>7. Tags</strong>:</p>
+<p>```bash
+    tags = {
+    Environment = "dev"
+    Terraform   = "true"
+    }      </p>
+<pre><code> Tags are assigned to the created resources for organization and identification purposes.
 
 
+## 🚀 Step-3-Terraform-Cloud-Env-Vars
+
+We need to configure our organization with our Access Key and Secret Key and you can do it specific for the workspace or globally for the organization.
+
+We will do it globally now for the organization by creating Variable Set
+
+under the organization setting go to Variable sets and Create new one
+
+![alt diagram](assets/images/microservices-bookstore/terra1.jpeg)
+
+
+   **1. Plan and Apply Terraform Code**:
+
+   Now we are ready to start the Plan
+
+![alt diagram](assets/images/microservices-bookstore/plan.jpeg)
+
+   Review the Plan resources and then **Confirm &amp; Apply**
+
+   **2. Check AWS Resources Creation**:
+
+   Verify in the AWS Management Console that your defined resources have been created as intended.
+
+   **3. Deploy EKS-Manage EC2 Instance**:
+
+   Of course it doesn’t have to be an EC2 instance you can use your Terminal.
+
+   We will setup this instance to manage our EKS cluster from.
+
+
+   - Deploy ubuntu instance
+
+   - Install tools like **kubectl** (Kubernetes command-line tool), **aws-cli** (AWS Command Line Interface), and any other utilities you might need.
+
+   - Install aws-cli
+
+
+```bash
+sudo apt install unzip  
+curl &quot;&lt;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&gt;&quot; -o &quot;awscliv2.zip&quot; 
+unzip awscliv2.zip
+sudo ./aws/install
+aws --version  
+</code></pre>
+<ul>
+<li>Install <strong>kubectl</strong></li>
+</ul>
+<pre><code class="language-bash">curl -LO &quot;&lt;https://dl.k8s.io/release/$&gt;(curl -L -s &lt;https://dl.k8s.io/release/stable.txt&gt;)/bin/linux/amd64/kubectl&quot; 
+Kubectl
+curl -LO &quot;&lt;https://dl.k8s.io/$&gt;(curl -L -s &lt;https://dl.k8s.io/release/stable.txt&gt;)/bin/linux/amd64/kubectl.sha256&quot;
+echo &quot;$(cat kubectl.sha256) kubectl&quot; | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+kubectl version --client   
+</code></pre>
+<ul>
+<li>
+<p>Configure AWS Credentials</p>
+</li>
+<li>
+<p>Run <strong>aws configure</strong> and provide your AWS Access Key ID, Secret Access Key, default region, and output format.</p>
+</li>
+<li>
+<p>Configure <strong>kubectl</strong></p>
+</li>
+</ul>
+<pre><code class="language-bash">aws eks update-kubeconfig --name my-cluster --region us-east-1  
+</code></pre>
+<ul>
+<li>Test <strong>kubectl</strong> by running</li>
+</ul>
+<pre><code class="language-bash">kubectl get nodes
+
+connect: connection refused    
+</code></pre>
+<p><strong>"Not working" 😕</strong></p>
+<p>You need to troubleshoot why <strong>kubectl</strong> client can’t talk with the EKS endpoint</p>
+<p><strong><em>Hint</em></strong>: Something is blocking the requests to the EKS endpoint </p>
+<p>Now after You can talk to our EKS, you should add this fix to our Terraform code.</p>
+<p>Now you can run</p>
+<pre><code class="language-bash">    kubectl get nodes
+
+    ##OUTPUT##
+
+    NAME                         STATUS   ROLES    AGE   VERSION
+    ip-10-0-1-149.ec2.internal   Ready    &lt;none&gt;   64s   v1.27.3-eks-a5565ad           
+</code></pre>
+<h2 id="step-4-install-required-clis">💽 Step-4-Install-Required-CLIs</h2>
+<p>We installed the <strong>AWS CLI, kubectl</strong> Now we need to install <strong>istioctl</strong> and <strong>argo CLI</strong> and install the required k8s resources.</p>
+<ul>
+<li><strong>istioctl</strong></li>
+</ul>
+<pre><code class="language-bash">    curl -L &lt;https://istio.io/downloadIstio&gt; | sh - 
+    cd istio-1.18.2/
+    export PATH=$PWD/bin:$PATH
+    istioctl install --set profile=demo -y 
+</code></pre>
+<p><strong>istioctl</strong> is a command-line utility provided by Istio for installing and interacting with Istio deployments.</p>
+<p><strong>install</strong> is the subcommand used to install Istio components.</p>
+<p><strong>-set profile=demo</strong> specifies the installation profile. The "demo" profile includes a set of Istio components suitable for demonstration purposes.</p>
+<ul>
+<li><strong>argo CLI</strong></li>
+</ul>
+<pre><code class="language-bash">    curl -sSL -o argocd-linux-amd64 &lt;https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64&gt;   
+    sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
+    rm argocd-linux-amd64
+    sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd 
+</code></pre>
+<ul>
+<li><strong>Argo CD install</strong></li>
+</ul>
+<pre><code class="language-bash">    kubectl create namespace argocd 
+    kubectl apply -n argocd -f &lt;https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml&gt;
+    kubectl patch svc argocd-server -n argocd -p '{&quot;spec&quot;: {&quot;type&quot;: &quot;LoadBalancer&quot;}}'        
+</code></pre>
+<p><strong><em>kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'</em></strong> This command patches (updates) the Argo CD server service to change its service type to a LoadBalancer. This modification makes the Argo CD server accessible from outside the Kubernetes cluster via a load balancer's public IP address or DNS.</p>
+<ul>
+<li>Argo CD intial admin secret</li>
+</ul>
+<p><code>bash
+    argocd admin initial-password -n argocd</code><br />
+<img alt="alt diagram" src="../assets/images/microservices-bookstore/argocd.jpeg" /></p>
+<p><strong><em>It’s not a best practice to do it from the Terminal but I will give you a hint “Terrafrom”</em></strong></p>
+<h2 id="step-5-update-workflows-with-ecr-url">🔧 Step-5-Update-Workflows-with-ECR-URL</h2>
+<p>Modify your continuous integration workflows to include the ECR repository URL for Container image storage.</p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/output.jpeg" /></p>
+<p>Under <strong>.github/workflows/</strong> you will find the Github Actions we will use to <strong>build/push</strong> our container images let’s break one workflow down.</p>
+<p><strong>details_workflow.yml</strong> :</p>
+<p><strong><em>Workflow Name and Trigger:name: Details Service Build, Push and Deploy</em></strong>: Describes the name of the workflow.</p>
+<p><strong><em>on</em></strong>: Specifies the events that trigger the workflow.</p>
+<p><strong><em>workflow_dispatch</em></strong>: Allows manual triggering of the workflow.</p>
+<p><strong><em>push</em></strong>: Triggers the workflow when code changes are pushed to the repository's specified paths.</p>
+<p><strong><em>Environment Variables:env</em></strong>: Defines environment variables that will be available to the workflow steps.</p>
+<p><strong><em>ECR_REGISTRY</em></strong>: Specifies the Amazon ECR (Elastic Container Registry) registry URL.</p>
+<p><strong><em>ECR_REPOSITORY</em></strong>: Specifies the ECR repository name.</p>
+<p><strong><em>Jobs:jobs</em></strong>: Contains one or more jobs to be executed in sequence.</p>
+<p><strong><em>build_and_push_image</em></strong>: Describes a job named "build_and_push_image" that runs on an Ubuntu environment.</p>
+<p><strong><em>runs-on</em></strong>: Specifies the type of runner environment.</p>
+<p><strong><em>steps</em></strong>: Lists the individual steps within the job.</p>
+<p><strong><em>Steps</em></strong>:A series of steps, each with a specific name, purpose, and associated actions.</p>
+<p><strong><em>uses</em></strong> refers to pre-built GitHub Actions that perform specific tasks.</p>
+<p>Here's what each step does:</p>
+<p><strong><em>Checkout code</em></strong>: Retrieves the repository's code using the actions/checkout GitHub Action.</p>
+<p><strong><em>Configure AWS credentials</em></strong>: Configures AWS credentials to access the ECR registry.</p>
+<p><strong><em>Login to Amazon ECR</em></strong>: Uses the aws-actions/amazon-ecr-login GitHub Action to log in to the ECR registry.</p>
+<p><strong><em>Get short SHA</em></strong>: Retrieves the short SHA hash of the latest Git commit.</p>
+<p><strong><em>Build and push Docker image</em></strong>: Builds a Docker image and pushes it to the specified ECR repository.</p>
+<p><strong><em>Update Kubernetes Deployment Image</em></strong>: Updates the image tag in a Kubernetes deployment YAML file to match the built Docker image.</p>
+<p><strong><em>Commit and Push Changes</em></strong>: Commits the changes made to the Kubernetes deployment YAML file and pushes them to the repository.</p>
+<h2 id="step-6-update-github-repo-with-aws-secrets">🚀 Step-6-Update-GitHub-Repo-with-AWS-Secrets</h2>
+<p>under <strong>Setting &gt; Secrets</strong> and <strong>Variables &gt; Actions</strong></p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/awssecret.jpeg" /></p>
+<p><strong>Run Workflows</strong></p>
+<p>Let’s the party begins</p>
+<ul>
+<li>
+<p>as we are using one repository we need our Github Workflow to update the new image</p>
+</li>
+<li>
+<p>we should configure the Actions to be able to Read and Write to it’s repository</p>
+</li>
+<li>
+<p>under Setting &gt; Actions &gt; General</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/workflowpermission.jpeg" /></p>
+<p>The Workflows Will run if there is a push inside the services directories or manually, I will run them Manually Now.</p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/work.jpeg" /></p>
+<p>You will find that I only added the Update Kubernetes Deployment Image part to <strong>details_workflow.yml</strong></p>
+<p>You need to complete the other Workflows</p>
+<p>You need to check the <strong>manifests/kubernetes</strong> image part to mach it with the Workflows</p>
+<p><strong>Check ECR Repo</strong></p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/ecrrepo.jpeg" /></p>
+<p><strong>Argo CD</strong></p>
+<ul>
+<li>add the repository to argo cd</li>
+<li>I will do it VIA SSH</li>
+<li>add the public ssh key to you Github account setting</li>
+<li>add the private ssh key to the argocd repository connect page</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/argo2.jpeg" /></p>
+<ul>
+<li>deploy Namespaces to the cluster <strong>staging</strong> and <strong>monitoring</strong></li>
+<li>under <strong>manifests/networking/namespaces/</strong> Add <strong>NEW APP</strong> in the argocd homepage</li>
+<li>follow the configuration</li>
+<li>Path: <strong>manifests/networking/namespaces/</strong></li>
+<li>you can keep the Namespace field blank</li>
+</ul>
+<h2 id="step-7-deploy-the-microservices-manifests">💼 Step-7-Deploy-the-Microservices-Manifests</h2>
+<ul>
+<li>
+<p>under <strong>argocd/apps/services</strong> you will find Application CRD for argocd app to deploy our manifest resources to Kubernetes</p>
+</li>
+<li>
+<p>argocd homepage create <strong>NEW APP</strong></p>
+</li>
+<li>
+<p>Application Name: app-services</p>
+</li>
+<li>
+<p>Project Name: default</p>
+</li>
+<li>
+<p>Sync Policy: Automatic</p>
+</li>
+<li>
+<p>[x] PRUNE RESOURCES</p>
+</li>
+<li>
+<p>[x] SELF HEAL</p>
+</li>
+<li>
+<p>[x] AUTO-CREATE NAMESPACE</p>
+</li>
+<li>
+<p>Repository URL:</p>
+</li>
+<li>
+<p>Path: <strong>argocd/apps /services/</strong></p>
+</li>
+<li>
+<p>Cluster URL:</p>
+</li>
+<li>
+<p>Namespace: staging</p>
+</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/argo2.jpeg" /></p>
+<p>You can check the Argo CD home page also you can check the resources in the EKS on AWS Console</p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/argo3.jpeg" /></p>
+<p>If you check any POD in staging Namespace you will find that each one has two Containers</p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/argo4.jpeg" /></p>
+<h2 id="step-8-istio-proxy-uses-envoy">🔒 Step-8-Istio-Proxy-uses-Envoy</h2>
+<p>Envoy proxies are deployed as sidecars to services, logically augmenting the services with Envoy’s many built-in features, for example:</p>
+<ul>
+<li>
+<p>Dynamic service discovery</p>
+</li>
+<li>
+<p>Load balancing</p>
+</li>
+<li>
+<p>TLS termination</p>
+</li>
+<li>
+<p>HTTP/2 and gRPC proxies</p>
+</li>
+<li>
+<p>Circuit breakers</p>
+</li>
+<li>
+<p>Health checks</p>
+</li>
+<li>
+<p>Staged rollouts with %-based traffic split</p>
+</li>
+<li>
+<p>Fault injection</p>
+</li>
+<li>
+<p>Rich metrics</p>
+</li>
+</ul>
+<p><strong>Istio Gateways and VirtualServices</strong>:</p>
+<ul>
+<li>
+<p><strong>Istio Gateway</strong>: An Istio Gateway is a configuration resource that describes how external traffic (e.g., traffic from outside the Kubernetes cluster) is brought into the service mesh and how it's routed to services. It acts as an entry point into the mesh for incoming traffic. Gateways can be used to manage different protocols, such as HTTP, HTTPS, or TCP, and they can handle traffic based on hostnames, paths, and ports.</p>
+</li>
+<li>
+<p><strong><em>Hosts and Ports</em></strong>: A Gateway is configured with a set of hosts and ports that it listens on. These could be domain names (for HTTP/HTTPS) or IP addresses and port numbers (for TCP).</p>
+</li>
+<li>
+<p><strong><em>TLS Termination</em></strong>: Gateways can perform TLS termination, meaning they can handle SSL/TLS encryption and decryption for incoming traffic.</p>
+</li>
+<li>
+<p><strong><em>Virtual Services</em></strong>: Gateways are often associated with VirtualServices to define how incoming traffic should be forwarded to specific services.</p>
+</li>
+<li>
+<p><strong>Istio VirtualService</strong>: A VirtualService is a configuration resource that defines how traffic should be routed within the service mesh. It allows you to control the routing of traffic based on criteria like URI paths, headers, and more. VirtualServices are associated with one or more Istio Services and are often used in conjunction with Gateways to control how external traffic is routed to services.</p>
+</li>
+<li>
+<p><strong><em>Destination Rules</em></strong>: VirtualServices can refer to DestinationRules, which define how traffic should be load-balanced between different versions of a service (canary deployments, blue-green deployments, etc.).</p>
+</li>
+<li><strong><em>Traffic Splitting</em></strong>: VirtualServices can split traffic between different versions of services based on weights or other criteria.</li>
+<li><strong><em>Match Conditions:</em></strong> VirtualServices define match conditions that determine which traffic is affected by the rules defined within them.</li>
+<li><strong><em>Fault Injection</em></strong>: VirtualServices can also be used to inject faults or delays into requests for testing purposes.</li>
+</ul>
+<p><strong>Deploy Gateways and VirtualServices</strong></p>
+<ul>
+<li>under <strong>manifests/networking/gateways</strong> Create Argo CD app to deploy them</li>
+</ul>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/ergraph.jpeg" /></p>
+<h2 id="step-9-test-our-bookstore-application">🗄️ Step-9-Test-our-BookStore-Application</h2>
+<ul>
+<li>From the previous step you can browse to <strong>istio-ingressgateway url/productpage</strong></li>
+<li>To get the url</li>
+</ul>
+<p><code>bash
+    kubectl get services -n istio-system
+    NAME                   TYPE           CLUSTER-IP       EXTERNAL-IP                                                               PORT(S)                                                                      AGE
+    istio-ingressgateway   LoadBalancer   172.20.27.197    ae271cd157c214ab888061809021225a-1922516608.us-east-1.elb.amazonaws.com   15021:32042/TCP,80:30092/TCP,443:31659/TCP,31400:31529/TCP,15443:32377/TCP   148m</code>
+   It will be the elb/dns under External-IP. We will open the application on our browser using that same link.</p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/page.jpeg" /></p>
+<h2 id="step-10-monitoring">💻 Step-10-Monitoring</h2>
+<p>Under <strong>argocd/apps/observability</strong> Create NEW APP in monitoring Namespace</p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/monitor.jpeg" /></p>
+<p>We have <strong>Prometheus (Metrics Datastore), Loki (Logging), Jaeger (Tracing)</strong> In a short words</p>
+<ul>
+<li>
+<p><strong>Logging</strong>: Recording events and activities for troubleshooting.</p>
+</li>
+<li>
+<p><strong>Metrics</strong>: Measuring performance with numbers and graphs.</p>
+</li>
+<li>
+<p><strong>Tracing</strong>: Following data flow to find performance issues.</p>
+</li>
+</ul>
+<p><strong>Grafana</strong></p>
+<p>one of a many dashboard you can import and a lot to explore</p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/graffana.jpeg" /></p>
+<p><strong>Kiali</strong></p>
+<p>A comprehensive monitoring tool for Istio Service Mesh and also there is a lot to explore.</p>
+<p><img alt="alt diagram" src="../assets/images/microservices-bookstore/kiali.gif" /></p>
+<p>The dashboard can give you a Live fast response to any issue the could happen to any of your Microservice</p>
+<p><img alt="alt diagram" src="assets/images/microservices-bookstore/kiali2.gif" /></p>
+<h2 id="license">📄 License</h2>
+<p>This project is licensed under the MIT License.</p>
 
 
 

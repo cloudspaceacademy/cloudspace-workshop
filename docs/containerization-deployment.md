@@ -38,6 +38,7 @@ Before diving into the project, let’s ensure that we have the necessary prereq
 - [Step-2: Setup Jenkins](#-Step-2-Setup-Jenkins)
 - [Step-3: Setup Jenkins pipeline](#-Step-3-Setup-Jenkins-Pipeline)
 - [Step-4: Push Docker container to Dockerhub](#-Step-4-push-Docker-container-to-Dockerhub)
+- [Step-5: AWS-CodeArtifact](Step-5-Setup-AWS-CodeArtifact)
 
 ## ✨ Step-1-Setup-EC2-instance
 
@@ -69,9 +70,13 @@ Make sure you have this Installed on your system.
 
 Additionally, we need to add users to the Docker group to grant them appropriate permissions. Run the following commands to add users to the Docker group:
 
->   sudo usermod -aG docker $USER
->   sudo usermod -aG docker jenkins
->   sudo reboot
+```bash
+
+    sudo usermod -aG docker $USER
+    sudo usermod -aG docker jenkins
+    sudo reboot
+
+```
 
 Remember to reboot the system after making these changes.
 
@@ -153,17 +158,17 @@ Put this basic Declarative pipeline code in script dialog box
 
 This code represents a Jenkins declarative pipeline, which is a popular way to define continuous integration and continuous deployment (CI/CD) workflows. Let’s go through each section and understand its purpose:
 
-- `**agent any**` : This line specifies that the pipeline can run on any available agent or executor in the Jenkins environment.
+- **`agent any`**  : This line specifies that the pipeline can run on any available agent or executor in the Jenkins environment.
 
-- `**stages**`: This block defines the different stages of the pipeline. Each stage represents a logical step in the CI/CD process.
+- **`stages`**: This block defines the different stages of the pipeline. Each stage represents a logical step in the CI/CD process.
 
-- `**stage('Clone Code')**`: This stage is responsible for cloning the source code repository. In this case, the pipeline simply echoes the message "Cloning the code." In a real scenario, this stage would typically include commands to clone the repository using a version control system like Git.
+- **`stage('Clone Code')`**: This stage is responsible for cloning the source code repository. In this case, the pipeline simply echoes the message "Cloning the code." In a real scenario, this stage would typically include commands to clone the repository using a version control system like Git.
 
--  `**stage('Build')**`: This stage is responsible for building the application or project. Here, the pipeline echoes the message "This is the Build Stage." In a real scenario, this stage would typically include commands to compile the code, run tests, and generate build artifacts.
+-  **`stage('Build')`**: This stage is responsible for building the application or project. Here, the pipeline echoes the message "This is the Build Stage." In a real scenario, this stage would typically include commands to compile the code, run tests, and generate build artifacts.
 
--  `**stage('Push to Docker hub')**`: This stage is responsible for pushing the built artifacts to a Docker registry (such as Docker Hub). The pipeline echoes the message "This is the Test stage." In a real scenario, this stage would typically include commands to package the application into a Docker container and push it to the desired registry.
+-  **`stage('Push to Docker hub')`**: This stage is responsible for pushing the built artifacts to a Docker registry (such as Docker Hub). The pipeline echoes the message "This is the Test stage." In a real scenario, this stage would typically include commands to package the application into a Docker container and push it to the desired registry.
 
-- `**stage('Deployment')**`: This stage is responsible for deploying the application or container to the target environment. The pipeline echoes the message "Deploying container." In a real scenario, this stage would typically include commands to deploy the Docker container or perform any necessary configuration and setup for the application to run.
+- **`stage('Deployment')`**: This stage is responsible for deploying the application or container to the target environment. The pipeline echoes the message "Deploying container." In a real scenario, this stage would typically include commands to deploy the Docker container or perform any necessary configuration and setup for the application to run.
 
 Each stage can have more complex logic and multiple steps, such as running shell commands, executing scripts, or invoking external tools.
 
@@ -212,13 +217,13 @@ By defining the pipeline stages and their associated steps, Jenkins can automate
    }
 ```
 
-- `**withCredentials**`: This is a Jenkins pipeline step provided by the "Credentials Binding Plugin." It allows you to securely retrieve and use credentials within the block. In this case, we are retrieving the Docker Hub credentials using the `usernamePassword` method.
+- **`withCredentials`**: This is a Jenkins pipeline step provided by the "Credentials Binding Plugin." It allows you to securely retrieve and use credentials within the block. In this case, we are retrieving the Docker Hub credentials using the `usernamePassword` method.
 
-- `**usernamePassword(credentialsId: "dockerhub-login", passwordVariable: "dockerhubpass", usernameVariable: "dockerhubuser")**`: This line retrieves the username and password from the Jenkins credentials store. The credentialsId parameter specifies the unique identifier of the stored Docker Hub credentials. The usernameVariable and passwordVariable parameters define the environment variables where the username and password will be stored, respectively. The environment variables are prefixed with env. in Jenkins, which is why you see env.dockerhubuser and env.dockerhubpass later in the code.
+- **`usernamePassword(credentialsId: "dockerhub-login", passwordVariable: "dockerhubpass", usernameVariable: "dockerhubuser")`**: This line retrieves the username and password from the Jenkins credentials store. The credentialsId parameter specifies the unique identifier of the stored Docker Hub credentials. The usernameVariable and passwordVariable parameters define the environment variables where the username and password will be stored, respectively. The environment variables are prefixed with env. in Jenkins, which is why you see env.dockerhubuser and env.dockerhubpass later in the code.
 
-- `**sh "docker tag notes-app ${env.dockerhubuser}/notes-app:latest"**`: This line creates a new Docker image tag with the Docker Hub username as a prefix. The `notes-app` is the original local image name, and we're tagging it with the new name `${env.dockerhubuser}/notes-app:latest`. This is necessary to ensure that the image can be pushed to the Docker Hub registry with the correct repository name.
+- **`sh "docker tag notes-app ${env.dockerhubuser}/notes-app:latest"`**: This line creates a new Docker image tag with the Docker Hub username as a prefix. The `notes-app` is the original local image name, and we're tagging it with the new name `${env.dockerhubuser}/notes-app:latest`. This is necessary to ensure that the image can be pushed to the Docker Hub registry with the correct repository name.
 
-- `**sh "docker login -u ${env.dockerhubuser} -p ${env.dockerhubpass}"**`: This line runs the `docker login` command to authenticate with Docker Hub using the username and password retrieved from the Jenkins credentials store. The `-u` flag specifies the Docker Hub username, and the `-p` flag specifies the password.
+- **`sh "docker login -u ${env.dockerhubuser} -p ${env.dockerhubpass}"`**: This line runs the `docker login` command to authenticate with Docker Hub using the username and password retrieved from the Jenkins credentials store. The `-u` flag specifies the Docker Hub username, and the `-p` flag specifies the password.
 
 - `**sh "docker push ${env.dockerhubuser}/notes-app:latest"**`: This line pushes the tagged Docker image to the Docker Hub registry using the docker push command. After authentication, the image is pushed to the repository specified by `${env.dockerhubuser}/notes-app:latest`.
 
@@ -241,7 +246,8 @@ Here is the full Declarative pipeline code for django-notes-app deployment on ec
             stage('Clone Code') {
                 steps {
                     echo 'Cloning the code'
-                    git url: "https://github.com/SaurabhDahibhate/django_notes_app.git", branch: "master"
+
+                    git url: "https://github.com/cloudspaceacademy/containerization-deployment.git", branch: "main"
                 }
             }
             stage('Build') {
@@ -272,7 +278,7 @@ Here is the full Declarative pipeline code for django-notes-app deployment on ec
 
 ```
 
-## 🌟 Step-2-Setup-AWS-CodeArtifact
+## ✨ Step-5-Setup-AWS-CodeArtifact
 
 Whenever the developer commits their code in GitHub, after every commit, it should reflect in the live web app.
 · For that, we will use “github webhook”.
