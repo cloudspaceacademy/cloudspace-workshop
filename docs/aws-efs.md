@@ -1,3 +1,0 @@
-# AWS EFS
-
-### Coming Soon !

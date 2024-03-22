@@ -1,3 +1,0 @@
-# AWS Macie
-
-### Coming Soon !
