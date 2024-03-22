@@ -1712,13 +1712,105 @@ Goto `Manage Jenkins` > `Security` > `Credentials`. Click on `global` and then `
          kubectl create secret docker-registry registry-secret --docker-server=13.235.91.151:8083 --docker-username=admin --docker-password=msx@9797 --docker-email=not-needed@yolo.com
         ```
 
-        We need this secret to authenticate to the nexus repo hosted on our nexus server
+        * We need this secret to authenticate to the nexus repo hosted on our nexus server
 
-        This is a kubectl command that creates a `Kubernetes secret` named `registry-secret` of type docker-registry. This secret is used to store credentials for authenticating with a Docker registry located at the specified IP address and port number
+        * This is a kubectl command that creates a `Kubernetes secret` named `registry-secret` of type docker-registry. This secret is used to store credentials for authenticating with a Docker registry located at the specified IP address and port number
 
         `(13.235.91.151:8083)`. The `--docker-username`, `--docker-password`, and `--docker-email` flags are used to set the corresponding authentication credentials for the Docker registry.
 
-        When we run the commands mentioned in **step2**, the image.tag will get the value of $VERSION variable that is build number and it will also be replaced in the `values.yaml` file in helm charts directory
+        * When we run the commands mentioned in **step2**, the image.tag will get the value of $VERSION variable that is build number and it will also be replaced in the `values.yaml` file in helm charts directory
+
+        ```bash
+        # Default values for myapp.
+
+        # This is a YAML-formatted file.
+
+        # Declare variables to be passed into your templates.
+
+        replicaCount: 2
+
+        image:
+            repository: IMAGE_NAME
+
+            ### this is image.repository, it will be replaced by nexus_ip:8083/springapp
+
+            pullPolicy: IfNotPresent
+
+            # Overrides the image tag whose default is the chart appVersion.
+
+            tag: IMAGE_TAG 
+            #### this is image.tag, it will be replaced by build number of the pipeline
+
+        service:
+            type: NodePort    
+            port: 8080
+        ```
+
+        * Now when the helm charts command `helm upgrade --install --set image.repository="13.235.91.151:8083/javawebapp" --set image.tag="${VERSION}" jwa myapp/` will be excuted it will replace all the values of variables, labels, annotation from the helm helper, chart.yaml and values.yaml in the deployment.yaml and services.yaml
+
+        * In deployment.yaml, in the pod template section, we have a field called `imagePullSecrets`, this field indicates that the container images for the pods are stored in a private repository.
+
+        ```bash
+            template:
+                metadata:
+                    labels:
+                        {{- include "myapp.selectorLabels" . | nindent 8 }}
+                spec:
+                    imagePullSecrets:
+                        - name: registry-secret
+        ```
+
+        * The secret `registry-secret` is the same secret that we created.
+
+        * Commit the Jenkinsfile changes and start a build.
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image59.png)
+
+
+        * Build was successful, let's verify the application deployment on the k8s cluster.
+
+
+        ```bash
+           jenkins@jenkins:~$ kubectl get nodes
+            NAME         STATUS   ROLES           AGE   VERSION
+            k8s-master   Ready    control-plane   12h   v1.27.1
+            k8s-node1    Ready    <none>          12h   v1.27.1
+            jenkins@jenkins:~$ kubectl get deployments
+            NAME         READY   UP-TO-DATE   AVAILABLE   AGE
+            jwa1-myapp   2/2     2            2           3m59s
+            jenkins@jenkins:~$ kubectl get pods
+            NAME                          READY   STATUS    RESTARTS   AGE
+            jwa1-myapp-67cd67cbb8-n2w4x   1/1     Running   0          4m5s
+            jwa1-myapp-67cd67cbb8-s895p   1/1     Running   0          4m5s
+            jenkins@jenkins:~$ kubectl get svc
+            NAME         TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)          AGE
+            jwa1-myapp   NodePort    10.100.153.6   <none>        8080:30984/TCP   4m10s
+            kubernetes   ClusterIP   10.96.0.1      <none>        443/TCP          12h
+            jenkins@jenkins:~$ helm list
+            NAME    NAMESPACE    REVISION    UPDATED                                    STATUS      CHART          APP VERSION
+            jwa1    default      1           2023-05-13 21:24:01.463472615 +0000 UTC    deployed    myapp-0.2.0    1.16.0
+        ```
+
+
+        * The deployment is up and the pods are running, let's try to access the application from the web browser using the node_ip followed by NodePort, `35.154.247.120:30984`
+
+
+        ![alt diagram](assets/images/java-web-app-deployment/image60.png)
+
+
+        * The java web application is up and running, we have successfully deployed our application on a k8s cluster using helm charts.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
