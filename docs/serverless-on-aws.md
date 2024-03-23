@@ -1,7 +1,8 @@
-# Lambda and S3 Events DEMO
+# Lambda and S3 Events
 
 ![alt text](assets/images/aws-lambda-s3/lambda-s3-1.png)
 
+Creation of an event-driven image processing pipeline using two S3 buckets and a lambda function.
 <!-- ![alt text](assets/images/aws-lambda-s3/lambda-s3-2.png) -->
 
 <!-- # Video Guides for this Mini Project -->
@@ -60,9 +61,7 @@ The existing manual image pixelation process faces challenges of scalability, op
 
 These requirements form the foundation for developing the event-driven image processing pipeline and ensure its successful implementation, operation, and maintenance within the AWS environment.
 
-## 🚀 Instructions
-
-### Stage 1 - Create the S3 Buckets
+## ✨ step-1-Create-the-S3-Buckets
 
 Move to the S3 Console https://s3.console.aws.amazon.com/s3/home?region=us-east-1#  
 We will be creating `2` buckets, both with the same name, but each suffixed with a functional title (see below) , all settings apart from region and bucket name can be left as default.  
@@ -73,7 +72,7 @@ These names will need to be unique, but as an example
 Bucket 1 : `dontusethisname-source`  
 Bucket 2 : `dontusethisname-processed`  
 
-### Stage 2 - Create the Lambda Role
+## 🌟 Step-2-Create-the-Lambda-Role
 
 Move to the IAM Console https://console.aws.amazon.com/iamv2/home?#/home  
 Click Roles, then Create Role  
@@ -101,7 +100,7 @@ You should end with 4 lines looking like this, only with `YOUR` bucket names
 
 Locate the two occurrences of `YOURACCOUNTID`, you need to replace both of these words with your AWS account ID  
 To get that, click the account dropdown at the top right   
-click the small icon to copy down the `Account ID` and replace the `YOURACCOUNTID` in the policy code editor. *important* if you use the 'icon' to copy this number, it will remove the `-` in the account number for you :) you need to paste `123456789000` rather than `1234-5678-9000`  
+click the small icon to copy down the `Account ID` and replace the `YOURACCOUNTID` in the policy code editor. *important* if you use the 'icon' to copy this number, it will remove the `-` in the account number for you. You need to paste `123456789000` rather than `1234-5678-9000`  
 
 You should have something which looks like this, only with your account ID:  
 
@@ -126,7 +125,10 @@ You should have something which looks like this, only with your account ID:
 Click `Review Policy`  
 For name put `pixelator_access_inline`  and create the policy.  
 
-### Stage 3 (pre) - ONLY DO THIS PART IF YOU WANT TO GET EXPERIENCE OF CREATING A LAMBDA ZIP
+## 🚀 Step-3-optional-complete-if-needed
+
+ONLY DO THIS PART IF YOU WANT TO GET EXPERIENCE OF CREATING A LAMBDA ZIP
+
 This guide is only tested on macOS, it should work on linux, windows may require different tools.
 if in doubt, skip to step 3 below
 
@@ -143,7 +145,7 @@ From the same folder, run `zip -r ../my-deployment-package.zip .` which will cre
 
 This zip will be the same zip which i link below, so if you do have any issues with the lambda function, you can use the one i've pre-created.
 
-### Stage 3 - Create the Lambda Function
+## 💽 Step-4-Create-the-Lambda-Function
 
 Move to the lambda console (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)  
 Click `Create Function`  
@@ -160,7 +162,7 @@ or 2, locate the .zip you created yourself in the `Stage 3(pre)` above - they wi
 On the lambda screen, click `Upload` locate and select that .zip, and then click the `Save` button  
 This upload will take a few minutes, but once complete you might see something saying `The deployment package of your Lambda function "pixelator" is too large to enable inline code editing. However, you can still invoke your function.` which is OK :)  
 
-### Stage 4 - Configure the Lambda Function & Trigger
+## 🔧 Step-5-Configure-the-Lambda-Function-&-Trigger
 
 Click `Configuration` tab and then `Environment variables`  
 We need to add an environment variable telling the pixelator function which processed bucket to use, it will know the source bucket because it's told about that in the event data.  
@@ -179,7 +181,7 @@ Under `Bucket` pick your *source* bucket ... *AGAIN* be really really sure this 
 You will need to check the `Recursive invocation` acknowledgment box, this is because this lambda function is invoked every time anything is added to the *source* bucket, if you configure this wrongly, or configure the environment variable above wrongly ... it will run the lambda function over and over again *for ever*. 
 Once checked, click `Add`  
 
-### Stage 5 - Test and Monitor
+## 🔧 Step-6-Test-and-Monitor
 
 open a tab to the `cloudwatch logs` console (https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups)  
 make sure you have two tabs open to the `s3 console` (https://s3.console.aws.amazon.com/s3/home?region=us-east-1) 
@@ -197,9 +199,9 @@ Click the `Refresh` icon
 Select each of the pixelated versions of the image ... you should have 5 (`8x8`, `16x16`, `32x32`, `48x48` and `64x64`)  
 Click `Open`  
 You browser will either open or save all of the images  
-Open them one by one, starting with `8x8` and finally `64x64` in order ... notice how they are the same image, but less and less pixelated :)  
+Open them one by one, starting with `8x8` and finally `64x64` in order ... notice how they are the same image, but less and less pixelated  
 
-### Stage 6 - Cleanup
+## 🚀 Step-7-Cleanup
 
 Open the `pixelator` lambda function (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/pixelator?tab=code)  
 Delete the function  
