@@ -146,7 +146,7 @@ For `Permissions` expand `Change default execution role` pick `Use an existing r
 Then `Create Function`  
 Close down any `notifcation` dialogues/popups  
 Click `Upload from` and select `.zip file`
-Either 1, download this zip to your local machine (https://github.com/cloudspaceacademy/aws-lambda-s3-events/blob/main/lab-setup/my-deployment-package.zip, click Download)  
+Either 1, download this zip to your local machine `https://github.com/cloudspaceacademy/aws-lambda-s3-events/blob/main/lab-setup/my-deployment-package.zip`, click Download  
 or 2, locate the .zip you created yourself in the `Stage 3(pre)` above - they will be identical  
 On the lambda screen, click `Upload` locate and select that .zip, and then click the `Save` button  
 This upload will take a few minutes, but once complete you might see something saying `The deployment package of your Lambda function "pixelator" is too large to enable inline code editing. However, you can still invoke your function.` which is OK :)  
@@ -177,7 +177,7 @@ make sure you have two tabs open to the `s3 console` (https://s3.console.aws.ama
 In one tab open your `-source` bucket & in the other open the `-processed' bucket  
 
 In the `-source` bucket tab, make sure to select the `Objects` tab and click `Upload`  
-Add some files and click `Upload`  (use your own, or these https://github.com/acantril/learn-cantrill-io-labs/tree/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/media)  
+Add some files and click `Upload` use your own, or these `https://github.com/cloudspaceacademy/aws-lambda-s3-events/tree/main/lab-setup/media`  
 Once finished, click `Close`  
 Move to the `CloudWatch Logs` tab  
 Click the `Refresh` icon, locate and click `/aws/lambda/pixelator`  
