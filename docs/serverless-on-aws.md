@@ -35,11 +35,10 @@ The existing manual image pixelation process faces challenges of scalability, op
 
 - [Step-1: Create the S3 Buckets](#-step-1-create-the-s3-buckets)
 - [Step-2: Create Lambda Role](#-step-2-create-the-lambda-role)
-- [Step-3: Optional](#-step-3-optional-complete-if-needed)
-- [Step-4: Create The Lambda Function](#-step-4-create-the-lambda-function)
-- [Step-5: Configure The Lambda Function Trigger](#-step-5-configure-the-lambda-function-&-trigger)
-- [Step-6: Test And Monitor](#-step-6-test-and-monitor)
-- [Step-7: Leanup](#-step-7-cleanup)
+- [Step-3: Create The Lambda Function](#-step-3-create-the-lambda-function)
+- [Step-4: Configure The Lambda Function Trigger](#-step-4-configure-the-lambda-function-&-trigger)
+- [Step-5: Test And Monitor](#-step-5-test-and-monitor)
+- [Step-6: Leanup](#-step-6-cleanup)
 
 ## 🌟 Project Requirements
 
@@ -93,7 +92,7 @@ For `Role name` put `PixelatorRole`  then Create the role
 Click `PixelatorRole`  
 Under `Permissions Policy` we need to add permissions and it will be an `inline policy`  
 Click `JSON`  and delete the contents of the code box entirely.  
-Load this link in a new tab (https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/policy/s3pixelator.json)  
+Load this link in a new tab `https://github.com/cloudspaceacademy/aws-lambda-s3-events/blob/main/lab-setup/policy/s3pixelator.json`  
 Copy the entire contents into your clipboard and paste into the previous permissions policy code editor box  
 Locate the words `REPLACEME` there should be `4` occurrences, 2 each for the source and processed buckets .. and for each of those one for the bucket and another for the objects in that bucket.  
 Replace the term `REPLACEME` with the name you picked for your buckets above, in my example it is `dontusethisname`  
@@ -135,27 +134,7 @@ You should have something which looks like this, only with your account ID:
 Click `Review Policy`  
 For name put `pixelator_access_inline`  and create the policy.  
 
-## 🚀 step-3-optional-complete-if-needed
-
-ONLY DO THIS PART IF YOU WANT TO GET EXPERIENCE OF CREATING A LAMBDA ZIP
-
-This guide is only tested on macOS, it should work on linux, windows may require different tools.
-if in doubt, skip to step 3 below
-
-From the CLI/Terminal
-Create a folder my_lambda_deployment  
-Move into that folder
-create a folder called lambda  
-Move into that folder
-Create a file called `lambda_function.py` and paste in the code for the lambda `pixelator` function (https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/lambda/lambda_function.py) then save  
-Download this file (https://files.pythonhosted.org/packages/f3/3b/d7bb231b3bc1414252e77463dc63554c1aeccffe0798524467aca7bad089/Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl) into that folder
-run `unzip Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl` and then `rm Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl`  
-These are the Pillow module files ... required for image manipulation in Python 3.9 (which is what the lambda function will be using)  
-From the same folder, run `zip -r ../my-deployment-package.zip .` which will create a lambda function zip, containing all these files in the parent directory.  
-
-This zip will be the same zip which i link below, so if you do have any issues with the lambda function, you can use the one i've pre-created.
-
-## 💽 step-4-create-the-lambda-function
+## 💽 step-3-create-the-lambda-function
 
 Move to the lambda console (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)  
 Click `Create Function`  
@@ -167,12 +146,12 @@ For `Permissions` expand `Change default execution role` pick `Use an existing r
 Then `Create Function`  
 Close down any `notifcation` dialogues/popups  
 Click `Upload from` and select `.zip file`
-Either 1, download this zip to your local machine (https://github.com/acantril/learn-cantrill-io-labs/blob/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/my-deployment-package.zip, click Download)  
+Either 1, download this zip to your local machine (https://github.com/cloudspaceacademy/aws-lambda-s3-events/blob/main/lab-setup/my-deployment-package.zip, click Download)  
 or 2, locate the .zip you created yourself in the `Stage 3(pre)` above - they will be identical  
 On the lambda screen, click `Upload` locate and select that .zip, and then click the `Save` button  
 This upload will take a few minutes, but once complete you might see something saying `The deployment package of your Lambda function "pixelator" is too large to enable inline code editing. However, you can still invoke your function.` which is OK :)  
 
-## 🔧 step-5-configure-the-lambda-function-&-trigger
+## 🔧 step-4-configure-the-lambda-function-&-trigger
 
 Click `Configuration` tab and then `Environment variables`  
 We need to add an environment variable telling the pixelator function which processed bucket to use, it will know the source bucket because it's told about that in the event data.  
@@ -191,7 +170,7 @@ Under `Bucket` pick your *source* bucket ... *AGAIN* be really really sure this 
 You will need to check the `Recursive invocation` acknowledgment box, this is because this lambda function is invoked every time anything is added to the *source* bucket, if you configure this wrongly, or configure the environment variable above wrongly ... it will run the lambda function over and over again *for ever*. 
 Once checked, click `Add`  
 
-## 🔧 step-6-test-and-monitor
+## 🔧 step-5-test-and-monitor
 
 open a tab to the `cloudwatch logs` console (https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups)  
 make sure you have two tabs open to the `s3 console` (https://s3.console.aws.amazon.com/s3/home?region=us-east-1) 
@@ -211,7 +190,7 @@ Click `Open`
 You browser will either open or save all of the images  
 Open them one by one, starting with `8x8` and finally `64x64` in order ... notice how they are the same image, but less and less pixelated  
 
-## 🚀 step-7-cleanup
+## 🚀 step-6-cleanup
 
 Open the `pixelator` lambda function (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/pixelator?tab=code)  
 Delete the function  
