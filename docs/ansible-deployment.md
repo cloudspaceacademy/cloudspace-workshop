@@ -11,13 +11,13 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 
 
 ## 💽 Techonology Stack
-● **AWS EC2**: Virtual servers in the cloud for running applications.
-● **Ansible**: Automation tool for configuration management and application deployment.
-● **Nginx**: Web server to serve the web application.
-● **GitHub**: Source control to manage and store playbook and application files.
-● **SSH**: Secure protocol for managing machines over a network.
-● **YAML**: Language used for writing Ansible playbooks.
-● **.pem Keys**: Private keys for secure access to AWS EC2 instances.
+- ● **AWS EC2**: Virtual servers in the cloud for running applications.
+- ● **Ansible**: Automation tool for configuration management and application deployment.
+- ● **Nginx**: Web server to serve the web application.
+- ● **GitHub**: Source control to manage and store playbook and application files.
+- ● **SSH**: Secure protocol for managing machines over a network.
+- ● **YAML**: Language used for writing Ansible playbooks.
+- ● **.pem Keys**: Private keys for secure access to AWS EC2 instances.
 
 
 ## 📌 Architecture Diagram
@@ -179,7 +179,7 @@ In this playbook, we automate the installation and startup of the Nginx web serv
 ![alt diagram](assets/images/ansible-deployment/11-run-play1.png)
 
 - Check the status of Nginx on the two EC2 instances
-![alt diagram](assets/images/ansible-deployment/11-run-play2.png)
+![alt diagram](assets/images/ansible-deployment/12-run-play2.png)
 
 
 ## 🌟 **step5-deploy-webpage-using-playbook**
@@ -198,7 +198,7 @@ In this playbook, we automate the installation and startup of the Nginx web serv
 ```yaml
     - name: deploy website
       copy:
-        src: ansible-helloworld-app
+        src: ansible-helloworld-app/
         dst: /var/www/html/
 ```
 
@@ -225,7 +225,7 @@ In this playbook, we automate the installation and startup of the Nginx web serv
 
     - name: deploy website
       copy:
-        src: ansible-helloworld-app
+        src: ansible-helloworld-app/
         dst: /var/www/html/
 ```
 

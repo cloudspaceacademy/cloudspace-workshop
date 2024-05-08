@@ -1938,13 +1938,15 @@
 <h2 id="problem-statement">🔧 Problem Statement</h2>
 <p>automate the deployment of a simple web application on AWS EC2, ensuring scalability and efficient management of resources through Ansible, thereby reducing manual setup efforts and potential human errors. Given Ansible's industry-wide adoption for its simplicity and effectiveness in configuration management and automation, this project seeks to leverage these capabilities to streamline cloud operations and enhance productivity.</p>
 <h2 id="techonology-stack">💽 Techonology Stack</h2>
-<p>● <strong>AWS EC2</strong>: Virtual servers in the cloud for running applications.
-● <strong>Ansible</strong>: Automation tool for configuration management and application deployment.
-● <strong>Nginx</strong>: Web server to serve the web application.
-● <strong>GitHub</strong>: Source control to manage and store playbook and application files.
-● <strong>SSH</strong>: Secure protocol for managing machines over a network.
-● <strong>YAML</strong>: Language used for writing Ansible playbooks.
-● <strong>.pem Keys</strong>: Private keys for secure access to AWS EC2 instances.</p>
+<ul>
+<li>● <strong>AWS EC2</strong>: Virtual servers in the cloud for running applications.</li>
+<li>● <strong>Ansible</strong>: Automation tool for configuration management and application deployment.</li>
+<li>● <strong>Nginx</strong>: Web server to serve the web application.</li>
+<li>● <strong>GitHub</strong>: Source control to manage and store playbook and application files.</li>
+<li>● <strong>SSH</strong>: Secure protocol for managing machines over a network.</li>
+<li>● <strong>YAML</strong>: Language used for writing Ansible playbooks.</li>
+<li>● <strong>.pem Keys</strong>: Private keys for secure access to AWS EC2 instances.</li>
+</ul>
 <h2 id="architecture-diagram">📌 Architecture Diagram</h2>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/0-diagram.png" /></p>
 <h2 id="table-of-contents">📋 Table of Contents</h2>
@@ -2098,7 +2100,7 @@
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/11-run-play1.png" /></p>
 <ul>
 <li>Check the status of Nginx on the two EC2 instances
-<img alt="alt diagram" src="assets/images/ansible-deployment/11-run-play2.png" /></li>
+<img alt="alt diagram" src="../assets/images/ansible-deployment/12-run-play2.png" /></li>
 </ul>
 <h2 id="step5-deploy-webpage-using-playbook">🌟 <strong>step5-deploy-webpage-using-playbook</strong></h2>
 <ul>
@@ -2121,7 +2123,7 @@
 </ul>
 <pre><code class="language-yaml">    - name: deploy website
       copy:
-        src: ansible-helloworld-app
+        src: ansible-helloworld-app/
         dst: /var/www/html/
 </code></pre>
 <p><strong>Note</strong>: Your full playbook template <code>nginx-install.yml</code> should look like this:</p>
@@ -2146,7 +2148,7 @@
 
     - name: deploy website
       copy:
-        src: ansible-helloworld-app
+        src: ansible-helloworld-app/
         dst: /var/www/html/
 </code></pre>
 <ul>
