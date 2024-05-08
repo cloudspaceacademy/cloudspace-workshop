@@ -22,7 +22,7 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 
 ## 📌 Architecture Diagram
 
-![alt diagram](assets/images/aws-lambda-s3/lambda-s3-2.png)
+![alt diagram](assets/images/ansible-deployment/0-diagram.png)
 
 
 ## 📋 Table of Contents
@@ -47,7 +47,7 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 - **Security**: Knowledge of secure key management and file permissions in Unix/Linux environments.
 
 
-## ✨ step-1-create-3-EC2-instances
+## ✨ **step-1-create-3-EC2-instances**
 - Log into the AWS Management Console.
 - Navigate to the EC2 Dashboard and click on "Launch Instances".
 - Select the Ubuntu Server AMI from the list of available AMIs.
@@ -61,7 +61,7 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 - Select and rename one instance as a master server and two as node server.
 
 
-## 🌟 step-2-install-ansible-in-host-server
+## 🌟 **step-2-install-ansible-in-host-server**
 - Connect to your host server via SSH or any remote access method.
 
 ![alt diagram](assets/images/ansible-deployment/2-connect-ec2.png)
@@ -82,7 +82,7 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 ![alt diagram](assets/images/ansible-deployment/5-ansible-version.png)
 
 
-## 🌟 step-3-transferring-private-SSH-key-to-the-ansible-controller-server
+## 🌟 **step-3-transferring-private-SSH-key-to-the-ansible-controller-server**
 
 - After deploying the 3 EC2 instances earlier with the same key, you have downloaded the private key to your local computer, likely in the Download folder. Locate that private key with the following command:
 ```bash
@@ -105,14 +105,14 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 ```
 ![alt diagram](assets/images/ansible-deployment/8-chmod.png)
 
-### Access the inventory file using sudo nano /etc/ansible/hosts
+### **Access the inventory file using sudo nano `/etc/ansible/hosts`**
 
 - Create inventory file at location `/etc/ansible/hosts` which is by default location of file. Ansible hosts file is a configuration file that contains a list of hosts or servers. Add the IP addresses of the servers also add private key file location to use for authentication.
 
 ![alt diagram](assets/images/ansible-deployment/9-hosts.png)
 
 
-## 🌟 step4-create-playbook-to-install-nginx
+## 🌟 **step4-create-playbook-to-install-nginx**
 
 - Create a playbook folder at the root
 ```bash
@@ -156,7 +156,7 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 ```
 ![alt diagram](assets/images/ansible-deployment/10-playbook.png)
 
-### Playbook Overview for Nginx Web Server
+### **Playbook Overview for Nginx Web Server**
 
 In this playbook, we automate the installation and startup of the Nginx web server on a group of servers. Below is an explanation of what each section accomplishes:
 
@@ -168,7 +168,7 @@ In this playbook, we automate the installation and startup of the Nginx web serv
   - **Install nginx** - A task that installs the latest version of Nginx using the `apt` module.
   - **start nginx** - A task that starts the Nginx service on the target servers using the `service` module.
 
-### Commands to Run Playbook
+### **Commands to Run Playbook**
 - **Run playbook** using the `ansible-playbook` command.
 - **Set the right permissions** to run the playbook:
 ```bash
@@ -182,7 +182,7 @@ In this playbook, we automate the installation and startup of the Nginx web serv
 ![alt diagram](assets/images/ansible-deployment/11-run-play2.png)
 
 
-## 🌟 step5-deploy-webpage-using-playbook
+## 🌟 **step5-deploy-webpage-using-playbook**
 
 - Create a new file `index.html` in the playbook directory, and add some sample content.
 
@@ -241,9 +241,9 @@ In this playbook, we automate the installation and startup of the Nginx web serv
 ![alt diagram](assets/images/ansible-deployment/14-site1.png)
 
 
-## 🚀 step-6-cleanup
+## 🚀 **step-6-cleanup**
 Delete all 3 EC2 instances created as part of this project from the AWS console.
 
-## 📄 License
+## 📄 **License**
 
 This project is licensed under the **MIT License.**
