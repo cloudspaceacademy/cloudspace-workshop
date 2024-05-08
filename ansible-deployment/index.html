@@ -1946,7 +1946,7 @@
 ● <strong>YAML</strong>: Language used for writing Ansible playbooks.
 ● <strong>.pem Keys</strong>: Private keys for secure access to AWS EC2 instances.</p>
 <h2 id="architecture-diagram">📌 Architecture Diagram</h2>
-<p><img alt="alt diagram" src="../assets/images/aws-lambda-s3/lambda-s3-2.png" /></p>
+<p><img alt="alt diagram" src="../assets/images/ansible-deployment/0-diagram.png" /></p>
 <h2 id="table-of-contents">📋 Table of Contents</h2>
 <ul>
 <li><a href="#step-1-create-3-EC2-instances">Step-1: Create EC2 instances</a></li>
@@ -1967,7 +1967,7 @@
 <li><strong>Networking</strong>: Understanding of network configurations, including IP addressing and DNS.</li>
 <li><strong>Security</strong>: Knowledge of secure key management and file permissions in Unix/Linux environments.</li>
 </ul>
-<h2 id="step-1-create-3-ec2-instances">✨ step-1-create-3-EC2-instances</h2>
+<h2 id="step-1-create-3-ec2-instances">✨ <strong>step-1-create-3-EC2-instances</strong></h2>
 <ul>
 <li>Log into the AWS Management Console.</li>
 <li>Navigate to the EC2 Dashboard and click on "Launch Instances".</li>
@@ -1981,7 +1981,7 @@
 <ul>
 <li>Select and rename one instance as a master server and two as node server.</li>
 </ul>
-<h2 id="step-2-install-ansible-in-host-server">🌟 step-2-install-ansible-in-host-server</h2>
+<h2 id="step-2-install-ansible-in-host-server">🌟 <strong>step-2-install-ansible-in-host-server</strong></h2>
 <ul>
 <li>Connect to your host server via SSH or any remote access method.</li>
 </ul>
@@ -2001,7 +2001,7 @@
 <li>Once the installation is complete, you can check the version of Ansible using the following command:</li>
 </ul>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/5-ansible-version.png" /></p>
-<h2 id="step-3-transferring-private-ssh-key-to-the-ansible-controller-server">🌟 step-3-transferring-private-SSH-key-to-the-ansible-controller-server</h2>
+<h2 id="step-3-transferring-private-ssh-key-to-the-ansible-controller-server">🌟 <strong>step-3-transferring-private-SSH-key-to-the-ansible-controller-server</strong></h2>
 <ul>
 <li>After deploying the 3 EC2 instances earlier with the same key, you have downloaded the private key to your local computer, likely in the Download folder. Locate that private key with the following command:</li>
 </ul>
@@ -2026,12 +2026,12 @@
 <pre><code class="language-bash">  sudo chmod 600 ansible-key
 </code></pre>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/8-chmod.png" /></p>
-<h3 id="access-the-inventory-file-using-sudo-nano-etcansiblehosts">Access the inventory file using sudo nano /etc/ansible/hosts</h3>
+<h3 id="access-the-inventory-file-using-sudo-nano-etcansiblehosts"><strong>Access the inventory file using sudo nano <code>/etc/ansible/hosts</code></strong></h3>
 <ul>
 <li>Create inventory file at location <code>/etc/ansible/hosts</code> which is by default location of file. Ansible hosts file is a configuration file that contains a list of hosts or servers. Add the IP addresses of the servers also add private key file location to use for authentication.</li>
 </ul>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/9-hosts.png" /></p>
-<h2 id="step4-create-playbook-to-install-nginx">🌟 step4-create-playbook-to-install-nginx</h2>
+<h2 id="step4-create-playbook-to-install-nginx">🌟 <strong>step4-create-playbook-to-install-nginx</strong></h2>
 <ul>
 <li>Create a playbook folder at the root</li>
 </ul>
@@ -2075,7 +2075,7 @@
 <pre><code class="language-bash">  sudo cat nginx-install.yml
 </code></pre>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/10-playbook.png" /></p>
-<h3 id="playbook-overview-for-nginx-web-server">Playbook Overview for Nginx Web Server</h3>
+<h3 id="playbook-overview-for-nginx-web-server"><strong>Playbook Overview for Nginx Web Server</strong></h3>
 <p>In this playbook, we automate the installation and startup of the Nginx web server on a group of servers. Below is an explanation of what each section accomplishes:</p>
 <ul>
 <li><strong>name</strong>: "This playbook will install nginx" - This comment describes the purpose of the playbook.</li>
@@ -2086,7 +2086,7 @@
 <li><strong>Install nginx</strong> - A task that installs the latest version of Nginx using the <code>apt</code> module.</li>
 <li><strong>start nginx</strong> - A task that starts the Nginx service on the target servers using the <code>service</code> module.</li>
 </ul>
-<h3 id="commands-to-run-playbook">Commands to Run Playbook</h3>
+<h3 id="commands-to-run-playbook"><strong>Commands to Run Playbook</strong></h3>
 <ul>
 <li><strong>Run playbook</strong> using the <code>ansible-playbook</code> command.</li>
 <li><strong>Set the right permissions</strong> to run the playbook:</li>
@@ -2100,7 +2100,7 @@
 <li>Check the status of Nginx on the two EC2 instances
 <img alt="alt diagram" src="assets/images/ansible-deployment/11-run-play2.png" /></li>
 </ul>
-<h2 id="step5-deploy-webpage-using-playbook">🌟 step5-deploy-webpage-using-playbook</h2>
+<h2 id="step5-deploy-webpage-using-playbook">🌟 <strong>step5-deploy-webpage-using-playbook</strong></h2>
 <ul>
 <li>
 <p>Create a new file <code>index.html</code> in the playbook directory, and add some sample content.</p>
@@ -2162,9 +2162,9 @@
 <img alt="alt diagram" src="../assets/images/ansible-deployment/14-site1.png" /></p>
 <p><strong>Server 02 Website:</strong>
 <img alt="alt diagram" src="../assets/images/ansible-deployment/14-site1.png" /></p>
-<h2 id="step-6-cleanup">🚀 step-6-cleanup</h2>
+<h2 id="step-6-cleanup">🚀 <strong>step-6-cleanup</strong></h2>
 <p>Delete all 3 EC2 instances created as part of this project from the AWS console.</p>
-<h2 id="license">📄 License</h2>
+<h2 id="license">📄 <strong>License</strong></h2>
 <p>This project is licensed under the <strong>MIT License.</strong></p>
 
 
