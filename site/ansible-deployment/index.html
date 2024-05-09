@@ -1932,7 +1932,7 @@
 
 
 <h1 id="ansible-deployment">Ansible deployment</h1>
-<p>Automating Web App Deployment Using Ansible on AWS EC2 Instances</p>
+<p>Automating a Website Protection Web App Deployment Using Ansible on AWS EC2 Instances.</p>
 <h2 id="project-overview">🚀 Project Overview</h2>
 <p>This project involves setting up and deploying a simple web application using Ansible by automating various tasks. Key steps include creating EC2 instances on AWS, installing Ansible on the host server, copying the necessary SSH keys, setting up an inventory file, and writing a playbook to install and configure Nginx. The project aims to execute these steps efficiently to set up a working environment where a sample web page can be deployed and accessed through the public IPs of the EC2 instances.</p>
 <h2 id="problem-statement">🔧 Problem Statement</h2>
@@ -2139,7 +2139,7 @@
 <pre><code class="language-yaml">    - name: deploy website
       copy:
         src: ansible-helloworld-app/
-        dst: /var/www/html/
+        dest: /var/www/html/
 </code></pre>
 <p><strong>Note</strong>: Your full playbook template <code>nginx-install.yml</code> should look like this:</p>
 <pre><code class="language-yaml">---
@@ -2164,7 +2164,7 @@
     - name: deploy website
       copy:
         src: ansible-helloworld-app/
-        dst: /var/www/html/
+        dest: /var/www/html/
 </code></pre>
 <ul>
 <li>Run the playbook</li>

@@ -1,5 +1,5 @@
 # Ansible deployment
-Automating Web App Deployment Using Ansible on AWS EC2 Instances
+Automating a Website Protection Web App Deployment Using Ansible on AWS EC2 Instances.
 
 
 ## 🚀 Project Overview
@@ -216,7 +216,7 @@ ls -l
     - name: deploy website
       copy:
         src: ansible-helloworld-app/
-        dst: /var/www/html/
+        dest: /var/www/html/
 ```
 
 **Note**: Your full playbook template `nginx-install.yml` should look like this:
@@ -243,7 +243,7 @@ ls -l
     - name: deploy website
       copy:
         src: ansible-helloworld-app/
-        dst: /var/www/html/
+        dest: /var/www/html/
 ```
 
 - Run the playbook
