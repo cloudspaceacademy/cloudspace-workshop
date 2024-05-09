@@ -49,16 +49,18 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 
 ## ✨ **step-1-create-3-EC2-instances**
 - Log into the AWS Management Console.
-- Navigate to the EC2 Dashboard and click on "Launch Instances".
+- Navigate to the EC2 Dashboard and click on **Launch Instances**.
 - Select the Ubuntu Server AMI from the list of available AMIs.
 - Choose the instance type suitable for your needs.
 - Configure instance details, and set the number of instances to 3.
-- Select or create a key pair for SSH access, ensuring the same key is used for all instances.
+- Select or create a key pair for SSH access, ensuring the same key is used for all 3 instances.
+- Create a security group that allow HTTP and SSH traffic as below:
+![alt diagram](assets/images/ansible-deployment/sg.png)
 - Review your settings and launch the instances.
 
 ![alt diagram](assets/images/ansible-deployment/1-ec2-setup.png)
 
-- Select and rename one instance as a master server and two as node server.
+- Select and rename one instance as a `controller` (master) server and other two as node server.
 
 
 ## 🌟 **step-2-install-ansible-in-host-server**
@@ -74,11 +76,15 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 ![alt diagram](assets/images/ansible-deployment/3-ansible-repo.png)
 
 - Install Ansible using the following command:
-
+```bash
+  sudo apt install ansible
+```
 ![alt diagram](assets/images/ansible-deployment/4-install-ansible.png)
 
 - Once the installation is complete, you can check the version of Ansible using the following command:
-
+```bash
+  ansible --version
+```
 ![alt diagram](assets/images/ansible-deployment/5-ansible-version.png)
 
 
@@ -96,7 +102,7 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 ```
 ![alt diagram](assets/images/ansible-deployment/6-ssh-key.png)
 
-- To proceed with the setup, copy the private key to the Ansible controller node (ansible_master) by creating a new file at `/home/ubuntu/.ssh` and pasting the private key in that file.
+- To proceed with the setup, copy the content of the private key from your local (laptop) to the Ansible controller node (ansible_master) by creating a new file at `/home/ubuntu/.ssh` and pasting the private key in that file.
 ![alt diagram](assets/images/ansible-deployment/7-ansible-key.png)
 
 - Give permissions to the private key file using chmod command.
@@ -105,7 +111,7 @@ automate the deployment of a simple web application on AWS EC2, ensuring scalabi
 ```
 ![alt diagram](assets/images/ansible-deployment/8-chmod.png)
 
-### **Access the inventory file using sudo nano `/etc/ansible/hosts`**
+### **Access the inventory file using sudo vi `/etc/ansible/hosts`**
 
 - Create inventory file at location `/etc/ansible/hosts` which is by default location of file. Ansible hosts file is a configuration file that contains a list of hosts or servers. Add the IP addresses of the servers also add private key file location to use for authentication.
 
@@ -172,9 +178,9 @@ In this playbook, we automate the installation and startup of the Nginx web serv
 - **Run playbook** using the `ansible-playbook` command.
 - **Set the right permissions** to run the playbook:
 ```bash
-  chmod 600 /home/ubuntu/.ssh/ansible-key
+  sudo chmod 600 /home/ubuntu/.ssh/ansible-key
   sudo chown ubuntu:ubuntu /home/ubuntu/.ssh/ansible-key
-  ansible-playbook file-name.yml
+  ansible-playbook nginx-installer.yml
 ```
 ![alt diagram](assets/images/ansible-deployment/11-run-play1.png)
 
@@ -188,6 +194,17 @@ In this playbook, we automate the installation and startup of the Nginx web serv
 
 - Clone this GitHub repo below in your playbook directory:
 [Access the Ansible Hello World App Repository](https://github.com/cloudspaceacademy/ansible-helloworld-app.git)
+
+```bash
+git clone https://github.com/cloudspaceacademy/ansible-helloworld-app.git
+```
+![alt diagram](assets/images/ansible-deployment/git.png)
+
+- Check whether the the app folder has been downloaded successfuly
+```bash
+ls -l
+```
+![alt diagram](assets/images/ansible-deployment/ls.png)
 
 **Note**: In this case instead of `HelloWorld` folder our folder will be called `ansible-helloworld-app`. Also this folder is in the `playbook` folder.
 
@@ -230,9 +247,19 @@ In this playbook, we automate the installation and startup of the Nginx web serv
 ```
 
 - Run the playbook
+```bash
+    ansible-playbook nginx-install.yml
+```
 ![alt diagram](assets/images/ansible-deployment/13-run-play3.png)
 
-- Once the playbook finishes executing, open a web browser and enter the public IP address of one of the EC2 instances (`Ansible nodes`) running Nginx.
+**IMPORTANT:**
+First time you run the template you may be prompt to enter `yes` when ansible attempt to establish connection with the ansible nodes. You may have to run the template twice to approve connection to both nodes.
+![alt diagram](assets/images/ansible-deployment/yes.png)
+
+- Once the playbook finishes executing, open a web browser and enter the public IP address of one of the EC2 instances (`Ansible nodes`) in the browser.
+```html
+   http://<node-public-ip-address>
+```
 
 **Server 01 Website:**
 ![alt diagram](assets/images/ansible-deployment/14-site1.png)

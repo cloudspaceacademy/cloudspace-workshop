@@ -476,9 +476,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#access-the-inventory-file-using-sudo-nano-etcansiblehosts" class="md-nav__link">
+  <a href="#access-the-inventory-file-using-sudo-vi-etcansiblehosts" class="md-nav__link">
     <span class="md-ellipsis">
-      Access the inventory file using sudo nano /etc/ansible/hosts
+      Access the inventory file using sudo vi /etc/ansible/hosts
     </span>
   </a>
   
@@ -1843,9 +1843,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#access-the-inventory-file-using-sudo-nano-etcansiblehosts" class="md-nav__link">
+  <a href="#access-the-inventory-file-using-sudo-vi-etcansiblehosts" class="md-nav__link">
     <span class="md-ellipsis">
-      Access the inventory file using sudo nano /etc/ansible/hosts
+      Access the inventory file using sudo vi /etc/ansible/hosts
     </span>
   </a>
   
@@ -1972,16 +1972,18 @@
 <h2 id="step-1-create-3-ec2-instances">✨ <strong>step-1-create-3-EC2-instances</strong></h2>
 <ul>
 <li>Log into the AWS Management Console.</li>
-<li>Navigate to the EC2 Dashboard and click on "Launch Instances".</li>
+<li>Navigate to the EC2 Dashboard and click on <strong>Launch Instances</strong>.</li>
 <li>Select the Ubuntu Server AMI from the list of available AMIs.</li>
 <li>Choose the instance type suitable for your needs.</li>
 <li>Configure instance details, and set the number of instances to 3.</li>
-<li>Select or create a key pair for SSH access, ensuring the same key is used for all instances.</li>
+<li>Select or create a key pair for SSH access, ensuring the same key is used for all 3 instances.</li>
+<li>Create a security group that allow HTTP and SSH traffic as below:
+<img alt="alt diagram" src="../assets/images/ansible-deployment/sg.png" /></li>
 <li>Review your settings and launch the instances.</li>
 </ul>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/1-ec2-setup.png" /></p>
 <ul>
-<li>Select and rename one instance as a master server and two as node server.</li>
+<li>Select and rename one instance as a <code>controller</code> (master) server and other two as node server.</li>
 </ul>
 <h2 id="step-2-install-ansible-in-host-server">🌟 <strong>step-2-install-ansible-in-host-server</strong></h2>
 <ul>
@@ -1998,10 +2000,14 @@
 <ul>
 <li>Install Ansible using the following command:</li>
 </ul>
+<pre><code class="language-bash">  sudo apt install ansible
+</code></pre>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/4-install-ansible.png" /></p>
 <ul>
 <li>Once the installation is complete, you can check the version of Ansible using the following command:</li>
 </ul>
+<pre><code class="language-bash">  ansible --version
+</code></pre>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/5-ansible-version.png" /></p>
 <h2 id="step-3-transferring-private-ssh-key-to-the-ansible-controller-server">🌟 <strong>step-3-transferring-private-SSH-key-to-the-ansible-controller-server</strong></h2>
 <ul>
@@ -2018,7 +2024,7 @@
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/6-ssh-key.png" /></p>
 <ul>
 <li>
-<p>To proceed with the setup, copy the private key to the Ansible controller node (ansible_master) by creating a new file at <code>/home/ubuntu/.ssh</code> and pasting the private key in that file.
+<p>To proceed with the setup, copy the content of the private key from your local (laptop) to the Ansible controller node (ansible_master) by creating a new file at <code>/home/ubuntu/.ssh</code> and pasting the private key in that file.
 <img alt="alt diagram" src="../assets/images/ansible-deployment/7-ansible-key.png" /></p>
 </li>
 <li>
@@ -2028,7 +2034,7 @@
 <pre><code class="language-bash">  sudo chmod 600 ansible-key
 </code></pre>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/8-chmod.png" /></p>
-<h3 id="access-the-inventory-file-using-sudo-nano-etcansiblehosts"><strong>Access the inventory file using sudo nano <code>/etc/ansible/hosts</code></strong></h3>
+<h3 id="access-the-inventory-file-using-sudo-vi-etcansiblehosts"><strong>Access the inventory file using sudo vi <code>/etc/ansible/hosts</code></strong></h3>
 <ul>
 <li>Create inventory file at location <code>/etc/ansible/hosts</code> which is by default location of file. Ansible hosts file is a configuration file that contains a list of hosts or servers. Add the IP addresses of the servers also add private key file location to use for authentication.</li>
 </ul>
@@ -2093,9 +2099,9 @@
 <li><strong>Run playbook</strong> using the <code>ansible-playbook</code> command.</li>
 <li><strong>Set the right permissions</strong> to run the playbook:</li>
 </ul>
-<pre><code class="language-bash">  chmod 600 /home/ubuntu/.ssh/ansible-key
+<pre><code class="language-bash">  sudo chmod 600 /home/ubuntu/.ssh/ansible-key
   sudo chown ubuntu:ubuntu /home/ubuntu/.ssh/ansible-key
-  ansible-playbook file-name.yml
+  ansible-playbook nginx-installer.yml
 </code></pre>
 <p><img alt="alt diagram" src="../assets/images/ansible-deployment/11-run-play1.png" /></p>
 <ul>
@@ -2112,6 +2118,15 @@
 <a href="https://github.com/cloudspaceacademy/ansible-helloworld-app.git">Access the Ansible Hello World App Repository</a></p>
 </li>
 </ul>
+<pre><code class="language-bash">git clone https://github.com/cloudspaceacademy/ansible-helloworld-app.git
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/ansible-deployment/git.png" /></p>
+<ul>
+<li>Check whether the the app folder has been downloaded successfuly</li>
+</ul>
+<pre><code class="language-bash">ls -l
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/ansible-deployment/ls.png" /></p>
 <p><strong>Note</strong>: In this case instead of <code>HelloWorld</code> folder our folder will be called <code>ansible-helloworld-app</code>. Also this folder is in the <code>playbook</code> folder.</p>
 <ul>
 <li>
@@ -2152,14 +2167,19 @@
         dst: /var/www/html/
 </code></pre>
 <ul>
-<li>
-<p>Run the playbook
-<img alt="alt diagram" src="../assets/images/ansible-deployment/13-run-play3.png" /></p>
-</li>
-<li>
-<p>Once the playbook finishes executing, open a web browser and enter the public IP address of one of the EC2 instances (<code>Ansible nodes</code>) running Nginx.</p>
-</li>
+<li>Run the playbook</li>
 </ul>
+<pre><code class="language-bash">    ansible-playbook nginx-install.yml
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/ansible-deployment/13-run-play3.png" /></p>
+<p><strong>IMPORTANT:</strong>
+First time you run the template you may be prompt to enter <code>yes</code> when ansible attempt to establish connection with the ansible nodes. You may have to run the template twice to approve connection to both nodes.
+<img alt="alt diagram" src="../assets/images/ansible-deployment/yes.png" /></p>
+<ul>
+<li>Once the playbook finishes executing, open a web browser and enter the public IP address of one of the EC2 instances (<code>Ansible nodes</code>) in the browser.</li>
+</ul>
+<pre><code class="language-html">   http://&lt;node-public-ip-address&gt;
+</code></pre>
 <p><strong>Server 01 Website:</strong>
 <img alt="alt diagram" src="../assets/images/ansible-deployment/14-site1.png" /></p>
 <p><strong>Server 02 Website:</strong>
