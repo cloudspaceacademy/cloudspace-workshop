@@ -9,14 +9,14 @@
       
       
       
-        <link rel="prev" href="../containerization-deployment/">
+        <link rel="prev" href="../aws-static-web-hosting/">
       
       
-        <link rel="next" href="../ansible-deployment/">
+        <link rel="next" href="../netflix-ish-deployment/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.14">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.10ba22f1.min.css">
       
       
 
@@ -56,16 +56,13 @@
     <body dir="ltr">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
         
-        <a href="#lambda-and-s3-events" class="md-skip">
+        <a href="#lambda-and-s3events-demo" class="md-skip">
           Skip to content
         </a>
       
@@ -107,6 +104,9 @@
         </div>
       </div>
     </div>
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -236,10 +236,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
@@ -291,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containerization-deployment/" class="md-nav__link">
+      <a href="../containerization-deployment.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -321,17 +319,6 @@
         
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Serverless on AWS
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         
   
@@ -341,142 +328,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#project-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 Project Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#problem-statement" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 Problem Statement
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#techonology-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      💽 Techonology Stack
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Architecture Diagram
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
-    <span class="md-ellipsis">
-      📋 Table of Contents
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌟 Project Requirements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-create-the-s3-buckets" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✨ step-1-create-the-s3-buckets
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-create-the-lambda-role" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌟 step-2-create-the-lambda-role
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-create-the-lambda-function" class="md-nav__link">
-    <span class="md-ellipsis">
-      💽 step-3-create-the-lambda-function
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-configure-the-lambda-function-trigger" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 step-4-configure-the-lambda-function-&amp;-trigger
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-test-and-monitor" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 step-5-test-and-monitor
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 step-6-cleanup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      📄 License
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -490,7 +341,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ansible-deployment/" class="md-nav__link">
+      <a href="../ansible-deployment.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -511,7 +362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform-on-aws/" class="md-nav__link">
+      <a href="../terraform-on-aws.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -532,7 +383,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash-scripting/" class="md-nav__link">
+      <a href="../bash-scripting.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -574,7 +425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-continuous-delivery/" class="md-nav__link">
+      <a href="../aws-continuous-delivery.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -595,7 +446,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../microservices-bookStore/" class="md-nav__link">
+      <a href="../microservices-bookStore.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -616,7 +467,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java-web-app-deployment/" class="md-nav__link">
+      <a href="../java-web-app-deployment.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -647,10 +498,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
@@ -684,10 +533,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
@@ -721,10 +568,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_1" >
@@ -818,7 +663,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CI-CD-Beginner/" class="md-nav__link">
+      <a href="../CI-CD-Beginner.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -839,7 +684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Monitoring-with-Prometheus/" class="md-nav__link">
+      <a href="../Monitoring-with-Prometheus.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -881,7 +726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Ansible-Playbook-Library/" class="md-nav__link">
+      <a href="../Ansible-Playbook-Library.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -902,7 +747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Logging-with-ELK-Stack/" class="md-nav__link">
+      <a href="../Logging-with-ELK-Stack.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -944,7 +789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-lambda-s3-events/" class="md-nav__link">
+      <a href="../aws-lambda-s3-events.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -965,7 +810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-lambda-xray/" class="md-nav__link">
+      <a href="../aws-lambda-xray.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -986,7 +831,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-pet-rekognition-ecr/" class="md-nav__link">
+      <a href="../aws-pet-rekognition-ecr.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1007,7 +852,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-lex-lambda-rds/" class="md-nav__link">
+      <a href="../aws-lex-lambda-rds.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1028,7 +873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-dynamodb-lambda-trigger/" class="md-nav__link">
+      <a href="../aws-dynamodb-lambda-trigger.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1060,10 +905,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2" >
@@ -1097,10 +940,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1_2_1" >
@@ -1131,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AWS%20Photo%20Gallery%20Application/" class="md-nav__link">
+      <a href="../AWS Photo Gallery Application.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1152,7 +993,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Open%20Source%20Photo%20Gallery%20Application/" class="md-nav__link">
+      <a href="../Open Source Photo Gallery Application.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1173,7 +1014,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Banking%20Web%20Application/" class="md-nav__link">
+      <a href="../Banking Web Application.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1194,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AWS%20E-Commerce%20Application/" class="md-nav__link">
+      <a href="../AWS E-Commerce Application.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1263,10 +1104,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
@@ -1300,10 +1139,8 @@
     
     
     
-    
     <li class="md-nav__item md-nav__item--nested">
       
-        
         
         
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2_1" >
@@ -1334,7 +1171,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-api-gateway/" class="md-nav__link">
+      <a href="../aws-api-gateway.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1355,7 +1192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-cloudtrail-log-file-integrity/" class="md-nav__link">
+      <a href="../aws-cloudtrail-log-file-integrity.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1376,7 +1213,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-control-tower/" class="md-nav__link">
+      <a href="../aws-control-tower.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1397,7 +1234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-cognito-web-identity-federation/" class="md-nav__link">
+      <a href="../aws-cognito-web-identity-federation.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1418,7 +1255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-dms-database-migration/" class="md-nav__link">
+      <a href="../aws-dms-database-migration.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1439,7 +1276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-patch-manager/" class="md-nav__link">
+      <a href="../aws-patch-manager.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1460,7 +1297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-efs/" class="md-nav__link">
+      <a href="../aws-efs.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1481,7 +1318,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-elastic-disaster-recovery/" class="md-nav__link">
+      <a href="../aws-elastic-disaster-recovery.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1502,7 +1339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-global-accelerator/" class="md-nav__link">
+      <a href="../aws-global-accelerator.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1523,7 +1360,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-iam-scp-permissions-boundary/" class="md-nav__link">
+      <a href="../aws-iam-scp-permissions-boundary.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1544,7 +1381,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-macie/" class="md-nav__link">
+      <a href="../aws-macie.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1565,7 +1402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-systems-manager/" class="md-nav__link">
+      <a href="../aws-systems-manager.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1586,7 +1423,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-video-on-demand/" class="md-nav__link">
+      <a href="../aws-video-on-demand.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1628,7 +1465,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-waf/" class="md-nav__link">
+      <a href="../aws-waf.md" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1685,131 +1522,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#project-overview" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 Project Overview
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#problem-statement" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 Problem Statement
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#techonology-stack" class="md-nav__link">
-    <span class="md-ellipsis">
-      💽 Techonology Stack
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#architecture-diagram" class="md-nav__link">
-    <span class="md-ellipsis">
-      📌 Architecture Diagram
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#table-of-contents" class="md-nav__link">
-    <span class="md-ellipsis">
-      📋 Table of Contents
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#project-requirements" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌟 Project Requirements
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-1-create-the-s3-buckets" class="md-nav__link">
-    <span class="md-ellipsis">
-      ✨ step-1-create-the-s3-buckets
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-2-create-the-lambda-role" class="md-nav__link">
-    <span class="md-ellipsis">
-      🌟 step-2-create-the-lambda-role
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-3-create-the-lambda-function" class="md-nav__link">
-    <span class="md-ellipsis">
-      💽 step-3-create-the-lambda-function
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-configure-the-lambda-function-trigger" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 step-4-configure-the-lambda-function-&amp;-trigger
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-5-test-and-monitor" class="md-nav__link">
-    <span class="md-ellipsis">
-      🔧 step-5-test-and-monitor
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      🚀 step-6-cleanup
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#license" class="md-nav__link">
-    <span class="md-ellipsis">
-      📄 License
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -1823,84 +1535,17 @@
                   
 
 
-<h1 id="lambda-and-s3-events">Lambda and S3 Events</h1>
-<p><img alt="alt text" src="../assets/images/aws-lambda-s3/lambda-s3-1.png" /></p>
-<p>Creation of an event-driven image processing pipeline using two S3 buckets and a lambda function.</p>
-<!-- ![alt text](assets/images/aws-lambda-s3/lambda-s3-2.png) -->
-
-<!-- # Video Guides for this Mini Project -->
-
-<!-- - [PART1](https://youtu.be/_7AKW8cSGU0)
-- [PART2](https://youtu.be/KQOS0ggsrfE)
-- [PLAYLIST](https://youtube.com/playlist?list=PLTk5ZYSbd9MjgSy227IkAB0GS4WAU5qcU) -->
-
-<h2 id="project-overview">🚀 Project Overview</h2>
-<p>In this demo lesson you're going to create a simple event-driven image processing pipeline. The pipeline uses two S3 buckets, a source bucket and a processed bucket. When images are added to the source bucket a lambda function is triggered based on the PUT.  When invoked the lambda function receives the <code>event</code> and extracts the bucket and object information. Once those details are known, the lambda function, using the <code>PIL</code> module pixelates the image with <code>5</code> different variations (8x8, 16x16, 32x32, 48x48 and 64x64) and uploads them to the processed bucket.</p>
-<h2 id="problem-statement">🔧 Problem Statement</h2>
-<p>The existing manual image pixelation process faces challenges of scalability, operational inefficiency, and inconsistency, necessitating the development of an automated solution. This project seeks to address these issues by creating an event-driven image processing pipeline utilizing AWS services. By leveraging S3 buckets for input and output, Lambda functions for processing triggered events, and the Python Imaging Library (PIL) for pixelation, the pipeline aims to automate the pixelation of images with various resolutions upon their addition to the source bucket. This approach will enhance scalability, reduce operational overhead, ensure consistency, and improve the efficiency of image processing tasks, thereby streamlining the entire process and enabling reliable and timely delivery of pixelated images.</p>
-<h2 id="techonology-stack">💽 Techonology Stack</h2>
-<p>● <strong>Lambda Function:</strong> AWS Lambda to execute the code in the cloud</p>
-<p>● <strong>Storage:</strong> AWS S3 for file storage.</p>
-<p>● <strong>Python:</strong> Python3 runtime (PIL Library)</p>
-<h2 id="architecture-diagram">📌 Architecture Diagram</h2>
-<p><img alt="alt diagram" src="../assets/images/aws-lambda-s3/lambda-s3-2.png" /></p>
-<h2 id="table-of-contents">📋 Table of Contents</h2>
+<h1 id="lambda-and-s3events-demo">Lambda and S3Events DEMO</h1>
+<p><img alt="DEMOARCHITECTURE" src="https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/02_LABINSTRUCTIONS/Architecture.png" /></p>
+<h1 id="video-guides-for-this-mini-project">Video Guides for this Mini Project</h1>
 <ul>
-<li><a href="#-step-1-create-the-s3-buckets">Step-1: Create the S3 Buckets</a></li>
-<li><a href="#-step-2-create-the-lambda-role">Step-2: Create Lambda Role</a></li>
-<li><a href="#-step-3-create-the-lambda-function">Step-3: Create The Lambda Function</a></li>
-<li><a href="#-step-4-configure-the-lambda-function-&amp;-trigger">Step-4: Configure The Lambda Function Trigger</a></li>
-<li><a href="#-step-5-test-and-monitor">Step-5: Test And Monitor</a></li>
-<li><a href="#-step-6-cleanup">Step-6: Leanup</a></li>
+<li><a href="https://youtu.be/_7AKW8cSGU0">PART1</a></li>
+<li><a href="https://youtu.be/KQOS0ggsrfE">PART2</a></li>
+<li><a href="https://youtube.com/playlist?list=PLTk5ZYSbd9MjgSy227IkAB0GS4WAU5qcU">PLAYLIST</a></li>
 </ul>
-<h2 id="project-requirements">🌟 Project Requirements</h2>
-<ol>
-<li>
-<p><strong>AWS Account</strong>: Access to an AWS account with permissions to create and manage S3 buckets, Lambda functions, and IAM roles.</p>
-</li>
-<li>
-<p><strong>S3 Buckets</strong>:</p>
-</li>
-<li>Source Bucket: A designated bucket to receive incoming images triggering the pipeline.</li>
-<li>
-<p>Processed Bucket: Another bucket to store processed images after pixelation.</p>
-</li>
-<li>
-<p><strong>Lambda Function</strong>:</p>
-</li>
-<li>Python runtime environment configured for Lambda.</li>
-<li>Integration with the source S3 bucket to trigger on object upload events.</li>
-<li>Use of the Python Imaging Library (PIL) or similar libraries for image pixelation.</li>
-<li>
-<p>Ability to upload pixelated images to the processed bucket.</p>
-</li>
-<li>
-<p><strong>Event Configuration</strong>:</p>
-</li>
-<li>
-<p>Setup S3 event notifications to trigger the Lambda function upon image uploads to the source bucket.</p>
-</li>
-<li>
-<p><strong>Permissions and Roles</strong>:</p>
-</li>
-<li>
-<p>IAM roles and policies configured to grant necessary permissions for Lambda function to access S3 buckets and perform pixelation tasks.</p>
-</li>
-<li>
-<p><strong>Testing and Validation</strong>:</p>
-</li>
-<li>Testing of the entire pipeline to ensure proper triggering of events, image pixelation, and uploading of processed images.</li>
-<li>
-<p>Validation of pixelated images in the processed bucket to ensure accuracy and quality.</p>
-</li>
-<li>
-<p><strong>Documentation</strong>:</p>
-</li>
-<li>Comprehensive documentation covering setup instructions, configuration steps, and troubleshooting guidelines.</li>
-<li>Instructions for maintaining and monitoring the pipeline for ongoing operations.</li>
-</ol>
-<p>These requirements form the foundation for developing the event-driven image processing pipeline and ensure its successful implementation, operation, and maintenance within the AWS environment.</p>
-<h2 id="step-1-create-the-s3-buckets">✨ step-1-create-the-s3-buckets</h2>
+<p><strong>This content is free, but I have a full range of training courses <a href="https://learn.cantrill.io">HERE</a></strong></p>
+<p>In this demo lesson you're going to create a simple event-driven image processing pipeline. The pipeline uses two S3 buckets, a source bucket and a processed bucket. When images are added to the source bucket a lambda function is triggered based on the PUT.  When invoked the lambda function receives the <code>event</code> and extracts the bucket and object information. Once those details are known, the lambda function, using the <code>PIL</code> module pixelates the image with <code>5</code> different variations (8x8, 16x16, 32x32, 48x48 and 64x64) and uploads them to the processed bucket.</p>
+<h1 id="stage-1-create-the-s3-buckets">Stage 1 - Create the S3 Buckets</h1>
 <p>Move to the S3 Console https://s3.console.aws.amazon.com/s3/home?region=us-east-1#<br />
 We will be creating <code>2</code> buckets, both with the same name, but each suffixed with a functional title (see below) , all settings apart from region and bucket name can be left as default.<br />
 Click <code>Create Bucket</code> and create a bucket in the format of unique-name-<code>source</code> in the <code>us-east-1</code> region<br />
@@ -1908,7 +1553,7 @@ Click <code>Create Bucket</code> and create a another bucket in the format of un
 These names will need to be unique, but as an example  </p>
 <p>Bucket 1 : <code>dontusethisname-source</code><br />
 Bucket 2 : <code>dontusethisname-processed</code>  </p>
-<h2 id="step-2-create-the-lambda-role">🌟 step-2-create-the-lambda-role</h2>
+<h1 id="stage-2-create-the-lambda-role">Stage 2 - Create the Lambda Role</h1>
 <p>Move to the IAM Console https://console.aws.amazon.com/iamv2/home?#/home<br />
 Click Roles, then Create Role<br />
 For <code>Trusted entity type</code>, pick <code>AWS service</code><br />
@@ -1917,7 +1562,7 @@ For <code>Role name</code> put <code>PixelatorRole</code>  then Create the role 
 <p>Click <code>PixelatorRole</code><br />
 Under <code>Permissions Policy</code> we need to add permissions and it will be an <code>inline policy</code><br />
 Click <code>JSON</code>  and delete the contents of the code box entirely.<br />
-Load this link in a new tab <code>https://github.com/cloudspaceacademy/aws-lambda-s3-events/blob/main/lab-setup/policy/s3pixelator.json</code><br />
+Load this link in a new tab (https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/policy/s3pixelator.json)<br />
 Copy the entire contents into your clipboard and paste into the previous permissions policy code editor box<br />
 Locate the words <code>REPLACEME</code> there should be <code>4</code> occurrences, 2 each for the source and processed buckets .. and for each of those one for the bucket and another for the objects in that bucket.<br />
 Replace the term <code>REPLACEME</code> with the name you picked for your buckets above, in my example it is <code>dontusethisname</code><br />
@@ -1931,7 +1576,7 @@ You should end with 4 lines looking like this, only with <code>YOUR</code> bucke
 </code></pre>
 <p>Locate the two occurrences of <code>YOURACCOUNTID</code>, you need to replace both of these words with your AWS account ID<br />
 To get that, click the account dropdown at the top right <br />
-click the small icon to copy down the <code>Account ID</code> and replace the <code>YOURACCOUNTID</code> in the policy code editor. <em>important</em> if you use the 'icon' to copy this number, it will remove the <code>-</code> in the account number for you. You need to paste <code>123456789000</code> rather than <code>1234-5678-9000</code>  </p>
+click the small icon to copy down the <code>Account ID</code> and replace the <code>YOURACCOUNTID</code> in the policy code editor. <em>important</em> if you use the 'icon' to copy this number, it will remove the <code>-</code> in the account number for you :) you need to paste <code>123456789000</code> rather than <code>1234-5678-9000</code>  </p>
 <p>You should have something which looks like this, only with your account ID:  </p>
 <pre><code>{
       &quot;Effect&quot;: &quot;Allow&quot;,
@@ -1951,7 +1596,21 @@ click the small icon to copy down the <code>Account ID</code> and replace the <c
 </code></pre>
 <p>Click <code>Review Policy</code><br />
 For name put <code>pixelator_access_inline</code>  and create the policy.  </p>
-<h2 id="step-3-create-the-lambda-function">💽 step-3-create-the-lambda-function</h2>
+<h1 id="stage-3-pre-only-do-this-part-if-you-want-to-get-experience-of-creating-a-lambda-zip">Stage 3 (pre) - ONLY DO THIS PART IF YOU WANT TO GET EXPERIENCE OF CREATING A LAMBDA ZIP</h1>
+<h2 id="this-guide-is-only-tested-on-macos-it-should-work-on-linux-windows-may-require-different-tools">this guide is only tested on macOS, it should work on linux, windows may require different tools.</h2>
+<h2 id="if-in-doubt-skip-to-step-3-below">if in doubt, skip to step 3 below</h2>
+<p>From the CLI/Terminal
+Create a folder my_lambda_deployment<br />
+Move into that folder
+create a folder called lambda<br />
+Move into that folder
+Create a file called <code>lambda_function.py</code> and paste in the code for the lambda <code>pixelator</code> function (https://raw.githubusercontent.com/acantril/learn-cantrill-io-labs/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/lambda/lambda_function.py) then save<br />
+Download this file (https://files.pythonhosted.org/packages/f3/3b/d7bb231b3bc1414252e77463dc63554c1aeccffe0798524467aca7bad089/Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl) into that folder
+run <code>unzip Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl</code> and then <code>rm Pillow-9.0.1-cp39-cp39-manylinux_2_17_x86_64.manylinux2014_x86_64.whl</code><br />
+These are the Pillow module files ... required for image manipulation in Python 3.9 (which is what the lambda function will be using)<br />
+From the same folder, run <code>zip -r ../my-deployment-package.zip .</code> which will create a lambda function zip, containing all these files in the parent directory.  </p>
+<p>This zip will be the same zip which i link below, so if you do have any issues with the lambda function, you can use the one i've pre-created.</p>
+<h1 id="stage-3-create-the-lambda-function">Stage 3 - Create the Lambda Function</h1>
 <p>Move to the lambda console (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions)<br />
 Click <code>Create Function</code><br />
 We're going to be <code>Authoring from Scratch</code><br />
@@ -1962,11 +1621,11 @@ For <code>Permissions</code> expand <code>Change default execution role</code> p
 Then <code>Create Function</code><br />
 Close down any <code>notifcation</code> dialogues/popups<br />
 Click <code>Upload from</code> and select <code>.zip file</code>
-Either 1, download this zip to your local machine <code>https://github.com/cloudspaceacademy/aws-lambda-s3-events/blob/main/lab-setup/my-deployment-package.zip</code>, click Download<br />
+Either 1, download this zip to your local machine (https://github.com/acantril/learn-cantrill-io-labs/blob/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/my-deployment-package.zip, click Download)<br />
 or 2, locate the .zip you created yourself in the <code>Stage 3(pre)</code> above - they will be identical<br />
 On the lambda screen, click <code>Upload</code> locate and select that .zip, and then click the <code>Save</code> button<br />
 This upload will take a few minutes, but once complete you might see something saying <code>The deployment package of your Lambda function "pixelator" is too large to enable inline code editing. However, you can still invoke your function.</code> which is OK :)  </p>
-<h2 id="step-4-configure-the-lambda-function-trigger">🔧 step-4-configure-the-lambda-function-&amp;-trigger</h2>
+<h1 id="stage-4-configure-the-lambda-function-trigger">Stage 4 - Configure the Lambda Function &amp; Trigger</h1>
 <p>Click <code>Configuration</code> tab and then <code>Environment variables</code><br />
 We need to add an environment variable telling the pixelator function which processed bucket to use, it will know the source bucket because it's told about that in the event data.<br />
 Click <code>Edit</code> then <code>Add environment variable</code>, under Key put <code>processed_bucket</code> and for <code>Value</code> put the bucket name of <em>your</em> processed bucket. 
@@ -1981,12 +1640,12 @@ In the dropdown pick <code>S3</code><br />
 Under <code>Bucket</code> pick your <em>source</em> bucket ... <em>AGAIN</em> be really really sure this is your source bucket and <em>NOT</em> your destination bucket and <em>NOT</em> any other bucket. Only pick your <em>SOURCE</em> bucket here.<br />
 You will need to check the <code>Recursive invocation</code> acknowledgment box, this is because this lambda function is invoked every time anything is added to the <em>source</em> bucket, if you configure this wrongly, or configure the environment variable above wrongly ... it will run the lambda function over and over again <em>for ever</em>. 
 Once checked, click <code>Add</code>  </p>
-<h2 id="step-5-test-and-monitor">🔧 step-5-test-and-monitor</h2>
+<h1 id="stage-5-test-and-monitor">Stage 5 - Test and Monitor</h1>
 <p>open a tab to the <code>cloudwatch logs</code> console (https://console.aws.amazon.com/cloudwatch/home?region=us-east-1#logsV2:log-groups)<br />
 make sure you have two tabs open to the <code>s3 console</code> (https://s3.console.aws.amazon.com/s3/home?region=us-east-1) 
 In one tab open your <code>-source</code> bucket &amp; in the other open the `-processed' bucket  </p>
 <p>In the <code>-source</code> bucket tab, make sure to select the <code>Objects</code> tab and click <code>Upload</code><br />
-Add some files and click <code>Upload</code> use your own, or these <code>https://github.com/cloudspaceacademy/aws-lambda-s3-events/tree/main/lab-setup/media</code><br />
+Add some files and click <code>Upload</code>  (use your own, or these https://github.com/acantril/learn-cantrill-io-labs/tree/master/00-aws-simple-demos/aws-lambda-s3-events/01_LABSETUP/media)<br />
 Once finished, click <code>Close</code><br />
 Move to the <code>CloudWatch Logs</code> tab<br />
 Click the <code>Refresh</code> icon, locate and click <code>/aws/lambda/pixelator</code><br />
@@ -1997,8 +1656,8 @@ Click the <code>Refresh</code> icon<br />
 Select each of the pixelated versions of the image ... you should have 5 (<code>8x8</code>, <code>16x16</code>, <code>32x32</code>, <code>48x48</code> and <code>64x64</code>)<br />
 Click <code>Open</code><br />
 You browser will either open or save all of the images<br />
-Open them one by one, starting with <code>8x8</code> and finally <code>64x64</code> in order ... notice how they are the same image, but less and less pixelated  </p>
-<h2 id="step-6-cleanup">🚀 step-6-cleanup</h2>
+Open them one by one, starting with <code>8x8</code> and finally <code>64x64</code> in order ... notice how they are the same image, but less and less pixelated :)  </p>
+<h1 id="stage-6-cleanup">Stage 6 - Cleanup</h1>
 <p>Open the <code>pixelator</code> lambda function (https://console.aws.amazon.com/lambda/home?region=us-east-1#/functions/pixelator?tab=code)<br />
 Delete the function<br />
 Move to the IAM Roles console (https://console.aws.amazon.com/iamv2/home#/roles) 
@@ -2013,8 +1672,14 @@ For each of the <code>source</code> and <code>processed</code> buckets do:</p>
 <li>Make sure the bucket is still selected, click <code>Delete</code>.   </li>
 <li>Type the name of the bucket then delete the bucket.  </li>
 </ul>
-<h2 id="license">📄 License</h2>
-<p>This project is licensed under the <strong>MIT License.</strong></p>
+<p>That's all folks! :)  </p>
+
+
+
+
+
+
+
 
 
 
@@ -2025,6 +1690,7 @@ For each of the <code>source</code> and <code>processed</code> buckets do:</p>
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
       </main>
@@ -2053,10 +1719,10 @@ For each of the <code>source</code> and <code>processed</code> buckets do:</p>
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      <script src="../assets/javascripts/bundle.bd41221c.min.js"></script>
       
     
   </body>
