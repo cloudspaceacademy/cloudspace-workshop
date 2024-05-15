@@ -9,10 +9,10 @@
       
       
       
-        <link rel="prev" href="../serverless-on-aws/">
+        <link rel="prev" href="../bash-scripting/">
       
       
-        <link rel="next" href="../dockerbeginning/">
+        <link rel="next" href="../aws-continuous-delivery/">
       
       
       <link rel="icon" href="../assets/images/favicon.png">
@@ -60,6 +60,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#netflix-ish-deployment" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -284,7 +289,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../containerization-deployment.md" class="md-nav__link">
+      <a href="../containerization-deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -326,7 +331,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ansible-deployment.md" class="md-nav__link">
+      <a href="../ansible-deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -347,7 +352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../terraform-on-aws.md" class="md-nav__link">
+      <a href="../terraform-on-aws/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -368,7 +373,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../bash-scripting.md" class="md-nav__link">
+      <a href="../bash-scripting/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -395,6 +400,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Netflix-ish Deployment
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -405,6 +423,166 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Project Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Problem Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#techonology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Techonology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚦 Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚦 Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌟 Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-setup-ec2-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-1-Setup-EC2-instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-setup-sonarqube" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-2-Setup-SonarQube
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-integration-sonarqube-with-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-3-Integration-SonarQube-with-GitHub-Actions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-scanning-file-with-trivy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-4-Scanning-file-with-Trivy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-push-docker-container-to-dockerhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-5-Push-Docker-container-to-Dockerhub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-create-tmdb-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-6-Create-TMDB-API-Key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-add-a-self-hosted-runner-to-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-7-Add-a-self-hosted-runner-to-EC2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-final-workflow-to-run-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-8-Final-workflow-to-run-the-container
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -418,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-continuous-delivery.md" class="md-nav__link">
+      <a href="../aws-continuous-delivery/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -439,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../microservices-bookStore.md" class="md-nav__link">
+      <a href="../microservices-bookStore/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -460,7 +638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../java-web-app-deployment.md" class="md-nav__link">
+      <a href="../java-web-app-deployment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -656,7 +834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../CI-CD-Beginner.md" class="md-nav__link">
+      <a href="../CI-CD-Beginner/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -677,7 +855,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Monitoring-with-Prometheus.md" class="md-nav__link">
+      <a href="../Monitoring-with-Prometheus/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -719,7 +897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Ansible-Playbook-Library.md" class="md-nav__link">
+      <a href="../Ansible-Playbook-Library/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -740,7 +918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Logging-with-ELK-Stack.md" class="md-nav__link">
+      <a href="../Logging-with-ELK-Stack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -782,7 +960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-lambda-s3-events.md" class="md-nav__link">
+      <a href="../aws-lambda-s3-events/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -803,7 +981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-lambda-xray.md" class="md-nav__link">
+      <a href="../aws-lambda-xray/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -824,7 +1002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-pet-rekognition-ecr.md" class="md-nav__link">
+      <a href="../aws-pet-rekognition-ecr/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -845,7 +1023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-lex-lambda-rds.md" class="md-nav__link">
+      <a href="../aws-lex-lambda-rds/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -866,7 +1044,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-dynamodb-lambda-trigger.md" class="md-nav__link">
+      <a href="../aws-dynamodb-lambda-trigger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -965,7 +1143,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AWS Photo Gallery Application.md" class="md-nav__link">
+      <a href="../AWS%20Photo%20Gallery%20Application/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -986,7 +1164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Open Source Photo Gallery Application.md" class="md-nav__link">
+      <a href="../Open%20Source%20Photo%20Gallery%20Application/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1007,7 +1185,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../Banking Web Application.md" class="md-nav__link">
+      <a href="../Banking%20Web%20Application/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1028,7 +1206,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../AWS E-Commerce Application.md" class="md-nav__link">
+      <a href="../AWS%20E-Commerce%20Application/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1164,7 +1342,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-api-gateway.md" class="md-nav__link">
+      <a href="../aws-api-gateway/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1185,7 +1363,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-cloudtrail-log-file-integrity.md" class="md-nav__link">
+      <a href="../aws-cloudtrail-log-file-integrity/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1206,7 +1384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-control-tower.md" class="md-nav__link">
+      <a href="../aws-control-tower/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1227,7 +1405,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-cognito-web-identity-federation.md" class="md-nav__link">
+      <a href="../aws-cognito-web-identity-federation/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1248,7 +1426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-dms-database-migration.md" class="md-nav__link">
+      <a href="../aws-dms-database-migration/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1269,7 +1447,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-patch-manager.md" class="md-nav__link">
+      <a href="../aws-patch-manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1290,7 +1468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-efs.md" class="md-nav__link">
+      <a href="../aws-efs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1311,7 +1489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-elastic-disaster-recovery.md" class="md-nav__link">
+      <a href="../aws-elastic-disaster-recovery/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1332,7 +1510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-global-accelerator.md" class="md-nav__link">
+      <a href="../aws-global-accelerator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1353,7 +1531,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-iam-scp-permissions-boundary.md" class="md-nav__link">
+      <a href="../aws-iam-scp-permissions-boundary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1374,7 +1552,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-macie.md" class="md-nav__link">
+      <a href="../aws-macie/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1395,7 +1573,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-systems-manager.md" class="md-nav__link">
+      <a href="../aws-systems-manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1416,7 +1594,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-video-on-demand.md" class="md-nav__link">
+      <a href="../aws-video-on-demand/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1458,7 +1636,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-waf.md" class="md-nav__link">
+      <a href="../aws-waf/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1512,6 +1690,157 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#project-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Project Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#problem-statement" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Problem Statement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#techonology-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      💽 Techonology Stack
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      📌 Architecture Diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#getting-started" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚦 Getting Started
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚦 Getting Started">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      🌟 Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#table-of-contents" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Table of Contents
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-setup-ec2-instance" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-1-Setup-EC2-instance
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-setup-sonarqube" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-2-Setup-SonarQube
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-integration-sonarqube-with-github-actions" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-3-Integration-SonarQube-with-GitHub-Actions
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-scanning-file-with-trivy" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-4-Scanning-file-with-Trivy
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-push-docker-container-to-dockerhub" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-5-Push-Docker-container-to-Dockerhub
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-create-tmdb-api-key" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-6-Create-TMDB-API-Key
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-add-a-self-hosted-runner-to-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-7-Add-a-self-hosted-runner-to-EC2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-final-workflow-to-run-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✨ Step-8-Final-workflow-to-run-the-container
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -1526,9 +1855,366 @@
                   
 
 
-  <h1>Netflix-ish Deployment</h1>
+<h1 id="netflix-ish-deployment">Netflix ish deployment</h1>
+<p>Automate the Process of deloying a containerized application</p>
+<h2 id="project-overview">🚀 Project Overview</h2>
+<p>This project aims to automate the deployment of an application using CI/CD tools. Here are the key feature :</p>
+<ul>
+<li>
+<p>GitHub Actions Integration: Utilize GitHub Actions for seamless automation of the CI/CD pipeline, facilitating continuous integration and deployment.</p>
+</li>
+<li>
+<p>Docker Containerization: Containerize the Netflix-like application and its dependencies using Docker, ensuring simplified deployment and scalability.</p>
+</li>
+<li>
+<p>Trivy Integration: Integrate Trivy for vulnerability scanning of Docker images, enabling early detection and mitigation of security vulnerabilities.</p>
+</li>
+<li>
+<p>SonarQube Integration: Incorporate SonarQube for static code analysis to provide insights into code quality, security, and maintainability.</p>
+</li>
+<li>
+<p>Environment Configuration: Implement configuration management to ensure consistent deployment across different environments.</p>
+</li>
+</ul>
+<h2 id="problem-statement">🔧 Problem Statement</h2>
+<p>The Automated Deployment of Containerized a Netflix-Like Application project aims to automate the deployment process of a video streaming platform using modern DevOps tools and practices. Leveraging GitHub Actions for CI/CD, Docker for containerization, Trivy for container image vulnerability scanning, and SonarQube for code quality analysis.
+GitHub Actions is an integrated continuous integration and continuous deployment (CI/CD) platform provided by GitHub that allows developers to automate various software development workflows. It enables you to create, customize, and share automated tasks, or “actions,” directly within your GitHub repositories. These actions can be triggered by events like code pushes, pull requests, or external inputs, and they can perform tasks such as building, testing, deploying, and more. GitHub Actions simplifies the automation of repetitive tasks, streamlining the software development process and ensuring code quality and consistency by automating various stages of the development lifecycle, ultimately helping teams to collaborate more efficiently and deploy code with confidence.</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment2.png" /></p>
+<h2 id="techonology-stack">💽 Techonology Stack</h2>
+<p>● <strong>Server</strong>: EC2</p>
+<p>● <strong>Containerization Platform</strong>: Docker</p>
+<p>● <strong>CI/CD Platform</strong>: Github Actions</p>
+<p>● <strong>Version Control</strong>: Github/Git</p>
+<p>● <strong>Code Quality Analysis</strong>: Sonnarqube</p>
+<p>● <strong>Security Scanning</strong>: Trivy</p>
+<h2 id="architecture-diagram">📌 Architecture Diagram</h2>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment-architecture-diagram.png" /></p>
+<h2 id="getting-started">🚦 Getting Started</h2>
+<h3 id="prerequisites">🌟 Prerequisites</h3>
+<p>Before diving into the project, let’s ensure that we have the necessary prerequisites.</p>
+<ul>
+<li>AWS account.</li>
+<li>AWS CLI.</li>
+<li>Dockerhub account.</li>
+<li>Git for cloning the repository.</li>
+</ul>
+<h2 id="table-of-contents">📋 Table of Contents</h2>
+<ul>
+<li><a href="#-step-1-setup-ec2-instance">Step-1: Setup EC2 instance</a></li>
+<li><a href="#-step-2-setup-sonarqube">Step-2: Setup SonarQube</a></li>
+<li><a href="#-step-3-integration-sonarqube-with-github-actions">Step-3: Integration SonarQube with GitHub Actions</a></li>
+<li><a href="#-step-4-scanning-file-with-trivy">Step-4: Scanning file with Trivy</a></li>
+<li><a href="#-step-5-push-docker-container-to-dockerhub">Step-5: Push Docker container to Dockerhub</a></li>
+<li><a href="#-step-6-create-tmdb-api-key">Step-6: Create TMDB API Key</a></li>
+<li><a href="#-step-7-add-a-self-hosted-runner-to-ec2">Step-7: Add a self hosted runner to EC2</a></li>
+<li><a href="#-step-8-final-workflow-to-run-the-container">Step-8: Final workflow to run the container</a></li>
+</ul>
+<h2 id="step-1-setup-ec2-instance">✨ Step-1-Setup-EC2-instance</h2>
+<p>Launch an “ubuntu (t2.medium) “ instance and login through “putty” or “mobaxtream” app.</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment3.png" /></p>
+<h2 id="step-2-setup-sonarqube">✨ Step-2-Setup-SonarQube</h2>
+<p>Connect to your Ec2 instance using Putty, Mobaxterm or Git bash and install docker on it.</p>
+<pre><code class="language-bash">    sudo apt-get update
+    sudo apt install docker.io -y
+    sudo usermod -aG docker ubuntu
+    newgrp docker
+    sudo chmod 777 /var/run/docker.sock
+
+</code></pre>
+<p>Pull the SonarQube Docker image and run it.
+After the docker installation, we will create a Sonarqube container
+(Remember to add 9000 ports in the security group).</p>
+<pre><code class="language-bash">    docker run -d --name sonar -p 9000:9000 sonarqube:lts-community
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment4.png" /></p>
+<p>Now copy the IP address of the ec2 instance</p>
+<pre><code class="language-bash">    &lt;ec2-public-ip:9000&gt;
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment5.png" /></p>
+<p>Provide the following Login and password:</p>
+<pre><code>    login admin
+    password admin
+</code></pre>
+<p>Update your Sonarqube password &amp; This is the Sonarqube dashboard</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment6.png" /></p>
+<h2 id="step-3-integration-sonarqube-with-github-actions">✨ Step-3-Integration-SonarQube-with-GitHub-Actions</h2>
+<p>First, clone the project on github using this <a href="https://github.com/cloudspaceacademy/netflix-inspired-app.git">link</a></p>
+<p>Integrating SonarQube with GitHub Actions allows you to automatically analyze your code for quality and security as part of your continuous integration pipeline.</p>
+<p>We already have Sonarqube up and running
+On Sonarqube Dashboard click on <code>Manually</code></p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment7.png" /></p>
+<p>Next, provide a name for your project and provide a Branch name and click on <code>setup</code></p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment8.png" /></p>
+<p>On the next page click on With GitHub actions</p>
+<p>This will Generate an overview of the Project and provide some instructions to integrate</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment9.png" /></p>
+<p>Let’s Open your GitHub and select your Repository and Click on Settings,</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment10.png" /></p>
+<p>Search for Secrets and variables and click on and again click on actions</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment11.png" /></p>
+<p>It will open a page like this click on New Repository secret</p>
+<p>Now go back to Your Sonarqube Dashboard</p>
+<p>Copy SONAR_TOKEN and click on Generate Token</p>
+<p>Click on <code>Generate</code></p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment12.png" /></p>
+<p>Let’s copy the Token and add it to GitHub secrets</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment13.png" /></p>
+<p>Now go back to GitHub and Paste the copied name for the secret and token</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment14.png" /></p>
+<p>Now go back to the Sonarqube Dashboard</p>
+<p>Copy the Name and Value</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment15.png" /></p>
+<p>Go to GitHub now and paste-like this and click on add secret</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment16.png" /></p>
+<p>Our Sonarqube secrets are added and you can see</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment17.png" /></p>
+<p>Go to Sonarqube Dashboard and click on continue</p>
+<p>Now create your Workflow for your Project. In my case, the Netflix project is built using React Js.</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment18.png" /></p>
+<p>Now it Generates and workflow for my Project</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment19.png" /></p>
+<p>Go back to GitHub. click on Add file and then create a new file.</p>
+<p>Go back to the Sonarqube dashboard and copy the file name and content</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment20.png" /></p>
+<p>File name is:</p>
+<pre><code class="language-bash">    sonar-project.properties
+</code></pre>
+<p>The content to add to the file is</p>
+<pre><code class="language-bash">    sonar.projectKey=Netflix
+</code></pre>
+<p>Add in GitHub like this</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment21.png" /></p>
+<p>Let’s add our workflow</p>
+<p>To do that click on Add file and then click on Create a new file as</p>
+<pre><code class="language-bash">    .github/workflows/build.yml  #you can use any name iam using sonar.yml
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment22.png" /></p>
+<p>Copy content and add it to the file and Click on commit changes.</p>
+<pre><code class="language-bash">    name: Build
+
+    on:
+      push:
+        branches:
+          - main
 
 
+    jobs:
+      build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+            with:
+              fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          - uses: sonarsource/sonarqube-scan-action@master
+            env:
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+              SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+</code></pre>
+<p>Now workflow is created and Click on “Actions” now</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment23.png" /></p>
+<p>Now it’s automatically started the workflow</p>
+<p>Let’s click on <code>Build</code> and see what are the steps involved</p>
+<p>Build complete.</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment24.png" /></p>
+<p>Go to the Sonarqube dashboard and click on <code>projects</code> and you can see the analysis</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment25.png" /></p>
+<p>If you want to see the full report, click on <code>issues</code>.</p>
+<h2 id="step-4-scanning-file-with-trivy">✨ Step-4-Scanning-file-with-Trivy</h2>
+<p>Add this code to your build.yml and Commit changes.</p>
+<pre><code>    - name: install trivy
+      run: |
+        #install trivy
+        sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+        wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg &gt; /dev/null
+        echo &quot;deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main&quot; | sudo tee -a /etc/apt/sources.list.d/trivy.list
+        sudo apt-get update
+        sudo apt-get install trivy -y
+        #command to scan files
+        trivy fs .
+
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment26.png" /></p>
+<p>It started the workflow build , Click on Build, Analyze and scan , It installed .</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment27.png" /></p>
+<p>It installed Trivy version 0.46.0 and scanned files also. See report</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment28.png" /></p>
+<h2 id="step-5-push-docker-container-to-dockerhub">✨ Step-5-Push-Docker-container-to-Dockerhub</h2>
+<p>Create a Personal Access token for your Dockerhub account</p>
+<p>Go to docker hub and click on your profile → Account settings → security → New access token</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment29.png" /></p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment30.png" /></p>
+<p>It asks for a name Provide a name and click on generate token</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment31.png" /></p>
+<p>Copy the token save it in a safe place, and close</p>
+<p>Now Go to GitHub again and click on settings , Search for Secrets and variables and click on and again click on actions</p>
+<p>Add your Dockerhub username with the secret name as</p>
+<pre><code class="language-bash">
+    DOCKERHUB_USERNAME   #use your dockerhub username
+
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment32.png" /></p>
+<p>Let’s add our token also and click on the new repository secret again</p>
+<pre><code class="language-bash">
+    DOCKERHUB_TOKEN
+
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment33.png" /></p>
+<h2 id="step-6-create-tmdb-api-key">✨ Step-6-Create-TMDB-API-Key</h2>
+<p>Next, we will create a TMDB API key</p>
+<p>Open a new tab in the Browser and search for TMDB</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment34.png" /></p>
+<p>Click on the Login on the top right. You will get this page.</p>
+<p>You need to create an account here. click on click here. I have an account that’s why I added my details there.</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment35.png" /></p>
+<p>Let’s create an API key, By clicking on your profile and clicking settings.</p>
+<p>Now click on API from the left side panel. Now click on create</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment36.png" /></p>
+<p>Click on Developer and Now you have to accept the terms and conditions. and Provide basic details.</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment37.png" /></p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment38.png" /></p>
+<p>Click on submit and you will get your API key.</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment39.png" /></p>
+<p>Let’s add the below step to the workflow , You have to add API at the Build command , Change your username also.</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment40.png" /></p>
+<p>t started the workflow build , Click on Build, Analyze and Scan. You will see this Docker image is building now and Build Succeeded</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment41.png" /></p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment42.png" /></p>
+<p>Build Succeeded</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment43.png" /></p>
+<p>If you go to your Docker hub, you will find that the image is pushed to Dockerhub</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment44.png" /></p>
+<h2 id="step-7-add-a-self-hosted-runner-to-ec2">✨ Step-7-Add-a-self-hosted-runner-to-EC2</h2>
+<p>Go to GitHub and click on Settings → Actions → Runners</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment45.png" /></p>
+<p>Click on New self-hosted runner</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment46.png" /></p>
+<p>Now select Linux and Architecture X64</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment47.png" /></p>
+<p>Use the below commands to add a self-hosted runner</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment48.png" /></p>
+<pre><code class="language-bash">  Picture to be changed. put the code here
+
+</code></pre>
+<p>Go to Putty or Mobaxterm and connect to your ec2 instance and copy paste the commands</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment49.png" /></p>
+<p>Let’s start runner</p>
+<pre><code class="language-bash">  ./run.sh
+
+</code></pre>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment50.png" /></p>
+<h2 id="step-8-final-workflow-to-run-the-container">✨ Step-8-Final-workflow-to-run-the-container</h2>
+<p>Let’s add a deployment workflow</p>
+<pre><code class="language-bash">
+    deploy:    
+        needs: build-analyze-scan  
+        runs-on: [aws-netflix]  
+        steps:
+          - name: Pull the docker image
+            run: docker pull sushantkapare1717/netflix:latest
+          - name: Trivy image scan
+            run: trivy image sushantkapare1717/netflix:latest
+          - name: Run the container netflix
+            run: docker run -d --name netflix -p 8081:80 sushantkapare1717/netflix:latest
+
+</code></pre>
+<ol>
+<li>
+<p><code>deploy</code>: This is the name of a workflow or job, likely associated with a CI/CD pipeline. It specifies what should happen when this deployment job is triggered.</p>
+</li>
+<li>
+<p><code>needs: build-analyze-scan</code>: This line indicates that this deployment job depends on the successful completion of a previous job named "build-analyze-scan." In other words, it waits for "build-analyze-scan" to finish before starting.</p>
+</li>
+<li>
+<p><code>runs-on: [aws-netflix]</code>: This job is set to run on a specific type of runner or environment, labeled as "aws-netflix." Runners are the environments where jobs are executed, and "aws-netflix" suggests that this deployment might be intended for an AWS-based infrastructure.</p>
+</li>
+<li>
+<p><code>steps</code>: This section lists the individual steps or tasks to be executed as part of the deployment job.</p>
+<ul>
+<li>
+<p><code>name: Pull the docker image</code>: This step has a descriptive name. It uses the <code>docker pull</code> command to fetch a Docker image labeled "sushantkapare1717/netflix:latest." This is a common step in container-based deployments, where it ensures that the latest version of the Docker image is available locally.</p>
+</li>
+<li>
+<p><code>name: Trivy image scan</code>: This step performs a security scan on the Docker image "sushantkapare1717/netflix:latest" using a tool called Trivy. Trivy is used for vulnerability scanning of container images.</p>
+</li>
+<li>
+<p><code>name: Run the container netflix</code>: This step starts a Docker container named "netflix" using the image "sushantkapare1717/netflix:latest." It runs the container in detached mode ("-d") and maps port 8081 on the host to port 80 in the container, making the service accessible via port 8081 on the host.</p>
+</li>
+</ul>
+</li>
+</ol>
+<p>This workflow is designed to automate the deployment of a Docker container, with checks for the latest image, a security scan, and launching the container. The success of this job depends on the success of the preceding “build-analyze-scan” job, and it’s meant to be executed on the specified runner, possibly in an AWS environment.</p>
+<p>Commit changes</p>
+<p>You will see two different Jobs now</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment51.png" /></p>
+<p>Now come back by clicking on Summary and click on Deploy now</p>
+<p>It starts running the job on your Ec2 instance</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment52.png" /></p>
+<p>On GitHub, you will see this. the build succeeded</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment53.png" /></p>
+<p>Now copy your ec2 instance ip and go to the browser</p>
+<pre><code class="language-bash">
+    &lt;Ec2-instance-ip:8081&gt;
+
+</code></pre>
+<p>You will see Netflix app will run</p>
+<p><img alt="alt diagram" src="../assets/images/netflix-ish-deployment/netflix-ish-deployment54.png" /></p>
+<p>FULL WORKFLOW</p>
+<pre><code class="language-bash">
+    name: Build,Analyze,scan
+
+    on:
+      push:
+        branches:
+          - main
+
+
+    jobs:
+      build:
+        name: Build
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+            with:
+              fetch-depth: 0  # Shallow clones should be disabled for a better relevancy of analysis
+          - uses: sonarsource/sonarqube-scan-action@master
+            env:
+              SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+              SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+
+          - name: install trivy
+            run: |
+                #install trivy
+                sudo apt-get install wget apt-transport-https gnupg lsb-release -y
+                wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | gpg --dearmor | sudo tee /usr/share/keyrings/trivy.gpg &gt; /dev/null
+                echo &quot;deb [signed-by=/usr/share/keyrings/trivy.gpg] https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main&quot; | sudo tee -a /etc/apt/sources.list.d/trivy.list
+                sudo apt-get update
+                sudo apt-get install trivy -y
+                #command to scan files
+                trivy fs .
+
+          - name: Docker build and push
+            run: |
+                  #run commands to build and push docker images
+                  docker build --build-arg TMDB_V3_API_KEY=e488ef946523a124190a363c8f008cdd -t netflix .
+                  docker tag netflix sushantkapare1717/netflix:latest
+                  docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+                  docker push sushantkapare1717/netflix:latest  
+            env:
+                  DOCKER_CLI_ACI: 1
+      deploy:    
+        needs: build  
+        runs-on: [aws-netflix]  
+        steps:
+          - name: Pull the docker image
+            run: docker pull sushantkapare1717/netflix:latest
+          - name: Trivy image scan
+            run: trivy image sushantkapare1717/netflix:latest
+          - name: Run the container netflix
+            run: docker run -d --name netflix -p 8081:80 sushantkapare1717/netflix:latest
+
+</code></pre>
 
 
 
