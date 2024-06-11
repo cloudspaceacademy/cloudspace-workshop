@@ -2,7 +2,7 @@
 
 
 ## 🚀 Project Overview
-In this project, we will explore a DevOps project that involves deploying a Django notes app on an EC2 instance using This project involves creating a bash script that takes the backup of a local folder and sends it to an Amazon S3 bucket every hour. The project aims to teach students the basics of scripting, automation, and using AWS S3 for storage.
+This project involves creating a bash script that takes the backup of a local folder and sends it to an Amazon S3 bucket every hour. The project aims to teach students the basics of scripting, automation, and using AWS S3 for storage.
 
 ## 🔧 Problem Statement
 The task is to develop a solution that ensures a local directory's contents are backed up to Amazon S3 automatically and regularly. This will help in ensuring data durability and accessibility from anywhere. The solution should be simple, efficient, and require minimal manual intervention.
