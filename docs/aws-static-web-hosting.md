@@ -102,6 +102,10 @@ On `Create a connection` give a name to the connection. Next, click on `Connect 
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting06.png)
 
+If you are asked to log into your github account, enter your credentials
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting007.png)
+
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting07.png)
 
 At this point, the pipeline and the Github repository are connected
@@ -111,6 +115,10 @@ Repository name = **Select your repo from the list**
 Branch Name = **main**
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting08.png)
+
+On the triggers section, add the branch `main`
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting09.png)
 
 Everything else is default, click on `Next`
 
@@ -140,7 +148,7 @@ Let’s test if it works by going checking our bucket website endpoint. You can 
 
 We will be testing the pipeline by modifying the file locally, pushing the file to GitHub. CodePipeline should see this change and deploy our new file with our changes to the website.
 
-Update the background color by adding this line of code to your html file and commit the changes and push it to GitHub:
+Update the background color by adding this line of code to your html file, commit the changes and push it to GitHub:
 ``` 
 <body style="background-color:MediumSeaGreen;"></body> 
 ```
@@ -167,7 +175,7 @@ Scroll down a little bit and change the view to Redirect HTTP to HTTPS and then 
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting13.png)
 
-This should send any **HTTP** request to **HTTPS**.
+This should send any **HTTP** request to **HTTPS**. No need to enable WAF
 
 Wait about 10 mins for the status to change from Deploying to Enabled.
 
