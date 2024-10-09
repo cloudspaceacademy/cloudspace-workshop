@@ -12,11 +12,11 @@ Inefficient manual deployment processes and lack of content delivery network (CD
 
 ● **Storage:** AWS S3 for file storage.
 
-● **CI/CD:** Automate deployment using AWS Code Pipeline, AWS CodeBuild
+● **CI/CD:** Automate deployment using GitHub and AWS Code Pipeline
 
 ## 📌 Architecture Diagram
 
-![alt diagram](assets/images/aws-static-web-hosting/architecture-diagram.png)
+![alt diagram](assets/images/aws-static-web-hosting/architecture-diagram0.png)
 
 ## 🌟 Project Requirements
 
@@ -24,7 +24,7 @@ Your team has asked you to create a way to automate the deployment of a website.
 
 `https://github.com/cloudspaceacademy/aws-static-web-hosting.git`
 
-1. Create a new repository in GitHub or CodeCommit and load the attached HTML.
+1. Create a new repository in GitHub and load the attached HTML.
 2. Create and configure a S3 bucket to host your static website.
 3. Create a CI/CD pipeline using the **AWS Codepipeline service **.
 4. Set your repo as the Source Stage of the Codepipeline that is triggered when an update is made to a GitHub repo.
@@ -52,15 +52,19 @@ First we need to create a repository.
 
 Navigate to `GitHub -> Repositories -> Create Repository` and give it a name.
 
-![alt text](assets/images/aws-static-web-hosting/a-web-hosting1.png)
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting01.png)
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting02.png)
 
 Use the Clone URL to clone it to your local system.
 
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting03.png)
+
 Add your files to your local repository, commit your changes, and push your changes.
 
-![alt text](assets/images/aws-static-web-hosting/a-web-hosting2.png)
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting04.png)
 
-File has been pushed from our local repo to CodeCommit.
+File has been pushed from our local repo to Github.
 
 ### ✨ Step-1-Setup-S3-Bucket
 
@@ -86,13 +90,37 @@ The following will allow everyone to access the bucket using the GetObject comma
 
 `Navigate to CodePipeline -> Create pipeline provide a name and click next.`
 
-Source Provider = **AWS CodeCommit**
+Source Provider = **GitHub (Version 2)**
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting05.png)
+
+Click on `Connect to GitHub`
+
+Now, let's connect the pipeline to our GitHub repository
+
+On `Create a connection` give a name to the connection. Next, click on `Connect to GitHub`, Then `Connect` 
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting06.png)
+
+If you are asked to log into your github account, enter your credentials
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting007.png)
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting07.png)
+
+At this point, the pipeline and the Github repository are connected
 
 Repository name = **Select your repo from the list**
 
-Branch Name = **Master**
+Branch Name = **main**
 
-![alt text](assets/images/aws-static-web-hosting/a-web-hosting4.png)
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting08.png)
+
+On the triggers section, add the branch `main`
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting09.png)
+
+Everything else is default, click on `Next`
 
 Skip the build stage.
 
@@ -102,7 +130,7 @@ Deploy Provider: **Amazon S3**
 
 Region: **US East**
 
-Bucket: **<Bucket Name>**
+Bucket: **Bucket Name**
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting6.png)
 
@@ -118,11 +146,12 @@ Let’s test if it works by going checking our bucket website endpoint. You can 
 
 **Test the Pipeline**
 
-We will be testing the pipeline by modifying the file locally, pushing the file to CodeCommit. CodePipeline should see this change and deploy our new file with our changes to the website.
+We will be testing the pipeline by modifying the file locally, pushing the file to GitHub. CodePipeline should see this change and deploy our new file with our changes to the website.
 
-I updated the background color. Committed my changes and pushed it to CodeCommit.
-
-![alt text](assets/images/aws-static-web-hosting/a-web-hosting9.png)
+Update the background color by adding this line of code to your html file, commit the changes and push it to GitHub:
+``` 
+<body style="background-color:MediumSeaGreen;"></body> 
+```
 
 We can see that CodePipeline saw the change and pushed our new changes.
 
@@ -146,7 +175,7 @@ Scroll down a little bit and change the view to Redirect HTTP to HTTPS and then 
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting13.png)
 
-This should send any **HTTP** request to **HTTPS**.
+This should send any **HTTP** request to **HTTPS**. No need to enable WAF
 
 Wait about 10 mins for the status to change from Deploying to Enabled.
 
