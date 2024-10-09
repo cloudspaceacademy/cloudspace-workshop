@@ -16,7 +16,7 @@ Inefficient manual deployment processes and lack of content delivery network (CD
 
 ## 📌 Architecture Diagram
 
-![alt diagram](assets/images/aws-static-web-hosting/architecture-diagram.png)
+![alt diagram](assets/images/aws-static-web-hosting/architecture-diagram0.png)
 
 ## 🌟 Project Requirements
 
@@ -137,9 +137,11 @@ Let’s test if it works by going checking our bucket website endpoint. You can 
 
 **Test the Pipeline**
 
-We will be testing the pipeline by modifying the file locally, pushing the file to CodeCommit. CodePipeline should see this change and deploy our new file with our changes to the website.
+We will be testing the pipeline by modifying the file locally, pushing the file to GitHub. CodePipeline should see this change and deploy our new file with our changes to the website.
 
-I updated the background color. Committed my changes and pushed it to CodeCommit.
+Update the backgrount color by adding this line of code to your html file and commit the changes and push it to GitHub:
+` <body style="background-color:MediumSeaGreen;"></body> `
+
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting9.png)
 
