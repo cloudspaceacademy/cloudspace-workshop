@@ -111,7 +111,7 @@ Branch Name = **Main**
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting08.png)
 
-Eerything else is default, click on `Next`
+Everything else is default, click on `Next`
 
 Skip the build stage.
 
