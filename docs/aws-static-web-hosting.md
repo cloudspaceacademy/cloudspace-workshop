@@ -141,8 +141,9 @@ Let’s test if it works by going checking our bucket website endpoint. You can 
 We will be testing the pipeline by modifying the file locally, pushing the file to GitHub. CodePipeline should see this change and deploy our new file with our changes to the website.
 
 Update the background color by adding this line of code to your html file and commit the changes and push it to GitHub:
-` <body style="background-color:MediumSeaGreen;"></body> 
-`
+``` <body style="background-color:MediumSeaGreen;"></body> 
+```
+
 We can see that CodePipeline saw the change and pushed our new changes.
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting10.png)
