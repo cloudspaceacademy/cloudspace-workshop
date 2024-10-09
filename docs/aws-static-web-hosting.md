@@ -130,7 +130,7 @@ Deploy Provider: **Amazon S3**
 
 Region: **US East**
 
-Bucket: **<Bucket Name>**
+Bucket: **Bucket Name**
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting6.png)
 
