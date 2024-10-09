@@ -12,7 +12,7 @@ Inefficient manual deployment processes and lack of content delivery network (CD
 
 ● **Storage:** AWS S3 for file storage.
 
-● **CI/CD:** Automate deployment using AWS Code Pipeline, AWS CodeBuild
+● **CI/CD:** Automate deployment using GitHub and AWS Code Pipeline
 
 ## 📌 Architecture Diagram
 
