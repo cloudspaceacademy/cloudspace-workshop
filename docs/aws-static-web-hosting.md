@@ -101,13 +101,14 @@ Now, let's connect the pipeline to our GitHub repository
 On `Create a connection` give a name to the connection. Next, click on `Connect to GitHub`, Then `Connect` 
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting06.png)
+
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting07.png)
 
 At this point, the pipeline and the Github repository are connected
 
 Repository name = **Select your repo from the list**
 
-Branch Name = **Main**
+Branch Name = **main**
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting08.png)
 
@@ -139,12 +140,9 @@ Let’s test if it works by going checking our bucket website endpoint. You can 
 
 We will be testing the pipeline by modifying the file locally, pushing the file to GitHub. CodePipeline should see this change and deploy our new file with our changes to the website.
 
-Update the backgrount color by adding this line of code to your html file and commit the changes and push it to GitHub:
-` <body style="background-color:MediumSeaGreen;"></body> `
-
-
-![alt text](assets/images/aws-static-web-hosting/a-web-hosting9.png)
-
+Update the background color by adding this line of code to your html file and commit the changes and push it to GitHub:
+` <body style="background-color:MediumSeaGreen;"></body> 
+`
 We can see that CodePipeline saw the change and pushed our new changes.
 
 ![alt text](assets/images/aws-static-web-hosting/a-web-hosting10.png)
