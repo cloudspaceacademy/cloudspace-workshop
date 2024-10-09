@@ -24,7 +24,7 @@ Your team has asked you to create a way to automate the deployment of a website.
 
 `https://github.com/cloudspaceacademy/aws-static-web-hosting.git`
 
-1. Create a new repository in GitHub or CodeCommit and load the attached HTML.
+1. Create a new repository in GitHub and load the attached HTML.
 2. Create and configure a S3 bucket to host your static website.
 3. Create a CI/CD pipeline using the **AWS Codepipeline service **.
 4. Set your repo as the Source Stage of the Codepipeline that is triggered when an update is made to a GitHub repo.
@@ -52,15 +52,19 @@ First we need to create a repository.
 
 Navigate to `GitHub -> Repositories -> Create Repository` and give it a name.
 
-![alt text](assets/images/aws-static-web-hosting/a-web-hosting1.png)
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting01.png)
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting02.png)
 
 Use the Clone URL to clone it to your local system.
 
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting03.png)
+
 Add your files to your local repository, commit your changes, and push your changes.
 
-![alt text](assets/images/aws-static-web-hosting/a-web-hosting2.png)
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting04.png)
 
-File has been pushed from our local repo to CodeCommit.
+File has been pushed from our local repo to Github.
 
 ### ✨ Step-1-Setup-S3-Bucket
 
@@ -86,13 +90,28 @@ The following will allow everyone to access the bucket using the GetObject comma
 
 `Navigate to CodePipeline -> Create pipeline provide a name and click next.`
 
-Source Provider = **AWS CodeCommit**
+Source Provider = **GitHub (Version 2)**
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting05.png)
+
+Click on `Connect to GitHub`
+
+Now, let's connect the pipeline to our GitHub repository
+
+On `Create a connection` give a name to the connection. Next, click on `Connect to GitHub`, Then `Connect` 
+
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting06.png)
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting07.png)
+
+At this point, the pipeline and the Github repository are connected
 
 Repository name = **Select your repo from the list**
 
-Branch Name = **Master**
+Branch Name = **Main**
 
-![alt text](assets/images/aws-static-web-hosting/a-web-hosting4.png)
+![alt text](assets/images/aws-static-web-hosting/a-web-hosting08.png)
+
+Eerything else is default, click on `Next`
 
 Skip the build stage.
 
