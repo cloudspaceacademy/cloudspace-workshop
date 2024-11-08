@@ -144,7 +144,7 @@ Before you get started, make sure you have the following prerequisites in place:
       git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/vprofile-code-repo
       cat .git/config
       git push origin --all
-      git push --tags
+      git push --tagss
    ```
 
 
