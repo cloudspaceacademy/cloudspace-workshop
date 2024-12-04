@@ -1,6 +1,6 @@
 # Continuous Delivery on AWS
 
-Continous 'Delivery' on AWS.
+
 
 ## 🚀 Project Overview
 
@@ -113,17 +113,17 @@ Before you get started, make sure you have the following prerequisites in place:
 
 ```bash
    Host git-codecommit.us-east-1.amazonaws.com
-       User <SSH_Key_ID_from IAM_user>
-       IdentityFile ~/.ssh/vpro-codecommit_rsa
+   User <SSH_Key_ID_from IAM_user>
+   IdentityFile ~/.ssh/vpro-codecommit_rsa
 ```
 
 
 - We can test our ssh connection to CodeCommit.
 
 
-   ```bash
-      ssh git-codecommit.us-east-1.amazonaws.com
-   ```
+```bash
+   ssh git-codecommit.us-east-1.amazonaws.com
+```
 
 ![alt diagram](assets/images/aws-continuous-delivery/committest.webp)
 
@@ -135,17 +135,17 @@ Before you get started, make sure you have the following prerequisites in place:
 - Run the command below.
 
 
-   ```bash
-      git checkout master
-      git branch -a | grep -v HEAD | cur -d'/' -f3 | grep -v master > /tmp/branches
-      for i in `cat  /tmp/branches`; do git checkout $i; done
-      git fetch --tags
-      git remote rm origin
-      git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/vprofile-code-repo
-      cat .git/config
-      git push origin --all
-      git push --tagss
-   ```
+```bash
+   git checkout master
+   git branch -a | grep -v HEAD | cur -d'/' -f3 | grep -v master > /tmp/branches
+   for i in `cat  /tmp/branches`; do git checkout $i; done
+   git fetch --tags
+   git remote rm origin
+   git remote add origin ssh://git-codecommit.us-east-1.amazonaws.com/v1/repos/vprofile-code-repo
+   cat .git/config
+   git push origin --all
+   git push --tagss
+```
 
 
 - Our repo is ready on CodeCommit with all branches.
@@ -157,12 +157,12 @@ Before you get started, make sure you have the following prerequisites in place:
 
 - Create CodeArtifact repository for Maven:
 
-   ```bash
-      Name: vprofile-maven-repo
-      Public upstraem Repo: maven-central-store
-      This AWS account
-      Domain name: visualpath
-   ```  
+```bash
+   Name: vprofile-maven-repo
+   Public upstraem Repo: maven-central-store
+   This AWS account
+   Domain name: visualpath
+```  
 
 - Follow connection instructions given in CodeArtifact for maven-central-repo.
 
@@ -172,9 +172,9 @@ Before you get started, make sure you have the following prerequisites in place:
 - Create an IAM user for CodeArtifact and configure aws CLI with its credentials. We will give Programmatic access to this user to enable use of aws cli and download credentials file.
 
 
-   ```bash
-      aws configure # provide iam user credentials
-   ```  
+```bash
+   aws configure # provide iam user credentials
+```  
 
 ![alt diagram](assets/images/aws-continuous-delivery/iamarti.webp)
 
@@ -182,16 +182,16 @@ Before you get started, make sure you have the following prerequisites in place:
 - Run command get token as in the instructions.
 
 
-   ```bash
-      export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain visualpath --domain-owner 392530415763 --region us-east-1 --query authorizationToken --output text`
-   ```  
+```bash
+   export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain visualpath --domain-owner 392530415763 --region us-east-1 --query authorizationToken --output text`
+```  
 - Update pom.xml and setting.xml file with correct urls as suggested in instruction then push files to codeCommit.
 
-   ```bash
-      git add .
-      git commit -m "message"
-      git push origin ci-aws
-   ```  
+```bash
+   git add .
+   git commit -m "message"
+   git push origin ci-aws
+```  
 ## 🚀 Step-3-Setup-SonarCloud
 
 - Create an Account with SonarCloud. https://sonarcloud.io/ 
@@ -202,10 +202,10 @@ Before you get started, make sure you have the following prerequisites in place:
 
 - Next we create a project, + -> Analyze Project -> create project manually. Below details will be used in our Build.
 
-   ```bash
-      Organization: kubeirving-projects
-      Project key: vprofile-repo8
-   ```  
+```bash
+   Organization: kubeirving-projects
+   Project key: vprofile-repo8
+```  
 
 - Sonar Cloud is ready!
 
@@ -219,13 +219,13 @@ Before you get started, make sure you have the following prerequisites in place:
 - Create parameters with the variables below.
 
 
-   ```bash
-      CODEARTIFACT_TOKEN	  SecureString	
-      HOST                   https://sonarcloud.io
-      ORGANIZATION           kubeirving-projects
-      PROJECT                vprofile-repo8
-      SONARTOKEN             SecureString
-   ```  
+```bash
+   CODEARTIFACT_TOKEN	  SecureString	
+   HOST                   https://sonarcloud.io
+   ORGANIZATION           kubeirving-projects
+   PROJECT                vprofile-repo8
+   SONARTOKEN             SecureString
+```  
 
 
 ## 🔧 Step-5-CodeBuild-for-SonarQube
@@ -234,17 +234,17 @@ Before you get started, make sure you have the following prerequisites in place:
 - From AWS Console, go to CodeBuild -> Create Build Project. This step is similar to Jenkins Job.
 
 
-   ```bash
-      ProjectName: Vprofile-Build
-      Source: CodeCommit
-      Branch: ci-aws
-      Environment: Ubuntu
-      runtime: standard:5.0
-      New service role
-      Insert build commands from foler aws-files/sonar_buildspec.yml
-      Logs-> GroupName: vprofile-buildlogs
-      StreamName: sonarbuildjob
-   ```  
+```bash
+   ProjectName: Vprofile-Build
+   Source: CodeCommit
+   Branch: ci-aws
+   Environment: Ubuntu
+   runtime: standard:5.0
+   New service role
+   Insert build commands from foler aws-files/sonar_buildspec.yml
+   Logs-> GroupName: vprofile-buildlogs
+   StreamName: sonarbuildjob
+```  
 
 - Update sonar_buildspec.yml file parameter store sections with the exact names we have given in SSM Parameter store.
 
@@ -275,17 +275,17 @@ Before you get started, make sure you have the following prerequisites in place:
 - From AWS Console, go to CodeBuild -> Create Build Project. This step is similar to Jenkins Job.
 
 
-   ```bash
-      ProjectName: Vprofile-Build-Artifact
-      Source: CodeCommit
-      Branch: ci-aws
-      Environment: Ubuntu
-      runtime: standard:5.0
-      Use existing role from previous build
-      Insert build commands from foler aws-files/build_buildspec.yml
-      Logs-> GroupName: vprofile-buildlogs
-      StreamName: artifactbuildjob
-   ```
+```bash
+   ProjectName: Vprofile-Build-Artifact
+   Source: CodeCommit
+   Branch: ci-aws
+   Environment: Ubuntu
+   runtime: standard:5.0
+   Use existing role from previous build
+   Insert build commands from foler aws-files/build_buildspec.yml
+   Logs-> GroupName: vprofile-buildlogs
+   StreamName: artifactbuildjob
+```
 
 - It’s time to build project.
 
@@ -316,18 +316,18 @@ Before you get started, make sure you have the following prerequisites in place:
 - Create CodePipeline.
 
 
-   ```bash
-      Name: vprofile-CI-Pipeline
-      SourceProvider: Codecommit
-      branch: ci-aws
-      Change detection options: CloudWatch events
-      Build Provider: CodeBuild
-      ProjectName: vprofile-Build-Aetifact
-      BuildType: single build
-      Deploy provider: Amazon S3
-      Bucket name: vprofile98-build-artifact
-      object name: pipeline-artifact
-   ```
+```bash
+   Name: vprofile-CI-Pipeline
+   SourceProvider: Codecommit
+   branch: ci-aws
+   Change detection options: CloudWatch events
+   Build Provider: CodeBuild
+   ProjectName: vprofile-Build-Aetifact
+   BuildType: single build
+   Deploy provider: Amazon S3
+   Bucket name: vprofile98-build-artifact
+   object name: pipeline-artifact
+```
 
 - Add Test and Deploy stages to your pipeline.
 - Last step before running the pipeline is to setup Notifications.
@@ -344,34 +344,34 @@ Before you get started, make sure you have the following prerequisites in place:
 
 Create an environment using Sample application.
 
-   ```bash
-      Name: vprofile-app
-      Capacity: LoadBalanced
-         Min: 2
-         Max: 4
-      Security: Choose existing key-pair usedin previous steps
-      Tags: 
-         Name:Project
-         Value: vprofile
-   ```
+```bash
+   Name: vprofile-app
+   Capacity: LoadBalanced
+      Min: 2
+      Max: 4
+   Security: Choose existing key-pair usedin previous steps
+   Tags: 
+      Name:Project
+      Value: vprofile
+```
 ## 🗄️ Step-10-Create-RDS-MySQL-Database
 
 - Create an RDS service with the details below.
 - Don’t forget the click View credential details to note down your password.
 
-   ```bash
-      Engine: MySQL
-      version: 5.7
-      Free-Tier
-      DB Identifier: vprofile-cicd-mysql
-      credentials: admin
-      Auto generate password (will take note of pwd once RDS is created)
-      db.t2.micro
-      Create new SecGrp: 
-      * Name: vprofile-cicd-rds-mysql-sg
-      Additional Configurations: 
-      * initial db name: accounts
-   ```
+```bash
+   Engine: MySQL
+   version: 5.7
+   Free-Tier
+   DB Identifier: vprofile-cicd-mysql
+   credentials: admin
+   Auto generate password (will take note of pwd once RDS is created)
+   db.t2.micro
+   Create new SecGrp: 
+   * Name: vprofile-cicd-rds-mysql-sg
+   Additional Configurations: 
+   * initial db name: accounts
+```
 ## 🔒 Step-11-Update-RDS-Security-Group
 
 Go to instances, find BeanStalk instance and copy its Secgrp ID. Update RDS SecGrp Inbound rules to allow access for Beanstalk instances on port 3306.
@@ -381,20 +381,20 @@ Go to instances, find BeanStalk instance and copy its Secgrp ID. Update RDS SecG
 
 - Go to Beanstalk SecGrp group, and change access to port 22 from Anywhere to MyIP. Install mysql client in this instance to be able to connect RDS. We also need to install git since we will clone our source code and get scripts to create schema in our database.
 
-   ```bash
-      sudo -i
-      yum install mysql git -y
-      mysql -h <RDS_endpoint> -u <RDS_username> -p<RDS_password>
-      show databases;
-      git clone https://github.com/rumeysakdogan/vprofileproject-all.git
-      cd vprofileproject-all/
-      git checkout cd-aws
-      cd src/main/resources
-      mysql -h <RDS_endpoint> -u <RDS_username> -p<RDS_password> accounts < db_backup.sql
-      mysql -h <RDS_endpoint> -u <RDS_username> -p<RDS_password>
-      use accounts;
-      show tables;
-   ```
+```bash
+   sudo -i
+   yum install mysql git -y
+   mysql -h <RDS_endpoint> -u <RDS_username> -p<RDS_password>
+   show databases;
+   git clone https://github.com/rumeysakdogan/vprofileproject-all.git
+   cd vprofileproject-all/
+   git checkout cd-aws
+   cd src/main/resources
+   mysql -h <RDS_endpoint> -u <RDS_username> -p<RDS_password> accounts < db_backup.sql
+   mysql -h <RDS_endpoint> -u <RDS_username> -p<RDS_password>
+   use accounts;
+   show tables;
+```
 
 Now go back to Beanstalk environment and under Configuration -> load balancer -> Processes , update Health check path to /login. Then apply changes.
 
@@ -404,16 +404,16 @@ Now go back to Beanstalk environment and under Configuration -> load balancer ->
 
 - For pom.xml, add the correct url from your code artifact connection steps:
 
-   ```bash
+```bash
       <repository>
                <id>codeartifact</id>
                <name>codeartifact</name>
          <url>https://visualpath-392530415763.d.codeartifact.us-east-1.amazonaws.com/maven/maven-central-store/</url>
          </repository>
-   ```
+```
 for settings.xml, update below parts with correct url from code artifact.
 
-   ```bash
+```bash
       <profiles>
       <profile>
          <id>default</id>
@@ -436,7 +436,7 @@ for settings.xml, update below parts with correct url from code artifact.
          <mirrorOf>*</mirrorOf>
       </mirror>
       </mirrors>
-   ```
+```
 
 ## 🔧 Step-14-Build-Job-Setup
 
@@ -446,7 +446,7 @@ for settings.xml, update below parts with correct url from code artifact.
 
 Then we create a new project called Build Project for deploying artifacts to BeanStalk.
 
-   ```bash
+```bash
       Name: Vprofile-BuildAndRelease
       Repo: CodeCommit
       branch: cd-aws
@@ -460,15 +460,15 @@ Then we create a new project called Build Project for deploying artifacts to Bea
       Logs:
       *LogGroup:vprofile-cicd-logs
       *StreamnameBuildAndReleaseJob
-   ```
+```
 
 We need to create 3 new parameters as used in BuilAndRelease_buildspec.yml file in SSM Parameter store. we have noted these values from RDS creation step, we will use them now.
 
-   ```bash
-      RDS-Endpoint: String
-      RDSUSER: String
-      RDSPASS: SecureString
-   ```
+```bash
+   RDS-Endpoint: String
+   RDSUSER: String
+   RDSPASS: SecureString
+```
 
 Let’s run the project to know if successful!
 
@@ -480,88 +480,88 @@ In this Build Project, we will run our Selenium Automation scripts and store the
 
 First, we will create an S3 bucket.
 
-   ```bash
-      Name: vprofile-cicd-testoutput-rd (give a unique name)
-      Region: it should be the same region we create our pipeline
-   ```
+```bash
+   Name: vprofile-cicd-testoutput-rd (give a unique name)
+   Region: it should be the same region we create our pipeline
+```
 
 Next, create a new Build project for Selenium Automation Tests. Create a new Build project with details below:
 
-   ```bash
-    Name: SoftwareTesting
-    Repo: CodeCommit
-    branch: seleniumAutoScripts
-    Environment:
-    * Windows Server 2019
-    * Runtime: Base
-    * Image: 1.0
-    We will use existing role from previous Build project which has access to SSM Parameter Store
-    Insert build commands: 
-    * From source code we will get spec file under `aws-files/win_buildspec.yml`.
-    * We need to update url part to our Elastic Beanstalk URL.
-    Artifacts:
-    *Type: S3
-    * Bucketname: vprofile-cicd-testoutput-rd
-    * Enable semantic versioning
-    Artifcats packaging: zip
-    Logs:
-    *LogGroup: vprofile-cicd-logs
-    *Streamname:
-   ```
+```bash
+   Name: SoftwareTesting
+   Repo: CodeCommit
+   branch: seleniumAutoScripts
+   Environment:
+   * Windows Server 2019
+   * Runtime: Base
+   * Image: 1.0
+   We will use existing role from previous Build project which has access to SSM Parameter Store
+   Insert build commands: 
+   * From source code we will get spec file under `aws-files/win_buildspec.yml`.
+   * We need to update url part to our Elastic Beanstalk URL.
+   Artifacts:
+   *Type: S3
+   * Bucketname: vprofile-cicd-testoutput-rd
+   * Enable semantic versioning
+   Artifcats packaging: zip
+   Logs:
+   *LogGroup: vprofile-cicd-logs
+   *Streamname:
+```
 ## ⛓️ Step-15-Create-Pipeline
 
 Create CodePipeline with name vprofile-cicd-pipeline
 
-   ```bash
-    Source:
-    * CodeCommit
-    * vprofile-code-repo
-    * cd-aws
-    * Amazon CloudWatch Events
+```bash
+   Source:
+   * CodeCommit
+   * vprofile-code-repo
+   * cd-aws
+   * Amazon CloudWatch Events
 
-    Build
-    * BuildProvider: CodeBuild
-    * ProjectName: Vprofile-BuildAndRelease
-    * Single Build
+   Build
+   * BuildProvider: CodeBuild
+   * ProjectName: Vprofile-BuildAndRelease
+   * Single Build
 
-    Deploy
-    * Deploy provider: Beanstalk
-    * application: vprofile-app
-    * Environment: vprofile-app-env
-   ```
+   Deploy
+   * Deploy provider: Beanstalk
+   * application: vprofile-app
+   * Environment: vprofile-app-env
+```
 
-   ```bash
-    We will Disable transitions and Edit pipeline to add more stages.
-   ```
+```bash
+   We will Disable transitions and Edit pipeline to add more stages.
+```
 
 Add this stage in our codepipeline after “Source”:
 
-   ```bash
-    Name: CodeAnalysis
-    Action provider: CodeBuild
-    Input artifacts: SourceArtifact
-    Project name: Vprofile-Build
-   ```
+```bash
+   Name: CodeAnalysis
+   Action provider: CodeBuild
+   Input artifacts: SourceArtifact
+   Project name: Vprofile-Build
+```
 
 Add second stage after CodeAnalysis:
 
-   ```bash
-    Name: BuildAndStore
-    Action provider: CodeBuild
-    Input artifacts: SourceArtifact
-    Project name: Vprofile-Build-artifact
-    OutputArtifact: BuildArtifact
-   ```
+```bash
+   Name: BuildAndStore
+   Action provider: CodeBuild
+   Input artifacts: SourceArtifact
+   Project name: Vprofile-Build-artifact
+   OutputArtifact: BuildArtifact
+```
 
 Add third stage after BuildAndStore:
 
-   ```bash
-    Name: DeployToS3
-    Action provider: Amazon S3
-    Input artifacts: BuildArtifact
-    Bucket name: vprofile98-build-artifact
-    Extract file before deploy
-   ```
+```bash
+   Name: DeployToS3
+   Action provider: Amazon S3
+   Input artifacts: BuildArtifact
+   Bucket name: vprofile98-build-artifact
+   Extract file before deploy
+```
 
 Edit the ouput artifacts of Build and Deploy stages. Go to Build stage Edit Stage. Change Output artifact name as BuildArtifactToBean.
 
@@ -569,12 +569,12 @@ Go to Deploy stage, Edit stage. We change InputArtifact to BuildArtifactToBean.
 
 Last Stage will be added after Deploy stage:
 
-   ```bash
-    Name: Software Testing
-    Action provider: CodeBuild
-    Input artifacts: SourceArtifact
-    ProjectName: SoftwareTesting
-   ```
+```bash
+   Name: Software Testing
+   Action provider: CodeBuild
+   Input artifacts: SourceArtifact
+   ProjectName: SoftwareTesting
+```
 
 Save and Release change. This will start our CodePipeline.
 
@@ -582,11 +582,11 @@ Save and Release change. This will start our CodePipeline.
 
 Select your pipeline. Click Notify, then Manage Notification. We will create a new notification.
 
-   ```bash
-    vprofile-aws-cicd-pipeline-notification
-    Select all
-    Notification Topic: use same topic from CI pipeline
-   ```
+```bash
+   vprofile-aws-cicd-pipeline-notification
+   Select all
+   Notification Topic: use same topic from CI pipeline
+```
 ## 🧪 Step-17-Validate&Test
 
 Time to test our pipeline.
